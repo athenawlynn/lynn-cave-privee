@@ -311,7 +311,7 @@ body.page-platform .privacy-dot { width: 6px; height: 6px; margin: 0 auto 14px; 
 body.page-platform .privacy-item p { font-size: var(--fs-small); line-height: var(--lh-small); color: var(--ink); }
 body.page-platform .close-block { margin: var(--sp-section) 0; background: var(--navy); border-radius: 0; }
 body.page-platform .close-block::after { content: ''; position: absolute; inset: 10px; border: 1px solid rgba(212,184,150,.32); pointer-events: none; }
-body.page-platform .modules-grid > :last-child:nth-child(3n+1) { grid-column: 2; }
+@media (min-width: 901px) { body.page-platform .modules-grid > :last-child:nth-child(3n+1) { grid-column: 2; } }
 body.page-platform .views-gallery { text-align: left; }
 body.page-platform .views-gallery .gallery-caption { text-align: center; }
 body.page-platform .footer { font-size: 12px; padding-bottom: 32px; }
