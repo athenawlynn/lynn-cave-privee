@@ -347,3 +347,17 @@ body.page-platform .footer { font-size: 12px; padding-bottom: 32px; }
   body.sys .pillar, body.sys .how-item, body.sys .principle, body.sys .module-cell, body.sys .pain-cell { transition: none; }
   body.sys .pillar:hover, body.sys .how-item:hover, body.sys .principle:hover, body.sys .module-cell:hover, body.sys .pain-cell:hover { transform: none; }
 }
+
+/* ═════ Interior page openings: shorter, with a larger page label ═════ */
+body.sys .po { min-height: 46vh; min-height: 46svh; }
+body.sys .po--short { min-height: 40vh; min-height: 40svh; }
+body.sys .po-inner { padding: 9vh 32px 7vh; }
+body.sys .po-eyebrow { font-size: 19px; letter-spacing: .2em; font-weight: 500; gap: 16px; margin-bottom: 22px; color: rgba(14,15,16,.72); }
+body.sys .po-eyebrow::before { width: 8px; height: 8px; box-shadow: 0 0 0 6px rgba(184,151,106,.2); }
+body.sys .po--dark .po-eyebrow { color: rgba(246,239,227,.82); }
+@media (max-width: 900px) {
+  body.sys .po { min-height: 44vh; min-height: 44svh; }
+  body.sys .po--short { min-height: 38vh; min-height: 38svh; }
+  body.sys .po-inner { padding: 8vh 20px 5vh; }
+  body.sys .po-eyebrow { font-size: 15px; gap: 12px; margin-bottom: 16px; }
+}
