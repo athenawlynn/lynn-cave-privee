@@ -361,3 +361,30 @@ body.sys .po--dark .po-eyebrow { color: rgba(246,239,227,.82); }
   body.sys .po-inner { padding: 8vh 20px 5vh; }
   body.sys .po-eyebrow { font-size: 15px; gap: 12px; margin-bottom: 16px; }
 }
+
+/* ═════ Navigation bar: navy so it stands apart while floating ═════ */
+body.sys .site-header,
+body.sys.home .site-header.is-scrolled {
+  background: #1e2d40; border-bottom: 1px solid rgba(212,184,150,.28);
+  box-shadow: 0 8px 28px rgba(14,21,32,.18);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+body.sys .site-logo { color: #f6efe3; }
+body.sys .site-logo .seal { border-color: rgba(212,184,150,.6); color: #d4b896; }
+body.sys .site-nav a { color: rgba(246,239,227,.84); }
+body.sys .site-nav a:hover { color: #fff; border-color: rgba(212,184,150,.35); background: rgba(255,255,255,.06); }
+body.sys .site-nav a.active { color: #d4b896; }
+body.sys .site-nav a.portal-btn { color: #f6efe3; border-color: rgba(212,184,150,.6); background: rgba(212,184,150,.12); }
+body.sys .site-nav a.portal-btn:hover { background: #d4b896; border-color: #d4b896; color: #1e2d40; }
+body.sys .hamburger span { background: #f6efe3; }
+
+/* Homepage, top of page only: transparent over the opening scene */
+body.sys.home .site-header:not(.is-scrolled) { background: transparent; border-bottom-color: transparent; box-shadow: none; }
+body.sys.home .site-header:not(.is-scrolled) .site-logo { color: #1e2d40; }
+body.sys.home .site-header:not(.is-scrolled) .site-logo .seal { border-color: rgba(184,151,106,.4); color: #b8976a; }
+body.sys.home .site-header:not(.is-scrolled) .site-nav a { color: rgba(14,15,16,.84); }
+body.sys.home .site-header:not(.is-scrolled) .site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
+body.sys.home .site-header:not(.is-scrolled) .site-nav a.active { color: #0e0f10; }
+body.sys.home .site-header:not(.is-scrolled) .site-nav a.portal-btn { color: #1e2d40; border-color: rgba(184,151,106,.4); background: rgba(184,151,106,.12); }
+body.sys.home .site-header:not(.is-scrolled) .hamburger span { background: #0e0f10; }
+body.sys.home .site-header .site-logo, body.sys.home .site-header .site-nav a, body.sys.home .site-header .hamburger span { transition: color .4s ease, background .4s ease, border-color .4s ease; }
