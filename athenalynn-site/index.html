@@ -24,6 +24,8 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="preload" as="image" href="/media/hero-wall-l.webp" media="(min-aspect-ratio: 4/5)" />
+  <link rel="preload" as="image" href="/media/hero-wall-p.webp" media="(max-aspect-ratio: 4/5)" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -637,6 +639,200 @@ footer {
 }
 
 
+/* ═══════════════ HOMEPAGE · CINEMATIC REFRESH ═══════════════ */
+:root { --ease-out: cubic-bezier(.16,.84,.24,1); --header-h: 70px; }
+
+/* Header floats over the opening, settles to ivory on scroll */
+body.home .site-header {
+  position: fixed; left: 0; right: 0;
+  background: transparent; border-bottom-color: transparent;
+  transition: background .5s ease, border-color .5s ease, box-shadow .5s ease;
+}
+body.home .site-header.is-scrolled {
+  background: rgba(248,244,238,.94);
+  border-bottom-color: rgba(14,15,16,.08);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+
+/* ─── Opening ─── */
+.cine {
+  position: relative; isolation: isolate;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+  background: #e2d6c3;
+}
+.cine-media, .cine-layer, .cine-drift { position: absolute; inset: 0; }
+.cine-media { z-index: -1; }
+.cine-layer { background-repeat: no-repeat; background-size: cover; background-position: 72% 50%; }
+.cine-wall { background-image: url(/media/hero-wall-l.webp); }
+.cine-sun  { background-image: url(/media/hero-sun-l.webp); }
+/* palm shadows only fall inside the sunlit openings */
+.cine-shadows {
+  -webkit-mask-image: url(/media/hero-sun-l.webp); mask-image: url(/media/hero-sun-l.webp);
+  -webkit-mask-size: cover; mask-size: cover;
+  -webkit-mask-position: 72% 50%; mask-position: 72% 50%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  mix-blend-mode: multiply;
+}
+.frond { position: absolute; background-repeat: no-repeat; background-size: contain; will-change: transform; }
+.frond-far  { background-image: url(/media/hero-fronds-far.webp);  width: 78vw; height: 78vw; right: -22vw; top: -4vw; opacity: .7; transform-origin: 70% 0%; }
+.frond-near { background-image: url(/media/hero-fronds-near.webp); width: 72vw; height: 72vw; right: -8vw; top: -9vw; opacity: .85; transform-origin: 30% 0%; }
+.cine-scrim {
+  background:
+    linear-gradient(90deg, rgba(240,232,219,.82) 0%, rgba(240,232,219,.55) 30%, rgba(240,232,219,0) 58%),
+    linear-gradient(0deg, rgba(232,222,206,.55) 0%, rgba(232,222,206,0) 35%);
+}
+.cine-grain { background: url(/media/grain.webp) repeat; background-size: 256px; opacity: .2; mix-blend-mode: multiply; }
+
+.cine-content {
+  position: relative; width: 100%;
+  max-width: 1080px; margin: 0 auto;
+  padding: calc(var(--header-h) + 8vh) 32px 15vh;
+}
+.cine-eyebrow { color: rgba(14,15,16,.62); margin-bottom: 30px; }
+.cine-title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(60px, 9.2vw, 136px);
+  line-height: .94; letter-spacing: -.025em;
+  color: var(--ink); margin: 0 0 34px;
+}
+.cine-title .ln { display: block; overflow: hidden; padding: 0 .06em .07em 0; margin-bottom: -.07em; }
+.cine-title .ln > span { display: inline-block; }
+.cine-title em { font-style: italic; color: var(--navy); }
+.cine-title .tm { font-size: .26em; vertical-align: super; margin-left: 4px; }
+.cine-keyline {
+  font-size: 17px; line-height: 1.7; font-weight: 400; letter-spacing: .01em;
+  color: var(--navy); max-width: 40ch; margin-bottom: 40px;
+}
+.btn-cine, .btn-cine-ghost {
+  display: inline-block;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 400;
+  padding: 17px 32px; border-radius: 0;
+  transition: background .35s ease, color .35s ease, border-color .35s ease;
+}
+.btn-cine { background: var(--navy); color: #f6efe3; border: 1px solid var(--navy); }
+.btn-cine:hover, .btn-cine:focus-visible { background: #0f1a28; border-color: var(--gold); }
+.btn-cine-ghost { border: 1px solid rgba(30,45,64,.35); color: var(--navy); background: rgba(248,244,238,.35); }
+.btn-cine-ghost:hover, .btn-cine-ghost:focus-visible { border-color: var(--navy); background: rgba(248,244,238,.7); }
+.cine-cue { position: absolute; left: 50%; bottom: 28px; width: 1px; height: 64px; background: rgba(30,45,64,.16); overflow: hidden; }
+.cine-cue span { position: absolute; left: 0; top: 0; width: 1px; height: 100%; background: var(--navy); transform: translateY(-100%); }
+
+/* ─── Introduction band ─── */
+.intro {
+  display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: center;
+  padding: 120px 0 110px;
+}
+.intro-lead {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(26px, 2.7vw, 36px); line-height: 1.42; letter-spacing: -.005em;
+  color: var(--ink); max-width: 30ch;
+}
+.intro .hero-card {
+  margin-top: 0; border-radius: 0; background: transparent; box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  border: 0; border-left: 1px solid var(--gold-border); padding: 6px 0 6px 34px;
+}
+
+/* ─── What I oversee ─── */
+.ov-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 80px; margin-top: 64px; }
+.ov-stage { position: sticky; top: calc(var(--header-h) + 6vh); align-self: start; }
+.ov-frame { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: calc(100vh - var(--header-h) - 16vh); overflow: hidden; background: #d9cdba; }
+.ov-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.06);
+  transition: opacity 1.1s var(--ease-out), transform 2.4s var(--ease-out), clip-path 1.2s var(--ease-out);
+  clip-path: inset(18% 0 0 0);
+}
+.ov-img.is-active { opacity: 1; transform: scale(1); clip-path: inset(0 0 0 0); }
+.ov-frame::after { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(248,244,238,.35); pointer-events: none; }
+.ov-counter {
+  margin-top: 18px;
+  font-family: var(--serif); font-size: 15px; letter-spacing: .14em; color: var(--gold);
+}
+.ov-total { color: rgba(14,15,16,.38); margin-left: 8px; }
+.ov-list { list-style: none; }
+.ov-item {
+  min-height: 72vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 40px 0; border-top: 1px solid var(--line);
+}
+.ov-item:first-child { border-top: 0; }
+.ov-fig { display: none; }
+.ov-num { font-family: var(--serif); font-size: 15px; letter-spacing: .14em; color: var(--gold); margin-bottom: 22px; }
+.ov-item h3 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(30px, 3vw, 42px); line-height: 1.1; letter-spacing: -.015em;
+  color: var(--ink); margin-bottom: 18px; max-width: 16ch;
+}
+.ov-item p { font-size: 16px; line-height: 1.85; color: rgba(14,15,16,.68); max-width: 40ch; }
+.ov-item h3::after {
+  content: ''; display: block; width: 0; height: 1px; background: var(--gold);
+  margin-top: 22px; transition: width .9s var(--ease-out);
+}
+.ov-item.is-active h3::after { width: 56px; }
+.oversee .text-link { margin-top: 72px; }
+.ov-list { padding-bottom: 8vh; }
+
+/* ─── Refinements to existing homepage blocks ─── */
+body.home .how-item { border-radius: 0; box-shadow: none; background: rgba(255,255,255,.45); }
+body.home .how-item-num { font-size: 20px; }
+
+/* ─── Motion (only when the visitor allows it) ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .cine-drift { animation: drift 38s ease-in-out infinite alternate; }
+  .frond-far  { animation: swayFar 13s ease-in-out infinite alternate; }
+  .frond-near { animation: swayNear 9.5s ease-in-out infinite alternate; }
+  .cine-sun   { animation: breathe 21s ease-in-out infinite; }
+  .cine-grain { animation: grain 1.2s steps(4) infinite; }
+  .cine-title .ln > span { animation: rise 1.25s var(--ease-out) both; }
+  .cine-title .ln:nth-child(1) > span { animation-delay: .15s; }
+  .cine-title .ln:nth-child(2) > span { animation-delay: .32s; }
+  .cine-title .ln:nth-child(3) > span { animation-delay: .49s; }
+  .cine-eyebrow, .cine-keyline { animation: fade 1.4s ease .75s both; }
+  .cine-cue span { animation: cue 2.6s var(--ease-out) 1.6s infinite; }
+}
+@keyframes drift   { from { transform: scale(1.02) translate3d(0,0,0); } to { transform: scale(1.075) translate3d(-1.2%, -.8%, 0); } }
+@keyframes swayFar { from { transform: rotate(-1.4deg) translate3d(0,0,0); } to { transform: rotate(1.6deg) translate3d(-1.5%, .8%, 0); } }
+@keyframes swayNear{ from { transform: rotate(1.8deg) translate3d(0,0,0); }  to { transform: rotate(-2.2deg) translate3d(1.2%, 1.4%, 0); } }
+@keyframes breathe { 0%, 100% { opacity: 1; } 45% { opacity: .82; } 60% { opacity: .9; } }
+@keyframes grain   { 0% { background-position: 0 0; } 25% { background-position: -60px 40px; } 50% { background-position: 50px -70px; } 75% { background-position: -30px -20px; } }
+@keyframes rise    { from { transform: translate3d(0, 105%, 0); } to { transform: none; } }
+@keyframes fade    { from { opacity: 0; transform: translate3d(0, 10px, 0); } to { opacity: 1; transform: none; } }
+@keyframes cue     { 0% { transform: translateY(-100%); } 55%, 100% { transform: translateY(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ov-img { transition: none; transform: none; clip-path: none; }
+  .ov-item h3::after { transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ─── Portrait and narrow screens ─── */
+@media (max-aspect-ratio: 4/5) {
+  .cine-wall { background-image: url(/media/hero-wall-p.webp); background-position: 60% 30%; }
+  .cine-sun  { background-image: url(/media/hero-sun-p.webp);  background-position: 60% 30%; }
+  .cine-shadows { -webkit-mask-image: url(/media/hero-sun-p.webp); mask-image: url(/media/hero-sun-p.webp); -webkit-mask-position: 60% 30%; mask-position: 60% 30%; }
+  .frond-far  { width: 150vw; height: 150vw; right: -70vw; top: -4vw; }
+  .frond-near { width: 140vw; height: 140vw; right: -40vw; top: -12vw; }
+  .cine-scrim { background: linear-gradient(0deg, rgba(240,232,219,.92) 0%, rgba(240,232,219,.7) 38%, rgba(240,232,219,0) 62%); }
+}
+@media (max-width: 900px) {
+  :root { --header-h: 62px; }
+  .cine-content { padding: calc(var(--header-h) + 6vh) 20px 12vh; }
+  .cine-keyline { font-size: 16px; }
+  .intro { grid-template-columns: 1fr; gap: 44px; padding: 80px 0 70px; }
+  .ov-grid { grid-template-columns: 1fr; gap: 0; margin-top: 40px; }
+  .ov-stage { display: none; }
+  .ov-item { min-height: 0; padding: 0 0 56px; border-top: 0; }
+  .ov-fig { display: block; margin: 0 0 26px; aspect-ratio: 4 / 3; overflow: hidden; background: #d9cdba; }
+  .ov-fig img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ov-item h3::after { width: 56px; transition: none; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn-cine, .btn-cine-ghost { text-align: center; }
+  .cine-cue { display: none; }
+}
+
 /* ─── FOOTER LINKS ─── */
 .footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }
 .footer-links a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,151,106,.40); padding-bottom: 1px; transition: color .2s, border-color .2s; }
@@ -644,7 +840,7 @@ footer {
 .footer-links a.footer-email { text-transform: none; letter-spacing: .04em; }
 </style>
 </head>
-<body>
+<body class="home">
 <header class="site-header">
   <div class="site-bar">
     <a href="/" class="site-logo">
@@ -678,28 +874,50 @@ footer {
 
   
 
-  <main class="wrap">
-
-    <!-- ─── HERO ─── -->
-    <section class="hero">
-      <div>
-        <div class="eyebrow">
-          <span class="eyebrow-dot" aria-hidden="true"></span>
-          Private Operator · Palm Beach
-        </div>
-        <h1>Life,<br><em>Managed<br>Properly.<span class="tm">™</span></em></h1>
-        <p class="hero-body hero-keyline">Estate manager and private chief of staff to principals in Palm Beach and beyond.</p>
-        <p class="hero-body">
-          I operate as a retained extension of the principal — overseeing moving parts, 
-          filtering decision pathways, and ensuring continuity across assets, obligations, 
-          and relationships. One presence. Complete integration. No noise.
-        </p>
-        <div class="hero-actions">
-          <a href="/contact" class="btn-primary">Private Introduction</a>
-          <a href="/services" class="btn-ghost">Engagements</a>
+  <!-- ─── CINEMATIC OPENING ─── -->
+  <section class="cine" aria-label="Introduction">
+    <div class="cine-media" aria-hidden="true">
+      <div class="cine-drift">
+        <div class="cine-layer cine-wall"></div>
+        <div class="cine-layer cine-sun"></div>
+        <div class="cine-layer cine-shadows">
+          <div class="frond frond-far"></div>
+          <div class="frond frond-near"></div>
         </div>
       </div>
+      <div class="cine-layer cine-scrim"></div>
+      <div class="cine-layer cine-grain"></div>
+    </div>
 
+    <div class="cine-content">
+      <div class="eyebrow cine-eyebrow">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        Private Operator · Palm Beach
+      </div>
+      <h1 class="cine-title">
+        <span class="ln"><span>Life,</span></span>
+        <span class="ln"><span><em>Managed</em></span></span>
+        <span class="ln"><span><em>Properly.<span class="tm">™</span></em></span></span>
+      </h1>
+      <p class="cine-keyline">Estate manager and private chief of staff to principals in Palm Beach and beyond.</p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn-cine">Private Introduction</a>
+        <a href="/services" class="btn-cine-ghost">Engagements</a>
+      </div>
+    </div>
+
+    <a class="cine-cue" href="#intro" aria-label="Scroll to introduction"><span></span></a>
+  </section>
+
+  <main class="wrap">
+
+    <!-- ─── INTRODUCTION ─── -->
+    <section class="intro" id="intro">
+      <p class="intro-lead">
+        I operate as a retained extension of the principal — overseeing moving parts,
+        filtering decision pathways, and ensuring continuity across assets, obligations,
+        and relationships. One presence. Complete integration. No noise.
+      </p>
       <aside class="hero-card">
         <span class="card-label">How I operate</span>
         <p class="card-body">
@@ -755,7 +973,7 @@ footer {
     </section>
 
     <!-- ─── SCOPE ─── -->
-    <section class="section-inner">
+    <section class="section-inner oversee">
       <div class="section-eyebrow">
         <span class="eyebrow-dot" aria-hidden="true"></span>
         Areas of Oversight
@@ -766,31 +984,56 @@ footer {
         structured, absorbed, and managed without friction.
       </p>
 
-      <div class="scope-grid">
-        <div class="scope-item">
+      <div class="ov-grid">
+        <div class="ov-stage" aria-hidden="true">
+          <div class="ov-frame">
+          <img class="ov-img is-active" src="/media/oversee-estate.webp" alt="" width="1200" height="1500" loading="eager" decoding="async" data-i="0" />
+          <img class="ov-img" src="/media/oversee-administration.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="1" />
+          <img class="ov-img" src="/media/oversee-projects.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="2" />
+          <img class="ov-img" src="/media/oversee-relationships.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="3" />
+          <img class="ov-img" src="/media/oversee-vendors.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="4" />
+          <img class="ov-img" src="/media/oversee-travel.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="5" />
+          </div>
+          <div class="ov-counter"><span class="ov-current">I</span><span class="ov-total">/ VI</span></div>
+        </div>
+        <ol class="ov-list">
+        <li class="ov-item is-active" data-i="0">
+          <figure class="ov-fig"><img src="/media/oversee-estate.webp" alt="An arched limestone passage opening onto the water" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <span class="ov-num">I.</span>
           <h3>Estate &amp; Household Continuity</h3>
           <p>Infrastructure, standards, and operational integrity maintained across all properties and residences.</p>
-        </div>
-        <div class="scope-item">
+        </li>
+        <li class="ov-item" data-i="1">
+          <figure class="ov-fig"><img src="/media/oversee-administration.webp" alt="A closed leather folio and fountain pen on a writing desk in morning light" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <span class="ov-num">II.</span>
           <h3>Strategic Administration</h3>
           <p>Priorities, communications, and decision pathways kept clear, controlled, and closed-loop.</p>
-        </div>
-        <div class="scope-item">
+        </li>
+        <li class="ov-item" data-i="2">
+          <figure class="ov-fig"><img src="/media/oversee-projects.webp" alt="A fine-line architectural elevation of an imaginary residence" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <span class="ov-num">III.</span>
           <h3>Project &amp; Real Estate Execution</h3>
           <p>Complex initiatives, transitions, and builds delivered with precision and without drama.</p>
-        </div>
-        <div class="scope-item">
+        </li>
+        <li class="ov-item" data-i="3">
+          <figure class="ov-fig"><img src="/media/oversee-relationships.webp" alt="A sealed envelope with a navy wax seal on linen" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <span class="ov-num">IV.</span>
           <h3>Principal Relationship Management</h3>
           <p>Obligations, introductions, and relational continuity handled with discretion and fidelity.</p>
-        </div>
-        <div class="scope-item">
+        </li>
+        <li class="ov-item" data-i="4">
+          <figure class="ov-fig"><img src="/media/oversee-vendors.webp" alt="An arched iron garden gate in morning light" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <span class="ov-num">V.</span>
           <h3>Vendor &amp; Partner Coordination</h3>
           <p>Accountability, timelines, and documentation managed on behalf of the principal.</p>
-        </div>
-        <div class="scope-item">
+        </li>
+        <li class="ov-item" data-i="5">
+          <figure class="ov-fig"><img src="/media/oversee-travel.webp" alt="A palm-lined drive at dusk leading to a lit entrance" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <span class="ov-num">VI.</span>
           <h3>Seasonal &amp; Travel Operations</h3>
           <p>Arrivals, transitions, and high-demand periods executed smoothly and invisibly.</p>
-        </div>
+        </li>
+        </ol>
       </div>
       <a href="/advisors" class="text-link">For advisors and family offices →</a>
     </section>
@@ -844,6 +1087,37 @@ footer {
   btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
   if (cls) cls.addEventListener('click', close);
   menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+})();
+</script>
+
+<script>
+(function () {
+  // Header: transparent over the opening, ivory once the page moves
+  var header = document.querySelector('.site-header');
+  function onScroll() { if (header) header.classList.toggle('is-scrolled', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // What I oversee: the stage follows whichever area sits in the middle of the screen
+  var items = [].slice.call(document.querySelectorAll('.ov-item'));
+  var imgs = [].slice.call(document.querySelectorAll('.ov-img'));
+  var counter = document.querySelector('.ov-current');
+  var roman = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+  if (!items.length || !('IntersectionObserver' in window)) return;
+  function activate(i) {
+    items.forEach(function (el, k) { el.classList.toggle('is-active', k === i); });
+    imgs.forEach(function (el, k) { el.classList.toggle('is-active', k === i); });
+    if (counter) counter.textContent = roman[i] || '';
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) activate(+e.target.getAttribute('data-i')); });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  items.forEach(function (el) { io.observe(el); });
+  // warm the stage images once the section is near
+  var stage = document.querySelector('.ov-stage');
+  if (stage) new IntersectionObserver(function (es, o) {
+    if (es[0].isIntersecting) { imgs.forEach(function (im) { im.loading = 'eager'; }); o.disconnect(); }
+  }, { rootMargin: '600px 0px' }).observe(stage);
 })();
 </script>
 
