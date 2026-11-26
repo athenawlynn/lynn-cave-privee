@@ -514,6 +514,61 @@ function widePlatform() {
 </svg>`;
 }
 
+
+// The Platform — a shaded loggia looking out onto a sunlit garden (dark side left for the headline)
+function wideLoggia() {
+  const r = rng(51), floorY = 1030, ceilY = 250, x0 = 1520;
+  const aw = 300, col = 84, ah = 600, ay = floorY - ah;
+  const arches = [0, 1, 2, 3].map(i => x0 + 90 + i * (aw + col));
+  let palms = '';
+  for (let i = 0; i < 9; i++) { const x = x0 + 80 + r() * 1500, h = 300 + r() * 220, base = 860; palms += `<path d="M${x},${base} Q${x + 10},${base - h * 0.5} ${x + 4},${base - h}" stroke="#4f5a46" stroke-width="${7 + r() * 5}" fill="none"/><path d="${crown(400 + i, x + 4, base - h, 110 + r() * 60, 10, -0.4, 3.5)}" fill="#3e4c3a" opacity=".9"/>`; }
+  let hedges = ''; for (let i = 0; i < 8; i++) { const x = x0 + i * 220 + r() * 40; hedges += `<rect x="${x}" y="838" width="214" height="80" rx="8" fill="#45603d"/><rect x="${x}" y="838" width="214" height="16" rx="6" fill="#7d9a5c" opacity=".7"/>`; }
+  let tiles = ''; for (let k = 0; k < 14; k++) { const t = k / 13; const y = floorY + (WH - floorY) * Math.pow(t, 1.6); tiles += `<line x1="0" y1="${y.toFixed(0)}" x2="${WW}" y2="${y.toFixed(0)}" stroke="#2b2017" stroke-opacity=".18"/>`; }
+  for (let k = -10; k < 24; k++) { const xb = x0 + k * 150; tiles += `<line x1="${xb}" y1="${floorY}" x2="${(xb - (xb - 300) * 0.9).toFixed(0)}" y2="${WH}" stroke="#2b2017" stroke-opacity=".14"/>`; }
+  let spill = ''; arches.forEach(x => { spill += `<path d="M${x + 10},${floorY} L${x + aw - 10},${floorY} L${x + aw - 420},${WH} L${x - 380},${WH}Z" fill="#f4d9a6" opacity=".55"/>`; });
+  let cols = ''; arches.forEach((x, i) => { if (i === 0) return; const cx = x - col; cols += `<rect x="${cx}" y="${ay - 40}" width="${col}" height="${ah + 40}" fill="url(#column)"/><rect x="${cx + col - 14}" y="${ay - 40}" width="14" height="${ah + 40}" fill="#f6e2bd" opacity=".55"/>`; });
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WW}" height="${WH}" viewBox="0 0 ${WW} ${WH}">
+  <defs>${grainDef('grain', 0.06)}${stoneDef('st', 61)}
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfdde0"/><stop offset="1" stop-color="#f4ead2"/></linearGradient>
+    <linearGradient id="lawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9bf78"/><stop offset="1" stop-color="#8f9d5a"/></linearGradient>
+    <linearGradient id="wallback" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4339"/><stop offset="1" stop-color="#6c604f"/></linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#121822"/><stop offset=".7" stop-color="#1e232b"/><stop offset="1" stop-color="#2d2a26"/></linearGradient>
+    <linearGradient id="ceil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f141c"/><stop offset="1" stop-color="#2a2721"/></linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b5845"/><stop offset="1" stop-color="#2f261e"/></linearGradient>
+    <linearGradient id="column" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5d5345"/><stop offset=".7" stop-color="#8d7c63"/><stop offset="1" stop-color="#c7ae86"/></linearGradient>
+    <radialGradient id="sun" cx=".72" cy=".5" r=".45"><stop offset="0" stop-color="#fff3d6" stop-opacity=".6"/><stop offset="1" stop-color="#fff3d6" stop-opacity="0"/></radialGradient>
+    <clipPath id="floorclip"><path d="M0,${WH} L${x0},${floorY} L${WW},${floorY} L${WW},${WH}Z"/></clipPath>
+    <clipPath id="openings">${arches.map(x => `<path d="${arch(x, ay, aw, ah)}"/>`).join('')}</clipPath>
+    <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter><filter id="haze"><feGaussianBlur stdDeviation="2.5"/></filter>
+    <radialGradient id="vig" cx=".7" cy=".55" r=".85"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#05080d" stop-opacity=".55"/></radialGradient></defs>
+  <!-- back arcade wall in shade -->
+  <rect x="${x0}" y="${ceilY}" width="${WW - x0}" height="${floorY - ceilY}" fill="url(#wallback)"/>
+  <rect x="${x0}" y="${ceilY}" width="${WW - x0}" height="${floorY - ceilY}" filter="url(#st)" opacity=".25"/>
+  <!-- garden through the arches -->
+  <g clip-path="url(#openings)">
+    <rect x="${x0}" y="${ay}" width="${WW - x0}" height="${ah}" fill="url(#sky)"/>
+    <g filter="url(#haze)">${palms}</g>
+    <rect x="${x0}" y="880" width="${WW - x0}" height="${floorY - 880}" fill="url(#lawn)"/>
+    ${hedges}
+    <rect x="${x0}" y="${ay}" width="${WW - x0}" height="${ah}" fill="url(#sun)"/>
+  </g>
+  ${arches.map(x => `<path d="${arch(x, ay, aw, ah)}" fill="none" stroke="#d8c19a" stroke-opacity=".55" stroke-width="5"/>`).join('')}
+  ${cols}
+  <!-- ceiling and beams -->
+  <path d="M0,0 L${WW},0 L${WW},${ceilY} L${x0},${ceilY}Z" fill="url(#ceil)"/>
+  ${[0, 1, 2, 3, 4, 5, 6].map(i => { const xb = x0 + i * 240; return `<path d="M${xb},${ceilY} L${xb + 30},${ceilY} L${xb - (xb) * 0.55 + 30},0 L${xb - (xb) * 0.55},0Z" fill="#0b0f15" opacity=".6"/>`; }).join('')}
+  <!-- floor with sunlight spilling in -->
+  <path d="M0,${WH} L${x0},${floorY} L${WW},${floorY} L${WW},${WH}Z" fill="url(#floor)"/>
+  <g filter="url(#soft)">${spill}</g>
+  ${tiles}
+  <!-- shaded side wall (headline side) -->
+  <path d="M0,0 L${x0},${ceilY} L${x0},${floorY} L0,${WH}Z" fill="url(#side)"/>
+  <g clip-path="url(#floorclip)"><path d="${crown(93, 1500, 1500, 820, 8, 3.6, 5.6)}" fill="#1a140f" opacity=".35" filter="url(#soft)"/></g>
+  <rect width="100%" height="100%" fill="url(#vig)"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>`;
+}
+
 // ── render pipeline ──
 (async () => {
   const browser = await chromium.launch();
@@ -548,7 +603,7 @@ function widePlatform() {
   if (process.argv[3] !== 'wide-only') for (const [n, f] of Object.entries(scenes)) await render(n, f(), SW, SH, { quality: 80 });
   // wide page openings
   const opens = { 'open-about': () => wideAbout(), 'open-engagements': () => wide(sceneEstate, EXT.estate),
-    'open-advisors': () => wide(sceneAdmin, EXT.admin, { dark: true }), 'open-platform': () => widePlatform(),
+    'open-advisors': () => wide(sceneAdmin, EXT.admin, { dark: true }), 'open-platform': () => wideLoggia(), 'open-platform-drawers': () => widePlatform(),
     'open-contact': () => wide(sceneRelations, EXT.relations), 'open-privacy': () => wide(sceneVendors, EXT.vendors) };
   for (const [n, f] of Object.entries(opens)) await render(n, f(), WW, WH, { quality: 76 });
   await browser.close();
