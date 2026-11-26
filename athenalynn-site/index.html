@@ -26,9 +26,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
   <link rel="preload" as="image" href="/media/hero-wall-l.webp" media="(min-aspect-ratio: 4/5)" />
   <link rel="preload" as="image" href="/media/hero-wall-p.webp" media="(max-aspect-ratio: 4/5)" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/caslon-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/caslon-text-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
   <style>
 :root {
   --bg: #f8f4ee;
@@ -40,8 +41,8 @@
   --gold-border: rgba(184,151,106,.40);
   --navy: #1e2d40;
   --card: rgba(255,255,255,.68);
-  --serif: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
-  --sans: 'Jost', ui-sans-serif, Helvetica, Arial, sans-serif;
+  --serif: 'AL Serif', 'Garamond', 'Times New Roman', serif;
+  --sans: 'AL Sans', ui-sans-serif, Helvetica, Arial, sans-serif;
   --max: 1080px;
   --radius: 18px;
 }
@@ -449,7 +450,7 @@ footer {
   width: 240px;
   text-align: center;
   border-bottom: 0.5px solid rgba(14,15,16,.09);
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-weight: 400;
   transition: color 0.2s;
 }
@@ -501,7 +502,7 @@ footer {
   gap: 16px;
 }
 .site-logo {
-  font-family: 'Cormorant Garamond', 'Garamond', serif;
+  font-family: 'AL Serif', 'Garamond', serif;
   font-size: 1.05rem;
   letter-spacing: 0.08em;
   color: #1e2d40;
@@ -520,7 +521,7 @@ footer {
   font-size: 10px;
   letter-spacing: 0.05em;
   color: #b8976a;
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-weight: 400;
   flex-shrink: 0;
 }
@@ -530,7 +531,7 @@ footer {
   gap: 4px;
 }
 .site-nav a {
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -545,7 +546,7 @@ footer {
 .site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
 .site-nav a.active { color: #0e0f10; }
 .site-nav a.portal-btn {
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -596,7 +597,7 @@ footer {
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -693,11 +694,11 @@ body.home .site-header.is-scrolled {
 .cine-eyebrow { color: rgba(14,15,16,.62); margin-bottom: 30px; }
 .cine-title {
   font-family: var(--serif); font-weight: 500;
-  font-size: clamp(60px, 9.2vw, 136px);
-  line-height: .94; letter-spacing: -.025em;
+  font-size: clamp(52px, 7.6vw, 112px);
+  line-height: 1.02; letter-spacing: -.025em;
   color: var(--ink); margin: 0 0 34px;
 }
-.cine-title .ln { display: block; overflow: hidden; padding: 0 .06em .07em 0; margin-bottom: -.07em; }
+.cine-title .ln { display: block; overflow: hidden; padding: .04em .08em .2em 0; margin: -.04em 0 -.2em; }
 .cine-title .ln > span { display: inline-block; }
 .cine-title em { font-style: italic; color: var(--navy); }
 .cine-title .tm { font-size: .26em; vertical-align: super; margin-left: 4px; }

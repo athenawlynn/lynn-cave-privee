@@ -127,12 +127,12 @@ function heroShadows(W, H, crowns, blur, opacity) {
 
 // ── OVERSIGHT SCENES (1200 x 1500) ──
 const SW = 1200, SH = 1500;
+let BARE = false; // when true, scenes render without vignette/grain (for embedding in wide openings)
 const frame = (inner, defs = '', grain = 0.08) => `<svg xmlns="http://www.w3.org/2000/svg" width="${SW}" height="${SH}" viewBox="0 0 ${SW} ${SH}">
   <defs>${grainDef('grain', grain)}
     <radialGradient id="vig" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#0b1220" stop-opacity=".38"/></radialGradient>${defs}</defs>
   ${inner}
-  <rect width="100%" height="100%" fill="url(#vig)"/>
-  <rect width="100%" height="100%" filter="url(#grain)"/>
+  ${BARE ? '' : '<rect width="100%" height="100%" fill="url(#vig)"/><rect width="100%" height="100%" filter="url(#grain)"/>'}
 </svg>`;
 
 // 1. Estate & Household Continuity — view through an arched passage to the Intracoastal
@@ -366,6 +366,65 @@ function sceneTravel() {
     <linearGradient id="drive" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b7a68"/><stop offset=".25" stop-color="#3d4049"/><stop offset="1" stop-color="#1a202b"/></linearGradient>`, 0.07);
 }
 
+
+// ── WIDE PAGE OPENINGS (2400 x 1350) ──
+const WW = 2400, WH = 1350;
+function wide(sceneFn, extend, { cx = 0.68, dark = false } = {}) {
+  BARE = true; const inner = sceneFn(); BARE = false;
+  const k = WH / SH, w = SW * k, x = WW * cx - w / 2;
+  const enc = Buffer.from(inner).toString('base64');
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${WW}" height="${WH}" viewBox="0 0 ${WW} ${WH}">
+  <defs>${grainDef('grain', 0.07)}
+    <linearGradient id="feather" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".16" stop-color="#fff"/><stop offset=".84" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="m"><rect x="${x}" y="0" width="${w}" height="${WH}" fill="url(#feather)"/></mask>
+    <radialGradient id="vig" cx="${cx}" cy=".5" r=".9"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#0b1220" stop-opacity="${dark ? .45 : .28}"/></radialGradient>
+    ${extend.defs}</defs>
+  ${extend.body}
+  <image x="${x}" y="0" width="${w}" height="${WH}" href="data:image/svg+xml;base64,${enc}" mask="url(#m)"/>
+  <rect width="100%" height="100%" fill="url(#vig)"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>`;
+}
+const EXT = {
+  estate: { defs: `${stoneDef('xs', 21)}<linearGradient id="xw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6eee0"/><stop offset="1" stop-color="#e3d6c1"/></linearGradient>`,
+            body: `<rect width="100%" height="100%" fill="url(#xw)"/><rect width="100%" height="100%" filter="url(#xs)"/><path d="${crown(17, -120, -200, 900, 8, -0.2, 1.8)}" fill="#55606d" opacity=".16"/>` },
+  admin: { defs: `<filter id="xg"><feTurbulence type="fractalNoise" baseFrequency="0.002 0.06" numOctaves="3" seed="4"/><feColorMatrix values="0 0 0 0 0.1  0 0 0 0 0.06  0 0 0 0 0.03  0 0 0 .9 -.2"/></filter><linearGradient id="xw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5e4838"/><stop offset="1" stop-color="#33261d"/></linearGradient>`,
+           body: `<rect width="100%" height="100%" fill="url(#xw)"/><rect width="100%" height="100%" filter="url(#xg)" opacity=".5"/>` },
+  projects: { defs: `<linearGradient id="xp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22344b"/><stop offset="1" stop-color="#121c29"/></linearGradient>`,
+              body: (() => { let g = `<rect width="100%" height="100%" fill="url(#xp)"/>`; for (let x = 0; x <= WW; x += 36) g += `<line x1="${x}" y1="0" x2="${x}" y2="${WH}" stroke="#fff" stroke-opacity="${x % 180 ? .03 : .06}"/>`; for (let y = 0; y <= WH; y += 36) g += `<line x1="0" y1="${y}" x2="${WW}" y2="${y}" stroke="#fff" stroke-opacity="${y % 180 ? .03 : .06}"/>`; return g; })() },
+  relations: { defs: `<filter id="xv"><feTurbulence type="fractalNoise" baseFrequency="0.9 0.04" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .4  0 0 0 0 .36  0 0 0 0 .3  0 0 0 .5 -.12"/></filter><linearGradient id="xl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ece3d3"/><stop offset="1" stop-color="#d7c9b1"/></linearGradient>`,
+               body: `<rect width="100%" height="100%" fill="url(#xl)"/><rect width="100%" height="100%" filter="url(#xv)"/>` },
+  vendors: { defs: `${stoneDef('xs', 33)}<linearGradient id="xp2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8dfcf"/><stop offset="1" stop-color="#cdbfa8"/></linearGradient>`,
+             body: `<rect width="100%" height="100%" fill="url(#xp2)"/><rect width="100%" height="100%" filter="url(#xs)"/>` },
+};
+// About — morning light on the Intracoastal (native wide composition)
+function wideIntracoastal() {
+  const hz = WH * 0.56; const r = rng(12); let glints = '', shore = '';
+  for (let i = 0; i < 140; i++) { const y = hz + 20 + Math.pow(r(), 1.6) * (WH - hz - 20), x = WW * 0.35 + (r() - 0.3) * WW * 0.7 * (1 - (y - hz) / (WH - hz) * 0.3); const w = 20 + r() * 120 * ((y - hz) / (WH - hz) + 0.2); glints += `<rect x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="${w.toFixed(0)}" height="${(1.5 + r() * 2.5).toFixed(1)}" rx="1" fill="#fff7e6" opacity="${(0.25 + r() * 0.5).toFixed(2)}"/>`; }
+  for (let i = 0; i < 34; i++) { const x = r() * WW, h = 18 + r() * 40; shore += `<rect x="${x.toFixed(0)}" y="${(hz - h).toFixed(0)}" width="${(30 + r() * 120).toFixed(0)}" height="${h.toFixed(0)}"/>`; }
+  let palms = ''; for (let i = 0; i < 16; i++) { const x = r() * WW, h = 50 + r() * 40; palms += `<rect x="${x.toFixed(0)}" y="${(hz - h).toFixed(0)}" width="3" height="${h.toFixed(0)}"/><path d="${crown(200 + i, x + 1.5, hz - h, 22, 8, -0.4, 3.5)}"/>`; }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WW}" height="${WH}" viewBox="0 0 ${WW} ${WH}">
+  <defs>${grainDef('grain', 0.07)}
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d6d9"/><stop offset=".55" stop-color="#efe6d6"/><stop offset="1" stop-color="#f8ecd6"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9c8c4"/><stop offset=".4" stop-color="#8fa9a8"/><stop offset="1" stop-color="#5e7e83"/></linearGradient>
+    <radialGradient id="sun" cx=".72" cy=".5" r=".45"><stop offset="0" stop-color="#fff4dc" stop-opacity=".9"/><stop offset="1" stop-color="#fff4dc" stop-opacity="0"/></radialGradient>
+    <filter id="haze"><feGaussianBlur stdDeviation="4.5"/></filter><filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+    <radialGradient id="vig" cx=".6" cy=".5" r=".9"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#0b1220" stop-opacity=".25"/></radialGradient></defs>
+  <rect width="100%" height="${hz}" fill="url(#sky)"/>
+  <rect y="${hz}" width="100%" height="${WH - hz}" fill="url(#water)"/>
+  <rect width="100%" height="100%" fill="url(#sun)"/>
+  <g fill="#8e9a95" opacity=".42" filter="url(#haze)">${shore}${palms}</g>
+  <rect y="${hz - 2}" width="100%" height="3" fill="#7f9290" opacity=".5"/>
+  <g filter="url(#haze)">${glints}</g>
+  <!-- foreground: dock pilings and a frond -->
+  <g fill="#2f3a3a"><rect x="${WW * 0.84}" y="${hz + 120}" width="26" height="${WH}" rx="4"/><rect x="${WW * 0.9}" y="${hz + 60}" width="20" height="${WH}" rx="4"/></g>
+  <rect x="${WW * 0.8}" y="${hz + 150}" width="${WW * 0.2}" height="16" fill="#3a4645"/>
+  <path d="${crown(61, WW + 60, -120, 760, 9, 1.7, 3.6)}" fill="#263330" opacity=".92" filter="url(#soft)"/>
+  <rect width="100%" height="100%" fill="url(#vig)"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>`;
+}
+
 // ── render pipeline ──
 (async () => {
   const browser = await chromium.launch();
@@ -381,6 +440,7 @@ function sceneTravel() {
     fs.unlinkSync(png);
     console.log(name, (fs.statSync(path.join(OUT, name + '.webp')).size / 1024).toFixed(0) + 'K');
   }
+  if (process.argv[3] !== 'wide-only') {
   // Hero, landscape 2400x1500 and portrait 1200x2000
   const L = { W: 2400, H: 1500, patches: [{ x: 1400, y: 150, w: 340, h: 1200, skew: -14 }, { x: 1850, y: 150, w: 340, h: 1200, skew: -14 }] };
   const P = { W: 1200, H: 2000, patches: [{ x: 430, y: 110, w: 320, h: 1100, skew: -12 }, { x: 840, y: 110, w: 320, h: 1100, skew: -12 }] };
@@ -392,9 +452,15 @@ function sceneTravel() {
   // palm shadow layers (shared; positioned over the sunlit area)
   await render('hero-fronds-far', heroShadows(1600, 1600, [{ seed: 2, x: 980, y: -80, size: 760, n: 10, a0: 0.1, a1: 3.2 }], 10, 0.55), 1600, 1600, { transparent: true, quality: 78 });
   await render('hero-fronds-near', heroShadows(1600, 1600, [{ seed: 9, x: 420, y: -160, size: 880, n: 9, a0: 0.2, a1: 2.9 }], 3.2, 0.7), 1600, 1600, { transparent: true, quality: 80 });
-  await render('grain', `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><defs>${grainDef('g', 0.16, 0.95)}</defs><rect width="256" height="256" filter="url(#g)"/></svg>`, 256, 256, { transparent: true, lossless: true });
+  }
+  if (process.argv[3] !== 'wide-only') await render('grain', `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><defs>${grainDef('g', 0.16, 0.95)}</defs><rect width="256" height="256" filter="url(#g)"/></svg>`, 256, 256, { transparent: true, lossless: true });
   // oversight scenes
   const scenes = { 'oversee-estate': sceneEstate, 'oversee-administration': sceneAdmin, 'oversee-projects': sceneProject, 'oversee-relationships': sceneRelations, 'oversee-vendors': sceneVendors, 'oversee-travel': sceneTravel };
-  for (const [n, f] of Object.entries(scenes)) await render(n, f(), SW, SH, { quality: 80 });
+  if (process.argv[3] !== 'wide-only') for (const [n, f] of Object.entries(scenes)) await render(n, f(), SW, SH, { quality: 80 });
+  // wide page openings
+  const opens = { 'open-about': () => wideIntracoastal(), 'open-engagements': () => wide(sceneEstate, EXT.estate),
+    'open-advisors': () => wide(sceneAdmin, EXT.admin, { dark: true }), 'open-platform': () => wide(sceneProject, EXT.projects, { dark: true }),
+    'open-contact': () => wide(sceneRelations, EXT.relations), 'open-privacy': () => wide(sceneVendors, EXT.vendors) };
+  for (const [n, f] of Object.entries(opens)) await render(n, f(), WW, WH, { quality: 76 });
   await browser.close();
 })();

@@ -13,9 +13,11 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/caslon-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/caslon-text-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <link rel="preload" as="image" href="/media/open-privacy.webp" />
   <style>
 :root {
   --bg: #f8f4ee;
@@ -26,8 +28,8 @@
   --gold-border: rgba(184,151,106,.40);
   --navy: #1e2d40;
   --card: rgba(255,255,255,.68);
-  --serif: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
-  --sans: 'Jost', ui-sans-serif, Helvetica, Arial, sans-serif;
+  --serif: 'AL Serif', 'Garamond', 'Times New Roman', serif;
+  --sans: 'AL Sans', ui-sans-serif, Helvetica, Arial, sans-serif;
   --max: 1080px;
   --radius: 18px;
 }
@@ -266,7 +268,7 @@ footer {
   width: 240px;
   text-align: center;
   border-bottom: 0.5px solid rgba(14,15,16,.09);
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-weight: 400;
   transition: color 0.2s;
 }
@@ -318,7 +320,7 @@ footer {
   gap: 16px;
 }
 .site-logo {
-  font-family: 'Cormorant Garamond', 'Garamond', serif;
+  font-family: 'AL Serif', 'Garamond', serif;
   font-size: 1.05rem;
   letter-spacing: 0.08em;
   color: #1e2d40;
@@ -337,7 +339,7 @@ footer {
   font-size: 10px;
   letter-spacing: 0.05em;
   color: #b8976a;
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-weight: 400;
   flex-shrink: 0;
 }
@@ -347,7 +349,7 @@ footer {
   gap: 4px;
 }
 .site-nav a {
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -362,7 +364,7 @@ footer {
 .site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
 .site-nav a.active { color: #0e0f10; }
 .site-nav a.portal-btn {
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -413,7 +415,7 @@ footer {
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  font-family: 'Jost', sans-serif;
+  font-family: 'AL Sans', sans-serif;
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -455,6 +457,51 @@ footer {
   .hamburger { display: flex !important; }
 }
 
+
+
+/* ─── PAGE OPENING (cinematic) ─── */
+.po { position: relative; isolation: isolate; min-height: 68vh; min-height: 68svh; display: flex; align-items: flex-end; overflow: hidden; background: #d9cdba; }
+.po--short { min-height: 54vh; min-height: 54svh; }
+.po-img { position: absolute; inset: 0; z-index: -3; background-image: var(--po-img); background-size: cover; background-repeat: no-repeat; background-position: var(--po-pos, 66% 50%); }
+.po-scrim, .po-grain { position: absolute; inset: 0; }
+.po-scrim { z-index: -2; }
+.po--light .po-scrim { background: linear-gradient(90deg, rgba(240,232,219,.9) 0%, rgba(240,232,219,.62) 32%, rgba(240,232,219,0) 60%), linear-gradient(0deg, rgba(240,232,219,.45) 0%, rgba(240,232,219,0) 40%); }
+.po--dark .po-scrim { background: linear-gradient(90deg, rgba(13,20,31,.85) 0%, rgba(13,20,31,.62) 38%, rgba(13,20,31,0) 68%), linear-gradient(0deg, rgba(13,20,31,.4) 0%, rgba(13,20,31,0) 40%); }
+.po-grain { z-index: -1; background: url(/media/grain.webp) repeat; background-size: 256px; opacity: .16; mix-blend-mode: multiply; pointer-events: none; }
+.po--dark .po-grain { mix-blend-mode: screen; opacity: .08; }
+.po-inner { width: 100%; max-width: 1080px; margin: 0 auto; padding: 16vh 32px 9vh; }
+.po-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; font-family: 'AL Sans', sans-serif; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.62); }
+.po-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #b8976a; box-shadow: 0 0 0 5px rgba(184,151,106,.18); }
+.po-title { font-family: 'AL Serif', serif; font-weight: 400; font-size: clamp(42px, 5.6vw, 84px); line-height: 1.04; letter-spacing: -.02em; color: #0e0f10; margin: 0; text-align: left; }
+.po-title em { font-style: italic; color: #1e2d40; }
+.po-title .ln { display: block; overflow: hidden; padding: .04em .08em .2em 0; margin: -.04em 0 -.2em; }
+.po-title .ln > span { display: inline-block; }
+.po--dark .po-eyebrow { color: rgba(246,239,227,.72); }
+.po--dark .po-title { color: #f6efe3; }
+.po--dark .po-title em { color: #d4b896; }
+@media (prefers-reduced-motion: no-preference) {
+  .po-img { animation: poSettle 7s cubic-bezier(.16,.84,.24,1) both; }
+  .po-title .ln > span { animation: poRise 1.2s cubic-bezier(.16,.84,.24,1) both; }
+  .po-title .ln:nth-child(1) > span { animation-delay: .12s; }
+  .po-title .ln:nth-child(2) > span { animation-delay: .28s; }
+  .po-title .ln:nth-child(3) > span { animation-delay: .44s; }
+  .po-eyebrow { animation: poFade 1.2s ease .1s both; }
+  .js-reveal .reveal-tall { clip-path: inset(100% 0 0 0); transition: clip-path 1.6s cubic-bezier(.16,.84,.24,1); }
+  .js-reveal .reveal-tall img { transform: scale(1.12); transition: transform 2.4s cubic-bezier(.16,.84,.24,1); }
+  .js-reveal .reveal-tall.is-in { clip-path: inset(0 0 0 0); }
+  .js-reveal .reveal-tall.is-in img { transform: none; }
+}
+@keyframes poSettle { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes poRise { from { transform: translate3d(0,105%,0); } to { transform: none; } }
+@keyframes poFade { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 900px) {
+  .po { min-height: 62vh; min-height: 62svh; }
+  .po--short { min-height: 48vh; min-height: 48svh; }
+  .po-inner { padding: 14vh 20px 7vh; }
+  .po--light .po-scrim { background: linear-gradient(0deg, rgba(240,232,219,.95) 0%, rgba(240,232,219,.82) 45%, rgba(240,232,219,0) 82%); }
+  .po--dark .po-scrim { background: linear-gradient(0deg, rgba(13,20,31,.92) 0%, rgba(13,20,31,.78) 48%, rgba(13,20,31,0) 85%); }
+}
+.privacy-body { margin-top: 0; }
 
 /* ─── FOOTER LINKS ─── */
 .footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }
@@ -501,12 +548,19 @@ footer {
 </div>
   
 
-  <main class="wrap">
-    <div class="page-hero">
-      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Confidentiality</div>
-      <h1>Privacy</h1>
-    </div>
+<section class="po po--light po--short" style="--po-img: url(/media/open-privacy.webp); --po-pos: 72% 50%;">
+  <div class="po-img" aria-hidden="true"></div>
+  <div class="po-scrim" aria-hidden="true"></div>
+  <div class="po-grain" aria-hidden="true"></div>
+  <div class="po-inner">
+    <div class="po-eyebrow">Confidentiality</div>
+    <h1 class="po-title">
+        <span class="ln"><span>Privacy</span></span>
+    </h1>
+  </div>
+</section>
 
+  <main class="wrap">
     <section class="section-inner privacy-body">
       <p class="section-body">Information shared through this site, whether a contact inquiry or a message, is read only by me and used only to respond to you. It is never sold, shared or added to a mailing list.</p>
       <p class="section-body">Client information within an engagement is held in a closed, access-controlled environment. Principals decide what is shared and with whom. No client information is used to market this practice.</p>
