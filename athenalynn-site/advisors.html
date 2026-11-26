@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Advisors &amp; Family Offices · Athena Lynn</title>
+  <meta name="description" content="A trusted operator alongside estate attorneys, wealth managers and family offices, for clients whose households need structure." />
+  <link rel="canonical" href="https://athenalynn.com/advisors" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://athenalynn.com/advisors" />
+  <meta property="og:title" content="For Advisors &amp; Family Offices · Athena Lynn" />
+  <meta property="og:description" content="A trusted operator alongside estate attorneys, wealth managers and family offices, for clients whose households need structure." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f8f4ee;
+  --ink: #0e0f10;
+  --line: rgba(14,15,16,.09);
+  --gold: #b8976a;
+  --gold-light: rgba(184,151,106,.12);
+  --gold-border: rgba(184,151,106,.40);
+  --navy: #1e2d40;
+  --card: rgba(255,255,255,.68);
+  --serif: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+  --sans: 'Jost', ui-sans-serif, Helvetica, Arial, sans-serif;
+  --max: 1080px;
+  --radius: 18px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 900px 600px at 0% 0%, rgba(184,151,106,.11) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 30%, rgba(30,45,64,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 500px at 50% 100%, rgba(184,151,106,.08) 0%, transparent 60%);
+}
+a { color: inherit; text-decoration: none; }
+.top {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(248,244,238,.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.bar {
+  max-width: var(--max); margin: 0 auto;
+  padding: 18px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 13px; }
+.seal {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  position: relative; flex-shrink: 0;
+}
+.seal::after {
+  content: '';
+  position: absolute; inset: 6px; border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  opacity: .7;
+}
+.brand-name { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 400; }
+.nav { display: flex; gap: 6px; }
+.nav a {
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(14,15,16,.60);
+  padding: 9px 14px; border-radius: 999px;
+  transition: all .2s; border: 1px solid transparent;
+}
+.nav a:hover { color: var(--ink); border-color: var(--line); background: rgba(255,255,255,.5); }
+.nav a.active { color: var(--ink); }
+.btn-nav {
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  padding: 10px 20px; border-radius: 999px;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-light); color: var(--ink);
+  transition: all .2s; white-space: nowrap;
+}
+.btn-nav:hover { background: rgba(184,151,106,.2); }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px 100px; }
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(14,15,16,.50); margin-bottom: 28px;
+}
+.eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 0 5px rgba(184,151,106,.18); flex-shrink: 0;
+}
+.btn-primary {
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  padding: 14px 26px; border-radius: 999px;
+  border: 1px solid var(--gold-border); background: var(--gold-light); color: var(--ink);
+  transition: all .22s; display: inline-block;
+}
+.btn-primary:hover { background: rgba(184,151,106,.22); }
+
+.page-hero { padding: 100px 0 80px; max-width: 72ch; }
+h1 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(48px, 5.8vw, 72px);
+  letter-spacing: -.02em; line-height: 1.02; margin-bottom: 30px;
+}
+h1 em { font-style: italic; color: var(--navy); }
+.hero-body {
+  font-size: 17px; line-height: 1.85;
+  color: rgba(14,15,16,.65); font-weight: 300; margin-bottom: 44px;
+}
+.section-inner { padding: 70px 0; border-top: 1px solid var(--line); }
+.section-heading {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(30px, 3.2vw, 44px);
+  letter-spacing: -.02em; line-height: 1.10; margin-bottom: 20px;
+}
+.section-heading em { font-style: italic; }
+.section-body {
+  font-size: 16px; line-height: 1.85;
+  color: rgba(14,15,16,.62); max-width: 65ch; font-weight: 300; margin-bottom: 40px;
+}
+
+/* Engagement pillars */
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.pillar {
+  background: var(--card);
+  padding: 40px 36px;
+}
+.pillar-num {
+  font-family: var(--serif); font-size: 13px;
+  color: var(--gold); letter-spacing: .1em;
+  display: block; margin-bottom: 16px;
+}
+.pillar h3 {
+  font-family: var(--serif); font-size: 24px; font-weight: 500;
+  letter-spacing: -.01em; color: var(--ink);
+  margin-bottom: 14px; line-height: 1.2;
+}
+.pillar p {
+  font-size: 14px; line-height: 1.82;
+  color: rgba(14,15,16,.60); font-weight: 300;
+}
+
+/* Model block */
+.model-block {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 52px 48px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.04);
+}
+.model-block p {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.60; color: rgba(14,15,16,.72);
+  max-width: 68ch; margin-bottom: 28px;
+}
+.model-details {
+  display: flex; gap: 40px; flex-wrap: wrap;
+  padding-top: 28px; border-top: 1px solid var(--line);
+}
+.model-detail-label {
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(14,15,16,.40); display: block; margin-bottom: 6px;
+}
+.model-detail-value {
+  font-size: 14px; color: var(--ink); font-weight: 400;
+}
+
+/* Selected engagement */
+.case-title {
+  font-family: var(--serif); font-size: clamp(24px, 2.4vw, 30px); font-weight: 500;
+  letter-spacing: -.01em; line-height: 1.25; color: var(--ink);
+  margin-bottom: 12px; max-width: 34ch;
+}
+.case-meta {
+  display: block; font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 400;
+  padding-bottom: 26px; margin-bottom: 28px; border-bottom: 1px solid var(--line);
+}
+.model-block .case-body p {
+  font-family: var(--sans); font-style: normal; font-size: 15px; line-height: 1.85;
+  color: rgba(14,15,16,.65); font-weight: 300; max-width: 70ch; margin-bottom: 18px;
+}
+.model-block .case-body p:last-child { margin-bottom: 0; }
+.case-body strong { font-weight: 500; color: var(--navy); }
+
+/* First ninety days */
+.pillars.three { grid-template-columns: repeat(3, 1fr); }
+.pillar-when {
+  display: block; font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(14,15,16,.45); margin: -6px 0 14px;
+}
+.closing-line { margin: 36px 0 0; }
+
+.cta-row {
+  display: flex; gap: 14px; flex-wrap: wrap; margin-top: 44px;
+}
+
+.conf-line {
+  text-align: center;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(14,15,16,.38); padding: 28px 0;
+  border-top: 1px solid var(--line); margin-top: 60px;
+}
+footer {
+  padding: 32px 0; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  color: rgba(14,15,16,.40); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+}
+.btn-ghost {
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  padding: 14px 26px; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255,255,255,.5);
+  color: rgba(14,15,16,.70); transition: all .22s; display: inline-block;
+}
+.btn-ghost:hover { border-color: rgba(14,15,16,.18); background: rgba(255,255,255,.8); }
+@media (max-width: 900px) {
+  .bar { padding: 16px 20px; }
+  .nav { display: none; }
+  .wrap { padding: 0 20px 80px; }
+  .page-hero { padding: 70px 0 60px; }
+  .pillars, .pillars.three { grid-template-columns: 1fr; }
+  .model-block { padding: 32px 28px; }
+  .model-details { gap: 24px; }
+}
+  
+
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink, #0e0f10);
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 18px 0;
+  width: 240px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-child { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.portal-btn {
+  color: #1e2d40;
+  margin-top: 28px;
+  border: 1px solid rgba(184,151,106,.40);
+  border-radius: 999px;
+  padding: 14px 32px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+}
+.mobile-close {
+  position: absolute;
+  top: 22px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 26px;
+  line-height: 1;
+  font-family: sans-serif;
+}
+@media (max-width: 900px) {
+  .nav { display: none !important; }
+  .btn-nav { display: none !important; }
+  
+}
+
+
+/* ─── UNIVERSAL HEADER & MOBILE NAV ─── */
+.site-header {
+  width: 100%;
+  background: #f8f4ee;
+  border-bottom: 0.5px solid rgba(14,15,16,.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.site-logo {
+  font-family: 'Cormorant Garamond', 'Garamond', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: #1e2d40;
+  text-decoration: none;
+  font-weight: 400;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-logo .seal {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(184,151,106,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: #b8976a;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.site-nav a {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(14,15,16,.60);
+  padding: 8px 13px;
+  border-radius: 999px;
+  transition: all .2s;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
+.site-nav a.active { color: #0e0f10; }
+.site-nav a.portal-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(184,151,106,.40);
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+  margin-left: 6px;
+}
+.site-nav a.portal-btn:hover { background: rgba(184,151,106,.22); }
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  z-index: 300;
+  position: relative;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #0e0f10;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* Mobile fullscreen menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #f8f4ee;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 20px 0;
+  width: 260px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-of-type { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.m-portal {
+  margin-top: 32px;
+  border: 1px solid rgba(184,151,106,.4) !important;
+  border-radius: 999px;
+  padding: 14px 36px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+}
+.mobile-close-btn {
+  position: absolute;
+  top: 20px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 28px;
+  line-height: 1;
+  font-family: sans-serif;
+  z-index: 201;
+}
+@media (max-width: 900px) {
+  .site-bar { padding: 14px 20px; }
+  .site-nav { display: none !important; }
+  .hamburger { display: flex !important; }
+}
+
+
+/* ─── FOOTER LINKS ─── */
+.footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }
+.footer-links a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,151,106,.40); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+.footer-links a:hover { color: #0e0f10; border-color: #b8976a; }
+.footer-links a.footer-email { text-transform: none; letter-spacing: .04em; }
+
+/* ─── ADVISORS ─── */
+.hero-line {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 30px); line-height: 1.35; color: var(--navy);
+  margin: -6px 0 24px;
+}
+.intro-list { list-style: none; border-top: 1px solid var(--line); max-width: 72ch; }
+.intro-list li {
+  display: flex; gap: 16px; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid var(--line);
+  font-size: 15px; line-height: 1.75; color: rgba(14,15,16,.70);
+}
+.intro-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.cta-heading {
+  font-family: var(--serif); font-weight: 500; font-style: normal;
+  font-size: clamp(26px, 2.6vw, 34px); letter-spacing: -.01em; color: var(--ink); margin-bottom: 10px;
+}
+.model-block p.cta-text {
+  font-family: var(--sans); font-style: normal; font-size: 15px; line-height: 1.8;
+  color: rgba(14,15,16,.62); margin-bottom: 28px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-bar">
+    <a href="/" class="site-logo">
+      <span class="seal">AL</span>
+      Athena Lynn
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Engagements</a>
+        <a href="/advisors" class="active">For Advisors</a>
+        <a href="/theplatform">The Platform</a>
+        <a href="/contact">Contact</a>
+        <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
+    </nav>
+    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/services">Engagements</a>
+  <a href="/advisors" class="active">For Advisors</a>
+  <a href="/theplatform">The Platform</a>
+  <a href="/contact">Contact</a>
+  <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
+</div>
+  
+
+  <main class="wrap">
+    <div class="page-hero">
+      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> For Advisors</div>
+      <h1>For advisors<br><em>and family offices</em></h1>
+      <p class="hero-line">A trusted operator for the clients you already serve.</p>
+      <p class="hero-body">Estate attorneys, wealth managers, private bankers and family office leaders are often the first to see when a principal's household has outgrown the way it is run. I work alongside you, never around you, and take on the operational layer your clients need but your firm is not built to provide.</p>
+    </div>
+
+    <section class="section-inner">
+      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Working Together</div>
+      <h2 class="section-heading">How I work with advisors</h2>
+
+      <div class="pillars">
+        <div class="pillar">
+          <span class="pillar-num">I.</span>
+          <h3>Clear lines.</h3>
+          <p>I manage the household and its operations. Legal, investment, tax and fiduciary matters remain entirely with you.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">II.</span>
+          <h3>Prepared, not noisy.</h3>
+          <p>Documents, invoices, renewals and decisions reach you organised and ready for review, on your preferred cadence.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">III.</span>
+          <h3>Continuity.</h3>
+          <p>Properties, staff, vendors and obligations are fully documented, so a household is ready for transitions, whether seasonal, generational or in a change of staff.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">IV.</span>
+          <h3>Discretion.</h3>
+          <p>Standing confidentiality on every engagement. A mutual confidentiality agreement is available before any detailed conversation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-inner">
+      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Introductions</div>
+      <h2 class="section-heading">When to make an introduction</h2>
+      <ul class="intro-list">
+        <li>A principal with several residences and no single person holding it all together</li>
+        <li>A household going through a transition: a sale, an acquisition, a renovation, or a change in staff</li>
+        <li>A family preparing for the next generation to take over the running of a household</li>
+        <li>A founder or practice owner whose business and personal operations have become intertwined</li>
+      </ul>
+    </section>
+
+    <section class="section-inner">
+      <div class="model-block">
+        <h2 class="cta-heading">Make an introduction.</h2>
+        <p class="cta-text">Introductions are handled personally and in confidence.</p>
+        <a href="/contact" class="btn-primary">Introduce a client</a>
+      </div>
+    </section>
+
+    <div class="conf-line">All engagements are conducted under strict confidentiality.</div>
+  </main>
+
+  <div class="wrap" style="padding-top:0; padding-bottom:0;">
+    <footer>
+      <span>© 2026 Athena Lynn</span>
+      <span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:introductions@athenalynn.com">introductions@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span>
+      <span>Palm Beach, Florida</span>
+    </footer>
+  </div>
+
+<!-- MOBILE MENU -->
+
+
+
+
+
+<script>
+(function(){
+  var btn = document.getElementById('siteHamburger');
+  var menu = document.getElementById('siteMobileMenu');
+  var cls = document.getElementById('siteMobileClose');
+  if (!btn || !menu) return;
+  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
+  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
+  if (cls) cls.addEventListener('click', close);
+  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marketing Leadership — Athena Lynn</title>
+  <meta name="description" content="Two decades of marketing leadership, digital strategy, and campaign execution. From New York agency floors to Palm Beach." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f8f4ee;
+  --ink: #0e0f10;
+  --line: rgba(14,15,16,.09);
+  --gold: #b8976a;
+  --gold-light: rgba(184,151,106,.12);
+  --gold-border: rgba(184,151,106,.40);
+  --navy: #1e2d40;
+  --card: rgba(255,255,255,.68);
+  --serif: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+  --sans: 'Jost', ui-sans-serif, Helvetica, Arial, sans-serif;
+  --max: 1080px;
+  --radius: 18px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans); font-weight: 300; color: var(--ink); background: var(--bg); min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 900px 600px at 0% 0%, rgba(184,151,106,.11) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 30%, rgba(30,45,64,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 500px at 50% 100%, rgba(184,151,106,.08) 0%, transparent 60%);
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ─── */
+.top {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(248,244,238,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.bar { max-width: var(--max); margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 13px; }
+.seal { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--gold-border); position: relative; flex-shrink: 0; }
+.seal::after { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid var(--gold-border); opacity: .7; }
+.brand-name { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 400; }
+.nav { display: flex; gap: 6px; }
+.nav a { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(14,15,16,.60); padding: 9px 14px; border-radius: 999px; transition: all .2s; border: 1px solid transparent; }
+.nav a:hover { color: var(--ink); border-color: var(--line); background: rgba(255,255,255,.5); }
+.nav a.active { color: var(--ink); }
+.btn-nav { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--gold-border); background: var(--gold-light); color: var(--ink); transition: all .2s; white-space: nowrap; }
+.btn-nav:hover { background: rgba(184,151,106,.2); }
+
+/* ─── LAYOUT ─── */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px 100px; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.50); margin-bottom: 28px; }
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(184,151,106,.18); flex-shrink: 0; }
+
+/* ─── HERO ─── */
+.page-hero {
+  padding: 100px 0 80px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 70px;
+  align-items: start;
+}
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 5.5vw, 70px); letter-spacing: -.02em; line-height: 1.02; margin-bottom: 28px; }
+h1 em { font-style: italic; color: var(--navy); }
+.hero-body { font-size: 16px; line-height: 1.88; color: rgba(14,15,16,.64); font-weight: 300; max-width: 54ch; margin-bottom: 36px; }
+.btn-primary { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 14px 26px; border-radius: 999px; border: 1px solid var(--gold-border); background: var(--gold-light); color: var(--ink); transition: all .22s; display: inline-block; }
+.btn-primary:hover { background: rgba(184,151,106,.22); }
+.btn-ghost { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 14px 26px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.5); color: rgba(14,15,16,.70); transition: all .22s; display: inline-block; }
+.btn-ghost:hover { border-color: rgba(14,15,16,.18); background: rgba(255,255,255,.8); }
+
+/* Hero stat card */
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.06);
+  margin-top: 12px;
+}
+.stat-card-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.40); display: block; margin-bottom: 22px; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.stat-num { font-family: var(--serif); font-size: 42px; font-weight: 500; letter-spacing: -.02em; color: var(--navy); line-height: 1; display: block; margin-bottom: 6px; }
+.stat-desc { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(14,15,16,.45); line-height: 1.5; }
+.stat-divider { height: 1px; background: var(--line); grid-column: 1/-1; }
+
+/* ─── SECTIONS ─── */
+.section-inner { padding: 70px 0; border-top: 1px solid var(--line); }
+.section-heading { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 3.2vw, 44px); letter-spacing: -.02em; line-height: 1.10; margin-bottom: 14px; }
+.section-heading em { font-style: italic; }
+.section-body { font-size: 15px; line-height: 1.85; color: rgba(14,15,16,.60); max-width: 66ch; font-weight: 300; margin-bottom: 40px; }
+
+/* ─── PIVOT STATEMENT ─── */
+.pivot-block {
+  background: rgba(30,45,64,.04);
+  border: 1px solid rgba(30,45,64,.10);
+  border-radius: var(--radius);
+  padding: 44px 48px;
+  margin-bottom: 50px;
+}
+.pivot-block p {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(19px, 1.9vw, 24px);
+  line-height: 1.65; color: rgba(14,15,16,.75);
+  max-width: 72ch;
+}
+.pivot-block .attr {
+  font-family: var(--sans); font-style: normal;
+  font-size: 11px; letter-spacing: .20em; text-transform: uppercase;
+  color: rgba(14,15,16,.38); margin-top: 20px; display: block;
+}
+
+/* ─── CAPABILITY GRID ─── */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 50px;
+}
+.cap-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.03);
+}
+.cap-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-light);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.cap-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.cap-item h3 { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--navy); margin-bottom: 10px; font-weight: 500; }
+.cap-item p { font-size: 13px; line-height: 1.80; color: rgba(14,15,16,.58); font-weight: 300; }
+
+/* ─── TIMELINE ─── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 1px; background: var(--line);
+}
+.timeline-item { position: relative; margin-bottom: 48px; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute; left: -34px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-light);
+}
+.timeline-meta { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; flex-wrap: wrap; }
+.timeline-period { font-size: 10px; letter-spacing: .20em; text-transform: uppercase; color: rgba(14,15,16,.38); }
+.timeline-title { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 4px; line-height: 1.2; }
+.timeline-scope { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+.timeline-body { font-size: 14px; line-height: 1.82; color: rgba(14,15,16,.60); font-weight: 300; max-width: 70ch; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tag { font-size: 11px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.6); color: rgba(14,15,16,.55); }
+.tag.gold { border-color: var(--gold-border); background: var(--gold-light); color: rgba(14,15,16,.70); }
+
+/* ─── BUDGET BAR ─── */
+.budget-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.budget-row:first-child { border-top: 1px solid var(--line); }
+.budget-label { font-size: 12px; color: rgba(14,15,16,.55); min-width: 180px; font-weight: 300; }
+.budget-bar-wrap { flex: 1; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.budget-bar { height: 100%; background: linear-gradient(90deg, var(--gold), rgba(184,151,106,.5)); border-radius: 2px; }
+.budget-val { font-size: 12px; font-weight: 400; color: var(--navy); min-width: 60px; text-align: right; }
+
+/* ─── TOOLS ─── */
+.tools-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.tool-tag {
+  font-size: 11px; letter-spacing: .10em;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.65);
+  color: rgba(14,15,16,.65);
+}
+
+/* ─── CTA ─── */
+.cta-block {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 52px 48px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 40px rgba(0,0,0,.04);
+  margin-top: 60px;
+}
+.cta-block h2 { font-family: var(--serif); font-size: clamp(26px, 2.8vw, 36px); font-weight: 500; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 10px; }
+.cta-block h2 em { font-style: italic; }
+.cta-block p { font-size: 14px; line-height: 1.75; color: rgba(14,15,16,.55); max-width: 50ch; }
+.cta-btns { display: flex; flex-direction: column; gap: 10px; min-width: 210px; }
+
+.conf-line { text-align: center; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.38); padding: 28px 0; border-top: 1px solid var(--line); margin-top: 60px; }
+footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: rgba(14,15,16,.40); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .bar { padding: 16px 20px; }
+  .nav { display: none; }
+  .wrap { padding: 0 20px 80px; }
+  .page-hero { grid-template-columns: 1fr; gap: 40px; padding: 70px 0 60px; }
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+  .pivot-block { padding: 32px 28px; }
+  .cta-block { padding: 36px 28px; }
+  .cta-btns { flex-direction: row; flex-wrap: wrap; }
+  .budget-label { min-width: 130px; }
+}
+@media (max-width: 600px) {
+  .cap-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
+}
+  
+
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink, #0e0f10);
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 18px 0;
+  width: 240px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-child { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.portal-btn {
+  color: #1e2d40;
+  margin-top: 28px;
+  border: 1px solid rgba(184,151,106,.40);
+  border-radius: 999px;
+  padding: 14px 32px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+}
+.mobile-close {
+  position: absolute;
+  top: 22px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 26px;
+  line-height: 1;
+  font-family: sans-serif;
+}
+@media (max-width: 900px) {
+  .nav { display: none !important; }
+  .btn-nav { display: none !important; }
+  
+}
+
+
+/* ─── UNIVERSAL HEADER & MOBILE NAV ─── */
+.site-header {
+  width: 100%;
+  background: #f8f4ee;
+  border-bottom: 0.5px solid rgba(14,15,16,.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.site-logo {
+  font-family: 'Cormorant Garamond', 'Garamond', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: #1e2d40;
+  text-decoration: none;
+  font-weight: 400;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-logo .seal {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(184,151,106,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: #b8976a;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.site-nav a {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(14,15,16,.60);
+  padding: 8px 13px;
+  border-radius: 999px;
+  transition: all .2s;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
+.site-nav a.active { color: #0e0f10; }
+.site-nav a.portal-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(184,151,106,.40);
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+  margin-left: 6px;
+}
+.site-nav a.portal-btn:hover { background: rgba(184,151,106,.22); }
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  z-index: 300;
+  position: relative;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #0e0f10;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* Mobile fullscreen menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #f8f4ee;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 20px 0;
+  width: 260px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-of-type { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.m-portal {
+  margin-top: 32px;
+  border: 1px solid rgba(184,151,106,.4) !important;
+  border-radius: 999px;
+  padding: 14px 36px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+}
+.mobile-close-btn {
+  position: absolute;
+  top: 20px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 28px;
+  line-height: 1;
+  font-family: sans-serif;
+  z-index: 201;
+}
+@media (max-width: 900px) {
+  .site-bar { padding: 14px 20px; }
+  .site-nav { display: none !important; }
+  .hamburger { display: flex !important; }
+}
+
+
+/* ─── FOOTER LINKS ─── */
+.footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }
+.footer-links a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,151,106,.40); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+.footer-links a:hover { color: #0e0f10; border-color: #b8976a; }
+.footer-links a.footer-email { text-transform: none; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-bar">
+    <a href="/" class="site-logo">
+      <span class="seal">AL</span>
+      Athena Lynn
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Engagements</a>
+        <a href="/advisors">For Advisors</a>
+        <a href="/theplatform">The Platform</a>
+        <a href="/contact">Contact</a>
+        <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
+    </nav>
+    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/services">Engagements</a>
+  <a href="/advisors">For Advisors</a>
+  <a href="/theplatform">The Platform</a>
+  <a href="/contact">Contact</a>
+  <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
+</div>
+  
+
+  <main class="wrap">
+
+    <!-- ─── HERO ─── -->
+    <div class="page-hero">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Marketing Leadership</div>
+        <h1>Two decades.<br><em>Every channel.<br>Every scale.</em></h1>
+        <p class="hero-body">
+          From New York agency floors managing $32M global campaigns to building operational 
+          infrastructure in Palm Beach — my career has always been about one thing: making 
+          complex things work beautifully, on time, and without noise.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="/contact" class="btn-primary">Begin a Conversation</a>
+          <a href="#timeline" class="btn-ghost">View Career History</a>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-card-label">Career at a glance</span>
+        <div class="stats">
+          <div>
+            <span class="stat-num">20+</span>
+            <span class="stat-desc">Years in marketing & digital leadership</span>
+          </div>
+          <div>
+            <span class="stat-num">$32M</span>
+            <span class="stat-desc">Largest annual budget managed</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <span class="stat-num">4</span>
+            <span class="stat-desc">Director-level roles held</span>
+          </div>
+          <div>
+            <span class="stat-num">NYC</span>
+            <span class="stat-desc">→ Palm Beach. Agency to private sector.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── PIVOT ─── -->
+    <section class="section-inner">
+      <div class="pivot-block">
+        <p>
+          I began in the high-pressure world of New York digital agencies — managing global 
+          marketing programs, leading cross-functional teams, and overseeing budgets that 
+          demanded both creative acuity and operational precision. Over time, I recognized 
+          that the skills which made campaigns succeed — anticipation, structure, discretion, 
+          and flawless execution — were exactly what complex private lives and organizations 
+          needed most. That pivot was intentional. And it made me better at both.
+        </p>
+        <span class="attr">Career Philosophy · Athena Lynn</span>
+      </div>
+
+      <!-- Capabilities -->
+      <div class="cap-grid">
+        <div class="cap-item">
+          <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          </div>
+          <h3>Digital Strategy</h3>
+          <p>Full-funnel digital marketing across web, social, mobile, CRM, and e-commerce — planned and delivered at enterprise scale.</p>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          </div>
+          <h3>Campaign Leadership</h3>
+          <p>Multi-channel campaign development and execution — from convention platforms and multi-user experiences to social and mobile.</p>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Team Leadership</h3>
+          <p>Built, managed, and mentored project management departments. Direct report oversight, career development, and cross-functional dynamics.</p>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Website & eLearning</h3>
+          <p>Managed end-to-end development of websites, e-learning platforms, and workforce tools — from brief through launch.</p>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Budget Management</h3>
+          <p>Accountable for program budgets from $1.5M to $32M annually. Cost control, forecasting, and stakeholder reporting at all levels.</p>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Process & PMO</h3>
+          <p>Overhauled PMO structures, defined delivery frameworks, and implemented methodology improvements that directly drove revenue growth.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── BUDGET SCALE ─── -->
+    <section class="section-inner">
+      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Scale of Work</div>
+      <h2 class="section-heading">Budget <em>responsibility.</em></h2>
+      <p class="section-body">Across 20 years, I managed marketing programs at every budget tier — always on time, always on standard.</p>
+
+      <div class="budget-row">
+        <span class="budget-label">Global Client Accounts</span>
+        <div class="budget-bar-wrap"><div class="budget-bar" style="width:100%"></div></div>
+        <span class="budget-val">$32M</span>
+      </div>
+      <div class="budget-row">
+        <span class="budget-label">Regional Digital Programs</span>
+        <div class="budget-bar-wrap"><div class="budget-bar" style="width:75%"></div></div>
+        <span class="budget-val">$12M</span>
+      </div>
+      <div class="budget-row">
+        <span class="budget-label">CRM & Social Campaigns</span>
+        <div class="budget-bar-wrap"><div class="budget-bar" style="width:50%"></div></div>
+        <span class="budget-val">$4M</span>
+      </div>
+      <div class="budget-row">
+        <span class="budget-label">Retainer SOWs</span>
+        <div class="budget-bar-wrap"><div class="budget-bar" style="width:38%"></div></div>
+        <span class="budget-val">$3M+</span>
+      </div>
+      <div class="budget-row">
+        <span class="budget-label">Tracked Project Budgets</span>
+        <div class="budget-bar-wrap"><div class="budget-bar" style="width:25%"></div></div>
+        <span class="budget-val">$1.5M</span>
+      </div>
+    </section>
+
+    <!-- ─── TIMELINE ─── -->
+    <section class="section-inner" id="timeline">
+      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Career History</div>
+      <h2 class="section-heading"><em>The record.</em></h2>
+      <p class="section-body">A progression from practitioner to director — across agencies, global clients, and private sector leadership.</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-meta">
+            <span class="timeline-period">2017 — Present</span>
+          </div>
+          <div class="timeline-title">Private Operator & Director</div>
+          <span class="timeline-scope">Palm Beach, FL</span>
+          <p class="timeline-body">
+            Strategic project management and operational leadership for private principals and complex organizations. 
+            Proactive management of cost, scope, and schedule across high-stakes engagements. 
+            Audit of deliverables, workflow optimization, and real-time stakeholder reporting 
+            with a focus on measurable outcomes and operational continuity.
+          </p>
+          <div class="timeline-tags">
+            <span class="tag gold">Private Retainer</span>
+            <span class="tag">Strategic Operations</span>
+            <span class="tag">Estate Management</span>
+            <span class="tag">Stakeholder Relations</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-meta">
+            <span class="timeline-period">2014 — 2017</span>
+          </div>
+          <div class="timeline-title">Client Director</div>
+          <span class="timeline-scope">Ogilvy & Mather · New York, NY</span>
+          <p class="timeline-body">
+            Managed website development, e-learning, and workforce planning projects with annual 
+            budgets of $7M–$32M. Oversaw team resources across operational discipline leads. 
+            Delivered client programs on time, on budget, and at the highest quality — while 
+            maintaining client relationships and protecting margin across global hubs.
+          </p>
+          <div class="timeline-tags">
+            <span class="tag gold">$7M–$32M Budget</span>
+            <span class="tag">Global Accounts</span>
+            <span class="tag">eLearning</span>
+            <span class="tag">Workforce Planning</span>
+            <span class="tag">Client Relations</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-meta">
+            <span class="timeline-period">2009 — 2014</span>
+          </div>
+          <div class="timeline-title">Director of Project Management</div>
+          <span class="timeline-scope">Ogilvy & Mather · New York, NY</span>
+          <p class="timeline-body">
+            Led cross-functional teams delivering digital marketing programs across websites, 
+            social media, mobile & iPad platforms, convention experiences, and multi-user environments. 
+            Overhauled PMO department structure to drive revenue growth. Managed offshore and in-house 
+            technical resources. Deeply involved in business development, proposals, and new client presentations.
+          </p>
+          <div class="timeline-tags">
+            <span class="tag gold">PMO Leadership</span>
+            <span class="tag">Social Media</span>
+            <span class="tag">Mobile & iPad</span>
+            <span class="tag">Convention Platforms</span>
+            <span class="tag">Business Development</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-meta">
+            <span class="timeline-period">Jan 2009 — Sept 2009</span>
+          </div>
+          <div class="timeline-title">Associate Director</div>
+          <span class="timeline-scope">Digitas Health · New York, NY</span>
+          <p class="timeline-body">
+            Led financial assessment across project portfolios with budgets of $4M–$12M. 
+            Managed four direct reports including workload prioritization, goal setting, and 
+            career development. Oversaw offshore and third-party vendor technical resources. 
+            Delivered digital marketing programs across CRM, social media, and multi-channel platforms.
+          </p>
+          <div class="timeline-tags">
+            <span class="tag gold">$4M–$12M Budget</span>
+            <span class="tag">CRM</span>
+            <span class="tag">Direct Reports ×4</span>
+            <span class="tag">Vendor Management</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-meta">
+            <span class="timeline-period">2005 — 2009</span>
+          </div>
+          <div class="timeline-title">Senior Project Manager</div>
+          <span class="timeline-scope">DraftFCB · New York, NY</span>
+          <p class="timeline-body">
+            Developed contract-level statements of work and annual retainers exceeding $3M. 
+            Created multi-phased, multi-channel project plans and budgets up to $1.5M. 
+            Helped structure and shape the digital project management department from the ground up. 
+            Trained and oversaw new hires. Presented complex situations and solutions to senior stakeholders with clarity and confidence.
+          </p>
+          <div class="timeline-tags">
+            <span class="tag gold">$3M+ SOWs</span>
+            <span class="tag">E-commerce</span>
+            <span class="tag">SMS Marketing</span>
+            <span class="tag">Department Building</span>
+            <span class="tag">Direct Reports ×3</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── EARLIER CREDITS ─── -->
+    <section class="section-inner">
+      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Earlier Career</div>
+      <h2 class="section-heading">Also held <em>marketing positions at.</em></h2>
+      <p class="section-body">Prior to director-level roles, I built foundational marketing experience across some of the most recognized names in media, publishing, and advertising.</p>
+      <div class="tools-wrap">
+        <span class="tool-tag" style="font-size:13px; padding:10px 18px;">McCann</span>
+        <span class="tool-tag" style="font-size:13px; padding:10px 18px;">MTV Networks</span>
+        <span class="tool-tag" style="font-size:13px; padding:10px 18px;">Random House</span>
+      </div>
+    </section>
+
+    <!-- ─── TOOLS ─── -->
+    <section class="section-inner">
+      <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Proficiencies</div>
+      <h2 class="section-heading">Tools &amp; <em>platforms.</em></h2>
+      <p class="section-body">Fluent across the full stack of modern marketing, project management, and operational tools.</p>
+      <!-- Project Management -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;margin-top:28px;">Project Management</p>
+      <div class="tools-wrap" style="margin-bottom:20px;">
+        <span class="tool-tag">Asana</span>
+        <span class="tool-tag">Monday.com</span>
+        <span class="tool-tag">Jira</span>
+        <span class="tool-tag">Notion</span>
+        <span class="tool-tag">Airtable</span>
+        <span class="tool-tag">Basecamp</span>
+        <span class="tool-tag">Trello</span>
+        <span class="tool-tag">Workfront</span>
+        <span class="tool-tag">Lucid Chart</span>
+        <span class="tool-tag">Agile</span>
+        <span class="tool-tag">Waterfall</span>
+      </div>
+      <!-- CRM & Marketing Automation -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">CRM & Marketing Automation</p>
+      <div class="tools-wrap" style="margin-bottom:20px;">
+        <span class="tool-tag">Salesforce</span>
+        <span class="tool-tag">HubSpot</span>
+        <span class="tool-tag">Zoho</span>
+        <span class="tool-tag">Mailchimp</span>
+        <span class="tool-tag">Klaviyo</span>
+        <span class="tool-tag">Constant Contact</span>
+        <span class="tool-tag">Zapier</span>
+      </div>
+      <!-- Social Media -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Social Media</p>
+      <div class="tools-wrap" style="margin-bottom:20px;">
+        <span class="tool-tag">Hootsuite</span>
+        <span class="tool-tag">Later</span>
+        <span class="tool-tag">Buffer</span>
+        <span class="tool-tag">Meta Ads Manager</span>
+        <span class="tool-tag">LinkedIn Campaign Manager</span>
+      </div>
+      <!-- Analytics & Advertising -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Analytics & Advertising</p>
+      <div class="tools-wrap" style="margin-bottom:20px;">
+        <span class="tool-tag">Google Analytics</span>
+        <span class="tool-tag">Google Ads</span>
+        <span class="tool-tag">SEMrush</span>
+      </div>
+      <!-- Design & Creative -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Design & Creative</p>
+      <div class="tools-wrap" style="margin-bottom:20px;">
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">Adobe Creative Suite</span>
+        <span class="tool-tag">Figma</span>
+        <span class="tool-tag">Adobe Premiere Pro</span>
+        <span class="tool-tag">Adobe After Effects</span>
+        <span class="tool-tag">Final Cut Pro</span>
+        <span class="tool-tag">CapCut</span>
+      </div>
+      <!-- Web & eCommerce -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Web & eCommerce</p>
+      <div class="tools-wrap" style="margin-bottom:20px;">
+        <span class="tool-tag">WordPress</span>
+        <span class="tool-tag">Squarespace</span>
+        <span class="tool-tag">Shopify</span>
+      </div>
+      <!-- Finance & Operations -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Finance & Operations</p>
+      <div class="tools-wrap" style="margin-bottom:20px;">
+        <span class="tool-tag">QuickBooks</span>
+        <span class="tool-tag">Concur</span>
+      </div>
+      <!-- Productivity & Collaboration -->
+      <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Productivity & Collaboration</p>
+      <div class="tools-wrap">
+        <span class="tool-tag">Google Workspace</span>
+        <span class="tool-tag">Microsoft Office 365</span>
+        <span class="tool-tag">Slack</span>
+        <span class="tool-tag">Microsoft Teams</span>
+        <span class="tool-tag">Zoom</span>
+        <span class="tool-tag">ChatGPT / AI Tools</span>
+      </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <div class="cta-block">
+      <div>
+        <h2>Ready to <em>connect.</em></h2>
+        <p>
+          Whether you are looking for marketing leadership, strategic operations, 
+          or a retained presence who brings both — I welcome a private conversation.
+        </p>
+      </div>
+      <div class="cta-btns">
+        <a href="/contact" class="btn-primary">Begin a Conversation</a>
+        <a href="/resume" class="btn-ghost">View Full Resume</a>
+      </div>
+    </div>
+
+    <div class="conf-line">All engagements are conducted under strict confidentiality.</div>
+  </main>
+
+  <div class="wrap" style="padding-top:0; padding-bottom:0;">
+    <footer>
+      <span>© 2026 Athena Lynn</span>
+      <span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:introductions@athenalynn.com">introductions@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span>
+      <span>Palm Beach, Florida</span>
+    </footer>
+  </div>
+
+<!-- MOBILE MENU -->
+
+
+
+
+
+<script>
+(function(){
+  var btn = document.getElementById('siteHamburger');
+  var menu = document.getElementById('siteMobileMenu');
+  var cls = document.getElementById('siteMobileClose');
+  if (!btn || !menu) return;
+  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
+  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
+  if (cls) cls.addEventListener('click', close);
+  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+})();
+</script>
+
+</body>
+</html>

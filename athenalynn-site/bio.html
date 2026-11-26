@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athena Lynn — Creative Leadership & Project Direction</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  body {
+    background: #e8e4de;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: #1e2d40;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+
+  .page {
+    background: #f8f4ee;
+    width: 760px;
+    padding: 64px 72px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #b8976a 0%, #d4b48a 50%, #b8976a 100%);
+  }
+
+  .page::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: #1e2d40;
+  }
+
+  .corner-mark {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-right: 1px solid #b8976a;
+    border-bottom: 1px solid #b8976a;
+    opacity: 0.4;
+  }
+
+  .header {
+    margin-bottom: 44px;
+    border-bottom: 1px solid rgba(184,151,106,0.3);
+    padding-bottom: 32px;
+  }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8976a;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 46px;
+    letter-spacing: 0.04em;
+    color: #1e2d40;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .title-line {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: #5a6a7a;
+    text-transform: uppercase;
+  }
+
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    color: #1e2d40;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    padding-left: 20px;
+    border-left: 2px solid #b8976a;
+  }
+
+  .points-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+    margin-bottom: 44px;
+  }
+
+  .point {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .point-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 28px;
+    color: rgba(184,151,106,0.25);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .point-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #1e2d40;
+  }
+
+  .point-body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12.5px;
+    color: #3d4f62;
+    line-height: 1.7;
+  }
+
+  .point-body em {
+    font-style: normal;
+    color: #b8976a;
+    font-weight: 400;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(184,151,106,0.2);
+    margin: 40px 0;
+  }
+
+  .close-statement {
+    background: #1e2d40;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+  }
+
+  .close-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8976a;
+    margin-bottom: 10px;
+  }
+
+  .close-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 17px;
+    color: #f8f4ee;
+    line-height: 1.65;
+  }
+
+  .close-text strong {
+    font-weight: 600;
+    color: #d4b48a;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: #b8976a;
+  }
+
+  .footer-sub {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    color: #8a9aaa;
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+  }
+
+  .footer-stamp {
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(184,151,106,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-stamp svg {
+    width: 28px;
+    height: 28px;
+    opacity: 0.5;
+  }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .page { width: 100%; padding: 52px 64px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="corner-mark"></div>
+
+  <div class="header">
+    <div class="eyebrow">Creative Leadership &amp; Project Direction &nbsp;·&nbsp; Career Profile</div>
+    <div class="name">Athena Lynn</div>
+    <div class="title-line">Private Operator &nbsp;·&nbsp; Marketing Executive &nbsp;·&nbsp; Palm Beach</div>
+  </div>
+
+  <div class="headline">
+    A career built on translating vision into reality —<br>
+    across creative disciplines, complex budgets, and discerning clients.
+  </div>
+
+  <div class="points-grid">
+
+    <div class="point">
+      <div class="point-number">01</div>
+      <div class="point-label">20 Years Directing Creative</div>
+      <div class="point-body">At Ogilvy, McCann, Digitas, DraftFCB, MTV Networks, CBS, and VH1, Athena translated brand vision into polished visual, experiential, and production outcomes — across television, print campaigns, and digital environments simultaneously. <em>Aesthetic judgment, vendor selection, and holding a vision while managing execution</em> are the throughline of her entire career.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-number">02</div>
+      <div class="point-label">Teams of 50+ Creative Professionals</div>
+      <div class="point-body">Leading multidisciplinary creative teams across art direction, production, photography, and styling, Athena has spent two decades guiding the visual expression of a brand across concept, production, presentation, and execution — <em>setting the aesthetic standard, holding the vision through execution, and ensuring the final result reflects the original intention with precision.</em></div>
+    </div>
+
+    <div class="point">
+      <div class="point-number">03</div>
+      <div class="point-label">$32M Budget Management</div>
+      <div class="point-body">Athena has stewarded project budgets up to $32 million — cost, scope, schedule, and stakeholder alignment at scale. <em>Budget discipline and fiscal accountability</em> are deeply embedded in how she works, at every level of engagement.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-number">04</div>
+      <div class="point-label">Luxury Residential Context</div>
+      <div class="point-body">Her private operator practice serves ultra-high-net-worth principals who require exacting taste, precise vendor negotiation, and uncompromising attention to detail. <em>She manages luxury environments with professional discipline, discretion, and a high standard for detail.</em></div>
+    </div>
+
+    <div class="point">
+      <div class="point-number">05</div>
+      <div class="point-label">Hands-On Project Execution</div>
+      <div class="point-body">Athena brings a structured, process-driven approach to design leadership — building frameworks, managing vendor relationships, synthesizing options, and guiding aesthetic direction with clarity and precision. <em>From scoping to delivery, she operates with the rigor of a seasoned project director.</em></div>
+    </div>
+
+    <div class="point">
+      <div class="point-number">06</div>
+      <div class="point-label">Entrepreneurial Accountability</div>
+      <div class="point-body">Building a successful independent practice in one of the most discerning markets in the country requires deep personal investment, creative resourcefulness, and unwavering accountability to results. <em>Athena brings all three</em> — as both a professional discipline and a personal standard.</div>
+    </div>
+
+  </div>
+
+  <div class="close-statement">
+    <div class="close-label">The Bottom Line</div>
+    <div class="close-text">
+      Athena Lynn brings two decades of high-stakes creative leadership, enterprise-scale budget management, and an intimate understanding of luxury standards to every engagement. Her career has been defined by <strong>translating ambitious vision into exceptional, tangible results</strong> — with clarity, discretion, and disciplined execution.
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <div>
+      <div class="footer-brand">athenalynn.com</div>
+      <div class="footer-sub">Life, Managed Properly</div>
+      <div class="footer-sub"><a href="mailto:introductions@athenalynn.com" style="color:inherit;text-transform:none;letter-spacing:.04em">introductions@athenalynn.com</a></div>
+    </div>
+    <div class="footer-stamp">
+      <i class="ti ti-compass" style="font-size: 24px; color: #b8976a; opacity: 0.6;" aria-hidden="true"></i>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

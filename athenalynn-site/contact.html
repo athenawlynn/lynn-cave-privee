@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Private Introduction · Athena Lynn</title>
+  <meta name="description" content="Request a confidential introduction. Every inquiry is answered personally within one business day." />
+  <link rel="canonical" href="https://athenalynn.com/contact" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://athenalynn.com/contact" />
+  <meta property="og:title" content="Private Introduction · Athena Lynn" />
+  <meta property="og:description" content="Request a confidential introduction. Every inquiry is answered personally within one business day." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f8f4ee;
+  --ink: #0e0f10;
+  --line: rgba(14,15,16,.09);
+  --gold: #b8976a;
+  --gold-light: rgba(184,151,106,.12);
+  --gold-border: rgba(184,151,106,.40);
+  --navy: #1e2d40;
+  --card: rgba(255,255,255,.68);
+  --serif: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+  --sans: 'Jost', ui-sans-serif, Helvetica, Arial, sans-serif;
+  --max: 1080px;
+  --radius: 18px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans); font-weight: 300; color: var(--ink); background: var(--bg); min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 900px 600px at 0% 0%, rgba(184,151,106,.11) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 30%, rgba(30,45,64,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 500px at 50% 100%, rgba(184,151,106,.08) 0%, transparent 60%);
+}
+a { color: inherit; text-decoration: none; }
+.top {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(248,244,238,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.bar { max-width: var(--max); margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 13px; }
+.seal { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--gold-border); position: relative; flex-shrink: 0; }
+.seal::after { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid var(--gold-border); opacity: .7; }
+.brand-name { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 400; }
+.nav { display: flex; gap: 6px; }
+.nav a { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(14,15,16,.60); padding: 9px 14px; border-radius: 999px; transition: all .2s; border: 1px solid transparent; }
+.nav a:hover { color: var(--ink); border-color: var(--line); background: rgba(255,255,255,.5); }
+.nav a.active { color: var(--ink); }
+.btn-nav { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--gold-border); background: var(--gold-light); color: var(--ink); transition: all .2s; white-space: nowrap; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px 100px; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.50); margin-bottom: 28px; }
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(184,151,106,.18); flex-shrink: 0; }
+
+/* Layout */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
+  padding: 100px 0 80px;
+  align-items: start;
+}
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 5.2vw, 66px); letter-spacing: -.02em; line-height: 1.04; margin-bottom: 28px; }
+h1 em { font-style: italic; color: var(--navy); }
+.hero-body { font-size: 16px; line-height: 1.85; color: rgba(14,15,16,.62); font-weight: 300; margin-bottom: 36px; max-width: 52ch; }
+
+.context-items { margin-top: 8px; }
+.context-item { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.context-item:first-child { border-top: 1px solid var(--line); }
+.context-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.40); display: block; margin-bottom: 6px; }
+.context-value { font-size: 14px; color: var(--ink); font-weight: 400; line-height: 1.6; }
+
+/* Form */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.06);
+  backdrop-filter: blur(8px);
+}
+.form-card-label {
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(14,15,16,.40); display: block; margin-bottom: 28px;
+}
+.field { margin-bottom: 20px; }
+.field label {
+  font-size: 10px; letter-spacing: .20em; text-transform: uppercase;
+  color: rgba(14,15,16,.50); display: block; margin-bottom: 8px;
+}
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.80);
+  color: var(--ink);
+  font-size: 14px;
+  font-family: var(--sans);
+  font-weight: 300;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  -webkit-appearance: none;
+}
+.field textarea { min-height: 130px; resize: vertical; }
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--gold-border);
+  box-shadow: 0 0 0 4px rgba(184,151,106,.14);
+}
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(14,15,16,.30); }
+
+.submit-btn {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-light);
+  color: var(--ink);
+  font-size: 11px; letter-spacing: .20em; text-transform: uppercase;
+  font-family: var(--sans);
+  font-weight: 400;
+  cursor: pointer;
+  transition: all .22s;
+  margin-top: 8px;
+}
+.submit-btn:hover { background: rgba(184,151,106,.22); }
+
+.req { color: var(--gold); margin-left: 3px; }
+.req-key { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(14,15,16,.40); margin: -8px 0 22px; display: block; }
+.direct-line {
+  font-size: 13px; color: rgba(14,15,16,.62); letter-spacing: .02em;
+  padding-bottom: 22px; margin-bottom: 24px; border-bottom: 1px solid var(--line);
+}
+.direct-line a { color: var(--navy); border-bottom: 1px solid var(--gold-border); padding-bottom: 1px; }
+.direct-line a:hover { border-color: var(--gold); }
+.response-line { font-size: 14px; line-height: 1.75; color: var(--navy); margin: -16px 0 36px; max-width: 52ch; }
+.privacy-line { font-size: 12px; line-height: 1.65; color: rgba(14,15,16,.55); margin-top: 16px; text-align: center; }
+.privacy-line a { color: var(--navy); border-bottom: 1px solid var(--gold-border); }
+.privacy-line a:hover { border-color: var(--gold); }
+.form-note {
+  font-size: 11px; line-height: 1.65;
+  color: rgba(14,15,16,.38); margin-top: 16px;
+  letter-spacing: .02em;
+  text-align: center;
+}
+
+/* Success state */
+.success-state {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+.success-state.visible { display: block; }
+.success-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.success-heading {
+  font-family: var(--serif); font-size: 26px; font-style: italic;
+  color: var(--ink); margin-bottom: 12px;
+}
+.success-body { font-size: 14px; color: rgba(14,15,16,.58); line-height: 1.75; }
+
+.conf-line { text-align: center; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.38); padding: 28px 0; border-top: 1px solid var(--line); margin-top: 60px; }
+footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: rgba(14,15,16,.40); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .bar { padding: 16px 20px; }
+  .nav { display: none; }
+  .wrap { padding: 0 20px 80px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 50px; padding: 70px 0 60px; }
+  .form-card { padding: 28px 24px; }
+}
+  
+
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink, #0e0f10);
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 18px 0;
+  width: 240px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-child { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.portal-btn {
+  color: #1e2d40;
+  margin-top: 28px;
+  border: 1px solid rgba(184,151,106,.40);
+  border-radius: 999px;
+  padding: 14px 32px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+}
+.mobile-close {
+  position: absolute;
+  top: 22px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 26px;
+  line-height: 1;
+  font-family: sans-serif;
+}
+@media (max-width: 900px) {
+  .nav { display: none !important; }
+  .btn-nav { display: none !important; }
+  
+}
+
+
+/* ─── UNIVERSAL HEADER & MOBILE NAV ─── */
+.site-header {
+  width: 100%;
+  background: #f8f4ee;
+  border-bottom: 0.5px solid rgba(14,15,16,.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.site-logo {
+  font-family: 'Cormorant Garamond', 'Garamond', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: #1e2d40;
+  text-decoration: none;
+  font-weight: 400;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-logo .seal {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(184,151,106,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: #b8976a;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.site-nav a {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(14,15,16,.60);
+  padding: 8px 13px;
+  border-radius: 999px;
+  transition: all .2s;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
+.site-nav a.active { color: #0e0f10; }
+.site-nav a.portal-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(184,151,106,.40);
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+  margin-left: 6px;
+}
+.site-nav a.portal-btn:hover { background: rgba(184,151,106,.22); }
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  z-index: 300;
+  position: relative;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #0e0f10;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* Mobile fullscreen menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #f8f4ee;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 20px 0;
+  width: 260px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-of-type { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.m-portal {
+  margin-top: 32px;
+  border: 1px solid rgba(184,151,106,.4) !important;
+  border-radius: 999px;
+  padding: 14px 36px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+}
+.mobile-close-btn {
+  position: absolute;
+  top: 20px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 28px;
+  line-height: 1;
+  font-family: sans-serif;
+  z-index: 201;
+}
+@media (max-width: 900px) {
+  .site-bar { padding: 14px 20px; }
+  .site-nav { display: none !important; }
+  .hamburger { display: flex !important; }
+}
+
+
+/* ─── FOOTER LINKS ─── */
+.footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }
+.footer-links a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,151,106,.40); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+.footer-links a:hover { color: #0e0f10; border-color: #b8976a; }
+.footer-links a.footer-email { text-transform: none; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-bar">
+    <a href="/" class="site-logo">
+      <span class="seal">AL</span>
+      Athena Lynn
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Engagements</a>
+        <a href="/advisors">For Advisors</a>
+        <a href="/theplatform">The Platform</a>
+        <a href="/contact" class="active">Contact</a>
+        <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
+    </nav>
+    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/services">Engagements</a>
+  <a href="/advisors">For Advisors</a>
+  <a href="/theplatform">The Platform</a>
+  <a href="/contact" class="active">Contact</a>
+  <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
+</div>
+  
+
+  <main class="wrap">
+    <div class="contact-layout">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Private Introduction</div>
+        <h1>Begin a<br><em>private<br>conversation.</em></h1>
+        <p class="hero-body">
+          If there is a potential for alignment, I welcome a confidential inquiry. 
+          All correspondence is handled directly by me and held in strict confidence.
+        </p>
+        <p class="response-line">I respond to every serious inquiry personally, within one business day.</p>
+
+        <div class="context-items">
+          <div class="context-item">
+            <span class="context-label">Engagement type</span>
+            <span class="context-value">Private retainer only · Long-term</span>
+          </div>
+          <div class="context-item">
+            <span class="context-label">Current availability</span>
+            <span class="context-value">Limited · Shared privately upon introduction</span>
+          </div>
+          <div class="context-item">
+            <span class="context-label">Location</span>
+            <span class="context-value">Palm Beach, Florida<br>On-site &amp; remote as appropriate</span>
+          </div>
+          <div class="context-item">
+            <span class="context-label">Confidentiality</span>
+            <span class="context-value">Standing · Without exception</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <span class="form-card-label">Confidential Inquiry</span>
+        <p class="direct-line">Direct: <a href="mailto:introductions@athenalynn.com">introductions@athenalynn.com</a></p>
+
+        <form id='form-wrap' method='POST' name='contact' data-netlify='true' netlify-honeypot='bot-field' onsubmit='handleSubmit(event)'>
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;"><input name="bot-field" /></p>
+          <span class="req-key"><span class="req" aria-hidden="true">*</span> Required</span>
+          <div class="field">
+            <label for="name">Your name<span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Full name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email address<span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Private email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="inquiring_as">I am inquiring as<span class="req" aria-hidden="true">*</span></label>
+            <select id="inquiring_as" name="inquiring_as" required>
+              <option value="" disabled selected>Select one</option>
+              <option>A principal or family member</option>
+              <option>A family office or advisor</option>
+              <option>A search firm</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="context">How can I help</label>
+            <textarea id="context" name="context" placeholder="A brief note on your situation or what you are looking for. No detail is required at this stage."></textarea>
+          </div>
+          <div class="field">
+            <label for="referral">How did you hear of me<span class="req" aria-hidden="true">*</span></label>
+            <select id="referral" name="referral" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Personal referral</option>
+              <option>Professional introduction</option>
+              <option>Palm Beach network</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="next_step">Preferred next step</label>
+            <select id="next_step" name="next_step">
+              <option value="" selected>Select one (optional)</option>
+              <option>A brief introduction call</option>
+              <option>An in-person meeting in Palm Beach</option>
+              <option>Correspondence by email</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn">Submit Inquiry</button>
+          <p class="privacy-line">Your inquiry is held in strict confidence. <a href="/privacy">See how information is handled.</a></p>
+          <p class="form-note">Your message is sent directly to me and held in strict confidence. I respond to all serious inquiries personally.</p>
+        </form>
+
+        <div class="success-state" id="success">
+          <div class="success-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 9l4.5 4.5L15 5" stroke="#b8976a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="success-heading">Inquiry received.</p>
+          <p class="success-body">Thank you. I will be in touch personally, within one business day, and in confidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="conf-line">All engagements are conducted under strict confidentiality.</div>
+  </main>
+
+  <div class="wrap" style="padding-top:0; padding-bottom:0;">
+    <footer>
+      <span>© 2026 Athena Lynn</span>
+      <span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:introductions@athenalynn.com">introductions@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span>
+      <span>Palm Beach, Florida</span>
+    </footer>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const asEl = document.getElementById('inquiring_as');
+      const refEl = document.getElementById('referral');
+      if (!asEl.value) asEl.style.borderColor = 'rgba(184,151,106,.8)';
+      if (!refEl.value) refEl.style.borderColor = 'rgba(184,151,106,.8)';
+      if (!name || !email || !asEl.value || !refEl.value) {
+        if (!name) document.getElementById('name').style.borderColor = 'rgba(184,151,106,.8)';
+        if (!email) document.getElementById('email').style.borderColor = 'rgba(184,151,106,.8)';
+        return;
+      }
+      // Submit to Netlify via fetch
+      const form = document.getElementById('form-wrap');
+      const data = new FormData(form);
+      fetch('/', { method: 'POST', body: data })
+        .finally(() => {
+          form.style.display = 'none';
+          document.getElementById('success').classList.add('visible');
+        });
+    }
+  </script>
+
+<!-- MOBILE MENU -->
+
+
+
+
+
+<script>
+(function(){
+  var btn = document.getElementById('siteHamburger');
+  var menu = document.getElementById('siteMobileMenu');
+  var cls = document.getElementById('siteMobileClose');
+  if (!btn || !menu) return;
+  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
+  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
+  if (cls) cls.addEventListener('click', close);
+  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+})();
+</script>
+
+</body>
+</html>

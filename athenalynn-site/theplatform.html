@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Platform · Private Household Operating System · Athena Lynn</title>
+  <meta name="description" content="A private operating system for estates and households, covering properties, staff, finances, travel and obligations, run personally by Athena Lynn." />
+  <link rel="canonical" href="https://athenalynn.com/theplatform" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://athenalynn.com/theplatform" />
+  <meta property="og:title" content="The Platform · Private Household Operating System · Athena Lynn" />
+  <meta property="og:description" content="A private operating system for estates and households, covering properties, staff, finances, travel and obligations, run personally by Athena Lynn." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory: #f7f3ec;
+      --parchment: #f0e9de;
+      --blush: #ede3d8;
+      --sage: #8a9e8c;
+      --warm-taupe: #a89580;
+      --taupe-light: #d9cdc0;
+      --dusty-rose: #c4a09a;
+      --navy: #1e2d40;
+      --navy-soft: #3d5068;
+      --gold: #b8976a;
+      --gold-light: #d4b896;
+      --gold-pale: #eddfc8;
+      --text: #2c2926;
+      --text-muted: #6e6660;
+      --border: #ddd5c8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+    em { font-style: italic; color: var(--gold); }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2rem 7rem;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 0 3rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 5rem;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      font-weight: 400;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); }
+    .nav-links a.portal-link {
+      border: 0.5px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      color: var(--navy);
+    }
+    .nav-links a.portal-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--warm-taupe);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .hero-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    /* ── POSITIONING BLOCK ── */
+    .position-block {
+      background: var(--navy-soft);
+      color: #f0ebe3;
+      padding: 4rem;
+      margin-bottom: 6rem;
+      position: relative;
+    }
+    .position-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+    .not-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .position-block strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #f8f4ee;
+      display: block;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .position-block p {
+      font-size: 0.97rem;
+      line-height: 1.9;
+      font-weight: 300;
+      opacity: 0.88;
+    }
+    .position-block p + p { margin-top: 0.9rem; }
+
+    /* ── SECTION CHROME ── */
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--warm-taupe);
+      margin-bottom: 0.9rem;
+    }
+    .section-h2 {
+      font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .section-divider {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 0 2.5rem;
+    }
+    .section-body {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.9;
+      margin-bottom: 3rem;
+    }
+
+    
+
+    /* ── PAIN GRID ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-bottom: 6rem;
+    }
+    .pain-cell { background: var(--ivory); padding: 2rem; }
+    .pain-cell.accent { background: var(--parchment); }
+    .pain-cell.full {
+      grid-column: 1 / -1;
+      background: var(--blush);
+    }
+    .pain-icon {
+      font-size: 0.63rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-taupe);
+      margin-bottom: 0.6rem;
+    }
+    .pain-cell h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .pain-cell p {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .pain-cell.full p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--navy);
+      font-style: italic;
+      text-align: center;
+      padding: 2rem 3rem;
+    }
+
+    /* ── MODULES GRID ── */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-bottom: 6rem;
+    }
+    .module-cell { padding: 1.6rem 1.8rem; }
+    .module-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+    .module-cell h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .module-cell p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .m1  { background: #f7f3ec; }
+    .m2  { background: #f2ece3; }
+    .m3  { background: #ede5d8; }
+    .m4  { background: #f0ece6; }
+    .m5  { background: #eae6e0; }
+    .m6  { background: #f4ede6; }
+    .m7  { background: #ede9e2; }
+    .m8  { background: #f1ece5; }
+    .m9  { background: #e9ece5; }
+    .m10 { background: #eceae5; }
+    .m11 { background: #f0eae3; }
+    .m12 { background: #eae4dc; }
+    .m13 { background: #e8e3da; }
+
+    /* ── HUMAN BLOCK ── */
+    .human-block {
+      border: 0.5px solid var(--border);
+      background: var(--parchment);
+      padding: 3.5rem 4rem;
+      margin-bottom: 6rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .human-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-taupe);
+      margin-bottom: 1rem;
+    }
+    .human-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+    .human-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+    .human-body p + p { margin-top: 0.9rem; }
+
+    /* ── HOW IT WORKS ── */
+    .how-block {
+      border-left: 1.5px solid var(--gold-pale);
+      padding-left: 3rem;
+      margin-bottom: 6rem;
+    }
+    .how-item {
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .how-item::before {
+      content: '';
+      position: absolute;
+      left: -3.25rem;
+      top: 0.55rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--ivory);
+    }
+    .how-item:last-child { margin-bottom: 0; }
+    .how-num {
+      font-size: 0.63rem;
+      letter-spacing: 0.2em;
+      color: var(--warm-taupe);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .how-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .how-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ── PRIVACY ── */
+    .privacy-block {
+      border: 0.5px solid var(--border);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 3rem;
+      margin-bottom: 6rem;
+      background: var(--ivory);
+    }
+    .privacy-item {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+    .privacy-dot {
+      width: 5px; height: 5px;
+      background: var(--dusty-rose);
+      border-radius: 50%;
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
+    .privacy-item p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── WHO IT'S FOR ── */
+    .qualify-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 3rem;
+      margin-bottom: 5rem;
+    }
+    .qualify-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .q-dash {
+      color: var(--sage);
+      flex-shrink: 0;
+      line-height: 1.7;
+    }
+
+    /* ── CLOSE BLOCK ── */
+    .close-block {
+      background: var(--navy-soft);
+      color: #f0ebe3;
+      padding: 5rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .close-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px; height: 2px;
+      background: var(--gold);
+    }
+    .close-block h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .close-block h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .close-block p {
+      font-size: 0.93rem;
+      line-height: 1.85;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      opacity: 0.78;
+    }
+    .btn-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-secondary {
+      background: transparent;
+      color: #f0ebe3;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      border: 0.5px solid rgba(240,235,227,0.35);
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(240,235,227,0.7); }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 2.5rem 0 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      border-top: 0.5px solid var(--border);
+      margin-top: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .nav { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      .nav-links { gap: 1.2rem; }
+      .modules-grid { grid-template-columns: 1fr 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-cell.full { grid-column: 1; }
+      .privacy-block { grid-template-columns: 1fr; }
+      .qualify-list { grid-template-columns: 1fr; }
+      .human-block { grid-template-columns: 1fr; padding: 2.5rem 1.8rem; gap: 1.5rem; }
+      .position-block { padding: 2.5rem 1.8rem; }
+      .close-block { padding: 3rem 1.8rem; }
+      .portal-body { grid-template-columns: 1fr; }
+      .portal-content-area { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .modules-grid { grid-template-columns: 1fr; }
+      .portal-content-area { grid-template-columns: 1fr; }
+    }
+  
+
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink, #0e0f10);
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 18px 0;
+  width: 240px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-child { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.portal-btn {
+  color: #1e2d40;
+  margin-top: 28px;
+  border: 1px solid rgba(184,151,106,.40);
+  border-radius: 999px;
+  padding: 14px 32px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+}
+.mobile-close {
+  position: absolute;
+  top: 22px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 26px;
+  line-height: 1;
+  font-family: sans-serif;
+}
+@media (max-width: 900px) {
+  .nav { display: none !important; }
+  .btn-nav { display: none !important; }
+  
+}
+
+
+/* ─── UNIVERSAL HEADER & MOBILE NAV ─── */
+.site-header {
+  width: 100%;
+  background: #f8f4ee;
+  border-bottom: 0.5px solid rgba(14,15,16,.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.site-logo {
+  font-family: 'Cormorant Garamond', 'Garamond', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: #1e2d40;
+  text-decoration: none;
+  font-weight: 400;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-logo .seal {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(184,151,106,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: #b8976a;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.site-nav a {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(14,15,16,.60);
+  padding: 8px 13px;
+  border-radius: 999px;
+  transition: all .2s;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
+.site-nav a.active { color: #0e0f10; }
+.site-nav a.portal-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(184,151,106,.40);
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+  margin-left: 6px;
+}
+.site-nav a.portal-btn:hover { background: rgba(184,151,106,.22); }
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  z-index: 300;
+  position: relative;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #0e0f10;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* Mobile fullscreen menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #f8f4ee;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 20px 0;
+  width: 260px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-of-type { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.m-portal {
+  margin-top: 32px;
+  border: 1px solid rgba(184,151,106,.4) !important;
+  border-radius: 999px;
+  padding: 14px 36px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+}
+.mobile-close-btn {
+  position: absolute;
+  top: 20px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 28px;
+  line-height: 1;
+  font-family: sans-serif;
+  z-index: 201;
+}
+@media (max-width: 900px) {
+  .site-bar { padding: 14px 20px; }
+  .site-nav { display: none !important; }
+  .hamburger { display: flex !important; }
+}
+
+
+    /* ── PORTAL DASHBOARD MOCKUP ── */
+    .portal-preview { border: 0.5px solid var(--border); margin-bottom: 6rem; overflow: hidden; }
+    .portal-header { background: var(--navy); padding: 0.8rem 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+    .portal-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+    .portal-url { font-size: 0.68rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); margin-left: 0.4rem; font-family: 'Jost', sans-serif; }
+    .portal-dashboard { display: grid; grid-template-columns: 180px 1fr; min-height: 420px; }
+    .pd-sidebar { background: var(--navy); padding: 1.2rem; }
+    .pd-client { display: flex; align-items: center; gap: 0.7rem; padding-bottom: 1rem; border-bottom: 0.5px solid rgba(255,255,255,0.1); margin-bottom: 1rem; }
+    .pd-client-seal { width: 32px; height: 32px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 400; color: var(--navy); font-family: 'Jost', sans-serif; flex-shrink: 0; }
+    .pd-client-name { font-size: 0.72rem; color: #f0ebe3; font-family: 'Jost', sans-serif; font-weight: 400; letter-spacing: 0.04em; }
+    .pd-client-sub { font-size: 0.62rem; color: rgba(255,255,255,0.4); font-family: 'Jost', sans-serif; margin-top: 2px; }
+    .pd-nav-items { display: flex; flex-direction: column; gap: 2px; }
+    .pd-nav-item { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); font-family: 'Jost', sans-serif; padding: 5px 8px; border-radius: 3px; cursor: default; text-transform: uppercase; }
+    .pd-nav-item.active { background: rgba(184,151,106,0.2); color: var(--gold-light); }
+    .pd-main { background: var(--parchment); padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 1rem; }
+    .pd-top-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 0.5px solid var(--border); padding-bottom: 0.8rem; }
+    .pd-page-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--navy); }
+    .pd-date { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); font-family: 'Jost', sans-serif; }
+    .pd-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
+    .pd-card { background: var(--ivory); border: 0.5px solid var(--border); padding: 0.9rem; }
+    .pd-card-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm-taupe); margin-bottom: 0.3rem; font-family: 'Jost', sans-serif; }
+    .pd-card-value { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--navy); line-height: 1; margin-bottom: 0.25rem; }
+    .pd-card-sub { font-size: 0.62rem; color: var(--text-muted); font-family: 'Jost', sans-serif; line-height: 1.4; }
+    .pd-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .pd-section { background: var(--ivory); border: 0.5px solid var(--border); padding: 0.9rem; }
+    .pd-section-title { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm-taupe); margin-bottom: 0.7rem; font-family: 'Jost', sans-serif; border-bottom: 0.5px solid var(--border); padding-bottom: 0.5rem; }
+    .pd-row { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .pd-row:last-child { margin-bottom: 0; }
+    .pd-row-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .pd-row-dot.gold { background: var(--gold); }
+    .pd-row-dot.navy { background: var(--navy); opacity: 0.5; }
+    .pd-row-dot.sage { background: var(--sage); }
+    .pd-row-dot.rose { background: var(--dusty-rose); }
+    .pd-row-text { font-size: 0.72rem; color: var(--text-muted); font-family: 'Jost', sans-serif; line-height: 1.5; }
+    .preview-caption { text-align: center; padding: 0.8rem; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); border-top: 0.5px solid var(--border); background: var(--ivory); font-family: 'Jost', sans-serif; }
+    @media (max-width: 700px) {
+      .portal-dashboard { grid-template-columns: 1fr; }
+      .pd-sidebar { display: none; }
+      .pd-cards { grid-template-columns: 1fr 1fr; }
+      .pd-sections { grid-template-columns: 1fr; }
+    }
+
+    
+/* ─── FOOTER LINKS ─── */
+.footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }
+.footer-links a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,151,106,.40); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+.footer-links a:hover { color: #0e0f10; border-color: #b8976a; }
+.footer-links a.footer-email { text-transform: none; letter-spacing: .04em; }
+
+/* ── REPRESENTATIVE VIEWS GALLERY ── */
+.views-gallery { margin-bottom: 6rem; }
+.views-gallery .portal-preview { margin-bottom: 1.4rem; }
+.vp-props { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.8rem; }
+.vp-status { display: inline-block; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Jost', sans-serif; padding: 3px 9px; border-radius: 999px; margin-bottom: 0.8rem; border: 0.5px solid var(--border); }
+.vp-status.occupied { background: rgba(138,158,140,0.18); color: #4f6352; border-color: rgba(138,158,140,0.5); }
+.vp-status.opening { background: rgba(184,151,106,0.16); color: #7d6440; border-color: rgba(184,151,106,0.5); }
+.vp-status.closed { background: rgba(30,45,64,0.06); color: var(--navy-soft); }
+.vp-kv { display: flex; flex-direction: column; gap: 1px; margin-bottom: 0.6rem; font-family: 'Jost', sans-serif; }
+.vp-kv:last-child { margin-bottom: 0; }
+.vp-kv span:first-child { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-taupe); }
+.vp-kv span:last-child { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; }
+.vp-row { display: flex; align-items: baseline; gap: 0.5rem; padding: 0.38rem 0; border-bottom: 0.5px solid var(--border); font-family: 'Jost', sans-serif; }
+.vp-row:last-child { border-bottom: none; }
+.vp-row .pd-row-dot { align-self: center; margin-top: 0; }
+.vp-name { font-size: 0.74rem; color: var(--navy); flex: 1; }
+.vp-meta { font-size: 0.68rem; color: var(--text-muted); text-align: right; }
+.vp-approvals { display: flex; flex-direction: column; gap: 0.7rem; }
+.vp-approval { background: var(--ivory); border: 0.5px solid var(--border); padding: 0.9rem 1rem; display: grid; grid-template-columns: 1fr auto auto; gap: 1.2rem; align-items: center; }
+.vp-approval-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--navy); line-height: 1.3; }
+.vp-approval-fig { display: flex; flex-direction: column; align-items: flex-end; font-family: 'Jost', sans-serif; }
+.vp-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--navy); line-height: 1.1; }
+.vp-due { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); }
+.vp-actions { display: flex; gap: 0.4rem; }
+.vp-btn { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 12px; border: 0.5px solid var(--border); color: var(--navy); background: transparent; cursor: default; user-select: none; }
+.vp-btn.approve { background: var(--navy); color: #f0ebe3; border-color: var(--navy); }
+.gallery-caption { text-align: center; padding-top: 0.4rem; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); font-family: 'Jost', sans-serif; }
+.close-block p.walkthrough-note { font-size: 0.85rem; margin: 1.6rem auto 0; opacity: 0.7; }
+@media (max-width: 700px) {
+  .vp-props { grid-template-columns: 1fr; }
+  .vp-approval { grid-template-columns: 1fr auto; }
+  .vp-actions { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-bar">
+    <a href="/" class="site-logo">
+      <span class="seal">AL</span>
+      Athena Lynn
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Engagements</a>
+        <a href="/advisors">For Advisors</a>
+        <a href="/theplatform" class="active">The Platform</a>
+        <a href="/contact">Contact</a>
+        <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
+    </nav>
+    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/services">Engagements</a>
+  <a href="/advisors">For Advisors</a>
+  <a href="/theplatform" class="active">The Platform</a>
+  <a href="/contact">Contact</a>
+  <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
+</div>
+
+<div class="page">
+
+  <!-- NAV -->
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">The Private Household Portal</p>
+    <h1>One complete system.<br><em>Entirely managed for you.</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">The Platform is the private operating system behind every engagement. It holds a household's properties, staff, finances, travel, vendors, events and obligations in one live, secure view, configured to the household rather than fitted to off-the-shelf software. I design it, build it, populate it and run it personally, and principals see exactly what they choose to see.</p>
+  </section>
+
+  <!-- POSITIONING -->
+  <section class="position-block">
+    <p class="not-line">This is not an app. Not a shared calendar. Not a platform.</p>
+    <strong>This is a privately managed operational system.</strong>
+    <p>Built specifically for your household. Maintained continuously. Operated on your behalf — so that every detail across your properties, staff, finances, travel, and obligations is centralized, structured, and actively in hand.</p>
+    <p>It is not licensed. It is not publicly available. It is deployed selectively — and managed directly, by me.</p>
+  </section>
+
+  <!-- REPRESENTATIVE VIEWS -->
+  <div class="section-label">Representative Views</div>
+  <div class="section-divider"></div>
+  <div class="views-gallery">
+
+  <!-- PORTAL MOCKUP -->
+  <div class="portal-preview">
+    <div class="portal-header">
+      <div class="portal-dot"></div>
+      <div class="portal-dot"></div>
+      <div class="portal-dot"></div>
+      <span class="portal-url">portal.athenalynn.com &middot; Private Access</span>
+    </div>
+    <div class="portal-dashboard">
+      <div class="pd-sidebar">
+        <div class="pd-client">
+          <div class="pd-client-seal">RH</div>
+          <div>
+            <div class="pd-client-name">The Harrington Household</div>
+            <div class="pd-client-sub">Palm Beach &middot; Active</div>
+          </div>
+        </div>
+        <div class="pd-nav-items">
+          <div class="pd-nav-item active"><span class="pd-dot"></span>Command Center</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Properties</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Staff</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Finance</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Travel</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Calendar</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Events</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Vendors</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Health</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Vehicles</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Security</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Gifting</div>
+          <div class="pd-nav-item"><span class="pd-dot"></span>Black Book</div>
+        </div>
+      </div>
+      <div class="pd-main">
+        <div class="pd-top-bar">
+          <span class="pd-page-title">Command Center</span>
+          <span class="pd-date">Friday, April 17, 2026</span>
+        </div>
+        <div class="pd-cards">
+          <div class="pd-card">
+            <div class="pd-card-label">Properties</div>
+            <div class="pd-card-value">3</div>
+            <div class="pd-card-sub">Palm Beach &middot; Nantucket &middot; NYC</div>
+          </div>
+          <div class="pd-card">
+            <div class="pd-card-label">Staff Active</div>
+            <div class="pd-card-value">7</div>
+            <div class="pd-card-sub">All current &middot; Schedules set</div>
+          </div>
+          <div class="pd-card">
+            <div class="pd-card-label">Next Travel</div>
+            <div class="pd-card-value">May 3</div>
+            <div class="pd-card-sub">Rome &middot; All confirmed</div>
+          </div>
+          <div class="pd-card">
+            <div class="pd-card-label">Open Items</div>
+            <div class="pd-card-value">4</div>
+            <div class="pd-card-sub">2 urgent &middot; 2 pending</div>
+          </div>
+        </div>
+        <div class="pd-sections">
+          <div class="pd-section">
+            <div class="pd-section-title">Upcoming Commitments</div>
+            <div class="pd-row"><span class="pd-row-dot gold"></span><span class="pd-row-text">Charity Evening &mdash; May 1</span></div>
+            <div class="pd-row"><span class="pd-row-dot navy"></span><span class="pd-row-text">Rome Departure &mdash; May 3</span></div>
+            <div class="pd-row"><span class="pd-row-dot sage"></span><span class="pd-row-text">Nantucket Seasonal Opening &mdash; May 15</span></div>
+          </div>
+          <div class="pd-section">
+            <div class="pd-section-title">Operator Notes</div>
+            <div class="pd-row"><span class="pd-row-dot rose"></span><span class="pd-row-text">Pool vendor on notice &mdash; follow up Fri</span></div>
+            <div class="pd-row"><span class="pd-row-dot gold"></span><span class="pd-row-text">Gifting: birthday confirmed &mdash; delivered</span></div>
+            <div class="pd-row"><span class="pd-row-dot navy"></span><span class="pd-row-text">Security inspection &mdash; Apr 22</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW: PROPERTIES -->
+  <div class="portal-preview view-panel">
+    <div class="portal-header">
+      <div class="portal-dot"></div><div class="portal-dot"></div><div class="portal-dot"></div>
+      <span class="portal-url">The Harrington Household &middot; Properties</span>
+    </div>
+    <div class="pd-main">
+      <div class="pd-top-bar">
+        <span class="pd-page-title">Properties</span>
+        <span class="pd-date">Friday, April 17, 2026</span>
+      </div>
+      <div class="vp-props">
+        <div class="pd-section">
+          <div class="pd-section-title">Palm Beach &middot; Main residence</div>
+          <span class="vp-status occupied">Occupied</span>
+          <div class="vp-kv"><span>Next service visit</span><span>Pool &amp; grounds &middot; Mon 20 Apr</span></div>
+          <div class="vp-kv"><span>Open items</span><span>2 &middot; Generator test, guest suite drapery</span></div>
+        </div>
+        <div class="pd-section">
+          <div class="pd-section-title">Nantucket &middot; Summer house</div>
+          <span class="vp-status opening">Opening 15 May</span>
+          <div class="vp-kv"><span>Next service visit</span><span>Pre-opening inspection &middot; Tue 5 May</span></div>
+          <div class="vp-kv"><span>Open items</span><span>3 &middot; Linens, boat lift, seasonal staff</span></div>
+        </div>
+        <div class="pd-section">
+          <div class="pd-section-title">New York &middot; Pied-&agrave;-terre</div>
+          <span class="vp-status closed">Closed for season</span>
+          <div class="vp-kv"><span>Next service visit</span><span>Monthly walk-through &middot; Wed 29 Apr</span></div>
+          <div class="vp-kv"><span>Open items</span><span>1 &middot; Window cleaning quote</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW: STAFF AND VENDORS -->
+  <div class="portal-preview view-panel">
+    <div class="portal-header">
+      <div class="portal-dot"></div><div class="portal-dot"></div><div class="portal-dot"></div>
+      <span class="portal-url">The Harrington Household &middot; Staff &amp; Vendors</span>
+    </div>
+    <div class="pd-main">
+      <div class="pd-top-bar">
+        <span class="pd-page-title">Staff &amp; Vendors</span>
+        <span class="pd-date">Friday, April 17, 2026</span>
+      </div>
+      <div class="pd-sections">
+        <div class="pd-section">
+          <div class="pd-section-title">Household staff</div>
+          <div class="vp-row"><span class="pd-row-dot sage"></span><span class="vp-name">Estate Manager</span><span class="vp-meta">On site &middot; Mon&ndash;Fri</span></div>
+          <div class="vp-row"><span class="pd-row-dot sage"></span><span class="vp-name">House Manager</span><span class="vp-meta">On site &middot; Today</span></div>
+          <div class="vp-row"><span class="pd-row-dot gold"></span><span class="vp-name">Chef</span><span class="vp-meta">Travelling with principal &middot; 3 May</span></div>
+          <div class="vp-row"><span class="pd-row-dot sage"></span><span class="vp-name">Housekeeper</span><span class="vp-meta">On site &middot; Mon&ndash;Fri</span></div>
+          <div class="vp-row"><span class="pd-row-dot rose"></span><span class="vp-name">Housekeeper</span><span class="vp-meta">On leave until 21 Apr</span></div>
+          <div class="vp-row"><span class="pd-row-dot navy"></span><span class="vp-name">Grounds</span><span class="vp-meta">Tue &amp; Thu</span></div>
+        </div>
+        <div class="pd-section">
+          <div class="pd-section-title">Vendors &middot; Next service</div>
+          <div class="vp-row"><span class="pd-row-dot navy"></span><span class="vp-name">Pool service</span><span class="vp-meta">Mon 20 Apr</span></div>
+          <div class="vp-row"><span class="pd-row-dot navy"></span><span class="vp-name">Security systems</span><span class="vp-meta">Wed 22 Apr</span></div>
+          <div class="vp-row"><span class="pd-row-dot navy"></span><span class="vp-name">HVAC maintenance</span><span class="vp-meta">Thu 23 Apr</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW: APPROVALS -->
+  <div class="portal-preview view-panel">
+    <div class="portal-header">
+      <div class="portal-dot"></div><div class="portal-dot"></div><div class="portal-dot"></div>
+      <span class="portal-url">The Harrington Household &middot; Approvals</span>
+    </div>
+    <div class="pd-main">
+      <div class="pd-top-bar">
+        <span class="pd-page-title">Awaiting your approval</span>
+        <span class="pd-date">3 items</span>
+      </div>
+      <div class="vp-approvals">
+        <div class="vp-approval">
+          <div class="vp-approval-main">
+            <div class="pd-card-label">Invoice</div>
+            <div class="vp-approval-title">Landscape renovation, phase two</div>
+          </div>
+          <div class="vp-approval-fig"><span class="vp-amount">$18,400</span><span class="vp-due">Due 24 Apr</span></div>
+          <div class="vp-actions" aria-hidden="true"><span class="vp-btn approve">Approve</span><span class="vp-btn">Query</span></div>
+        </div>
+        <div class="vp-approval">
+          <div class="vp-approval-main">
+            <div class="pd-card-label">Contract renewal</div>
+            <div class="vp-approval-title">Security monitoring, all residences &middot; 12 months</div>
+          </div>
+          <div class="vp-approval-fig"><span class="vp-amount">$9,600</span><span class="vp-due">Due 30 Apr</span></div>
+          <div class="vp-actions" aria-hidden="true"><span class="vp-btn approve">Approve</span><span class="vp-btn">Query</span></div>
+        </div>
+        <div class="vp-approval">
+          <div class="vp-approval-main">
+            <div class="pd-card-label">Travel booking</div>
+            <div class="vp-approval-title">Rome, 3&ndash;10 May &middot; Hotel &amp; private transfers</div>
+          </div>
+          <div class="vp-approval-fig"><span class="vp-amount">$14,250</span><span class="vp-due">Due 21 Apr</span></div>
+          <div class="vp-actions" aria-hidden="true"><span class="vp-btn approve">Approve</span><span class="vp-btn">Query</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="gallery-caption">Representative views. Every name, figure and property shown is fictional.</p>
+  </div><!-- /views-gallery -->
+
+  <!-- THE PROBLEM -->
+  <div class="section-label">The Problem</div>
+  <h2 class="section-h2">High-net-worth households don't lack resources.<br><em>They lack centralization.</em></h2>
+  <div class="section-divider"></div>
+  <div class="pain-grid">
+    <div class="pain-cell">
+      <div class="pain-icon">Fragmentation</div>
+      <h4>Information lives everywhere</h4>
+      <p>Critical details scattered across texts, emails, and multiple people — never in one place.</p>
+    </div>
+    <div class="pain-cell accent">
+      <div class="pain-icon">Visibility</div>
+      <h4>Staff operate without alignment</h4>
+      <p>Without unified oversight, coordination requires constant intervention and repetition.</p>
+    </div>
+    <div class="pain-cell accent">
+      <div class="pain-icon">Continuity</div>
+      <h4>Obligations and travel overlap</h4>
+      <p>Events, travel, and household priorities compete without structure or a single view.</p>
+    </div>
+    <div class="pain-cell">
+      <div class="pain-icon">Control</div>
+      <h4>Decisions rely on memory</h4>
+      <p>Without a structured record, continuity erodes the moment a detail slips through.</p>
+    </div>
+    <div class="pain-cell full">
+      <p>The portal eliminates that entirely — and I run it.</p>
+    </div>
+  </div>
+
+  <!-- MODULES -->
+  <div class="section-label">What's Inside</div>
+  <h2 class="section-h2">What the system covers</h2>
+  <div class="section-divider"></div>
+  <p class="section-body">Each household is configured individually. Typical areas include:</p>
+  <div class="modules-grid">
+    <div class="module-cell m1"><h4>Household Command Center</h4><p>Real-time operational overview — tasks, priorities, and upcoming obligations across the household.</p></div>
+    <div class="module-cell m2"><h4>Properties</h4><p>Every residence tracked with status, projects, staffing, and operational details across all locations.</p></div>
+    <div class="module-cell m3"><h4>Staff Management</h4><p>Complete visibility into your household team — roles, schedules, tenure, and coordination notes.</p></div>
+    <div class="module-cell m4"><h4>Finance &amp; Oversight</h4><p>Household spending structured, categorized, and continuously updated at a high-level view.</p></div>
+    <div class="module-cell m5"><h4>Travel Coordination</h4><p>Every journey planned and documented — transport, accommodations, provisioning, and timing.</p></div>
+    <div class="module-cell m6"><h4>Calendar &amp; Commitments</h4><p>All engagements — social, philanthropic, household, and travel — organized with context and clarity.</p></div>
+    <div class="module-cell m7"><h4>Events &amp; Entertaining</h4><p>End-to-end event management — guest lists, vendors, budgets, and full execution oversight.</p></div>
+    <div class="module-cell m8"><h4>Vendors &amp; Partners</h4><p>All third-party relationships tracked — contacts, contracts, performance, and accountability.</p></div>
+    <div class="module-cell m9"><h4>Health &amp; Wellness</h4><p>Providers, appointments, and preventative care organized with complete discretion.</p></div>
+    <div class="module-cell m10"><h4>Vehicles</h4><p>Fleet management — registration, service records, insurance, and scheduling across all vehicles.</p></div>
+    <div class="module-cell m11"><h4>Security Systems</h4><p>Monitoring, inspections, and access control tracked across all properties and residences.</p></div>
+    <div class="module-cell m12"><h4>Gifting &amp; Obligations</h4><p>Birthdays, milestones, and curated gifting — tracked, planned, and executed without a miss.</p></div>
+    <div class="module-cell m13"><h4>The Black Book</h4><p>A curated directory of elite vendors, establishments, and trusted resources — refined continuously.</p></div>
+  </div>
+
+  <!-- HUMAN BLOCK -->
+  <div class="human-block">
+    <div>
+      <div class="human-label">On the record</div>
+      <div class="human-quote">"Nothing here runs on autopilot. I drive every detail — this is the infrastructure that makes that possible."</div>
+    </div>
+    <div class="human-body">
+      <p>This is not an automated platform. There is no algorithm managing your household.</p>
+      <p>I build the system, I populate it, I maintain it — and I operate it daily on your behalf. The portal is the infrastructure behind my work: the place where every detail, decision, and dependency lives so that nothing is ever lost, missed, or left to memory.</p>
+      <p>Your household runs because I run it. The portal is how I do that at scale, with precision.</p>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section-label">How It Works</div>
+  <h2 class="section-h2">Built for you.<br><em>Operated by me.</em></h2>
+  <div class="section-divider"></div>
+  <p class="section-body">Every portal is configured from the ground up — customized and built around your household and run from day one.</p>
+  <div class="how-block">
+    <div class="how-item">
+      <div class="how-num">I</div>
+      <h4>Private Engagement</h4>
+      <p>Everything begins with a private introduction. Your household profile is assessed and a custom structure is designed.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">II</div>
+      <h4>Custom Configuration</h4>
+      <p>Each area is built and populated to reflect your specific household — properties, staff, schedules, priorities, and more.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">III</div>
+      <h4>Active Management</h4>
+      <p>I maintain the system in real time. It is updated as your household evolves — not left static between check-ins.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-num">IV</div>
+      <h4>Your Visibility</h4>
+      <p>You retain complete, real-time visibility across every aspect of your household — without carrying the operational weight of any of it.</p>
+    </div>
+  </div>
+
+  <!-- PRIVACY -->
+  <div class="section-label">Discretion</div>
+  <h2 class="section-h2">Privacy is not a feature.<br><em>It is the foundation.</em></h2>
+  <div class="section-divider"></div>
+  <div class="privacy-block">
+    <div class="privacy-item"><div class="privacy-dot"></div><p>No data sharing or third-party exposure of any kind</p></div>
+    <div class="privacy-item"><div class="privacy-dot"></div><p>Controlled access, granted exclusively by me</p></div>
+    <div class="privacy-item"><div class="privacy-dot"></div><p>Closed environment — not a commercial or cloud platform</p></div>
+    <div class="privacy-item"><div class="privacy-dot"></div><p>Every engagement operates under standing confidentiality</p></div>
+    <div class="privacy-item"><div class="privacy-dot"></div><p>No client's information is ever visible to another</p></div>
+    <div class="privacy-item"><div class="privacy-dot"></div><p>Designed from inception for complete discretion</p></div>
+  </div>
+
+  <!-- WHO IT'S FOR -->
+  <div class="section-label">Who This Serves</div>
+  <h2 class="section-h2">For principals who require<br><em>more than an assistant.</em></h2>
+  <div class="section-divider"></div>
+  <div class="qualify-list">
+    <div class="qualify-item"><span class="q-dash">—</span><span>Manage multiple properties or residences</span></div>
+    <div class="qualify-item"><span class="q-dash">—</span><span>Maintain a household staff of any size</span></div>
+    <div class="qualify-item"><span class="q-dash">—</span><span>Travel frequently and on complex itineraries</span></div>
+    <div class="qualify-item"><span class="q-dash">—</span><span>Host or attend high-level events regularly</span></div>
+    <div class="qualify-item"><span class="q-dash">—</span><span>Value complete discretion, structure, and control</span></div>
+    <div class="qualify-item"><span class="q-dash">—</span><span>Prefer full delegation without loss of visibility</span></div>
+  </div>
+
+  <!-- CLOSE -->
+  <section class="close-block">
+    <h2>Access is offered<br><em>selectively.</em></h2>
+    <p>Each system is built and maintained individually, around the specific needs of the client and their household. My capacity is intentionally limited.</p>
+    <div class="btn-row">
+      <a href="/contact" class="btn-primary">Request a private walkthrough</a>
+    </div>
+    <p class="walkthrough-note">The Platform is shown in person, configured with a sample household, during a private introduction.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 Athena Lynn &nbsp;&middot;&nbsp; Palm Beach, Florida &nbsp;&middot;&nbsp; All engagements conducted under strict confidentiality.</p>
+    <p style="margin-top:12px"><span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:introductions@athenalynn.com">introductions@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span></p>
+  </footer>
+
+</div>
+
+
+<!-- MOBILE MENU -->
+
+
+
+
+
+<script>
+(function(){
+  var btn = document.getElementById('siteHamburger');
+  var menu = document.getElementById('siteMobileMenu');
+  var cls = document.getElementById('siteMobileClose');
+  if (!btn || !menu) return;
+  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
+  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
+  if (cls) cls.addEventListener('click', close);
+  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+})();
+</script>
+
+</body>
+</html>

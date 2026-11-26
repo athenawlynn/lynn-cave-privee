@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume — Athena Lynn</title>
+  <meta name="description" content="Marketing & Communications Director. 20+ years leading digital strategy, campaigns, and teams at Ogilvy & Mather, DraftFCB, Digitas/Publicis, and McCann." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f8f4ee;
+  --ink: #0e0f10;
+  --line: rgba(14,15,16,.09);
+  --gold: #b8976a;
+  --gold-light: rgba(184,151,106,.12);
+  --gold-border: rgba(184,151,106,.40);
+  --navy: #1e2d40;
+  --card: rgba(255,255,255,.68);
+  --serif: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+  --sans: 'Jost', ui-sans-serif, Helvetica, Arial, sans-serif;
+  --max: 1080px;
+  --radius: 18px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans); font-weight: 300; color: var(--ink); background: var(--bg); min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 900px 600px at 0% 0%, rgba(184,151,106,.11) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 30%, rgba(30,45,64,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 500px at 50% 100%, rgba(184,151,106,.08) 0%, transparent 60%);
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── NAV ─── */
+.top {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(248,244,238,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.bar { max-width: var(--max); margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 13px; }
+.seal { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--gold-border); position: relative; flex-shrink: 0; }
+.seal::after { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid var(--gold-border); opacity: .7; }
+.brand-name { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 400; }
+.nav { display: flex; gap: 6px; }
+.nav a { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(14,15,16,.60); padding: 9px 14px; border-radius: 999px; transition: all .2s; border: 1px solid transparent; }
+.nav a:hover { color: var(--ink); border-color: var(--line); background: rgba(255,255,255,.5); }
+.nav a.active { color: var(--ink); }
+.btn-nav { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--gold-border); background: var(--gold-light); color: var(--ink); transition: all .2s; white-space: nowrap; }
+.btn-nav:hover { background: rgba(184,151,106,.2); }
+
+/* ─── WRAP ─── */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px 100px; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.50); margin-bottom: 28px; }
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(184,151,106,.18); flex-shrink: 0; }
+.btn-primary { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 14px 26px; border-radius: 999px; border: 1px solid var(--gold-border); background: var(--gold-light); color: var(--ink); transition: all .22s; display: inline-block; }
+.btn-primary:hover { background: rgba(184,151,106,.22); }
+.btn-ghost { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 14px 26px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.5); color: rgba(14,15,16,.70); transition: all .22s; display: inline-block; }
+.btn-ghost:hover { border-color: rgba(14,15,16,.18); background: rgba(255,255,255,.8); }
+
+/* ─── HERO ─── */
+.resume-hero {
+  padding: 90px 0 70px;
+  max-width: 72ch;
+  border-bottom: 1px solid var(--line);
+}
+.resume-name {
+  font-family: var(--serif);
+  font-size: clamp(48px, 6vw, 78px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.0;
+  margin-bottom: 16px;
+}
+.resume-name em { font-style: italic; color: var(--navy); }
+.resume-title {
+  font-size: 13px; letter-spacing: .20em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px; display: block;
+}
+.resume-summary {
+  font-size: 16px; line-height: 1.88;
+  color: rgba(14,15,16,.65); font-weight: 300;
+  max-width: 62ch;
+  margin-bottom: 32px;
+}
+.resume-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Contact card */
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.05);
+  margin-top: 8px;
+}
+.contact-card-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.38); display: block; margin-bottom: 20px; }
+.contact-item { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+.contact-item-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(14,15,16,.38); display: block; margin-bottom: 4px; }
+.contact-item-value { font-size: 13px; color: var(--ink); font-weight: 400; }
+
+/* ─── RESUME BODY ─── */
+.resume-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
+  padding-top: 60px;
+  align-items: start;
+}
+
+/* Main column */
+.section-block { margin-bottom: 60px; }
+.section-block:last-child { margin-bottom: 0; }
+.block-heading {
+  font-size: 10px; letter-spacing: .26em; text-transform: uppercase;
+  color: rgba(14,15,16,.38); margin-bottom: 28px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 10px;
+}
+.block-heading::before {
+  content: ''; width: 20px; height: 1px; background: var(--gold);
+}
+
+/* Experience */
+.exp-item { margin-bottom: 44px; padding-bottom: 44px; border-bottom: 1px solid var(--line); }
+.exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.exp-header { margin-bottom: 14px; }
+.exp-company {
+  font-family: var(--serif); font-size: 22px; font-weight: 500;
+  letter-spacing: -.01em; color: var(--ink); display: block; margin-bottom: 4px;
+}
+.exp-meta { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+.exp-title { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--navy); font-weight: 500; }
+.exp-period { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(14,15,16,.38); }
+.exp-location { font-size: 11px; color: rgba(14,15,16,.38); letter-spacing: .08em; }
+.exp-body { font-size: 14px; line-height: 1.85; color: rgba(14,15,16,.62); font-weight: 300; margin-bottom: 14px; }
+.exp-bullets { list-style: none; margin: 0; }
+.exp-bullets li {
+  font-size: 13px; line-height: 1.80; color: rgba(14,15,16,.60); font-weight: 300;
+  padding: 5px 0 5px 16px; position: relative;
+}
+.exp-bullets li::before {
+  content: ''; position: absolute; left: 0; top: 14px;
+  width: 5px; height: 1px; background: var(--gold);
+}
+.exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tag { font-size: 11px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.6); color: rgba(14,15,16,.55); }
+.tag.gold { border-color: var(--gold-border); background: var(--gold-light); color: rgba(14,15,16,.70); }
+
+/* Sidebar */
+.sidebar-block { margin-bottom: 40px; }
+.sidebar-block:last-child { margin-bottom: 0; }
+.sidebar-heading {
+  font-size: 10px; letter-spacing: .24em; text-transform: uppercase;
+  color: rgba(14,15,16,.38); margin-bottom: 16px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 10px;
+}
+.sidebar-heading::before { content: ''; width: 14px; height: 1px; background: var(--gold); }
+
+.skill-list { list-style: none; }
+.skill-list li { font-size: 13px; color: rgba(14,15,16,.62); padding: 7px 0; border-bottom: 1px solid var(--line); font-weight: 300; line-height: 1.4; }
+.skill-list li:last-child { border-bottom: none; }
+
+.tool-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool-tag { font-size: 11px; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.65); color: rgba(14,15,16,.60); }
+
+.stat-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.mini-stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 14px; }
+.mini-stat-num { font-family: var(--serif); font-size: 30px; font-weight: 500; color: var(--navy); display: block; line-height: 1; margin-bottom: 6px; }
+.mini-stat-desc { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(14,15,16,.42); line-height: 1.4; }
+
+.conf-line { text-align: center; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(14,15,16,.38); padding: 28px 0; border-top: 1px solid var(--line); margin-top: 60px; }
+footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: rgba(14,15,16,.40); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .bar { padding: 16px 20px; }
+  .nav { display: none; }
+  .wrap { padding: 0 20px 80px; }
+  .resume-hero { grid-template-columns: 1fr; gap: 36px; padding: 70px 0 50px; }
+  .resume-body { grid-template-columns: 1fr; gap: 0; }
+  .sidebar-col { border-top: 1px solid var(--line); padding-top: 50px; }
+}
+
+@media print {
+  .top, .resume-actions, .conf-line, footer { display: none; }
+  body { background: white; }
+  .wrap { padding: 20px; }
+  .resume-hero { padding: 20px 0; }
+}
+  
+
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink, #0e0f10);
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 18px 0;
+  width: 240px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-child { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.portal-btn {
+  color: #1e2d40;
+  margin-top: 28px;
+  border: 1px solid rgba(184,151,106,.40);
+  border-radius: 999px;
+  padding: 14px 32px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+}
+.mobile-close {
+  position: absolute;
+  top: 22px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 26px;
+  line-height: 1;
+  font-family: sans-serif;
+}
+@media (max-width: 900px) {
+  .nav { display: none !important; }
+  .btn-nav { display: none !important; }
+  
+}
+
+
+/* ─── UNIVERSAL HEADER & MOBILE NAV ─── */
+.site-header {
+  width: 100%;
+  background: #f8f4ee;
+  border-bottom: 0.5px solid rgba(14,15,16,.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.site-logo {
+  font-family: 'Cormorant Garamond', 'Garamond', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: #1e2d40;
+  text-decoration: none;
+  font-weight: 400;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-logo .seal {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(184,151,106,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: #b8976a;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.site-nav a {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(14,15,16,.60);
+  padding: 8px 13px;
+  border-radius: 999px;
+  transition: all .2s;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav a:hover { color: #0e0f10; border-color: rgba(14,15,16,.09); background: rgba(255,255,255,.5); }
+.site-nav a.active { color: #0e0f10; }
+.site-nav a.portal-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(184,151,106,.40);
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+  margin-left: 6px;
+}
+.site-nav a.portal-btn:hover { background: rgba(184,151,106,.22); }
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  z-index: 300;
+  position: relative;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #0e0f10;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* Mobile fullscreen menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #f8f4ee;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0e0f10;
+  text-decoration: none;
+  padding: 20px 0;
+  width: 260px;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(14,15,16,.09);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-of-type { border-top: 0.5px solid rgba(14,15,16,.09); }
+.mobile-menu a:hover, .mobile-menu a.active { color: #b8976a; }
+.mobile-menu a.m-portal {
+  margin-top: 32px;
+  border: 1px solid rgba(184,151,106,.4) !important;
+  border-radius: 999px;
+  padding: 14px 36px;
+  width: auto;
+  background: rgba(184,151,106,.12);
+  color: #1e2d40;
+}
+.mobile-close-btn {
+  position: absolute;
+  top: 20px; right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e0f10;
+  font-size: 28px;
+  line-height: 1;
+  font-family: sans-serif;
+  z-index: 201;
+}
+@media (max-width: 900px) {
+  .site-bar { padding: 14px 20px; }
+  .site-nav { display: none !important; }
+  .hamburger { display: flex !important; }
+}
+
+
+/* ─── FOOTER LINKS ─── */
+.footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }
+.footer-links a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,151,106,.40); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+.footer-links a:hover { color: #0e0f10; border-color: #b8976a; }
+.footer-links a.footer-email { text-transform: none; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-bar">
+    <a href="/" class="site-logo">
+      <span class="seal">AL</span>
+      Athena Lynn
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Engagements</a>
+        <a href="/advisors">For Advisors</a>
+        <a href="/theplatform">The Platform</a>
+        <a href="/contact">Contact</a>
+        <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
+    </nav>
+    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/services">Engagements</a>
+  <a href="/advisors">For Advisors</a>
+  <a href="/theplatform">The Platform</a>
+  <a href="/contact">Contact</a>
+  <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
+</div>
+  
+
+  <main class="wrap">
+
+    <!-- ─── HERO ─── -->
+    <div class="resume-hero">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Curriculum Vitae</div>
+        <h1 class="resume-name">Athena<br><em>Lynn.</em></h1>
+        <span class="resume-title">Director of Marketing &amp; Communications</span>
+        <p class="resume-summary">
+          A seasoned marketing executive with over 20 years leading digital strategy, 
+          multi-channel campaigns, and high-performing teams at some of the most respected 
+          agencies in the industry. Equally at home shaping brand narrative and managing 
+          the operational infrastructure that makes great marketing possible. Known for 
+          bringing both creative vision and disciplined execution to every engagement — 
+          on time, on budget, and without noise.
+        </p>
+        <div class="resume-actions">
+          <a href="/contact" class="btn-primary">Begin a Conversation</a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- ─── BODY ─── -->
+    <div class="resume-body">
+
+      <!-- MAIN COLUMN -->
+      <div class="main-col">
+
+        <!-- Experience -->
+        <div class="section-block">
+          <div class="block-heading">Experience</div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">Private Operator</span>
+              <div class="exp-meta">
+                <span class="exp-title">Project Director &amp; Strategic Operator</span>
+                <span class="exp-period">Aug 2016 — Present</span>
+              </div>
+              <span class="exp-location">Palm Beach, FL</span>
+            </div>
+            <p class="exp-body">
+              Retained by private principals to oversee complex operational and strategic 
+              programs. Manage full project lifecycle — cost, scope, schedule, and quality — 
+              across high-stakes, confidential engagements. Serve as a trusted single point 
+              of continuity for principals with demanding portfolios and lives.
+            </p>
+            <ul class="exp-bullets">
+              <li>Proactive risk identification and resolution across all active programs</li>
+              <li>Real-time reporting to principals, stakeholders, and senior partners</li>
+              <li>Workflow optimization and quality assurance across all deliverables</li>
+              <li>Strategic project management with measurable outcomes as the baseline</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag gold">Private Retainer</span>
+              <span class="tag">Strategic Operations</span>
+              <span class="tag">PMO</span>
+              <span class="tag">Stakeholder Management</span>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">McCann</span>
+              <div class="exp-meta">
+                <span class="exp-title">Client Director</span>
+                <span class="exp-period">Jun 2014 — Aug 2016</span>
+              </div>
+              <span class="exp-location">New York, NY</span>
+            </div>
+            <p class="exp-body">
+              Directed global and regional client accounts with annual program budgets 
+              of $7M–$32M. Oversaw website development, e-learning, and workforce planning 
+              initiatives across a network of international hubs. Maintained the highest 
+              standards of delivery while protecting client margin and agency profitability.
+            </p>
+            <ul class="exp-bullets">
+              <li>Managed team resources in collaboration with operational discipline leads globally</li>
+              <li>Ensured all client programs delivered on time, on budget, and at standard</li>
+              <li>Partnered with clients and creative agencies to drive seamless integration</li>
+              <li>Advised on hub structures to balance profitability with client rate expectations</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag gold">$7M–$32M</span>
+              <span class="tag">Global Accounts</span>
+              <span class="tag">eLearning</span>
+              <span class="tag">Workforce Planning</span>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">Ogilvy &amp; Mather</span>
+              <div class="exp-meta">
+                <span class="exp-title">Director of Project Management</span>
+                <span class="exp-period">Sept 2009 — 2014</span>
+              </div>
+              <span class="exp-location">New York, NY</span>
+            </div>
+            <p class="exp-body">
+              Led the delivery of global digital marketing programs across websites, social 
+              media, mobile & iPad platforms, convention experiences, and multi-user environments. 
+              Overhauled the PMO department structure — driving revenue growth and improving 
+              forecast accuracy. Active contributor to business development, pitches, and 
+              new client presentations.
+            </p>
+            <ul class="exp-bullets">
+              <li>Rebuilt PMO structure to eliminate inefficiencies and support revenue targets</li>
+              <li>Led cross-functional teams across social, mobile, web, and experiential campaigns</li>
+              <li>Managed offshore and in-house technical resources across simultaneous programs</li>
+              <li>Nurtured senior client relationships grounded in strategic marketing partnership</li>
+              <li>Ensured program strategy and operational execution remained fully aligned</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag gold">PMO Overhaul</span>
+              <span class="tag">Social Media</span>
+              <span class="tag">Mobile</span>
+              <span class="tag">Convention Platforms</span>
+              <span class="tag">Biz Dev</span>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">Digitas / Publicis</span>
+              <div class="exp-meta">
+                <span class="exp-title">Associate Director, Digital Marketing</span>
+                <span class="exp-period">Jan 2008 — Sept 2009</span>
+              </div>
+              <span class="exp-location">New York, NY</span>
+            </div>
+            <p class="exp-body">
+              Managed digital marketing program portfolios with budgets of $4M–$12M. 
+              Led a team of four project managers — setting goals, managing workload, 
+              and driving career development. Oversaw offshore and third-party vendor 
+              resources. Delivered CRM, social media, and multi-channel programs with 
+              precision and accountability.
+            </p>
+            <ul class="exp-bullets">
+              <li>Financial oversight of project portfolios across all active accounts</li>
+              <li>Direct management of four PMs including performance and development</li>
+              <li>Led process and procedure improvement initiatives within the PM practice</li>
+              <li>Responsible for project risk identification, resolution, and escalation</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag gold">$4M–$12M</span>
+              <span class="tag">CRM</span>
+              <span class="tag">Social Media</span>
+              <span class="tag">Team Leadership</span>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">DraftFCB</span>
+              <div class="exp-meta">
+                <span class="exp-title">Senior Project Manager</span>
+                <span class="exp-period">Jun 2004 — Jan 2008</span>
+              </div>
+              <span class="exp-location">New York, NY</span>
+            </div>
+            <p class="exp-body">
+              Helped build and shape the digital project management department from the ground up. 
+              Developed complex, multi-phased statements of work and annual retainers exceeding $3M. 
+              Managed budgets up to $1.5M across web, CRM, SMS, mobile, e-commerce, and print programs.
+            </p>
+            <ul class="exp-bullets">
+              <li>Created and managed multi-channel project plans and budgets across simultaneous accounts</li>
+              <li>Trained and developed three direct reports; established standards for the department</li>
+              <li>Communicated complex solutions and financial status to senior stakeholders with clarity</li>
+              <li>Led problem-solving across cross-functional teams with minimal disruption</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag gold">$3M+ SOWs</span>
+              <span class="tag">E-commerce</span>
+              <span class="tag">SMS</span>
+              <span class="tag">Mobile</span>
+              <span class="tag">Dept. Building</span>
+            </div>
+          </div>
+
+        </div><!-- /experience -->
+
+      </div><!-- /main-col -->
+
+      <!-- SIDEBAR -->
+      <div class="sidebar-col">
+
+        <div class="sidebar-block">
+          <div class="sidebar-heading">At a glance</div>
+          <div class="stat-pair">
+            <div class="mini-stat">
+              <span class="mini-stat-num">20+</span>
+              <span class="mini-stat-desc">Years marketing leadership</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat-num">$32M</span>
+              <span class="mini-stat-desc">Largest budget managed</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat-num">4</span>
+              <span class="mini-stat-desc">Director-level roles</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat-num">NYC</span>
+              <span class="mini-stat-desc">→ Palm Beach</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-block" style="margin-top:32px;">
+          <div class="sidebar-heading">Core Skills</div>
+          <ul class="skill-list">
+            <li>Digital Marketing Strategy</li>
+            <li>Multi-Channel Campaign Management</li>
+            <li>Brand &amp; Communications Leadership</li>
+            <li>Team Building &amp; Mentorship</li>
+            <li>PMO Design &amp; Overhaul</li>
+            <li>Budget &amp; P&amp;L Management</li>
+            <li>Client &amp; Stakeholder Relations</li>
+            <li>Business Development</li>
+            <li>CRM &amp; Marketing Automation</li>
+            <li>Social Media Strategy</li>
+            <li>Website &amp; eLearning Development</li>
+            <li>Vendor &amp; Agency Management</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block" style="margin-top:32px;">
+          <div class="sidebar-heading">Also held positions at</div>
+          <ul class="skill-list">
+            <li>MTV Networks</li>
+            <li>Random House</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block" style="margin-top:32px;">
+          <div class="sidebar-heading">Proficiencies</div>
+          <!-- Project Management -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Project Management</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">Asana</span>
+            <span class="tool-tag">Monday.com</span>
+            <span class="tool-tag">Jira</span>
+            <span class="tool-tag">Notion</span>
+            <span class="tool-tag">Airtable</span>
+            <span class="tool-tag">Basecamp</span>
+            <span class="tool-tag">Trello</span>
+            <span class="tool-tag">Workfront</span>
+            <span class="tool-tag">Lucid Chart</span>
+            <span class="tool-tag">Agile</span>
+            <span class="tool-tag">Waterfall</span>
+          </div>
+          <!-- CRM & Marketing Automation -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">CRM & Marketing Automation</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">Salesforce</span>
+            <span class="tool-tag">HubSpot</span>
+            <span class="tool-tag">Zoho</span>
+            <span class="tool-tag">Mailchimp</span>
+            <span class="tool-tag">Klaviyo</span>
+            <span class="tool-tag">Constant Contact</span>
+            <span class="tool-tag">Zapier</span>
+          </div>
+          <!-- Social Media -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Social Media</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">Hootsuite</span>
+            <span class="tool-tag">Later</span>
+            <span class="tool-tag">Buffer</span>
+            <span class="tool-tag">Meta Ads Manager</span>
+            <span class="tool-tag">LinkedIn Campaign Manager</span>
+          </div>
+          <!-- Analytics & Advertising -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Analytics & Advertising</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">Google Analytics</span>
+            <span class="tool-tag">Google Ads</span>
+            <span class="tool-tag">SEMrush</span>
+          </div>
+          <!-- Design & Creative -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Design & Creative</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">Canva</span>
+            <span class="tool-tag">Adobe Creative Suite</span>
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">Adobe Premiere Pro</span>
+            <span class="tool-tag">Adobe After Effects</span>
+            <span class="tool-tag">Final Cut Pro</span>
+            <span class="tool-tag">CapCut</span>
+          </div>
+          <!-- Web & eCommerce -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Web & eCommerce</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">WordPress</span>
+            <span class="tool-tag">Squarespace</span>
+            <span class="tool-tag">Shopify</span>
+          </div>
+          <!-- Finance & Operations -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Finance & Operations</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">QuickBooks</span>
+            <span class="tool-tag">Concur</span>
+          </div>
+          <!-- Productivity & Collaboration -->
+          <p style="font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:rgba(14,15,16,.38);margin:0 0 8px;">Productivity & Collaboration</p>
+          <div class="tool-wrap" style="margin-bottom:16px;">
+            <span class="tool-tag">Google Workspace</span>
+            <span class="tool-tag">Microsoft Office 365</span>
+            <span class="tool-tag">Slack</span>
+            <span class="tool-tag">Microsoft Teams</span>
+            <span class="tool-tag">Zoom</span>
+            <span class="tool-tag">ChatGPT / AI Tools</span>
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+    </div><!-- /resume-body -->
+
+    <div class="conf-line">All engagements are conducted under strict confidentiality.</div>
+  </main>
+
+  <div class="wrap" style="padding-top:0; padding-bottom:0;">
+    <footer>
+      <span>© 2026 Athena Lynn</span>
+      <span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:introductions@athenalynn.com">introductions@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span>
+      <span>Palm Beach, Florida</span>
+    </footer>
+  </div>
+
+<!-- MOBILE MENU -->
+
+
+
+
+
+<script>
+(function(){
+  var btn = document.getElementById('siteHamburger');
+  var menu = document.getElementById('siteMobileMenu');
+  var cls = document.getElementById('siteMobileClose');
+  if (!btn || !menu) return;
+  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
+  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
+  if (cls) cls.addEventListener('click', close);
+  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+})();
+</script>
+
+</body>
+</html>
