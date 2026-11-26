@@ -792,7 +792,7 @@
 .po-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #b8976a; box-shadow: 0 0 0 5px rgba(184,151,106,.18); }
 .po-title { font-family: 'AL Serif', serif; font-weight: 400; font-size: clamp(42px, 5.6vw, 84px); line-height: 1.04; letter-spacing: -.02em; color: #0e0f10; margin: 0; text-align: left; }
 .po-title em { font-style: italic; color: #1e2d40; }
-.po-title .ln { display: block; overflow: hidden; padding: .04em .08em .2em 0; margin: -.04em 0 -.2em; }
+.po-title .ln { display: block; overflow: hidden; padding: .04em .1em .2em .12em; margin: -.04em -.1em -.2em -.12em; }
 .po-title .ln > span { display: inline-block; }
 .po--dark .po-eyebrow { color: rgba(246,239,227,.72); }
 .po--dark .po-title { color: #f6efe3; }
@@ -820,7 +820,25 @@
   .po--dark .po-scrim { background: linear-gradient(0deg, rgba(13,20,31,.92) 0%, rgba(13,20,31,.78) 48%, rgba(13,20,31,0) 85%); }
 }
 .page > .hero { margin-top: 4.5rem; }
-.po-title { font-size: clamp(40px, 4.6vw, 70px); }
+.po-title { font-size: clamp(38px, 4.1vw, 62px); }
+
+
+/* ─── BUTTONS + NAV (site-wide) ─── */
+.btn-primary, .btn-cine, .submit-btn, .btn-ghost, .btn-cine-ghost, .btn-secondary {
+  display: inline-block; padding: 12px 28px; border-radius: 40px;
+  font-family: 'AL Sans', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 400; line-height: 1.4;
+  text-align: center; cursor: pointer; text-decoration: none; transition: background .25s, border-color .25s, color .25s; }
+.btn-primary, .btn-cine, .submit-btn { background: #1e2d40; color: #f8f4ee; border: 1px solid #1e2d40; }
+.btn-primary:hover, .btn-cine:hover, .submit-btn:hover, .btn-primary:focus-visible, .btn-cine:focus-visible, .submit-btn:focus-visible { background: #2a3d56; border-color: #2a3d56; color: #f8f4ee; }
+.btn-ghost, .btn-cine-ghost, .btn-secondary { background: transparent; color: #1e2d40; border: 1px solid rgba(184,151,106,.40); }
+.btn-ghost:hover, .btn-cine-ghost:hover, .btn-secondary:hover, .btn-ghost:focus-visible, .btn-cine-ghost:focus-visible, .btn-secondary:focus-visible { background: rgba(184,151,106,.12); border-color: rgba(184,151,106,.55); color: #1e2d40; }
+.submit-btn { width: 100%; padding: 14px 28px; margin-top: 8px; }
+.close-block .btn-primary { background: #f6efe3; color: #1e2d40; border-color: #f6efe3; }
+.close-block .btn-primary:hover { background: #d4b896; border-color: #d4b896; color: #1e2d40; }
+.site-nav a { font-size: 12px; letter-spacing: .14em; color: rgba(14,15,16,.84); }
+.site-nav a:hover, .site-nav a.active { color: #0e0f10; }
+.site-nav a.active { font-weight: 500; }
+@media (max-width: 1080px) and (min-width: 901px) { .site-nav a { padding: 8px 9px; letter-spacing: .1em; } }
 
 /* ─── FOOTER LINKS ─── */
 .footer-links { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; justify-content: center; }

@@ -425,6 +425,95 @@ function wideIntracoastal() {
 </svg>`;
 }
 
+
+// About — golden hour over Lake Worth beyond a limestone balustrade
+function baluster(cx, y0, h, w) {
+  const y = t => (y0 + h * t).toFixed(1), x = k => (cx + w * k).toFixed(1), xl = k => (cx - w * k).toFixed(1);
+  return `M${xl(.46)},${y(0)}H${x(.46)}V${y(.07)}H${x(.2)}C${x(.18)},${y(.16)} ${x(.2)},${y(.26)} ${x(.3)},${y(.36)}C${x(.46)},${y(.5)} ${x(.44)},${y(.68)} ${x(.22)},${y(.8)}C${x(.17)},${y(.84)} ${x(.2)},${y(.88)} ${x(.3)},${y(.9)}H${x(.46)}V${y(1)}H${xl(.46)}V${y(.9)}H${xl(.3)}C${xl(.2)},${y(.88)} ${xl(.17)},${y(.84)} ${xl(.22)},${y(.8)}C${xl(.44)},${y(.68)} ${xl(.46)},${y(.5)} ${xl(.3)},${y(.36)}C${xl(.2)},${y(.26)} ${xl(.18)},${y(.16)} ${xl(.2)},${y(.07)}H${xl(.46)}Z`;
+}
+function wideAbout() {
+  const hz = WH * 0.54, sunX = WW * 0.7, r = rng(31);
+  let glints = ''; for (let i = 0; i < 170; i++) { const t = Math.pow(r(), 1.3), y = hz + 8 + t * (WH * 0.66 - hz), spread = 30 + t * 520; const x = sunX + (r() - 0.5) * spread * 2; glints += `<rect x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="${(14 + r() * 70 * (0.4 + t)).toFixed(0)}" height="${(1.5 + r() * 2.5 * (0.4 + t)).toFixed(1)}" rx="1" fill="#ffe9c4" opacity="${(0.35 + r() * 0.55).toFixed(2)}"/>`; }
+  let shore = ''; for (let i = 0; i < 40; i++) { const x = r() * WW, h = 10 + r() * 26; shore += `<rect x="${x.toFixed(0)}" y="${(hz - h).toFixed(0)}" width="${(30 + r() * 110).toFixed(0)}" height="${h.toFixed(0)}"/>`; }
+  for (let i = 0; i < 18; i++) { const x = r() * WW, h = 34 + r() * 30; shore += `<rect x="${x.toFixed(0)}" y="${(hz - h).toFixed(0)}" width="2.4" height="${h.toFixed(0)}"/><path d="${crown(300 + i, x + 1.2, hz - h, 16, 8, -0.4, 3.5)}"/>`; }
+  const railY = WH * 0.66, balTop = railY + 46, balH = WH - 60 - balTop, bw = 92, gap = 128;
+  let bals = ''; for (let x = 40; x < WW + bw; x += gap) bals += `<path d="${baluster(x, balTop, balH, bw)}"/>`;
+  let rims = ''; for (let x = 40; x < WW + bw; x += gap) rims += `<path d="${baluster(x + 3, balTop, balH, bw)}" />`;
+  const trunk = `M${WW * 0.93},${WH} C${WW * 0.925},${WH * 0.6} ${WW * 0.9},${WH * 0.3} ${WW * 0.86},${WH * 0.06}`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WW}" height="${WH}" viewBox="0 0 ${WW} ${WH}">
+  <defs>${grainDef('grain', 0.07)}${stoneDef('st', 44)}
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fa3b4"/><stop offset=".45" stop-color="#d9c2a8"/><stop offset=".85" stop-color="#f2d2a9"/><stop offset="1" stop-color="#f7dfba"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6b897"/><stop offset=".35" stop-color="#8f9a98"/><stop offset="1" stop-color="#4f6670"/></linearGradient>
+    <radialGradient id="sun" cx="${sunX / WW}" cy="${(hz - 40) / WH}" r=".5"><stop offset="0" stop-color="#fff3d6" stop-opacity="1"/><stop offset=".08" stop-color="#ffe6b8" stop-opacity=".85"/><stop offset=".4" stop-color="#f6cf9c" stop-opacity=".25"/><stop offset="1" stop-color="#f6cf9c" stop-opacity="0"/></radialGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dfb8"/><stop offset=".2" stop-color="#a88f72"/><stop offset="1" stop-color="#5f5042"/></linearGradient>
+    <linearGradient id="bal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5f5042"/><stop offset=".55" stop-color="#7a6754"/><stop offset="1" stop-color="#4c4036"/></linearGradient>
+    <linearGradient id="plinth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8d775f"/><stop offset="1" stop-color="#4f4237"/></linearGradient>
+    <filter id="haze"><feGaussianBlur stdDeviation="4"/></filter><filter id="soft"><feGaussianBlur stdDeviation="3"/></filter><filter id="glow"><feGaussianBlur stdDeviation="9"/></filter>
+    <radialGradient id="vig" cx=".6" cy=".45" r=".9"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1a1410" stop-opacity=".35"/></radialGradient></defs>
+  <rect width="100%" height="${hz}" fill="url(#sky)"/>
+  <rect y="${hz}" width="100%" height="${WH - hz}" fill="url(#water)"/>
+  <rect width="100%" height="100%" fill="url(#sun)"/>
+  <circle cx="${sunX}" cy="${hz - 46}" r="38" fill="#fff6e2" filter="url(#glow)"/>
+  <g fill="#8a8580" opacity=".45" filter="url(#haze)">${shore}</g>
+  <g filter="url(#soft)">${glints}</g>
+  <!-- balustrade -->
+  <g fill="url(#bal)">${bals}</g>
+  <g fill="none" stroke="#ffe3b8" stroke-opacity=".45" stroke-width="2.2" filter="url(#soft)">${rims}</g>
+  <rect x="0" y="${railY}" width="${WW}" height="46" fill="url(#rail)"/>
+  <rect x="0" y="${railY}" width="${WW}" height="3" fill="#fff1d8" opacity=".8"/>
+  <rect x="0" y="${railY + 46}" width="${WW}" height="10" fill="#5e4f40" opacity=".35"/>
+  <rect x="0" y="${WH - 60}" width="${WW}" height="60" fill="url(#plinth)"/>
+  <!-- palm framing the right edge -->
+  <path d="${trunk}" stroke="#2c2721" stroke-width="30" fill="none" stroke-linecap="round"/>
+  <path d="${crown(77, WW * 0.86, WH * 0.06, 520, 12, -0.6, 3.6)}" fill="#2c2721" opacity=".96" filter="url(#soft)"/>
+  <rect width="100%" height="100%" fill="url(#vig)"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>`;
+}
+
+// The Platform — a lamplit wall of navy lacquer index drawers, one drawer open
+function widePlatform() {
+  const cols = 5, rows = 5, x0 = WW * 0.58, y0 = WH * -0.04, cw = (WW * 1.1 - x0) / cols, ch = (WH * 1.1) / rows;
+  let drawers = '';
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const x = x0 + c * cw, y = y0 + r * ch, open = (r === 2 && c === 1);
+    const fx = x + 14, fy = y + 14, fw = cw - 28, fh = ch - 28;
+    if (open) {
+      drawers += `<rect x="${x + 4}" y="${y + 4}" width="${cw - 8}" height="${ch - 8}" fill="#070b12"/>`;
+      const d = 46; // drawer pulled toward the viewer: front grows and drops
+      drawers += `<path d="M${fx - d},${fy - 6} L${fx},${fy - 40} L${fx + fw},${fy - 40} L${fx + fw + d},${fy - 6}Z" fill="#0f1724"/>`;
+      for (let k = 0; k < 7; k++) drawers += `<path d="M${fx - d + 18 + k * 4},${fy - 4 - k * 4.5} L${fx + fw + d - 18 - k * 4},${fy - 4 - k * 4.5} L${fx + fw + d - 22 - k * 4},${fy - 20 - k * 4.5} L${fx - d + 22 + k * 4},${fy - 20 - k * 4.5}Z" fill="${k % 2 ? '#efe4cf' : '#e2d3b8'}" opacity="${0.96 - k * 0.07}"/>`;
+      drawers += `<rect x="${fx - d}" y="${fy - 6}" width="${fw + d * 2}" height="${fh + d * 0.8}" fill="url(#lacq)" filter="url(#drop)"/>`;
+      drawers += `<rect x="${fx - d}" y="${fy - 6}" width="${fw + d * 2}" height="3" fill="#f6dcae" opacity=".35"/>`;
+      drawers += pull(fx + fw / 2, fy + fh * 0.7 + 10, fw + d * 2) + label(fx + fw / 2, fy + fh * 0.34, fw + d * 2);
+    } else {
+      drawers += `<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" fill="url(#lacq)"/>`;
+      drawers += `<rect x="${fx}" y="${fy}" width="${fw}" height="2" fill="#f6dcae" opacity=".16"/><rect x="${fx}" y="${fy + fh - 2}" width="${fw}" height="2" fill="#000" opacity=".35"/>`;
+      drawers += pull(fx + fw / 2, fy + fh * 0.66, fw) + label(fx + fw / 2, fy + fh * 0.32, fw);
+    }
+  }
+  function pull(cx, cy, fw) { const w = fw * 0.34; return `<path d="M${cx - w / 2},${cy - 6} h${w} v4 a${w / 2},${w * 0.32} 0 0 1 ${-w},0z" fill="url(#brass)"/><path d="M${cx - w / 2},${cy - 6} h${w}" stroke="#fff0c8" stroke-opacity=".5" stroke-width="1.5"/>`; }
+  function label(cx, cy, fw) { const w = fw * 0.42, h = w * 0.42; return `<rect x="${cx - w / 2 - 4}" y="${cy - h / 2 - 4}" width="${w + 8}" height="${h + 8}" rx="2" fill="url(#brass)"/><rect x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" fill="#efe5d1"/><rect x="${cx - w * 0.3}" y="${cy - 1}" width="${w * 0.6}" height="1.4" fill="#b8976a" opacity=".55"/>`; }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WW}" height="${WH}" viewBox="0 0 ${WW} ${WH}">
+  <defs>${grainDef('grain', 0.06)}
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d1420"/><stop offset=".5" stop-color="#16212f"/><stop offset="1" stop-color="#1b2738"/></linearGradient>
+    <linearGradient id="lacq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3b52"/><stop offset=".5" stop-color="#1f2d40"/><stop offset="1" stop-color="#172232"/></linearGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0d49c"/><stop offset=".5" stop-color="#b8976a"/><stop offset="1" stop-color="#7d6440"/></linearGradient>
+    <radialGradient id="lamp" cx=".6" cy=".22" r=".62"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".55"/><stop offset=".4" stop-color="#ffc98a" stop-opacity=".16"/><stop offset="1" stop-color="#ffc98a" stop-opacity="0"/></radialGradient>
+    <filter id="drop" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="22" stdDeviation="14" flood-color="#000" flood-opacity=".55"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+    <radialGradient id="vig" cx=".66" cy=".42" r=".85"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#05080d" stop-opacity=".6"/></radialGradient></defs>
+  <rect width="100%" height="100%" fill="url(#wall)"/>
+  <rect x="${x0 - 24}" y="${y0 - 24}" width="${WW}" height="${WH}" fill="#101925"/>
+  <rect x="${x0 - 24}" y="${y0 - 24}" width="${WW}" height="3" fill="#b8976a" opacity=".5"/>
+  ${drawers}
+  <rect width="100%" height="100%" fill="url(#lamp)" style="mix-blend-mode:screen"/>
+  <path d="${crown(88, WW * 0.98, -260, 900, 9, 1.7, 3.7)}" fill="#03060b" opacity=".42" filter="url(#soft)"/>
+  <rect width="100%" height="100%" fill="url(#vig)"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>`;
+}
+
 // ── render pipeline ──
 (async () => {
   const browser = await chromium.launch();
@@ -458,8 +547,8 @@ function wideIntracoastal() {
   const scenes = { 'oversee-estate': sceneEstate, 'oversee-administration': sceneAdmin, 'oversee-projects': sceneProject, 'oversee-relationships': sceneRelations, 'oversee-vendors': sceneVendors, 'oversee-travel': sceneTravel };
   if (process.argv[3] !== 'wide-only') for (const [n, f] of Object.entries(scenes)) await render(n, f(), SW, SH, { quality: 80 });
   // wide page openings
-  const opens = { 'open-about': () => wideIntracoastal(), 'open-engagements': () => wide(sceneEstate, EXT.estate),
-    'open-advisors': () => wide(sceneAdmin, EXT.admin, { dark: true }), 'open-platform': () => wide(sceneProject, EXT.projects, { dark: true }),
+  const opens = { 'open-about': () => wideAbout(), 'open-engagements': () => wide(sceneEstate, EXT.estate),
+    'open-advisors': () => wide(sceneAdmin, EXT.admin, { dark: true }), 'open-platform': () => widePlatform(),
     'open-contact': () => wide(sceneRelations, EXT.relations), 'open-privacy': () => wide(sceneVendors, EXT.vendors) };
   for (const [n, f] of Object.entries(opens)) await render(n, f(), WW, WH, { quality: 76 });
   await browser.close();
