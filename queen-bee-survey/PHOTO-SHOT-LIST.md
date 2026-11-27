@@ -1,6 +1,6 @@
 # Queen Bee survey: photos to gather
 
-57 photos are needed: 52 new photos for the sections added from the theme notes, and 5 replacements for original photos that were unavailable or showed the wrong subject.
+56 photos are needed: 52 new photos for the sections added from the theme notes, and 4 replacements for original photos that were unavailable or showed the wrong subject.
 
 ## How to deliver them
 
@@ -16,7 +16,6 @@
 |---|---|---|
 | 15 (replace) | Golf cart decorated with big yellow tulle bows | Golf carts: Buzz Buggies → Yellow tulle bows |
 | 21 (replace) | Mini cornbread muffins with whipped honey butter | Luncheon: A Feast Fit for a Queen → Mini cornbread with whipped honey butter |
-| 28 (replace) | Sparkling honey-lavender lemonade in tall glasses with lavender sprigs | On-course refreshments: The Honey Hole → Honey-lavender lemonade<br>Signature drinks → The Sweet Bee (Honey, I'm Driving) |
 | 35 (replace) | Gold bee trophy or award statue (replaces current photo, which shows a gold rabbit, not a bee) | Awards & prizes → Golden bee trophies |
 | 40 (replace) | Large glass candy jar filled with gold and yellow wrapped candies (Guess the Honey Pot game) | Games & entertainment → Guess the Honey Pot |
 | N01 | Elegant invitation card with a gold-foil bee emblem wearing a small crown, black and ivory card stock, golf course softly blurred behind | Event name → The Queen Bee Invitational |
@@ -78,7 +77,6 @@ Generate each image below as a realistic photograph in this style: elegant ladie
 
 - 15.jpg: Golf cart decorated with big yellow tulle bows
 - 21.jpg: Mini cornbread muffins with whipped honey butter
-- 28.jpg: Sparkling honey-lavender lemonade in tall glasses with lavender sprigs
 - 35.jpg: Gold bee trophy or award statue (replaces current photo, which shows a gold rabbit, not a bee)
 - 40.jpg: Large glass candy jar filled with gold and yellow wrapped candies (Guess the Honey Pot game)
 - N01.jpg: Elegant invitation card with a gold-foil bee emblem wearing a small crown, black and ivory card stock, golf course softly blurred behind

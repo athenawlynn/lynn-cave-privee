@@ -71,7 +71,8 @@ window.CATEGORIES = [
     ["Honey, I Got a Birdie!"], ["Just Wingin' It"]
   ]},
   { id: "centerpieces", ch: "decor", kind: "photo", title: "Centerpieces", blurb: "The luncheon table centerpiece.", opts: [
-    ["Sunflowers and honey jars", "08"], ["Roses and hydrangeas", "09"], ["Honeycomb vessels", "10"]
+    ["Sunflowers and honey jars", "08"], ["Roses and hydrangeas", "09"], ["Honeycomb vessels", "10"],
+    ["Honey jar favors as the centerpiece", "29", "Doubles as a take-home gift"]
   ]},
   { id: "takehome", ch: "decor", kind: "photo", title: "Centerpieces the ladies take home", blurb: "Like Denim & Diamonds: centerpieces that double as gifts.", opts: [
     ["The Honey Pot", "N16", "Flowering plants in honeycomb-pattern pots"],
@@ -99,6 +100,9 @@ window.CATEGORIES = [
   { id: "carts", ch: "course", kind: "photo", title: "Golf carts: Buzz Buggies", blurb: "All decorations removable and clear of the driver's view.", opts: [
     ["Yellow tulle bows", "15"], ["Bumblebee carts", "16"], ["Royal team signs", "17"],
     ["Royalty on the Move sign", "N22"], ["Bag of honey treats for each cart", "N23"]
+  ]},
+  { id: "coursedecor", ch: "course", kind: "photo", title: "Course decorations", blurb: "Décor on the tees and around the course.", opts: [
+    ["Honeycomb tee signs", "48"], ["Bumblebee cart", "16"], ["Queen Bee hanging sign", "17"]
   ]},
   { id: "holes", ch: "course", kind: "text", hero: "N24", title: "Hole themes", blurb: "Hexagonal tee sign on each hole. Hole numbers will be matched to the real course layout.", opts: [
     ["Hole 1 · Welcome to the Hive", null, "Let the royal round begin!"],
@@ -149,7 +153,7 @@ window.CATEGORIES = [
   ]},
   { id: "drinks", ch: "food", kind: "photo", title: "Signature drinks", blurb: "Cocktails and a mocktail for the reception.", opts: [
     ["The Bee's Knees", "26", "Gin, lemon and honey syrup in a coupe"],
-    ["The Queen's Fizz", "27", "Prosecco, lemon and a touch of honey"],
+    ["The Queen's Bubbly (The Queen's Fizz)", "27", "Prosecco, lemon, a touch of honey syrup and elderflower"],
     ["The Sweet Bee (Honey, I'm Driving)", "28", "Sparkling honey-lavender lemonade, no alcohol"]
   ]},
 
@@ -240,5 +244,5 @@ window.SEGMENTS = [
 
 window.ROLES = ["Lead", "Co-plan", "Assist", "Pass"];
 
-// Photos still to source. Existing photos 15, 21, 28 and 40 were unavailable; 35 shows the wrong subject.
-window.PENDING_ORIGINALS = ["15", "21", "28", "35", "40"];
+// Photos still to source. Existing photos 15, 21 and 40 were unavailable; 35 shows the wrong subject.
+window.PENDING_ORIGINALS = ["15", "21", "35", "40"];
