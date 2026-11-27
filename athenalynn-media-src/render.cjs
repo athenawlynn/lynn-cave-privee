@@ -569,6 +569,72 @@ function wideLoggia() {
 </svg>`;
 }
 
+
+// The Platform — an estate at blue hour: lit limestone facade, dark garden left, pool in front
+function wideBlueHour() {
+  const r = rng(71), fx = 1180, fTop = 300, gY = 1010, poolY = 1080;
+  // facade geometry
+  const bays = 5, bw = (WW - fx - 40) / bays;
+  let doors = '', reflections = '', upper = '', lanterns = '', uplights = '';
+  for (let i = 0; i < bays; i++) {
+    const cx = fx + 40 + bw * (i + 0.5), dw = bw * 0.56, dh = 330, dx = cx - dw / 2, dy = gY - dh;
+    doors += `<path d="${arch(dx - 14, dy - 14, dw + 28, dh + 14)}" fill="#cdb894"/>`;
+    doors += `<path d="${arch(dx, dy, dw, dh)}" fill="url(#glow)"/>`;
+    for (let k = 1; k < 4; k++) doors += `<line x1="${dx}" y1="${dy + dw / 2 + k * (dh - dw / 2) / 4}" x2="${dx + dw}" y2="${dy + dw / 2 + k * (dh - dw / 2) / 4}" stroke="#4a3320" stroke-width="3"/>`;
+    doors += `<line x1="${cx}" y1="${dy}" x2="${cx}" y2="${gY}" stroke="#4a3320" stroke-width="4"/><path d="${arch(dx, dy, dw, dh)}" fill="none" stroke="#4a3320" stroke-width="4"/>`;
+    reflections += `<rect x="${dx + 6}" y="${poolY + 8}" width="${dw - 12}" height="${150 + r() * 60}" fill="#ffc77a" opacity=".45"/>`;
+    const uw = dw * 0.7, ux = cx - uw / 2, uy = fTop + 90;
+    const lit = r() > 0.35;
+    upper += `<rect x="${ux}" y="${uy}" width="${uw}" height="160" fill="${lit ? 'url(#glow2)' : '#2a2f38'}"/><rect x="${ux}" y="${uy}" width="${uw}" height="160" fill="none" stroke="#4a3320" stroke-width="3"/><line x1="${cx}" y1="${uy}" x2="${cx}" y2="${uy + 160}" stroke="#4a3320" stroke-width="3"/>`;
+    upper += `<rect x="${ux - 34}" y="${uy}" width="30" height="160" fill="#2d3d34"/><rect x="${ux + uw + 4}" y="${uy}" width="30" height="160" fill="#2d3d34"/>`;
+    upper += `<rect x="${ux - 20}" y="${uy + 168}" width="${uw + 40}" height="10" fill="#d8c6a4"/>`;
+    if (i < bays - 1) { const lx = fx + 40 + bw * (i + 1); lanterns += `<circle cx="${lx}" cy="${gY - 250}" r="70" fill="url(#halo)"/><rect x="${lx - 10}" y="${gY - 278}" width="20" height="34" rx="4" fill="#ffd9a0"/><rect x="${lx - 13}" y="${gY - 284}" width="26" height="8" fill="#2b2118"/>`; uplights += `<path d="M${lx},${gY} L${lx - 70},${fTop + 40} L${lx + 70},${fTop + 40}Z" fill="url(#cone)"/>`; }
+  }
+  let palms = '';
+  const P = [[1060, 1010, 820, 3], [1500, 1010, 900, 2.5], [2290, 1000, 860, 3], [700, 1030, 700, 2.4], [420, 1040, 560, 2]];
+  P.forEach(([x, base, h, w], i) => { palms += `<path d="M${x},${base} Q${x + 30},${base - h * 0.5} ${x + 10},${base - h}" stroke="#08111d" stroke-width="${w * 8}" fill="none"/><path d="${crown(500 + i, x + 10, base - h, 230 + h * 0.12, 11, -0.45, 3.6)}" fill="#08111d"/>`; });
+  let hedges = '';
+  for (let i = 0; i < 90; i++) { const x = r() * (fx + 140), y = 760 + r() * 260, rr = 30 + r() * 70; hedges += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${rr.toFixed(0)}" fill="${r() > 0.5 ? '#0d1c17' : '#11231b'}"/>`; }
+  let bloom = ''; for (let i = 0; i < 70; i++) { const x = fx - 60 + r() * 260, y = 560 + r() * 420; bloom += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(6 + r() * 14).toFixed(0)}" fill="#8e2b55" opacity="${(0.35 + r() * 0.4).toFixed(2)}"/>`; }
+  let gardenLights = ''; for (let i = 0; i < 9; i++) { const x = 80 + r() * (fx - 200), y = 940 + r() * 90; gardenLights += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="40" fill="url(#halo)" opacity=".6"/><circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="4" fill="#ffe2b0"/>`; }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WW}" height="${WH}" viewBox="0 0 ${WW} ${WH}">
+  <defs>${grainDef('grain', 0.06)}${stoneDef('st', 81)}
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1630"/><stop offset=".55" stop-color="#1d3360"/><stop offset="1" stop-color="#3a5080"/></linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f8370"/><stop offset=".55" stop-color="#d9c8a6"/><stop offset="1" stop-color="#efdcb4"/></linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffdca0"/><stop offset="1" stop-color="#e9984e"/></linearGradient>
+    <linearGradient id="glow2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd38f"/><stop offset="1" stop-color="#d98a45"/></linearGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".75"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cone" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff0cf" stop-opacity=".5"/><stop offset="1" stop-color="#fff0cf" stop-opacity="0"/></linearGradient>
+    <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d4a5c"/><stop offset="1" stop-color="#0a1f2c"/></linearGradient>
+    <linearGradient id="terrace" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9a47e"/><stop offset="1" stop-color="#6d5d45"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="5"/></filter><filter id="blur"><feGaussianBlur stdDeviation="14"/></filter>
+    <radialGradient id="vig" cx=".7" cy=".5" r=".9"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#03060d" stop-opacity=".6"/></radialGradient></defs>
+  <rect width="100%" height="100%" fill="url(#sky)"/>
+  <!-- facade -->
+  <path d="M${fx},${gY} L${fx},${fTop} L${WW},${fTop} L${WW},${gY}Z" fill="url(#wall)"/>
+  <rect x="${fx}" y="${fTop}" width="${WW - fx}" height="${gY - fTop}" filter="url(#st)" opacity=".3"/>
+  <path d="M${fx - 40},${fTop} L${WW},${fTop} L${WW},${fTop - 34} L${fx + 10},${fTop - 34}Z" fill="#3b2a22"/>
+  <rect x="${fx - 40}" y="${fTop}" width="${WW - fx + 40}" height="12" fill="#e4d3b2"/>
+  <rect x="${fx}" y="${fTop + 270}" width="${WW - fx}" height="16" fill="#e7d7b8"/>
+  ${uplights}${upper}${doors}${lanterns}
+  <!-- garden -->
+  <g filter="url(#soft)">${bloom}</g>
+  <g filter="url(#soft)">${hedges}</g>
+  ${gardenLights}
+  ${palms}
+  <!-- terrace and pool -->
+  <rect x="0" y="${gY}" width="${WW}" height="${poolY - gY}" fill="url(#terrace)"/>
+  <rect x="0" y="${poolY}" width="${WW}" height="${WH - poolY}" fill="url(#pool)"/>
+  <rect x="0" y="${poolY}" width="${WW}" height="6" fill="#e3d2ae" opacity=".9"/>
+  <g filter="url(#blur)">${reflections}</g>
+  <g opacity=".25">${[0, 1, 2, 3, 4, 5, 6, 7].map(i => `<rect x="${fx + r() * (WW - fx)}" y="${poolY + 30 + i * 30}" width="${80 + r() * 160}" height="2" fill="#ffe3b5"/>`).join('')}</g>
+  <!-- loungers -->
+  <g fill="#1a1410">${[0, 1].map(i => `<path d="M${560 + i * 180},${gY + 40} l120,0 l30,-34 l12,6 l-28,40 l-134,0z"/>`).join('')}</g>
+  <rect width="100%" height="100%" fill="url(#vig)"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>`;
+}
+
 // ── render pipeline ──
 (async () => {
   const browser = await chromium.launch();
@@ -603,7 +669,7 @@ function wideLoggia() {
   if (process.argv[3] !== 'wide-only') for (const [n, f] of Object.entries(scenes)) await render(n, f(), SW, SH, { quality: 80 });
   // wide page openings
   const opens = { 'open-about': () => wideAbout(), 'open-engagements': () => wide(sceneEstate, EXT.estate),
-    'open-advisors': () => wide(sceneAdmin, EXT.admin, { dark: true }), 'open-platform': () => wideLoggia(), 'open-platform-drawers': () => widePlatform(),
+    'open-advisors': () => wide(sceneAdmin, EXT.admin, { dark: true }), 'open-platform': () => wideBlueHour(), 'open-platform-loggia': () => wideLoggia(), 'open-platform-drawers': () => widePlatform(),
     'open-contact': () => wide(sceneRelations, EXT.relations), 'open-privacy': () => wide(sceneVendors, EXT.vendors) };
   for (const [n, f] of Object.entries(opens)) await render(n, f(), WW, WH, { quality: 76 });
   await browser.close();

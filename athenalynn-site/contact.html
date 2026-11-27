@@ -476,7 +476,7 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
 </style>
   <link rel="stylesheet" href="/site.css" />
 </head>
-<body class="sys page-contact">
+<body class="al-site page-contact">
 <header class="site-header">
   <div class="site-bar">
     <a href="/" class="site-logo">
@@ -489,36 +489,32 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
         <a href="/services">Engagements</a>
         <a href="/advisors">For Advisors</a>
         <a href="/theplatform">The Platform</a>
-        <a href="/contact" class="active">Contact</a>
+        <a href="/contact" class="active" aria-current="page">Contact</a>
         <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
     </nav>
-    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button id="siteHamburger" class="hamburger" type="button" aria-expanded="false" aria-controls="siteMobileMenu"><span class="ham-lines" aria-hidden="true"><span></span><span></span><span></span></span>Menu</button>
   </div>
 </header>
-<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+<nav id="siteMobileMenu" class="mobile-menu" aria-label="Mobile" hidden>
   <a href="/">Home</a>
   <a href="/about">About</a>
   <a href="/services">Engagements</a>
   <a href="/advisors">For Advisors</a>
   <a href="/theplatform">The Platform</a>
-  <a href="/contact" class="active">Contact</a>
+  <a href="/contact" class="active" aria-current="page">Contact</a>
   <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
-</div>
+</nav>
   
 
-<section class="po po--light po--short" style="--po-img: url(/media/open-contact.webp); --po-pos: 66% 50%;">
-  <div class="po-img" aria-hidden="true"></div>
-  <div class="po-scrim" aria-hidden="true"></div>
-  <div class="po-grain" aria-hidden="true"></div>
-  <div class="po-inner">
-    <div class="po-eyebrow">Private Introduction</div>
-    <h1 class="po-title">
+<section class="ah ah--reverse">
+  <figure class="ah-media" aria-hidden="true"><img src="/media/open-contact.webp" srcset="/media/open-contact-1200.webp 1200w, /media/open-contact.webp 2000w" sizes="(max-width: 48rem) 100vw, 60vw" width="2000" height="1125" alt="" fetchpriority="high" decoding="async" /></figure>
+  <div class="ah-copy">
+    <p class="ah-kicker">Private Introduction</p>
+    <h1 class="ah-title">
         <span class="ln"><span>Begin a</span></span>
         <span class="ln"><span><em>private</em></span></span>
         <span class="ln"><span><em>conversation.</em></span></span>
+    
     </h1>
   </div>
 </section>
@@ -621,13 +617,7 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
     <div class="conf-line">All engagements are conducted under strict confidentiality.</div>
   </main>
 
-  <div class="wrap" style="padding-top:0; padding-bottom:0;">
-    <footer>
-      <span>© 2026 Athena Lynn</span>
-      <span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:intro@athenalynn.com">intro@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span>
-      <span>Palm Beach, Florida</span>
-    </footer>
-  </div>
+
 
   <script>
     function handleSubmit(e) {
@@ -654,6 +644,18 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
     }
   </script>
 
+<footer class="al-footer">
+  <div class="al-footer-brand"><a href="/" class="al-footer-name">Athena Lynn</a><span class="al-footer-place">Palm Beach, Florida</span></div>
+  <nav class="al-footer-links" aria-label="Footer">
+    <a href="/">Home</a><a href="/about">About</a><a href="/services">Engagements</a><a href="/advisors">For Advisors</a><a href="/theplatform">The Platform</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a>
+  </nav>
+  <div class="al-footer-meta">
+    <span>Direct: <a href="mailto:intro@athenalynn.com">intro@athenalynn.com</a></span>
+    <span>&copy; 2026 Athena Lynn &middot; Life, Managed Properly.&trade;</span>
+    <span>All engagements are conducted under strict confidentiality.</span>
+  </div>
+</footer>
+
 <!-- MOBILE MENU -->
 
 
@@ -661,16 +663,22 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
 
 
 <script>
-(function(){
+(function () {
   var btn = document.getElementById('siteHamburger');
   var menu = document.getElementById('siteMobileMenu');
-  var cls = document.getElementById('siteMobileClose');
   if (!btn || !menu) return;
-  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
-  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
-  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
-  if (cls) cls.addEventListener('click', close);
-  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+  function set(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.classList.toggle('open', open);
+    menu.hidden = !open;
+  }
+  set(false);
+  btn.addEventListener('click', function () { set(menu.hidden); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); }
+  });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1024 && !menu.hidden) set(false); });
 })();
 </script>
 

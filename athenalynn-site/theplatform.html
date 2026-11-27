@@ -882,7 +882,7 @@
 </style>
   <link rel="stylesheet" href="/site.css" />
 </head>
-<body class="sys page-platform">
+<body class="al-site page-platform">
 <header class="site-header">
   <div class="site-bar">
     <a href="/" class="site-logo">
@@ -894,38 +894,34 @@
         <a href="/about">About</a>
         <a href="/services">Engagements</a>
         <a href="/advisors">For Advisors</a>
-        <a href="/theplatform" class="active">The Platform</a>
+        <a href="/theplatform" class="active" aria-current="page">The Platform</a>
         <a href="/contact">Contact</a>
         <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
     </nav>
-    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button id="siteHamburger" class="hamburger" type="button" aria-expanded="false" aria-controls="siteMobileMenu"><span class="ham-lines" aria-hidden="true"><span></span><span></span><span></span></span>Menu</button>
   </div>
 </header>
-<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+<nav id="siteMobileMenu" class="mobile-menu" aria-label="Mobile" hidden>
   <a href="/">Home</a>
   <a href="/about">About</a>
   <a href="/services">Engagements</a>
   <a href="/advisors">For Advisors</a>
-  <a href="/theplatform" class="active">The Platform</a>
+  <a href="/theplatform" class="active" aria-current="page">The Platform</a>
   <a href="/contact">Contact</a>
   <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
-</div>
+</nav>
 
-<section class="po po--dark" style="--po-img: url(/media/open-platform.webp); --po-pos: 72% 50%;">
-  <div class="po-img" aria-hidden="true"></div>
-  <div class="po-scrim" aria-hidden="true"></div>
-  <div class="po-grain" aria-hidden="true"></div>
-  <div class="po-inner">
-    <div class="po-eyebrow">The Private Household Portal</div>
-    <h1 class="po-title">
+<section class="ah ah--photo">
+  <div class="ah-copy">
+    <p class="ah-kicker">The Private Household Portal</p>
+    <h1 class="ah-title">
         <span class="ln"><span>One complete system.</span></span>
         <span class="ln"><span><em>Entirely managed for you.</em></span></span>
+    
     </h1>
-    <a class="po-link" href="#sample-portal">Explore the sample portal <span aria-hidden="true">&darr;</span></a>
+    <a class="ah-link" href="#sample-portal">Explore the sample portal <span aria-hidden="true">&darr;</span></a>
   </div>
+  <figure class="ah-media" aria-hidden="true"><img src="/media/open-platform.webp" srcset="/media/open-platform-1200.webp 1200w, /media/open-platform.webp 2000w" sizes="100vw" width="2000" height="1125" alt="" fetchpriority="high" decoding="async" /></figure>
 </section>
 
 <div class="page">
@@ -1135,15 +1131,12 @@
   </div><!-- /views-gallery -->
   </section>
 
-  <!-- ABOUT THE SYSTEM -->
-  <section class="platform-about">
-    <p class="section-body">The Platform is the private operating system behind every engagement. It holds a household's properties, staff, finances, travel, vendors, events and obligations in one live, secure view, configured to the household rather than fitted to off-the-shelf software. I design it, build it, populate it and run it personally, and principals see exactly what they choose to see.</p>
-  </section>
 
   <!-- THE PROBLEM -->
   <div class="section-label">The Problem</div>
-  <h2 class="section-h2">High-net-worth households don't lack resources.<br><em>They lack centralization.</em></h2>
+  <h2 class="section-h2">Several homes. <em>One clear view.</em></h2>
   <div class="section-divider"></div>
+  <p class="section-body">When a vendor renewal needs your approval, you can see what it covers, the cost, and when a decision is due. Once you’ve decided, I handle the follow-through and update the record.</p>
   <div class="pain-grid">
     <div class="pain-cell">
       <div class="pain-icon">Fragmentation</div>
@@ -1176,7 +1169,7 @@
   <div class="section-divider"></div>
   <p class="section-body">Each household is configured individually. Typical areas include:</p>
   <div class="feature-grid">
-      <article class="feature feature--lead">
+      <article class="feature">
         <div class="feature-copy"><h4>Properties</h4>
         <p>Every residence tracked with status, projects, staffing, and operational details across all locations.</p></div>
         <div class="feature-detail" aria-hidden="true">
@@ -1287,14 +1280,20 @@
     <p class="walkthrough-note">The Platform is shown in person, configured with a sample household, during a private introduction.</p>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>&copy; 2026 Athena Lynn &nbsp;&middot;&nbsp; Palm Beach, Florida &nbsp;&middot;&nbsp; All engagements conducted under strict confidentiality.</p>
-    <p style="margin-top:12px"><span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:intro@athenalynn.com">intro@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span></p>
-  </footer>
-
 </div>
 
+
+<footer class="al-footer">
+  <div class="al-footer-brand"><a href="/" class="al-footer-name">Athena Lynn</a><span class="al-footer-place">Palm Beach, Florida</span></div>
+  <nav class="al-footer-links" aria-label="Footer">
+    <a href="/">Home</a><a href="/about">About</a><a href="/services">Engagements</a><a href="/advisors">For Advisors</a><a href="/theplatform">The Platform</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a>
+  </nav>
+  <div class="al-footer-meta">
+    <span>Direct: <a href="mailto:intro@athenalynn.com">intro@athenalynn.com</a></span>
+    <span>&copy; 2026 Athena Lynn &middot; Life, Managed Properly.&trade;</span>
+    <span>All engagements are conducted under strict confidentiality.</span>
+  </div>
+</footer>
 
 <!-- MOBILE MENU -->
 
@@ -1303,16 +1302,22 @@
 
 
 <script>
-(function(){
+(function () {
   var btn = document.getElementById('siteHamburger');
   var menu = document.getElementById('siteMobileMenu');
-  var cls = document.getElementById('siteMobileClose');
   if (!btn || !menu) return;
-  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
-  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
-  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
-  if (cls) cls.addEventListener('click', close);
-  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+  function set(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.classList.toggle('open', open);
+    menu.hidden = !open;
+  }
+  set(false);
+  btn.addEventListener('click', function () { set(menu.hidden); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); }
+  });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1024 && !menu.hidden) set(false); });
 })();
 </script>
 
@@ -1329,8 +1334,8 @@
   tabs.forEach(function (t, i) {
     t.addEventListener('click', function () { show(i); });
     t.addEventListener('keydown', function (e) {
-      var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (k) { e.preventDefault(); show((i + k + tabs.length) % tabs.length, true); }
+      var n = tabs.length, j = e.key === 'ArrowRight' ? (i + 1) % n : e.key === 'ArrowLeft' ? (i - 1 + n) % n : e.key === 'Home' ? 0 : e.key === 'End' ? n - 1 : -1;
+      if (j > -1) { e.preventDefault(); show(j, true); }
     });
   });
   show(0);

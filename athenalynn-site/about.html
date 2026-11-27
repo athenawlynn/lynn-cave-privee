@@ -419,7 +419,7 @@ nav a:hover { opacity: 1; }
 </style>
   <link rel="stylesheet" href="/site.css" />
 </head>
-<body class="sys page-about">
+<body class="al-site page-about">
 <header class="site-header">
   <div class="site-bar">
     <a href="/" class="site-logo">
@@ -428,42 +428,38 @@ nav a:hover { opacity: 1; }
     </a>
     <nav class="site-nav" aria-label="Primary">
         <a href="/">Home</a>
-        <a href="/about" class="active">About</a>
+        <a href="/about" class="active" aria-current="page">About</a>
         <a href="/services">Engagements</a>
         <a href="/advisors">For Advisors</a>
         <a href="/theplatform">The Platform</a>
         <a href="/contact">Contact</a>
         <a href="https://portal.athenalynn.com" target="_blank" class="portal-btn">Client Portal</a>
     </nav>
-    <button id="siteHamburger" class="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button id="siteHamburger" class="hamburger" type="button" aria-expanded="false" aria-controls="siteMobileMenu"><span class="ham-lines" aria-hidden="true"><span></span><span></span><span></span></span>Menu</button>
   </div>
 </header>
-<div id="siteMobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-  <button id="siteMobileClose" class="mobile-close-btn" aria-label="Close">&times;</button>
+<nav id="siteMobileMenu" class="mobile-menu" aria-label="Mobile" hidden>
   <a href="/">Home</a>
-  <a href="/about" class="active">About</a>
+  <a href="/about" class="active" aria-current="page">About</a>
   <a href="/services">Engagements</a>
   <a href="/advisors">For Advisors</a>
   <a href="/theplatform">The Platform</a>
   <a href="/contact">Contact</a>
   <a href="https://portal.athenalynn.com" target="_blank" class="m-portal">Client Portal</a>
-</div>
+</nav>
 
 
 
-<section class="po po--light" style="--po-img: url(/media/open-about.webp); --po-pos: 60% 50%;">
-  <div class="po-img" aria-hidden="true"></div>
-  <div class="po-scrim" aria-hidden="true"></div>
-  <div class="po-grain" aria-hidden="true"></div>
-  <div class="po-inner">
-    <div class="po-eyebrow">About</div>
-    <h1 class="po-title">
+<section class="ah ah--split">
+  <div class="ah-copy">
+    <p class="ah-kicker">About</p>
+    <h1 class="ah-title">
         <span class="ln"><span>One presence.</span></span>
         <span class="ln"><span><em>Complete integration.</em></span></span>
+    
     </h1>
   </div>
+  <figure class="ah-media" aria-hidden="true"><img src="/media/open-about.webp" srcset="/media/open-about-1200.webp 1200w, /media/open-about.webp 2000w" sizes="(max-width: 48rem) 100vw, 60vw" width="2000" height="1125" alt="" fetchpriority="high" decoding="async" /></figure>
 </section>
 
 <main>
@@ -560,14 +556,28 @@ nav a:hover { opacity: 1; }
       </div>
     </div>
 
+    <section class="al-callout" aria-label="Private introduction">
+      <h2>Selective by <em>design.</em></h2>
+      <p>My engagement portfolio is intentionally limited to preserve standard and discretion. If there is alignment, next steps are shared privately.</p>
+      <div class="cta-row"><a href="/contact" class="btn-primary">Private Introduction</a></div>
+    </section>
   </div><!-- /content -->
 </main>
 
-<footer class="conf">
-  All engagements are conducted under strict confidentiality. &nbsp;·&nbsp; © 2026 Athena Lynn &nbsp;·&nbsp; Palm Beach, Florida
-  <div style="margin-top:14px"><span class="footer-links"><span>Direct: <a class="footer-email" href="mailto:intro@athenalynn.com">intro@athenalynn.com</a></span><a href="/advisors">For Advisors</a><a href="/privacy">Privacy</a></span></div>
-</footer>
 
+
+
+<footer class="al-footer">
+  <div class="al-footer-brand"><a href="/" class="al-footer-name">Athena Lynn</a><span class="al-footer-place">Palm Beach, Florida</span></div>
+  <nav class="al-footer-links" aria-label="Footer">
+    <a href="/">Home</a><a href="/about">About</a><a href="/services">Engagements</a><a href="/advisors">For Advisors</a><a href="/theplatform">The Platform</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a>
+  </nav>
+  <div class="al-footer-meta">
+    <span>Direct: <a href="mailto:intro@athenalynn.com">intro@athenalynn.com</a></span>
+    <span>&copy; 2026 Athena Lynn &middot; Life, Managed Properly.&trade;</span>
+    <span>All engagements are conducted under strict confidentiality.</span>
+  </div>
+</footer>
 
 <!-- MOBILE MENU -->
 
@@ -576,16 +586,22 @@ nav a:hover { opacity: 1; }
 
 
 <script>
-(function(){
+(function () {
   var btn = document.getElementById('siteHamburger');
   var menu = document.getElementById('siteMobileMenu');
-  var cls = document.getElementById('siteMobileClose');
   if (!btn || !menu) return;
-  function open() { btn.classList.add('open'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
-  function close() { btn.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; }
-  btn.addEventListener('click', function(){ menu.classList.contains('open') ? close() : open(); });
-  if (cls) cls.addEventListener('click', close);
-  menu.addEventListener('click', function(e){ if(e.target===menu) close(); });
+  function set(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.classList.toggle('open', open);
+    menu.hidden = !open;
+  }
+  set(false);
+  btn.addEventListener('click', function () { set(menu.hidden); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); }
+  });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1024 && !menu.hidden) set(false); });
 })();
 </script>
 
