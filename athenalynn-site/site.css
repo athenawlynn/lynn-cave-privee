@@ -668,3 +668,14 @@ body.page-home .cine-keyline { margin-bottom: 1.5rem; }
 @media (max-width: 48rem) {
   body.page-home .cine-scrim { background: linear-gradient(0deg, rgba(17,28,42,.94) 0%, rgba(17,28,42,.8) 50%, rgba(17,28,42,.35) 80%, rgba(17,28,42,.15) 100%) !important; }
 }
+
+/* Home opening: a little taller, show more of the top of the photo */
+body.page-home .cine { min-height: clamp(28rem, 68svh, 46rem); }
+body.page-home .cine-photo { object-position: 60% 18%; }
+@media (max-width: 48rem) {
+  body.page-home .cine { min-height: clamp(32rem, 78svh, 40rem); }
+  body.page-home .cine-photo { object-position: 38% 22%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  body.page-home .cine-drift { transform-origin: 50% 0%; }
+}
