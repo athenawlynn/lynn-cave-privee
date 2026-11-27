@@ -654,3 +654,17 @@ body.al-site main.wrap, body.al-site .content, body.al-site .page { padding-bott
 }
 body.page-home .al-cards { margin-top: 2.5rem; }
 @media (max-width: 48rem) { body.page-home .al-cards { margin-top: 2rem; } }
+
+/* Home opening: smaller photo panel */
+body.page-home .cine { min-height: clamp(26rem, 60svh, 40rem); }
+body.page-home .cine-content { padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 5vw, 4.5rem); }
+body.page-home .cine-title { font-size: clamp(2.8rem, 5.6vw, 5.2rem); margin-bottom: 1.25rem; }
+body.page-home .cine-eyebrow { margin-bottom: 1rem; }
+body.page-home .cine-keyline { margin-bottom: 1.5rem; }
+@media (max-width: 48rem) {
+  body.page-home .cine { min-height: clamp(30rem, 72svh, 36rem); }
+  body.page-home .cine-content { padding: 1.5rem 1.25rem 1.75rem; }
+}
+@media (max-width: 48rem) {
+  body.page-home .cine-scrim { background: linear-gradient(0deg, rgba(17,28,42,.94) 0%, rgba(17,28,42,.8) 50%, rgba(17,28,42,.35) 80%, rgba(17,28,42,.15) 100%) !important; }
+}
