@@ -89,7 +89,7 @@
     }).join("");
     $("me").hidden = !me;
     $("meName").textContent = me || "";
-    $("voteFs").disabled = $("roleFs").disabled = !me;
+    $("startBtn").hidden = !!me;
     $("doneVote").classList.toggle("is-done", !!(me && mine().voteDone));
     $("doneRole").classList.toggle("is-done", !!(me && mine().roleDone));
     $("doneVote").textContent = me && mine().voteDone ? "Part 1 submitted ✓" : "I'm done with Part 1";
@@ -105,6 +105,18 @@
   $("switch").addEventListener("click", () => { $("who").scrollIntoView(); });
 
   /* ---------- edits ---------- */
+  function askName() {
+    $("who").scrollIntoView({ block: "center" });
+    $("who").classList.add("nudge"); setTimeout(() => $("who").classList.remove("nudge"), 2200);
+    toast("Tap your name first, then make your picks.");
+  }
+  $("startBtn").addEventListener("click", askName);
+  // Before a name is chosen, taps on options lead to the name buttons instead of being lost.
+  document.addEventListener("click", (e) => {
+    if (me) return;
+    const hit = e.target.closest("#voteFs label, #roleFs label, #doneVote, #doneRole, #note");
+    if (hit) { e.preventDefault(); askName(); }
+  }, true);
   document.addEventListener("change", (e) => {
     if (!me) return;
     const t = e.target, b = mine();
@@ -113,6 +125,7 @@
     else return;
     queueSave();
   });
+  $("note").addEventListener("focus", () => { if (!me) { $("note").blur(); askName(); } });
   $("note").addEventListener("input", (e) => { if (!me) return; mine().note = e.target.value; queueSave(); });
   $("doneVote").addEventListener("click", () => { if (!me) return; mine().voteDone = true; queueSave(true); renderWho(); toast("Part 1 submitted. Thank you!"); });
   $("doneRole").addEventListener("click", () => { if (!me) return; mine().roleDone = true; queueSave(true); renderWho(); toast("Part 2 submitted. Thank you!"); });

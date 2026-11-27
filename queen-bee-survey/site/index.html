@@ -71,7 +71,8 @@ main{display:grid;gap:56px;padding-block:36px 72px}
 .chapter-head p{margin:0;color:var(--muted);font-size:15px}
 
 fieldset{border:0;margin:0;padding:0;min-width:0}
-fieldset:disabled{opacity:.55}
+.who.nudge{box-shadow:0 0 0 3px var(--honey);transition:box-shadow .2s}
+.startbtn{margin-left:auto;border:0;border-radius:999px;background:var(--honey);color:#2b2005;font-weight:700;padding:7px 16px;font-size:14px}
 .cat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:14px}
 .cat-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 14px}
 .cat-head h4{font-size:26px;line-height:1.15}
@@ -190,6 +191,7 @@ footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bott
 <div class="bar">
   <div class="in">
     <nav aria-label="Sections"><a href="#vote">Part 1 · Vote</a><a href="#volunteer">Part 2 · Volunteer</a><a href="#results">Results</a></nav>
+    <button class="startbtn" id="startBtn" type="button">Tap your name to start</button>
     <div class="me" id="me" hidden>Voting as <b id="meName"></b><button class="linkbtn" id="switch" type="button">Switch</button><span class="save" id="save" aria-live="polite"></span></div>
   </div>
 </div>
@@ -208,7 +210,7 @@ footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bott
       <h2>Vote for the ideas you love</h2>
       <p>Tick as many as you like in each section. Nothing is pre-selected, and an unticked option isn't a "no". Photos are inspiration, not confirmed purchases.</p>
     </div>
-    <fieldset id="voteFs" disabled><div id="chapters"></div>
+    <fieldset id="voteFs"><div id="chapters"></div>
       <div class="cat" style="margin-top:28px">
         <label class="lbl" for="note">Other ideas or concerns</label>
         <textarea id="note" rows="4" placeholder="Anything we missed, or anything you'd rather avoid"></textarea>
@@ -224,7 +226,7 @@ footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bott
       <p>Choose Lead, Co-plan or Assist for anything you'd enjoy, or Pass. These are preferences, not final assignments. You'll see who else has offered under each item.</p>
     </div>
     <div class="confirm" style="margin-top:18px"><b>Already done:</b> date, clubhouse and course booked for Feb 4, 2027 by Mo, Sharon and Derek, and listed in ForeTees.</div>
-    <fieldset id="roleFs" disabled><div id="segments" style="display:grid;gap:18px;margin-top:18px"></div>
+    <fieldset id="roleFs"><div id="segments" style="display:grid;gap:18px;margin-top:18px"></div>
       <div class="done-row" style="margin-top:18px"><button class="btn" type="button" id="doneRole">I'm done with Part 2</button><span class="muted" id="doneRoleMsg"></span></div>
     </fieldset>
   </section>
