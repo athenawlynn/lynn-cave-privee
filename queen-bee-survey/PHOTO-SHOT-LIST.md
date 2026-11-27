@@ -1,6 +1,6 @@
 # Queen Bee survey: photos to gather
 
-56 photos are needed: 52 new photos for the sections added from the theme notes, and 4 replacements for original photos that were unavailable or showed the wrong subject.
+52 photos are needed: 52 new photos for the sections added from the theme notes, and 0 replacements for original photos that were unavailable or showed the wrong subject.
 
 ## How to deliver them
 
@@ -14,10 +14,6 @@
 
 | Code | What to show | Used in the survey |
 |---|---|---|
-| 15 (replace) | Golf cart decorated with big yellow tulle bows | Golf carts: Buzz Buggies → Yellow tulle bows |
-| 21 (replace) | Mini cornbread muffins with whipped honey butter | Luncheon: A Feast Fit for a Queen → Mini cornbread with whipped honey butter |
-| 35 (replace) | Gold bee trophy or award statue (replaces current photo, which shows a gold rabbit, not a bee) | Awards & prizes → Golden bee trophies |
-| 40 (replace) | Large glass candy jar filled with gold and yellow wrapped candies (Guess the Honey Pot game) | Games & entertainment → Guess the Honey Pot |
 | N01 | Elegant invitation card with a gold-foil bee emblem wearing a small crown, black and ivory card stock, golf course softly blurred behind | Event name → The Queen Bee Invitational |
 | N02 | Whimsical yellow-and-white flower arrangement with small bee picks, sitting on a putting green next to a flag | Event name → The Buzz on the Greens |
 | N03 | Gold crystal bee brooch pinned to a black ladies' golf polo or white visor, close-up | Event name → Queens of the Green |
@@ -75,10 +71,6 @@
 
 Generate each image below as a realistic photograph in this style: elegant ladies' country-club golf event, ivory, sage green, honey yellow, black and antique-gold accents, natural daylight, no cartoon bees, no visible text unless stated. Save each with the file name given.
 
-- 15.jpg: Golf cart decorated with big yellow tulle bows
-- 21.jpg: Mini cornbread muffins with whipped honey butter
-- 35.jpg: Gold bee trophy or award statue (replaces current photo, which shows a gold rabbit, not a bee)
-- 40.jpg: Large glass candy jar filled with gold and yellow wrapped candies (Guess the Honey Pot game)
 - N01.jpg: Elegant invitation card with a gold-foil bee emblem wearing a small crown, black and ivory card stock, golf course softly blurred behind
 - N02.jpg: Whimsical yellow-and-white flower arrangement with small bee picks, sitting on a putting green next to a flag
 - N03.jpg: Gold crystal bee brooch pinned to a black ladies' golf polo or white visor, close-up

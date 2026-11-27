@@ -144,7 +144,7 @@ window.CATEGORIES = [
   ]},
   { id: "luncheon", ch: "food", kind: "photo", title: "Luncheon: A Feast Fit for a Queen", blurb: "Pick the dishes you'd like on the menu.", opts: [
     ["Honey-glazed chicken skewers", "18"], ["Honey-Dijon salmon", "19"], ["Queen's Garden Salad (goat cheese, pears, honey vinaigrette)", "20"],
-    ["Mini cornbread with whipped honey butter", "21"], ["Roasted vegetable and quinoa garden bowl (vegetarian)", "N39"],
+    ["Honey-glazed cornbread with whipped honey butter", "21"], ["Roasted vegetable and quinoa garden bowl (vegetarian)", "N39"],
     ["Honey-glazed carrots", "N40"], ["Lemon-herb roasted baby potatoes", "N41"]
   ]},
   { id: "desserts", ch: "food", kind: "photo", title: "Desserts: The Sweet Spot", blurb: "The dessert display.", opts: [
@@ -176,7 +176,7 @@ window.CATEGORIES = [
     ["Because every lady deserves to be Queen Bee for a day!"]
   ]},
   { id: "prizes", ch: "gifts", kind: "photo", title: "Awards & prizes", blurb: "What the winners receive.", opts: [
-    ["Royal crowns", "34"], ["Golden bee trophies", "35"], ["Honey gift baskets", "36"], ["Golf shop gift certificates", "37"]
+    ["Royal crowns", "34"], ["Golden bee trophies", "35", "Custom trophy topped with a brass bee"], ["Honey gift baskets", "36"], ["Golf shop gift certificates", "37"]
   ]},
   { id: "awards", ch: "gifts", kind: "text", hero: "41", title: "Award categories: The Royal Coronation", blurb: "Which awards should we present?", opts: [
     ["The Queen Bees", null, "First-place team"], ["The Royal Court", null, "Second-place team"],
@@ -244,5 +244,5 @@ window.SEGMENTS = [
 
 window.ROLES = ["Lead", "Co-plan", "Assist", "Pass"];
 
-// Photos still to source. Existing photos 15, 21 and 40 were unavailable; 35 shows the wrong subject.
-window.PENDING_ORIGINALS = ["15", "21", "35", "40"];
+// All original photos are now in place (15, 21, 35 and 40 replaced in round 3).
+window.PENDING_ORIGINALS = [];
