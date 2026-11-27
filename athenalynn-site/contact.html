@@ -512,8 +512,7 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
     <p class="ah-kicker">Private Introduction</p>
     <h1 class="ah-title">
         <span class="ln"><span>Begin a</span></span>
-        <span class="ln"><span><em>private</em></span></span>
-        <span class="ln"><span><em>conversation.</em></span></span>
+        <span class="ln"><span><em>private conversation.</em></span></span>
     
     </h1>
   </div>
@@ -522,10 +521,7 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
   <main class="wrap">
     <div class="contact-layout">
       <div>
-        <p class="hero-body">
-          If there is a potential for alignment, I welcome a confidential inquiry. 
-          All correspondence is handled directly by me and held in strict confidence.
-        </p>
+        <p class="hero-body">If you’re considering a private retainer or making an introduction, I’d be glad to hear from you.</p>
         <p class="response-line">I respond to every serious inquiry personally, within one business day.</p>
 
         <div class="context-items">
@@ -540,10 +536,6 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
           <div class="context-item">
             <span class="context-label">Location</span>
             <span class="context-value">Palm Beach, Florida<br>On-site &amp; remote as appropriate</span>
-          </div>
-          <div class="context-item">
-            <span class="context-label">Confidentiality</span>
-            <span class="context-value">Standing · Without exception</span>
           </div>
         </div>
       </div>
@@ -576,12 +568,13 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
           </div>
           <div class="field">
             <label for="context">How can I help</label>
-            <textarea id="context" name="context" placeholder="A brief note on your situation or what you are looking for. No detail is required at this stage."></textarea>
+            <p class="field-help" id="context-help">A brief note on your situation or what you are looking for. No detail is required at this stage.</p>
+            <textarea id="context" name="context" aria-describedby="context-help"></textarea>
           </div>
           <div class="field">
-            <label for="referral">How did you hear of me<span class="req" aria-hidden="true">*</span></label>
-            <select id="referral" name="referral" required>
-              <option value="" disabled selected>Select one</option>
+            <label for="referral">How did you hear of me</label>
+            <select id="referral" name="referral">
+              <option value="" selected>Select one (optional)</option>
               <option>Personal referral</option>
               <option>Professional introduction</option>
               <option>Palm Beach network</option>
@@ -599,7 +592,6 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
           </div>
           <button type="submit" class="submit-btn">Submit Inquiry</button>
           <p class="privacy-line">Your inquiry is held in strict confidence. <a href="/privacy">See how information is handled.</a></p>
-          <p class="form-note">Your message is sent directly to me and held in strict confidence. I respond to all serious inquiries personally.</p>
         </form>
 
         <div class="success-state" id="success">
@@ -625,10 +617,8 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); display: flex; just
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const asEl = document.getElementById('inquiring_as');
-      const refEl = document.getElementById('referral');
       if (!asEl.value) asEl.style.borderColor = 'rgba(184,151,106,.8)';
-      if (!refEl.value) refEl.style.borderColor = 'rgba(184,151,106,.8)';
-      if (!name || !email || !asEl.value || !refEl.value) {
+      if (!name || !email || !asEl.value) {
         if (!name) document.getElementById('name').style.borderColor = 'rgba(184,151,106,.8)';
         if (!email) document.getElementById('email').style.borderColor = 'rgba(184,151,106,.8)';
         return;

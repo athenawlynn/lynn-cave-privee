@@ -553,3 +553,17 @@ body.page-services .pillar:has(img[src*="home-hero"]) .tile-photo { object-posit
   body.page-contact .ah--reverse .ah-media { aspect-ratio: 4 / 3; max-height: none; }
   body.page-contact .ah--reverse .ah-media img { object-position: 50% 40%; }
 }
+
+/* ═════ Contact refinements ═════ */
+body.page-contact .ah--reverse { grid-template-columns: minmax(0, .55fr) minmax(0, 1fr); padding-top: clamp(1rem, 2vw, 1.75rem); }
+body.page-contact .ah--reverse .ah-media { aspect-ratio: 1 / 1; max-height: 22rem; }
+body.page-contact .ah--reverse .ah-media img { object-position: 50% 40%; }
+body.page-contact .ah-title { font-size: clamp(2.4rem, 4.2vw, 4.1rem); }
+body.page-contact .contact-layout { padding-top: clamp(1.75rem, 3vw, 2.5rem); }
+body.page-contact .field-help { margin: -.1rem 0 .5rem; font-size: .95rem; line-height: 1.5; color: var(--al-muted); max-width: none; }
+body.page-contact .privacy-line { margin-top: 1rem; }
+@media (max-width: 48rem) {
+  body.page-contact .ah--reverse { grid-template-columns: 1fr; }
+  body.page-contact .ah--reverse .ah-media { aspect-ratio: 21 / 9; max-height: none; }
+  body.page-contact .contact-layout { padding-top: 1.5rem; }
+}
