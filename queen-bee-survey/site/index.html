@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Queen Bee Committee Survey</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4l40 23v46L50 96 10 73V27z' fill='%235f7458'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23e5a823'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Garden Party: ivory ground, sage structure, honey-yellow for "yours / selected". Arched photo frames. */
+:root{
+  --ivory:#fbfaf4; --paper:#ffffff; --sage:#5f7458; --sage-soft:#dfe6d6; --sage-faint:#eef1e7;
+  --honey:#e5a823; --honey-soft:#f6e7bf; --ink:#2b3027; --muted:#66705f; --line:#e3e6d8; --warn:#9a4b1c;
+  --f-disp:"Fraunces",Georgia,"Times New Roman",serif; --f-body:"Karla",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--ivory);color:var(--ink);font:17px/1.55 var(--f-body)}
+img{max-width:100%}
+[hidden]{display:none!important}
+.in{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--f-disp);font-weight:400;text-wrap:balance;margin:0}
+.eyebrow{font:700 12px/1.3 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+a{color:var(--sage)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--honey);outline-offset:2px}
+
+/* hero */
+.hero{background:var(--sage-soft);text-align:center;padding-block:calc(env(safe-area-inset-top,0px) + 48px) 40px}
+.hero h1{font-size:clamp(38px,6.5vw,68px);line-height:1.02;margin:6px 0 8px}
+.hero h1 em{color:var(--sage)}
+.hero .tag{font:italic 400 clamp(20px,2.6vw,24px) var(--f-disp);color:#7a5a12;margin:0}
+.hero .date{margin-top:14px;font-size:15px;color:var(--muted)}
+.vine{display:block;margin:0 auto 6px;color:var(--sage)}
+
+/* sticky bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ivory)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(251,250,244,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar .in{display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap;padding-block:10px}
+.bar nav{display:flex;gap:4px;flex-wrap:wrap}
+.bar nav a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.bar nav a:hover{color:var(--ink);background:var(--sage-faint)}
+.me{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:14px}
+.me b{background:var(--honey-soft);padding:3px 11px;border-radius:999px}
+.save{font-size:13px;color:var(--muted);min-width:9ch}
+.linkbtn{background:none;border:0;color:var(--sage);text-decoration:underline;padding:0;font-size:14px}
+
+main{display:grid;gap:56px;padding-block:36px 72px}
+
+/* who */
+.who{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;gap:14px;text-align:center;justify-items:center}
+.who h2{font-size:30px}
+.who-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.who-btns button{min-width:140px;padding:14px 22px;border-radius:999px;border:1.5px solid var(--sage);background:var(--paper);color:var(--ink);font:400 22px var(--f-disp)}
+.who-btns button:hover{background:var(--sage-faint)}
+.who-btns button[aria-pressed="true"]{background:var(--sage);color:#fff}
+.who-btns small{display:block;font:500 12px var(--f-body);letter-spacing:.04em;opacity:.8;margin-top:2px}
+
+.part-head{display:grid;gap:8px;max-width:70ch}
+.part-head h2{font-size:clamp(34px,5vw,48px);line-height:1.05}
+.part-head p{margin:0;color:var(--muted)}
+
+.chapter{display:grid;gap:22px;padding-top:12px}
+.chapter-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.chapter-head h3{font-size:30px}
+.chapter-head p{margin:0;color:var(--muted);font-size:15px}
+
+fieldset{border:0;margin:0;padding:0;min-width:0}
+fieldset:disabled{opacity:.55}
+.cat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:14px}
+.cat-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 14px}
+.cat-head h4{font-size:26px;line-height:1.15}
+.cat-head .cnt{font-size:13px;color:var(--muted)}
+.cat p.blurb{margin:-6px 0 0;color:var(--muted);font-size:15px}
+
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.opt{position:relative;display:flex;flex-direction:column;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:999px 999px 14px 14px;overflow:hidden;transition:box-shadow .15s,border-color .15s}
+.opt input,.chip input,.role input{position:absolute;opacity:0;width:1px;height:1px}
+.opt .ph{aspect-ratio:3/3.3;background:var(--sage-faint);overflow:hidden}
+.opt .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.opt.noimg{border-radius:14px}
+.opt.noimg .ph{display:none}
+.opt .cap{display:flex;gap:10px;align-items:flex-start;padding:11px 13px 13px;font-size:15.5px;line-height:1.35;flex:1}
+.opt .cap small{display:block;color:var(--muted);font-size:13.5px;margin-top:3px}
+.opt:has(input:checked){border-color:var(--sage);box-shadow:0 0 0 2px var(--sage)}
+.opt:has(input:focus-visible){outline:3px solid var(--honey);outline-offset:2px}
+.box{flex:none;width:21px;height:21px;border-radius:50%;border:1.5px solid var(--sage);display:grid;place-items:center;color:transparent;font-size:13px;margin-top:1px;background:var(--paper)}
+.opt:has(input:checked) .box,.chip:has(input:checked) .box{background:var(--sage);color:#fff}
+.pending{width:100%;height:100%;display:grid;place-items:center;align-content:center;gap:6px;text-align:center;color:var(--sage);font-size:13px;padding:14px;background:repeating-linear-gradient(135deg,var(--sage-faint) 0 12px,#e6ebdd 12px 24px)}
+.pending svg{opacity:.7}
+.pending code{font:700 12px var(--f-body);letter-spacing:.06em;background:var(--paper);padding:2px 8px;border-radius:999px}
+
+.swatches{display:flex;height:64px;border-radius:999px 999px 0 0;overflow:hidden}
+.swatches i{flex:1;border-right:1px solid rgba(0,0,0,.06)}
+
+.textcat{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:20px;align-items:start}
+.textcat.nohero{grid-template-columns:1fr}
+.hero-ph{aspect-ratio:3/3.6;border-radius:999px 999px 14px 14px;overflow:hidden;background:var(--sage-faint)}
+.hero-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative;display:flex;gap:9px;align-items:flex-start;cursor:pointer;padding:9px 14px 9px 10px;border:1px solid var(--line);border-radius:14px;background:var(--ivory);font-size:15.5px;line-height:1.35;max-width:100%}
+.chip small{display:block;color:var(--muted);font-size:13.5px}
+.chip:has(input:checked){border-color:var(--sage);background:var(--sage-faint)}
+.chip:has(input:focus-visible){outline:3px solid var(--honey);outline-offset:2px}
+@media (max-width:640px){.textcat{grid-template-columns:1fr}.hero-ph{max-width:220px;aspect-ratio:4/3;border-radius:14px}.opts{grid-template-columns:1fr 1fr;gap:12px}.opt .cap{font-size:14.5px;padding:9px 10px 11px}.cat{padding:16px}}
+
+.done-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{border:0;border-radius:999px;padding:12px 22px;background:var(--sage);color:#fff;font-weight:700}
+.btn:hover{background:#4e6148}
+.btn.ghost{background:var(--paper);color:var(--sage);border:1.5px solid var(--sage)}
+.btn.is-done{background:var(--honey);color:#2b2005}
+textarea{width:100%;font:inherit;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--ivory);color:var(--ink);resize:vertical}
+label.lbl{font-weight:700;display:block;margin-bottom:6px}
+
+/* volunteer */
+.confirm{background:var(--honey-soft);border-radius:14px;padding:14px 18px;font-size:15.5px}
+.vgroup{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:8px 22px 14px}
+.vgroup h4{font-size:22px;padding:14px 0 4px}
+.vrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 18px;align-items:center;padding:13px 0;border-top:1px dashed #d3dac8}
+.vrow:first-of-type{border-top:0}
+.vrow .task{font-size:16px}
+.vrow .meta{font-size:13.5px;color:var(--muted)}
+.roles{display:flex;flex-wrap:wrap;gap:6px}
+.role{position:relative;cursor:pointer}
+.role span{display:block;font-size:14px;padding:6px 13px;border-radius:999px;background:var(--sage-faint);border:1px solid transparent}
+.role input:checked+span{background:var(--honey);color:#2b2005;font-weight:700}
+.role input[value="Pass"]:checked+span{background:#e4e2da;color:var(--muted)}
+.role input:focus-visible+span{outline:3px solid var(--honey);outline-offset:2px}
+.others{grid-column:1/-1;font-size:13px;color:var(--muted)}
+@media (max-width:640px){.vrow{grid-template-columns:1fr}.vgroup{padding:6px 16px 12px}}
+
+/* results */
+.status-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pstat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.pstat b{font:400 22px var(--f-disp);display:block}
+.pstat span{display:block;font-size:14px;color:var(--muted)}
+.pstat .ok{color:var(--sage);font-weight:700}
+@media (max-width:640px){.status-row{grid-template-columns:1fr}}
+.rpanel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:18px}
+.rpanel h3{font-size:28px}
+.sumchips{display:flex;flex-wrap:wrap;gap:8px}
+.sumchips span{background:var(--sage-faint);border-radius:999px;padding:5px 12px;font-size:14px}
+.rcat h4{font-size:20px;margin-bottom:8px}
+.rch{font:700 12px var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-top:10px}
+.rrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 12px;font-size:15px;padding:5px 0}
+.rrow b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.meter{grid-column:1/-1;height:8px;border-radius:99px;background:var(--sage-faint);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--sage);border-radius:99px}
+.rrow.all .meter i{background:var(--honey)}
+.rrow .names{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px 32px}
+.short{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.short li{display:flex;gap:10px;justify-content:space-between;border-bottom:1px dashed var(--line);padding:6px 0;font-size:15px}
+.short li span{color:var(--muted);font-size:13px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--sage-faint);font-weight:700;position:sticky;top:0}
+td small{display:block;color:var(--muted);font-size:12.5px}
+.tag-lead{background:var(--honey);color:#2b2005;font-weight:700;border-radius:999px;padding:2px 9px;font-size:13px;white-space:nowrap}
+.tag-co{background:var(--honey-soft);border-radius:999px;padding:2px 9px;font-size:13px}
+.tag-as{background:var(--sage-faint);border-radius:999px;padding:2px 9px;font-size:13px}
+.st{font-size:13px;font-weight:700;white-space:nowrap}
+.st.gap{color:var(--warn)} .st.multi{color:#7a5a12} .st.ok{color:var(--sage)}
+.vfilter{display:flex;gap:6px;flex-wrap:wrap}
+.vfilter button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:14px}
+.vfilter button[aria-pressed="true"]{background:var(--sage);color:#fff;border-color:var(--sage)}
+
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:15px;z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));background:var(--sage-soft);font:italic 400 19px var(--f-disp);color:var(--sage)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="in">
+    <svg class="vine" width="140" height="24" viewBox="0 0 140 24" aria-hidden="true"><path d="M2 12h136" stroke="currentColor" stroke-width="1.2" fill="none"/><g fill="currentColor"><ellipse cx="36" cy="6" rx="7" ry="3.2" transform="rotate(-25 36 6)"/><ellipse cx="52" cy="18" rx="7" ry="3.2" transform="rotate(25 52 18)"/><ellipse cx="88" cy="6" rx="7" ry="3.2" transform="rotate(25 88 6)"/><ellipse cx="104" cy="18" rx="7" ry="3.2" transform="rotate(-25 104 18)"/></g><circle cx="70" cy="12" r="6" fill="#e5a823"/></svg>
+    <div class="eyebrow">Eastpointe 9-Hole Ladies Invitational · Committee survey</div>
+    <h1>The <em>Queen Bee</em> Invitational</h1>
+    <p class="tag">Bee-lieve in Birdies!</p>
+    <div class="date">Wednesday, February 4, 2027 · For Athena, Lynnie and Beth</div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="in">
+    <nav aria-label="Sections"><a href="#vote">Part 1 · Vote</a><a href="#volunteer">Part 2 · Volunteer</a><a href="#results">Results</a></nav>
+    <div class="me" id="me" hidden>Voting as <b id="meName"></b><button class="linkbtn" id="switch" type="button">Switch</button><span class="save" id="save" aria-live="polite"></span></div>
+  </div>
+</div>
+
+<main class="in">
+  <section class="who" id="who" aria-labelledby="whoTitle">
+    <div class="eyebrow">Start here</div>
+    <h2 id="whoTitle">Who's voting?</h2>
+    <p class="muted" style="margin:0;max-width:52ch">Tap your name. Your answers save automatically under your name, and everyone shares this one link.</p>
+    <div class="who-btns" id="whoBtns"></div>
+  </section>
+
+  <section id="vote" class="part">
+    <div class="part-head">
+      <div class="eyebrow">Part 1</div>
+      <h2>Vote for the ideas you love</h2>
+      <p>Tick as many as you like in each section. Nothing is pre-selected, and an unticked option isn't a "no". Photos are inspiration, not confirmed purchases.</p>
+    </div>
+    <fieldset id="voteFs" disabled><div id="chapters"></div>
+      <div class="cat" style="margin-top:28px">
+        <label class="lbl" for="note">Other ideas or concerns</label>
+        <textarea id="note" rows="4" placeholder="Anything we missed, or anything you'd rather avoid"></textarea>
+        <div class="done-row"><button class="btn" type="button" id="doneVote">I'm done with Part 1</button><span class="muted" id="doneVoteMsg"></span></div>
+      </div>
+    </fieldset>
+  </section>
+
+  <section id="volunteer" class="part">
+    <div class="part-head">
+      <div class="eyebrow">Part 2</div>
+      <h2>Volunteer to plan a segment</h2>
+      <p>Choose Lead, Co-plan or Assist for anything you'd enjoy, or Pass. These are preferences, not final assignments. You'll see who else has offered under each item.</p>
+    </div>
+    <div class="confirm" style="margin-top:18px"><b>Already done:</b> date, clubhouse and course booked for Feb 4, 2027 by Mo, Sharon and Derek, and listed in ForeTees.</div>
+    <fieldset id="roleFs" disabled><div id="segments" style="display:grid;gap:18px;margin-top:18px"></div>
+      <div class="done-row" style="margin-top:18px"><button class="btn" type="button" id="doneRole">I'm done with Part 2</button><span class="muted" id="doneRoleMsg"></span></div>
+    </fieldset>
+  </section>
+
+  <section id="results" class="part" style="display:grid;gap:20px">
+    <div class="part-head">
+      <div class="eyebrow">Results</div>
+      <h2>The hive has spoken</h2>
+      <p>Combined answers from all three of us. Updates automatically as everyone votes. <span id="synced"></span></p>
+    </div>
+    <div class="status-row" id="status"></div>
+    <div class="rpanel">
+      <div><h3>Where we agree</h3><p class="muted" style="margin:4px 0 0">Choices picked by at least two of us.</p></div>
+      <div class="sumchips" id="sum"></div>
+      <div class="rgrid" id="short"></div>
+    </div>
+    <div class="rpanel">
+      <div><h3>Who's planning what</h3><p class="muted" style="margin:4px 0 0">Every segment and checklist task, with each person's offer.</p></div>
+      <div class="sumchips" id="vsum"></div>
+      <div class="vfilter" id="vfilter" role="group" aria-label="Filter"></div>
+      <div class="tablewrap"><table><thead><tr><th>Segment</th><th>Athena</th><th>Lynnie</th><th>Beth</th><th>Status</th></tr></thead><tbody id="vtable"></tbody></table></div>
+    </div>
+    <div class="rpanel">
+      <div><h3>Every vote</h3><p class="muted" style="margin:4px 0 0">All choices, highest first. Gold bars are unanimous.</p></div>
+      <div id="allres" style="display:grid;gap:10px"></div>
+    </div>
+    <div class="rpanel">
+      <h3>Comments</h3>
+      <div id="comments" style="display:grid;gap:10px"></div>
+      <div class="done-row"><button class="btn ghost" type="button" id="csv">Download results (CSV)</button></div>
+    </div>
+  </section>
+</main>
+<footer>Good friends · Great golf · Sweet memories</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="data.js"></script>
+<script src="checklist.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
