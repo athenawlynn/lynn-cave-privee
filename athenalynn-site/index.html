@@ -24,8 +24,7 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-  <link rel="preload" as="image" href="/media/hero-wall-l.webp" media="(min-aspect-ratio: 4/5)" />
-  <link rel="preload" as="image" href="/media/hero-wall-p.webp" media="(max-aspect-ratio: 4/5)" />
+  <link rel="preload" as="image" href="/media/photo/home-hero.webp" imagesrcset="/media/photo/home-hero-sm.webp 800w, /media/photo/home-hero.webp 1672w" imagesizes="100vw" />
   <link rel="preload" href="/fonts/caslon-display-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/caslon-text-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
@@ -894,16 +893,8 @@ body.home .how-item-num { font-size: 20px; }
   <!-- ─── CINEMATIC OPENING ─── -->
   <section class="cine" aria-label="Introduction">
     <div class="cine-media" aria-hidden="true">
-      <div class="cine-drift">
-        <div class="cine-layer cine-wall"></div>
-        <div class="cine-layer cine-sun"></div>
-        <div class="cine-layer cine-shadows">
-          <div class="frond frond-far"></div>
-          <div class="frond frond-near"></div>
-        </div>
-      </div>
+      <div class="cine-drift"><img src="/media/photo/home-hero.webp" srcset="/media/photo/home-hero-sm.webp 800w, /media/photo/home-hero.webp 1672w" sizes="100vw" width="1672" height="941" alt="" fetchpriority="high" decoding="async" class="cine-photo" /></div>
       <div class="cine-layer cine-scrim"></div>
-      <div class="cine-layer cine-grain"></div>
     </div>
 
     <div class="cine-content">
@@ -956,15 +947,15 @@ body.home .how-item-num { font-size: 20px; }
     <!-- ─── WAYS IN ─── -->
     <section class="al-cards" aria-label="Explore">
       <a class="al-card" href="/services">
-        <img src="/media/open-engagements-1200.webp" width="1200" height="675" alt="" loading="lazy" decoding="async" />
+        <img src="/media/photo/home-engagements.webp" width="400" height="395" alt="" loading="lazy" decoding="async" />
         <div class="al-card-body"><h3>Engagements</h3><p>Engagement is exclusively structured as a private retainer — long-term, fully integrated, and aligned to the principal's priorities.</p><span class="al-card-action">Engagements</span></div>
       </a>
       <a class="al-card" href="/theplatform">
-        <img src="/media/open-platform-1200.webp" width="1200" height="675" alt="" loading="lazy" decoding="async" />
+        <img src="/media/photo/home-platform.webp" width="400" height="395" alt="" loading="lazy" decoding="async" />
         <div class="al-card-body"><h3>The Platform</h3><p>I build and personally manage a private operating system for your household. You see what needs your attention, and I handle the follow-through.</p><span class="al-card-action">The Platform</span></div>
       </a>
       <a class="al-card" href="/advisors">
-        <img src="/media/open-advisors-1200.webp" width="1200" height="675" alt="" loading="lazy" decoding="async" />
+        <img src="/media/photo/home-advisors.webp" width="400" height="395" alt="" loading="lazy" decoding="async" />
         <div class="al-card-body"><h3>For Advisors</h3><p>A trusted operator for the clients you already serve.</p><span class="al-card-action">For Advisors</span></div>
       </a>
     </section>
@@ -1020,48 +1011,48 @@ body.home .how-item-num { font-size: 20px; }
       <div class="ov-grid">
         <div class="ov-stage" aria-hidden="true">
           <div class="ov-frame">
-          <img class="ov-img is-active" src="/media/oversee-estate.webp" alt="" width="1200" height="1500" loading="eager" decoding="async" data-i="0" />
-          <img class="ov-img" src="/media/oversee-administration.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="1" />
-          <img class="ov-img" src="/media/oversee-projects.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="2" />
-          <img class="ov-img" src="/media/oversee-relationships.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="3" />
-          <img class="ov-img" src="/media/oversee-vendors.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="4" />
-          <img class="ov-img" src="/media/oversee-travel.webp" alt="" width="1200" height="1500" fetchpriority="low" loading="lazy" decoding="async" data-i="5" />
+          <img class="ov-img is-active" src="/media/photo/about-hero.webp" alt="" width="1536" height="1024" loading="eager" decoding="async" data-i="0" />
+          <img class="ov-img" src="/media/photo/advisors-hero.webp" alt="" width="1536" height="1024" fetchpriority="low" loading="lazy" decoding="async" data-i="1" />
+          <img class="ov-img" src="/media/photo/home-hero.webp" alt="" width="1672" height="941" fetchpriority="low" loading="lazy" decoding="async" data-i="2" />
+          <img class="ov-img" src="/media/photo/engagements-hero.webp" alt="" width="1448" height="1086" fetchpriority="low" loading="lazy" decoding="async" data-i="3" />
+          <img class="ov-img" src="/media/photo/engagements-residences.webp" alt="" width="400" height="396" fetchpriority="low" loading="lazy" decoding="async" data-i="4" />
+          <img class="ov-img" src="/media/photo/platform-hero-mobile.webp" alt="" width="840" height="840" fetchpriority="low" loading="lazy" decoding="async" data-i="5" />
           </div>
           <div class="ov-counter"><span class="ov-current">I</span><span class="ov-total">/ VI</span></div>
         </div>
         <ol class="ov-list">
         <li class="ov-item is-active" data-i="0">
-          <figure class="ov-fig"><img src="/media/oversee-estate.webp" alt="An arched limestone passage opening onto the water" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <figure class="ov-fig"><img src="/media/photo/about-hero.webp" alt="A limestone gateway with an open iron gate and bougainvillea" width="1536" height="1024" loading="lazy" decoding="async" /></figure>
           <span class="ov-num">I.</span>
           <h3>Estate &amp; Household Continuity</h3>
           <p>Infrastructure, standards, and operational integrity maintained across all properties and residences.</p>
         </li>
         <li class="ov-item" data-i="1">
-          <figure class="ov-fig"><img src="/media/oversee-administration.webp" alt="A closed leather folio and fountain pen on a writing desk in morning light" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <figure class="ov-fig"><img src="/media/photo/advisors-hero.webp" alt="A writing desk in a sunlit study" width="1536" height="1024" loading="lazy" decoding="async" /></figure>
           <span class="ov-num">II.</span>
           <h3>Strategic Administration</h3>
           <p>Priorities, communications, and decision pathways kept clear, controlled, and closed-loop.</p>
         </li>
         <li class="ov-item" data-i="2">
-          <figure class="ov-fig"><img src="/media/oversee-projects.webp" alt="A fine-line architectural elevation of an imaginary residence" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <figure class="ov-fig"><img src="/media/photo/home-hero.webp" alt="A brick drive leading to a Palm Beach residence" width="1672" height="941" loading="lazy" decoding="async" /></figure>
           <span class="ov-num">III.</span>
           <h3>Project &amp; Real Estate Execution</h3>
           <p>Complex initiatives, transitions, and builds delivered with precision and without drama.</p>
         </li>
         <li class="ov-item" data-i="3">
-          <figure class="ov-fig"><img src="/media/oversee-relationships.webp" alt="A sealed envelope with a navy wax seal on linen" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <figure class="ov-fig"><img src="/media/photo/engagements-hero.webp" alt="A terrace table set for dinner" width="1448" height="1086" loading="lazy" decoding="async" /></figure>
           <span class="ov-num">IV.</span>
           <h3>Principal Relationship Management</h3>
           <p>Obligations, introductions, and relational continuity handled with discretion and fidelity.</p>
         </li>
         <li class="ov-item" data-i="4">
-          <figure class="ov-fig"><img src="/media/oversee-vendors.webp" alt="An arched iron garden gate in morning light" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <figure class="ov-fig"><img src="/media/photo/engagements-residences.webp" alt="A limestone facade with green shutters" width="400" height="396" loading="lazy" decoding="async" /></figure>
           <span class="ov-num">V.</span>
           <h3>Vendor &amp; Partner Coordination</h3>
           <p>Accountability, timelines, and documentation managed on behalf of the principal.</p>
         </li>
         <li class="ov-item" data-i="5">
-          <figure class="ov-fig"><img src="/media/oversee-travel.webp" alt="A palm-lined drive at dusk leading to a lit entrance" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+          <figure class="ov-fig"><img src="/media/photo/platform-hero-mobile.webp" alt="An estate at blue hour beside the pool" width="840" height="840" loading="lazy" decoding="async" /></figure>
           <span class="ov-num">VI.</span>
           <h3>Seasonal &amp; Travel Operations</h3>
           <p>Arrivals, transitions, and high-demand periods executed smoothly and invisibly.</p>

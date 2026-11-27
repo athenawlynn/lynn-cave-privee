@@ -452,6 +452,7 @@ body.page-platform .close-block { margin-bottom: 0; }
   body.al-site :is(.pillars, .how-grid, .principles, .pain-grid, .feature-grid, .al-cards),
   body.al-site :is(.pillars, .how-grid, .principles, .pain-grid, .feature-grid):has(> :nth-child(6):last-child),
   body.al-site :is(.pillars, .how-grid, .principles, .pain-grid, .feature-grid):has(> :nth-child(3):last-child),
+  body.al-site .how-block { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   body.al-site .how-block { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
   body.al-site .model-details { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 1.5rem; }
   body.page-about .origins-details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -512,3 +513,43 @@ body.page-services .closing-line, body.al-site .pillars.three + .closing-line { 
   body.al-site .site-bar { padding: 0 .75rem; }
 }
 html:has(body.al-site), body.al-site { overflow-x: clip; }
+
+/* ═════ Photography (production imagery package) ═════ */
+body.al-site .ah-media picture { display: block; height: 100%; }
+body.al-site .ah-media picture img { width: 100%; height: 100%; object-fit: cover; }
+body.page-about .ah--split .ah-media img { object-position: 50% 45%; }
+body.page-services .ah--split .ah-media img { object-position: 62% 60%; }
+body.page-advisors .ah--split .ah-media img { object-position: 40% 50%; }
+body.page-contact .ah--reverse { grid-template-columns: minmax(0, .7fr) minmax(0, 1fr); }
+body.page-contact .ah--reverse .ah-media { aspect-ratio: 4 / 5; max-height: 34rem; }
+body.page-platform .ah--photo .ah-media img { object-position: 70% 55%; }
+body.page-privacy .ah--stack .ah-copy { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+/* Home photographic opening */
+body.page-home .cine { background: var(--al-night); }
+body.page-home .cine-drift { position: absolute; inset: 0; }
+body.page-home .cine-photo { width: 100%; height: 100%; object-fit: cover; object-position: 60% 55%; display: block; }
+body.page-home .cine-scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,28,42,.88) 0%, rgba(17,28,42,.6) 34%, rgba(17,28,42,.08) 70%), linear-gradient(0deg, rgba(17,28,42,.55) 0%, rgba(17,28,42,0) 45%) !important; }
+body.page-home .cine-eyebrow { color: rgba(245,240,231,.82) !important; }
+body.page-home .cine-eyebrow .eyebrow-dot { background: var(--al-brass); }
+body.page-home .cine-title { color: var(--al-ivory) !important; }
+body.page-home .cine-title em { color: var(--al-brass) !important; }
+body.page-home .cine-keyline { color: rgba(245,240,231,.9) !important; }
+body.page-home .cine .btn-cine { background: var(--al-ivory); color: var(--al-night); border-color: var(--al-ivory); }
+body.page-home .cine .btn-cine:hover { background: var(--al-brass); border-color: var(--al-brass); }
+body.page-home .cine .btn-cine-ghost { color: var(--al-ivory); border-color: rgba(245,240,231,.7); background: transparent; }
+body.page-home .cine .btn-cine-ghost:hover { background: rgba(245,240,231,.1); color: var(--al-ivory); }
+body.page-home .al-card img { aspect-ratio: 4 / 3; }
+@media (max-width: 48rem) {
+  body.page-home .cine-photo { object-position: 38% 60%; }
+  body.page-home .cine-scrim { background: linear-gradient(0deg, rgba(17,28,42,.92) 0%, rgba(17,28,42,.7) 42%, rgba(17,28,42,.15) 75%) !important; }
+}
+/* Image-topped tiles (About principles, Engagements oversight areas) */
+body.al-site :is(.principle, .pillar):has(> .tile-photo) { padding-top: 0; overflow: clip; }
+body.al-site .tile-photo { display: block; width: calc(100% + 2 * clamp(1.25rem, 2vw, 1.75rem)); max-width: none; margin: 0 calc(-1 * clamp(1.25rem, 2vw, 1.75rem)) 1.25rem; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+body.page-services .pillar:has(img[src*="advisors-hero"]) .tile-photo { object-position: 30% 60%; }
+body.page-services .pillar:has(img[src*="home-hero"]) .tile-photo { object-position: 40% 60%; }
+@media (max-width: 48rem) {
+  body.page-contact .ah--reverse { grid-template-columns: 1fr; }
+  body.page-contact .ah--reverse .ah-media { aspect-ratio: 4 / 3; max-height: none; }
+  body.page-contact .ah--reverse .ah-media img { object-position: 50% 40%; }
+}
