@@ -50,7 +50,16 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .save{font-size:13px;color:var(--muted);min-width:9ch}
 .linkbtn{background:none;border:0;color:var(--sage);text-decoration:underline;padding:0;font-size:14px}
 
-main{display:grid;gap:56px;padding-block:36px 72px}
+main{display:grid;gap:56px;padding-block:36px 72px;position:relative;z-index:2}
+body{position:relative}
+.bee-layer{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bee{position:absolute;display:block;opacity:.92;transform:rotate(var(--tilt)) scaleX(var(--flip));animation:bob 5s ease-in-out infinite}
+.bee svg{display:block;width:100%;height:auto}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--tilt)) scaleX(var(--flip))}50%{transform:translateY(-9px) rotate(calc(var(--tilt) + 6deg)) scaleX(var(--flip))}}
+article.cat,.vgroup,.rpanel{position:relative}
+.bee.perch{width:34px;top:-20px;right:22px;left:auto;z-index:3}
+@media (max-width:700px){.bee{opacity:.85}.bee.perch{width:30px;top:-18px;right:14px}}
+@media (prefers-reduced-motion:reduce){.bee{animation:none}}
 
 /* who */
 .who{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;gap:14px;text-align:center;justify-items:center}
@@ -285,5 +294,6 @@ footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bott
 <script src="data.js"></script>
 <script src="checklist.js"></script>
 <script src="app.js"></script>
+<script src="bees.js"></script>
 </body>
 </html>
