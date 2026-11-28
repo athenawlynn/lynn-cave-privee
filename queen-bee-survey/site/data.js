@@ -3,7 +3,7 @@
 // photoId "01".."49" = original survey photos; "N01".. = new photos to source (see PHOTO-SHOT-LIST.md).
 // A missing photo file shows a "photo coming" tile, so new photos can be dropped into /photos later.
 
-window.VOTERS = ["Athena", "Lynnie", "Beth"];
+window.VOTERS = ["Athena", "Beth", "Lynnie"];
 
 window.CHAPTERS = [
   { id: "look", title: "The name & the look", blurb: "What we call it, how it reads and what everyone wears." },
