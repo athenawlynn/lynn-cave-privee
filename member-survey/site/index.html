@@ -327,7 +327,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       $("err").textContent = "Your answers didn't save. Please check your connection and press Submit again."; $("err").hidden = false; return;
     } finally { $("submit").disabled = false; $("submit").textContent = "Submit my preferences"; }
     const rows = [
-      ["Name", `${answers.first} ${answers.last}`], ["Member number", num()], ["Home invitational", HOME[answers.home]],
+      ["Name", `${answers.first} ${answers.last}`], ["Home invitational", HOME[answers.home]],
       ...answers.ranks.map((id, i) => [["1st", "2nd", "3rd"][i] + " choice", label(CLUB[id])]),
       ["Invitationals this season", answers.count ? (answers.count === "4" ? "4 or more" : answers.count) : "No answer"],
       ["Willing to drive", answers.drive ? DRIVE[+answers.drive] : "No answer"],

@@ -1,4 +1,5 @@
-// Results for Lynnie and Derek: every response, plus the women listed on the member list. Passcode required.
+// Results for Lynnie and Derek: every response, plus listed women who haven't answered.
+// Passcode required. Member numbers are never sent to the browser.
 import { getStore } from "@netlify/blobs";
 import { WOMEN, PASS_HASH } from "../../private/data.mjs";
 
@@ -17,8 +18,14 @@ export default async (req) => {
   }
   const store = getStore({ name: "member-responses", consistency: "strong" });
   const { blobs } = await store.list();
-  const responses = (await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" })))).filter(Boolean);
-  return Response.json({ ok: true, responses, women: WOMEN }, { headers: { "cache-control": "no-store" } });
+  const records = (await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" })))).filter(Boolean);
+  const answered = new Set(records.map((r) => r.num));
+  const responses = records.map((r) => ({ answers: r.answers, updated: r.updated }));
+  const missing = WOMEN.filter((w) => !answered.has(w.num)).map((w) => w.name);
+  return Response.json(
+    { ok: true, responses, missing, listed: WOMEN.length, listedAnswered: WOMEN.length - missing.length },
+    { headers: { "cache-control": "no-store" } }
+  );
 };
 
 export const config = { path: "/api/member-admin" };

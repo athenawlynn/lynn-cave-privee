@@ -107,7 +107,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       <h2>Hasn't responded yet</h2>
       <p class="note">This list only has the women named on the member list, which is mostly single memberships. Wives on couple memberships aren't listed by name, so check against the 9-hole ladies roster too.</p>
       <div class="tablewrap narrow"><table>
-        <thead><tr><th>Member #</th><th>Name on member list</th></tr></thead>
+        <thead><tr><th>Name on member list</th></tr></thead>
         <tbody id="missing"></tbody>
       </table></div>
     </article>
@@ -144,28 +144,26 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
 
   function render() {
     const rs = [...data.responses].sort((a, b) => b.updated.localeCompare(a.updated));
-    const nums = new Set(rs.map((r) => r.num));
     const yes = rs.filter((r) => r.answers.home === "Yes").length;
-    const listed = data.women.filter((w) => nums.has(w.num)).length;
     $("tiles").innerHTML = `
       <div class="tile hl"><b>${rs.length}</b><span>members have responded</span></div>
       <div class="tile"><b>${yes}</b><span>playing in the Queen Bee Invitational</span></div>
       <div class="tile"><b>${rs.reduce((a, r) => a + (+r.answers.count || 1), 0)}</b><span>invitational spots wanted in all</span></div>
-      <div class="tile"><b>${listed} of ${data.women.length}</b><span>listed women have responded</span></div>`;
+      <div class="tile"><b>${data.listedAnswered} of ${data.listed}</b><span>listed women have responded</span></div>`;
     $("rows").innerHTML = rs.map((r) => { const a = r.answers; return `<tr>
-      <td><b>${esc(a.first)} ${esc(a.last)}</b><small>#${esc(r.num)} · ${new Date(r.updated).toLocaleDateString([], { month: "short", day: "numeric" })}</small></td>
+      <td><b>${esc(a.first)} ${esc(a.last)}</b><small>${new Date(r.updated).toLocaleDateString([], { month: "short", day: "numeric" })}</small></td>
       <td>${HOME[a.home] || ""}</td>${(a.ranks || []).map((id) => `<td>${esc(CLUB[id] || id)}</td>`).join("")}
       <td>${a.count ? (a.count === "4" ? "4+" : a.count) : "—"}</td><td>${a.drive !== "" ? DRIVE[+a.drive] : "—"}</td><td>${ALT[a.alt] || "—"}</td>
       <td>${esc(a.notes)}</td></tr>`; }).join("") || '<tr><td colspan="9" class="muted">No responses yet.</td></tr>';
-    const miss = data.women.filter((w) => !nums.has(w.num)).sort((a, b) => a.name.split(" ").pop().localeCompare(b.name.split(" ").pop()));
-    $("missing").innerHTML = miss.map((w) => `<tr><td>${esc(w.num)}</td><td>${esc(w.name)}</td></tr>`).join("") || '<tr><td colspan="2" class="muted">Everyone on this list has responded.</td></tr>';
+    const miss = [...data.missing].sort((a, b) => a.split(" ").pop().localeCompare(b.split(" ").pop()));
+    $("missing").innerHTML = miss.map((n) => `<tr><td>${esc(n)}</td></tr>`).join("") || '<tr><td class="muted">Everyone on this list has responded.</td></tr>';
     $("when").textContent = "Updated " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
   }
 
   $("csv").addEventListener("click", () => {
     const q = (x) => '"' + String(x ?? "").replace(/^[=+\-@]/, "'$&").replace(/"/g, '""') + '"';
-    const out = [["Member #", "First", "Last", "Home event", "1st", "2nd", "3rd", "Wants", "Will drive to", "Alternate club", "Comments", "Updated"]];
-    data.responses.forEach((r) => { const a = r.answers; out.push([r.num, a.first, a.last, HOME[a.home], ...(a.ranks || []).map((id) => CLUB[id]), a.count, a.drive !== "" ? DRIVE[+a.drive] : "", ALT[a.alt] || "", a.notes, r.updated]); });
+    const out = [["First", "Last", "Home event", "1st", "2nd", "3rd", "Wants", "Will drive to", "Alternate club", "Comments", "Updated"]];
+    data.responses.forEach((r) => { const a = r.answers; out.push([a.first, a.last, HOME[a.home], ...(a.ranks || []).map((id) => CLUB[id]), a.count, a.drive !== "" ? DRIVE[+a.drive] : "", ALT[a.alt] || "", a.notes, r.updated]); });
     const blob = new Blob(["﻿" + out.map((r) => r.map(q).join(",")).join("\r\n")], { type: "text/csv" });
     const el = document.createElement("a"); el.href = URL.createObjectURL(blob); el.download = "invitational-responses.csv";
     document.body.appendChild(el); el.click(); el.remove(); setTimeout(() => URL.revokeObjectURL(el.href), 1500);
@@ -174,7 +172,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
   // Hand the responses to the draw page (same browser tab only).
   $("toDraw").addEventListener("click", () => {
     const members = data.responses.filter((r) => r.answers.ranks).map((r) => ({
-      name: `${r.answers.first} ${r.answers.last}`, num: r.num, home: r.answers.home, ranks: r.answers.ranks,
+      name: `${r.answers.first} ${r.answers.last}`, home: r.answers.home, ranks: r.answers.ranks,
       area: r.answers.drive === "" ? 2 : +r.answers.drive, want: +r.answers.count || 1, alt: r.answers.alt || "No"
     }));
     try { sessionStorage.setItem("qb-real-members", JSON.stringify(members)); } catch {}
