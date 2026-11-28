@@ -59,6 +59,8 @@ tr:last-child td{border-bottom:0}
 td.num,th.num{text-align:center;font-variant-numeric:tabular-nums}
 input[type=number]{width:64px;font:inherit;padding:6px 8px;border:1px solid #d3dac8;border-radius:8px;background:var(--ivory);text-align:center}
 input[type=text]{font:inherit;padding:8px 10px;border:1px solid #d3dac8;border-radius:10px;background:var(--ivory);width:130px;text-transform:uppercase;letter-spacing:.06em}
+.sh{font-size:20px;margin-bottom:4px}
+.help{font-size:14.5px;color:var(--muted);margin:0 0 10px;max-width:68ch}
 .opt{display:flex;gap:10px;align-items:flex-start;font-size:15px;cursor:pointer}
 .opt input{width:18px;height:18px;margin-top:2px;accent-color:var(--sage)}
 .codebox{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -120,8 +122,11 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
 
   <article class="cat">
     <h2>Settings</h2>
+    <p class="sub">Change any setting and the results below update. Nothing here affects real members; it's a way to try out the rules before we agree on them.</p>
     <div class="settings">
       <div>
+        <h3 class="sh">Spots at each club</h3>
+        <p class="help"><b>Spots</b> is how many Eastpointe members each club will take. <b>Alternates</b> is how many back-up names the club wants, in case someone drops out. Change a number to see how a bigger or smaller allotment affects who gets in.</p>
         <div class="tablewrap"><table>
           <thead><tr><th>Club</th><th>Date</th><th class="num">Spots</th><th class="num">Alternates</th></tr></thead>
           <tbody id="spotRows"></tbody>
@@ -129,13 +134,15 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
         <p class="muted" style="font-size:13.5px;margin:8px 0 0">Admirals Cove and Jupiter use the numbers in Lynnie's club sheet. The rest are sample numbers until Derek confirms.</p>
       </div>
       <div style="display:grid;gap:14px;align-content:start">
-        <label class="opt" for="probPri"><input type="checkbox" id="probPri"><span><b>Count "Probably" as home-event priority</b><br><span class="muted">Off: only "Yes" goes first.</span></span></label>
-        <label class="opt" for="noLeft"><input type="checkbox" id="noLeft"><span><b>Members skipping the home event get leftover spots only</b><br><span class="muted">Off: they're placed last in each round.</span></span></label>
+        <label class="opt" for="probPri"><input type="checkbox" id="probPri"><span><b>Count "Probably" as home-event priority</b><br><span class="muted">When on, members who answered "Probably" to the Queen Bee Invitational are placed in the first group with the "Yes" members. When off, only "Yes" members go first, and "Probably" members go next.</span></span></label>
+        <label class="opt" for="noLeft"><input type="checkbox" id="noLeft"><span><b>Members skipping the home event get leftover spots only</b><br><span class="muted">When on, members who said "Not this year" to our home event aren't placed in the ranked rounds at all. They're only offered spots nobody else took. When off, they take part in every round, but after everyone else.</span></span></label>
         <div>
           <label for="code"><b>Draw code</b></label>
+          <p class="help" style="margin:2px 0 8px">The code sets the random order within each group. The same code always gives exactly the same result, so anyone can re-run it and check. For the real draw, we'd pick one code together, for example at a committee meeting, and publish it with the results. "New code" shows what a different random order would look like.</p>
           <div class="codebox"><input type="text" id="code" maxlength="12"><button class="btn ghost" type="button" id="newCode">New code</button></div>
         </div>
         <div class="row"><button class="btn" type="button" id="run">Run draw</button><button class="btn ghost" type="button" id="csv">Download results (CSV)</button></div>
+        <p class="help" style="margin:0"><b>Run draw</b> runs it again, for example after typing in a code. <b>Download results</b> saves a spreadsheet with each club's players and alternates, and each member's placements.</p>
       </div>
     </div>
   </article>
@@ -312,6 +319,8 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
   $("filters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (b) { filter = b.dataset.f; renderMembers(); } });
   $("run").addEventListener("click", draw);
   ["probPri", "noLeft"].forEach((id) => $(id).addEventListener("change", draw));
+  $("spotRows").addEventListener("change", draw);
+  $("code").addEventListener("change", draw);
 
   $("csv").addEventListener("click", () => {
     const { res, code } = last;
