@@ -34,7 +34,7 @@ window.CHECKLIST=[
 "lead": "Registration lead",
 "due": "Dec 24, 2026",
 "status": "To do",
-"note": "Lynnie holds club contacts in Outlook."
+"note": "Suggested lead: Lynnie holds club contacts"
 },
 {
 "area": "Invitations & Registration",
