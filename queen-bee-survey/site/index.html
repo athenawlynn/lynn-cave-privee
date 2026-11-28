@@ -13,6 +13,7 @@
 /* Garden Party: ivory ground, sage structure, honey-yellow for "yours / selected". Arched photo frames. */
 :root{
   --ivory:#fbfaf4; --paper:#ffffff; --sage:#5f7458; --sage-soft:#dfe6d6; --sage-faint:#eef1e7;
+  --red:#b3261e; --red-soft:#fdf1ef;
   --honey:#e5a823; --honey-soft:#f6e7bf; --ink:#2b3027; --muted:#66705f; --line:#e3e6d8; --warn:#9a4b1c;
   --f-disp:"Fraunces",Georgia,"Times New Roman",serif; --f-body:"Karla",system-ui,-apple-system,sans-serif;
   color-scheme:light;
@@ -192,6 +193,17 @@ td small{display:block;color:var(--muted);font-size:12.5px}
 .vfilter button[aria-pressed="true"]{background:var(--sage);color:#fff;border-color:var(--sage)}
 
 .toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:15px;z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.notice{background:var(--red-soft);border:1.5px solid var(--red);border-radius:18px;padding:20px 24px;color:var(--red)}
+.notice h2{font-size:26px;color:var(--red);margin-bottom:6px}
+.notice .due{font-weight:700;font-size:17px;margin:0 0 12px}
+.notice ul{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15.5px}
+.notice b{font-weight:700}
+.doneboard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:12px;text-align:center}
+.doneboard h3{font-size:28px}
+.doneboard ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;justify-items:center}
+.doneboard li{font-size:17px;padding:8px 16px;border-radius:999px;background:var(--sage-faint)}
+.doneboard li.all{background:var(--honey);color:#2b2005;font-weight:700}
+.doneboard li.part{background:var(--honey-soft)}
 footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));background:var(--sage-soft);font:italic 400 19px var(--f-disp);color:var(--sage)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -216,6 +228,18 @@ footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bott
 </div>
 
 <main class="in">
+  <section class="notice" aria-labelledby="noticeTitle">
+    <h2 id="noticeTitle">Please read before you start</h2>
+    <p class="due">Please complete both parts before our Wednesday 1:15 meeting.</p>
+    <ul>
+      <li><b>Tap your name first.</b> Your answers save under your name.</li>
+      <li><b>Answers save automatically</b> as you go. Look for "Saved ✓" in the top bar. You can stop and come back later.</li>
+      <li><b>Use one device at a time.</b> If you have the survey open on your phone and your computer and make changes on both, the most recent save wins. Refreshing the page always shows your latest saved answers.</li>
+      <li><b>Part 1:</b> tick everything you like. <b>Part 2:</b> choose Lead, Help or Pass for each item.</li>
+      <li><b>When you finish each part,</b> tap "I'm done with Part 1" and "I'm done with Part 2" so we know you're finished.</li>
+      <li><b>Comments?</b> Use the notes box at the end of Part 1, or email and mention the section number, for example "re #11."</li>
+    </ul>
+  </section>
   <section class="who" id="who" aria-labelledby="whoTitle">
     <div class="eyebrow">Start here</div>
     <h2 id="whoTitle">Who's voting?</h2>
@@ -286,6 +310,10 @@ footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bott
       <div id="comments" style="display:grid;gap:10px"></div>
       <div class="done-row"><button class="btn ghost" type="button" id="csv">Download results (CSV)</button></div>
     </div>
+  </section>
+  <section class="doneboard" id="doneboard" aria-live="polite">
+    <h3>Who's finished?</h3>
+    <ul id="doneList"></ul>
   </section>
 </main>
 <footer>Good friends · Great golf · Sweet memories</footer>

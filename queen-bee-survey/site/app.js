@@ -174,7 +174,20 @@
   let vfilter = "all";
   const votersOf = (key) => V.filter((n) => all[n]?.votes?.[key]);
   const active = (n, k) => ["Lead", "Help"].includes(all[n]?.roles?.[k]);
+  function renderDone() {
+    const full = V.filter((n) => all[n]?.voteDone && all[n]?.roleDone);
+    const items = V.map((n) => {
+      const b = all[n];
+      if (b?.voteDone && b?.roleDone) return `<li class="part">🐝 ${n} has completed her survey! 🎉</li>`;
+      if (b?.voteDone) return `<li>${n} has finished Part 1. Part 2 still to go.</li>`;
+      if (b?.roleDone) return `<li>${n} has finished Part 2. Part 1 still to go.</li>`;
+      return `<li>${n} hasn't finished yet.</li>`;
+    });
+    if (full.length === V.length) items.unshift(`<li class="all">👑 Everyone has completed the survey! See you Wednesday at 1:15.</li>`);
+    $("doneList").innerHTML = items.join("");
+  }
   function renderResults() {
+    renderDone();
     $("status").innerHTML = V.map((n) => {
       const b = started(all[n]) ? all[n] : null;
       const picks = b ? Object.keys(b.votes).length : 0;
