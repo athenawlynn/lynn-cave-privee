@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Invitational Preferences</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4l40 23v46L50 96 10 73V27z' fill='%235f7458'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23e5a823'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Garden Party, matching the committee survey: ivory ground, sage structure, honey for selected. One short form. */
+:root{
+  --ivory:#fbfaf4; --paper:#ffffff; --sage:#5f7458; --sage-soft:#dfe6d6; --sage-faint:#eef1e7;
+  --honey:#e5a823; --honey-soft:#f6e7bf; --ink:#2b3027; --muted:#66705f; --line:#e3e6d8; --red:#b3261e; --red-soft:#fdf1ef;
+  --f-disp:"Fraunces",Georgia,"Times New Roman",serif; --f-body:"Karla",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font:17px/1.55 var(--f-body);position:relative}
+[hidden]{display:none!important}
+.in{max-width:780px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-disp);font-weight:400;text-wrap:balance;margin:0}
+.eyebrow{font:700 12px/1.3 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+:focus-visible{outline:3px solid var(--honey);outline-offset:2px}
+
+.draft{background:var(--red-soft);border-bottom:1.5px solid var(--red);color:var(--red);font-size:15px;padding-block:calc(env(safe-area-inset-top,0px) + 10px) 10px;text-align:center}
+.draft b{font-weight:700}
+.hero{background:var(--sage-soft);text-align:center;padding-block:40px 34px}
+.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.04;margin:6px 0 8px}
+.hero h1 em{color:var(--sage)}
+.hero p{margin:0 auto;max-width:56ch;color:var(--muted)}
+.vine{display:block;margin:0 auto 6px;color:var(--sage)}
+
+main{display:grid;gap:22px;padding-block:30px 60px;position:relative;z-index:2}
+.bee-layer{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bee{position:absolute;display:block;opacity:.92;transform:rotate(var(--tilt)) scaleX(var(--flip));animation:bob 5s ease-in-out infinite}
+.bee svg{display:block;width:100%;height:auto}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--tilt)) scaleX(var(--flip))}50%{transform:translateY(-9px) rotate(calc(var(--tilt) + 6deg)) scaleX(var(--flip))}}
+article.cat{position:relative}
+.bee.perch{width:34px;top:-20px;right:22px;left:auto;z-index:3}
+@media (max-width:700px){.bee{opacity:.85}.bee.perch{width:30px;top:-18px;right:14px}}
+@media (prefers-reduced-motion:reduce){.bee{animation:none}html{scroll-behavior:auto}}
+
+.why{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.why h2{font-size:26px;margin-bottom:8px}
+.why p{margin:0 0 10px}
+.why p:last-child{margin:0}
+
+.cat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:grid;gap:12px}
+.qnum{display:inline-block;font:700 13px/1 var(--f-body);color:var(--sage);background:var(--sage-faint);border-radius:999px;padding:5px 9px;margin-right:10px;vertical-align:4px}
+.cat h2{font-size:24px;line-height:1.2}
+.cat .hint{margin:-4px 0 0;color:var(--muted);font-size:15px}
+.req{color:var(--red);font-size:14px;font-weight:700;margin-left:4px}
+
+label.fld{display:grid;gap:6px;font-weight:700;font-size:15px}
+input[type=text],select,textarea{font:inherit;font-weight:400;border:1px solid #d3dac8;border-radius:12px;padding:11px 12px;background:var(--ivory);color:var(--ink);width:100%}
+textarea{resize:vertical}
+.ranks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ranks .place{font:400 20px var(--f-disp);color:var(--sage)}
+@media (max-width:640px){.ranks{grid-template-columns:1fr}}
+
+.choices{display:grid;gap:8px}
+.choice{position:relative;display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:11px 14px;border:1px solid var(--line);border-radius:14px;background:var(--ivory);font-size:16px;line-height:1.35}
+.choice input{position:absolute;opacity:0;width:1px;height:1px}
+.dot{flex:none;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--sage);margin-top:1px;background:var(--paper);display:grid;place-items:center}
+.choice.multi .dot{border-radius:6px}
+.choice:has(input:checked){border-color:var(--sage);background:var(--sage-faint)}
+.choice:has(input:checked) .dot{background:var(--sage);box-shadow:inset 0 0 0 4px var(--paper)}
+.choice.multi:has(input:checked) .dot{box-shadow:none;color:#fff}
+.choice.multi .dot::after{content:"✓";font-size:12px;color:transparent}
+.choice.multi:has(input:checked) .dot::after{color:#fff}
+.choice:has(input:focus-visible){outline:3px solid var(--honey);outline-offset:2px}
+.choice small{display:block;color:var(--muted);font-size:14px}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:640px){.row2{grid-template-columns:1fr}}
+
+.clubnote{font-size:14px;color:var(--muted);margin:0}
+.err{color:var(--red);font-weight:700;font-size:15px;margin:0}
+.btn{border:0;border-radius:999px;padding:14px 26px;background:var(--sage);color:#fff;font:700 17px var(--f-body);cursor:pointer;justify-self:start}
+.btn:hover{background:#4e6148}
+.btn.ghost{background:var(--paper);color:var(--sage);border:1.5px solid var(--sage)}
+
+.thanks{background:var(--honey-soft);border-radius:18px;padding:24px;display:grid;gap:12px}
+.thanks h2{font-size:28px}
+.thanks dl{margin:0;display:grid;gap:8px;background:var(--paper);border-radius:14px;padding:16px 18px}
+.thanks dl>div{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:12px}
+.thanks dt{color:var(--muted);font-size:14px}
+.thanks dd{margin:0;font-weight:700}
+@media (max-width:640px){.thanks dl>div{grid-template-columns:1fr;gap:0}}
+
+.process{background:var(--paper);border:1px dashed var(--sage);border-radius:18px;padding:22px 24px}
+.process h2{font-size:24px;margin-bottom:4px}
+.process ol{margin:10px 0 0;padding-left:22px;display:grid;gap:8px}
+footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bottom,0px));background:var(--sage-soft);font:italic 400 18px var(--f-disp);color:var(--sage);position:relative;z-index:2}
+</style>
+</head>
+<body>
+<div class="draft"><div class="in"><b>Draft for review</b> by Lynnie and Derek. The club list is a sample, and answers on this page are not saved.</div></div>
+<header class="hero">
+  <div class="in">
+    <svg class="vine" width="140" height="24" viewBox="0 0 140 24" aria-hidden="true"><path d="M2 12h136" stroke="currentColor" stroke-width="1.2" fill="none"/><g fill="currentColor"><ellipse cx="36" cy="6" rx="7" ry="3.2" transform="rotate(-25 36 6)"/><ellipse cx="52" cy="18" rx="7" ry="3.2" transform="rotate(25 52 18)"/><ellipse cx="88" cy="6" rx="7" ry="3.2" transform="rotate(25 88 6)"/><ellipse cx="104" cy="18" rx="7" ry="3.2" transform="rotate(-25 104 18)"/></g><circle cx="70" cy="12" r="6" fill="#e5a823"/></svg>
+    <div class="eyebrow">Eastpointe 9-Hole Ladies · 2027 season</div>
+    <h1>Invitational <em>Preferences</em></h1>
+    <p>Tell us which other clubs' invitationals you'd most like to play in. It takes about 3 minutes.</p>
+  </div>
+</header>
+
+<main class="in">
+  <section class="why" aria-labelledby="whyTitle">
+    <h2 id="whyTitle">Why we're asking</h2>
+    <p>We're refining how we share spots at other clubs' invitationals so the process is as fair as possible. A few clubs are very popular, so not everyone can attend those events, but your answers help us place you in one of your top choices whenever we can.</p>
+    <p><b>Priority goes to members who play in our home invitational,</b> the Queen Bee Invitational on Wednesday, February 4, 2027.</p>
+  </section>
+
+  <form id="form" novalidate>
+    <div style="display:grid;gap:22px">
+      <article class="cat">
+        <h2><span class="qnum">1</span>Your name<span class="req">Required</span></h2>
+        <label class="fld" for="name">First and last name
+          <input type="text" id="name" autocomplete="name" required>
+        </label>
+      </article>
+
+      <article class="cat">
+        <h2><span class="qnum">2</span>Will you play in our home invitational?<span class="req">Required</span></h2>
+        <p class="hint">The Queen Bee Invitational · Wednesday, February 4, 2027 · 4-player scramble</p>
+        <div class="choices" role="radiogroup" aria-label="Home invitational">
+          <label class="choice"><input type="radio" name="home" value="Yes"><span class="dot"></span><span>Yes, count me in</span></label>
+          <label class="choice"><input type="radio" name="home" value="Probably"><span class="dot"></span><span>Probably</span></label>
+          <label class="choice"><input type="radio" name="home" value="No"><span class="dot"></span><span>Not this year</span></label>
+        </div>
+      </article>
+
+      <article class="cat">
+        <h2><span class="qnum">3</span>Rank your top three clubs<span class="req">Required</span></h2>
+        <p class="hint">Please choose three different clubs. Three choices give us the best chance of placing you.</p>
+        <div class="ranks">
+          <label class="fld" for="r1"><span class="place">1st choice</span><select id="r1" required></select></label>
+          <label class="fld" for="r2"><span class="place">2nd choice</span><select id="r2" required></select></label>
+          <label class="fld" for="r3"><span class="place">3rd choice</span><select id="r3" required></select></label>
+        </div>
+        <p class="clubnote">Sample list. Dates and the final list of clubs will be confirmed before this goes to members.</p>
+      </article>
+
+      <article class="cat">
+        <h2><span class="qnum">4</span>How many invitationals would you like to play this season?</h2>
+        <div class="row2" role="radiogroup" aria-label="Number of invitationals">
+          <label class="choice"><input type="radio" name="count" value="1"><span class="dot"></span><span>1</span></label>
+          <label class="choice"><input type="radio" name="count" value="2"><span class="dot"></span><span>2</span></label>
+          <label class="choice"><input type="radio" name="count" value="3"><span class="dot"></span><span>3</span></label>
+          <label class="choice"><input type="radio" name="count" value="4 or more"><span class="dot"></span><span>4 or more</span></label>
+        </div>
+      </article>
+
+      <article class="cat">
+        <h2><span class="qnum">5</span>How far are you willing to drive?</h2>
+        <div class="choices" role="radiogroup" aria-label="Drive time">
+          <label class="choice"><input type="radio" name="drive" value="Up to 20 minutes"><span class="dot"></span><span>Up to 20 minutes</span></label>
+          <label class="choice"><input type="radio" name="drive" value="Up to 40 minutes"><span class="dot"></span><span>Up to 40 minutes</span></label>
+          <label class="choice"><input type="radio" name="drive" value="Up to 1 hour"><span class="dot"></span><span>Up to 1 hour</span></label>
+          <label class="choice"><input type="radio" name="drive" value="Over 1 hour is fine"><span class="dot"></span><span>Over 1 hour is fine</span></label>
+        </div>
+      </article>
+
+      <article class="cat">
+        <h2><span class="qnum">6</span>If your top three are full, would you play somewhere else?</h2>
+        <div class="choices" role="radiogroup" aria-label="Alternate club">
+          <label class="choice"><input type="radio" name="alt" value="Yes, any club within my drive time"><span class="dot"></span><span>Yes, any club within my drive time</span></label>
+          <label class="choice"><input type="radio" name="alt" value="Maybe, please check with me first"><span class="dot"></span><span>Maybe, please check with me first</span></label>
+          <label class="choice"><input type="radio" name="alt" value="No, only my top three"><span class="dot"></span><span>No, only my top three</span></label>
+        </div>
+      </article>
+
+      <article class="cat">
+        <h2><span class="qnum">7</span>Anyone you'd like to play with?</h2>
+        <p class="hint">Optional. We'll try to keep friends together, and swaps can be arranged after spots are assigned.</p>
+        <label class="fld" for="friends">Names
+          <input type="text" id="friends" placeholder="Names of friends you'd like to play with">
+        </label>
+      </article>
+
+      <article class="cat">
+        <h2><span class="qnum">8</span>Anything else we should know?</h2>
+        <label class="fld" for="notes">Comments
+          <textarea id="notes" rows="3" placeholder="Optional"></textarea>
+        </label>
+      </article>
+
+      <p class="err" id="err" role="alert" hidden></p>
+      <button class="btn" type="submit">Submit my preferences</button>
+    </div>
+  </form>
+
+  <section class="thanks" id="thanks" hidden aria-live="polite">
+    <div class="eyebrow">Preview</div>
+    <h2>Thank you! Here's what the committee would receive.</h2>
+    <dl id="summary"></dl>
+    <p class="muted" style="margin:0">This is a draft, so nothing was saved. In the live version, this goes straight into the committee's spreadsheet.</p>
+    <button class="btn ghost" type="button" id="again">Edit my answers</button>
+  </section>
+
+  <section class="process" aria-labelledby="procTitle">
+    <div class="eyebrow">For Derek and the committee</div>
+    <h2 id="procTitle">How spots would be assigned</h2>
+    <p class="muted" style="margin:0">Proposed only, for discussion. Nothing here is final.</p>
+    <ol>
+      <li>Answers go into one spreadsheet, one row per member.</li>
+      <li>Members playing in our home invitational are placed first.</li>
+      <li>Each club's spots are filled from 1st choices, then 2nd, then 3rd. Ties within a group are drawn at random.</li>
+      <li>Anyone still unplaced is offered an open club within her drive time, if she said yes to an alternate.</li>
+      <li>Friends can swap spots after the draw, with the committee's OK.</li>
+    </ol>
+  </section>
+</main>
+<footer>Good friends · Great golf · Sweet memories</footer>
+
+<script>
+(() => {
+  // Sample club list from the 11-27 planning notes. To be confirmed after club outreach.
+  const CLUBS = [
+    "Admirals Cove · Galentine's, Feb 10",
+    "Frenchman's · date to come",
+    "Jupiter · Cowgirl Classic, date to come",
+    "Harbor Ridge · date pending",
+    "Ibis · date pending",
+    "Mirasol · date pending",
+    "Mariner Sands · date to come",
+    "Willoughby · date to come"
+  ];
+  const $ = (id) => document.getElementById(id);
+  const sels = [$("r1"), $("r2"), $("r3")];
+  sels.forEach((s) => { s.innerHTML = `<option value="">Choose a club</option>` + CLUBS.map((c) => `<option>${c}</option>`).join(""); });
+  // Hide a club in the other two lists once it's picked.
+  function syncRanks() {
+    const picked = sels.map((s) => s.value);
+    sels.forEach((s, i) => [...s.options].forEach((o) => { o.hidden = !!o.value && picked.includes(o.value) && picked[i] !== o.value; }));
+  }
+  sels.forEach((s) => s.addEventListener("change", syncRanks));
+
+  const val = (n) => document.querySelector(`input[name="${n}"]:checked`)?.value || "";
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  $("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const missing = [];
+    if (!$("name").value.trim()) missing.push("your name (question 1)");
+    if (!val("home")) missing.push("the home invitational (question 2)");
+    if (sels.some((s) => !s.value)) missing.push("all three club choices (question 3)");
+    if (missing.length) { $("err").textContent = "Please add " + missing.join(", ") + "."; $("err").hidden = false; return; }
+    $("err").hidden = true;
+    const rows = [
+      ["Name", $("name").value.trim()], ["Home invitational", val("home")],
+      ["1st choice", sels[0].value], ["2nd choice", sels[1].value], ["3rd choice", sels[2].value],
+      ["Invitationals this season", val("count") || "No answer"], ["Drive time", val("drive") || "No answer"],
+      ["If top three are full", val("alt") || "No answer"], ["Play with", $("friends").value.trim() || "No one listed"],
+      ["Comments", $("notes").value.trim() || "None"]
+    ];
+    $("summary").innerHTML = rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
+    $("form").hidden = true; $("thanks").hidden = false; $("thanks").scrollIntoView({ block: "start" });
+  });
+  $("again").addEventListener("click", () => { $("thanks").hidden = true; $("form").hidden = false; $("form").scrollIntoView({ block: "start" }); });
+})();
+</script>
+<script src="bees.js"></script>
+</body>
+</html>
