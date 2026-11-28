@@ -145,15 +145,12 @@ window.CATEGORIES = [
     ["Gift goes in the welcome bag at check-in", null],
     ["Gift handed out at the farewell", null]
   ]},
-  { id: "giftbudget", ch: "gifts", kind: "text", title: "Gift budget per guest", blurb: "Estimates only, not vendor quotes.", opts: [
-    ["$12–15"], ["$15–20"], ["Over $20"]
-  ]},
   { id: "gifttag", ch: "gifts", kind: "text", title: "Gift tag wording", blurb: "", opts: [
     ["Life is sweeter with good friends and great golf."], ["Thank you for buzzing by Eastpointe!"],
     ["Because every lady deserves to be Queen Bee for a day!"]
   ]},
   { id: "prizes", ch: "gifts", kind: "photo", title: "Awards & prizes", blurb: "What the winners receive.", opts: [
-    ["Royal crowns", "34"], ["Golden bee trophies", "35", "Custom trophy topped with a brass bee"], ["Honey gift baskets", "36"], ["Golf shop gift certificates", "37"]
+    ["Royal crowns", "34"], ["Eastpointe Pro Shop gift certificate", "eastpointe-logo"]
   ]},
   { id: "awards", ch: "gifts", kind: "text", hero: "41", title: "Award categories: The Royal Coronation", blurb: "Which awards should we present?", opts: [
     ["The Queen Bees", null, "First-place team"], ["The Royal Court", null, "Second-place team"],
