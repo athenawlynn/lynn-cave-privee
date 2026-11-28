@@ -144,7 +144,8 @@ window.CATEGORIES = [
   { id: "giftpackage", ch: "gifts", kind: "photo", title: "Gift packaging", blurb: "How the gift is presented.", opts: [
     ["Ivory box: Florida honey, wooden dipper and gold bee ball marker, tied with black-and-gold ribbon", "N47"],
     ["Gift goes in the welcome bag at check-in", null],
-    ["Gift handed out at the farewell", null]
+    ["Gift handed out at the farewell", null],
+    ["Place gift on each attendee's chair at the luncheon", null]
   ]},
   { id: "gifttag", ch: "gifts", kind: "text", title: "Gift tag wording", blurb: "", opts: [
     ["Life is sweeter with good friends and great golf."], ["Thank you for buzzing by Eastpointe!"],
