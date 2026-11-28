@@ -1,4 +1,5 @@
-// Survey content. Option format: [label, photoId|null, detail?]
+// Survey content. A category with sub: true is numbered as part of the one before it (e.g. #5b).
+// Option format: [label, photoId|null, detail?]
 // photoId "01".."49" = original survey photos; "N01".. = new photos to source (see PHOTO-SHOT-LIST.md).
 // A missing photo file shows a "photo coming" tile, so new photos can be dropped into /photos later.
 
@@ -15,7 +16,7 @@ window.CHAPTERS = [
 
 window.CATEGORIES = [
   // ---------- The name & the look ----------
-  { id: "name", ch: "look", kind: "photo", title: "Event name", blurb: "Which name should go on the invitations?", opts: [
+  { id: "name", ch: "look", kind: "photo", title: "Event name for our Theme!", blurb: "", opts: [
     ["The Queen Bee Invitational", "N01", "A Royal Affair on the Fairway"],
     ["The Buzz on the Greens", "N02", "Nine Holes of Un-BEE-lievable Fun"],
     ["Queens of the Green", "N03", "Play Like a Queen. Swing Like a Bee."],
@@ -31,21 +32,20 @@ window.CATEGORIES = [
   { id: "aesthetic", ch: "look", kind: "photo", title: "Overall aesthetic", blurb: "The overall feel of the day.", opts: [
     ["Elegant garden party", "01"], ["Playful bumblebee", "02"], ["Royal black and gold", "03"]
   ]},
-  { id: "palette", ch: "look", kind: "swatch", title: "Color palette", blurb: "The colors for print, décor and signage.", opts: [
+  { id: "palette", ch: "look", kind: "swatch", title: "Color palettes", blurb: "The colors for print, décor and signage.", opts: [
     ["Royal: black, ivory and antique gold", ["#1d1c18", "#faf6ea", "#b58a2e"]],
     ["Honey garden: honey yellow, ivory, sage and gold", ["#e5a823", "#faf6ea", "#8fa284", "#b58a2e"]],
     ["Full palette: honey yellow, black, ivory, antique gold and sage", ["#e5a823", "#1d1c18", "#faf6ea", "#b58a2e", "#8fa284"]],
     ["Classic bee: yellow, black and white", ["#f3c12b", "#141414", "#ffffff"]]
   ]},
-  { id: "attire", ch: "look", kind: "photo", title: "Suggested golf attire & accessories", blurb: "Ideas to suggest to players. Nobody should need a new outfit.", opts: [
-    ["Classic yellow and black", "04"], ["Bee antenna headbands", "05"], ["Black and gold striped golf polo", "06"],
-    ["Elegant bee jewelry", "07"], ["Miniature crowns", "N06"], ["Yellow visors", "N07"],
-    ["Yellow silk scarves and black-and-yellow ribbons", "N08"]
+  { id: "attirecode", ch: "look", kind: "text", title: "Suggested golf attire & dress code", blurb: "How the invitation should describe the dress code. Nobody should need a new outfit.", opts: [
+    ["Wear Your Royal Colors", null, "Tee it up in black, yellow, gold, or white from your own closet."],
+    ["A Little Buzz Goes a Long Way", null, "Add a yellow visor, a gold accessory, or a bee pin to your usual golf attire."],
+    ["A Touch of Gold on the Green", null, "Pair a classic black or white golf outfit with a hint of honey yellow or gold."],
+    ["Come as You Are, Queen Bee", null, "Wear your favorite golf outfit and add a scarf, ribbon, or mini crown if you feel like it."]
   ]},
-  { id: "dresscode", ch: "look", kind: "text", hero: "38", title: "Dress-code wording", blurb: "How the invitation should describe the dress code.", opts: [
-    ["Wear your royal colors: black, gold, yellow or white. Crowns and bee accessories encouraged!"],
-    ["Wear your finest black, yellow, white or gold golf attire."],
-    ["Keep it simple: one bee accessory is all you need."]
+  { id: "hats", ch: "look", kind: "photo", sub: true, title: "Hat & accessory suggestions", blurb: "", opts: [
+    ["Miniature crowns", "N06"], ["Yellow visors", "N07"], ["Yellow silk scarves and black-and-yellow ribbons", "N08"]
   ]},
   { id: "regaccessory", ch: "look", kind: "photo", title: "Bee accessory at registration", blurb: "A small accessory for every lady at check-in, so everyone can join in.", opts: [
     ["Clip-on bee", "N09"], ["Gold bee pin", "39"], ["Antenna headband", "05"]

@@ -2,7 +2,9 @@
   const V = window.VOTERS, CATS = window.CATEGORIES, CH = window.CHAPTERS, ROLES = window.ROLES;
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const NUM = Object.fromEntries(window.CATEGORIES.map((c, i) => [c.id, i + 1]));
+  const NUM = (() => { let n = 0, sub = 0; const m = {};
+    window.CATEGORIES.forEach((c) => { if (c.sub) { sub++; m[c.id] = n + String.fromCharCode(97 + sub); } else { n++; sub = 0; m[c.id] = n; } });
+    return m; })();
   const numTag = (c) => `<span class="num">#${NUM[c.id]}</span>`;
   const blank = (name) => ({ name, votes: {}, roles: {}, note: "", voteDone: false, roleDone: false });
 
