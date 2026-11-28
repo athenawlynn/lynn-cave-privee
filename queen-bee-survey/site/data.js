@@ -161,14 +161,12 @@ window.CATEGORIES = [
     ["The Best Buzz Buggy", null, "Best decorated cart"], ["The Lucky Honey", null, "Random drawing"],
     ["The Honey Pot", null, "Closest candy-count guess"]
   ]},
-  { id: "trophy", ch: "gifts", kind: "photo", title: "Traveling trophy", blurb: "A keepsake if Queen Bee returns in future years.", opts: [
-    ["The Golden Queen Bee", "N48", "Gold bee with a mini crown on a black or wooden base, engraved Eastpointe 9-Hole Ladies Invitational"],
-    ["No traveling trophy this year", null]
-  ]},
-  { id: "printed", ch: "gifts", kind: "photo", title: "Printed materials", blurb: "All printed pieces share one look.", opts: [
+  { id: "printed", ch: "gifts", kind: "photo", title: "Printed & Electronic Materials", blurb: "All printed and electronic pieces share one look.", opts: [
     ["Souvenir program booklet (The Official Buzz)", "47"], ["Honeycomb tee signs", "48"], ["Bee-themed table names", "49"],
     ["Name badges: Member of the Royal Hive", "N50"], ["Menu cards: A Taste of Honey", "N51"],
-    ["Award certificates: The Royal Honors", "N52"]
+    ["Award certificates: The Royal Honors", "N52"],
+    ["Internal flyer: Calling All Eastpointe Queen Bees", "N53", "For Eastpointe members, by email and in the clubhouse"],
+    ["External flyer: You're Royally Invited", "N54", "For visiting clubs, by email and printed"]
   ]},
   { id: "playlist", ch: "gifts", kind: "text", hero: "N49", title: "Music & playlist", blurb: "Light background music at registration and lunch.", opts: [
     ["Dancing Queen · ABBA", null, "Entrance music for the Coronation"], ["Honey, Honey · ABBA"], ["Sugar, Sugar · The Archies"],
