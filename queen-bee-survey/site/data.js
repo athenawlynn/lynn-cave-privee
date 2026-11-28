@@ -37,7 +37,7 @@ window.CATEGORIES = [
     ["Full palette: honey yellow, black, ivory, antique gold and sage", ["#e5a823", "#1d1c18", "#faf6ea", "#b58a2e", "#8fa284"]],
     ["Classic bee: yellow, black and white", ["#f3c12b", "#141414", "#ffffff"]]
   ]},
-  { id: "attire", ch: "look", kind: "photo", title: "Golf attire & accessories", blurb: "Ideas to suggest to players. Nobody should need a new outfit.", opts: [
+  { id: "attire", ch: "look", kind: "photo", title: "Suggested golf attire & accessories", blurb: "Ideas to suggest to players. Nobody should need a new outfit.", opts: [
     ["Classic yellow and black", "04"], ["Bee antenna headbands", "05"], ["Black and gold striped golf polo", "06"],
     ["Elegant bee jewelry", "07"], ["Miniature crowns", "N06"], ["Yellow visors", "N07"],
     ["Yellow silk scarves and black-and-yellow ribbons", "N08"]

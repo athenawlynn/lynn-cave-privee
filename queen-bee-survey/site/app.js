@@ -2,6 +2,8 @@
   const V = window.VOTERS, CATS = window.CATEGORIES, CH = window.CHAPTERS, ROLES = window.ROLES;
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const NUM = Object.fromEntries(window.CATEGORIES.map((c, i) => [c.id, i + 1]));
+  const numTag = (c) => `<span class="num">#${NUM[c.id]}</span>`;
   const blank = (name) => ({ name, votes: {}, roles: {}, note: "", voteDone: false, roleDone: false });
 
   // Part 2 items: creative segments, then every open checklist task.
@@ -39,18 +41,18 @@
     updateCounts();
   }
   function catHTML(c, b) {
-    const head = `<div class="cat-head"><h4>${esc(c.title)}</h4><span class="cnt" data-cnt="${c.id}"></span></div>${c.blurb ? `<p class="blurb">${esc(c.blurb)}</p>` : ""}`;
+    const head = `<div class="cat-head"><h4>${numTag(c)}${esc(c.title)}</h4><span class="cnt" data-cnt="${c.id}"></span></div>${c.blurb ? `<p class="blurb">${esc(c.blurb)}</p>` : ""}`;
     const chk = (i) => (b.votes[c.id + "-" + i] ? "checked" : "");
     if (c.kind === "text") {
       const chips = c.opts.map(([l, , d], i) => `<label class="chip"><input type="checkbox" data-v="${c.id}-${i}" ${chk(i)}><span class="box" aria-hidden="true">✓</span><span>${esc(l)}${d ? `<small>${esc(d)}</small>` : ""}</span></label>`).join("");
-      return `<article class="cat">${head}<div class="textcat ${c.hero ? "" : "nohero"}">${c.hero ? `<div class="hero-ph">${photo(c.hero, c.title + " inspiration")}</div>` : ""}<div class="chips">${chips}</div></div></article>`;
+      return `<article class="cat" id="cat-${NUM[c.id]}">${head}<div class="textcat ${c.hero ? "" : "nohero"}">${c.hero ? `<div class="hero-ph">${photo(c.hero, c.title + " inspiration")}</div>` : ""}<div class="chips">${chips}</div></div></article>`;
     }
     const cards = c.opts.map(([l, p, d], i) => {
       const media = c.kind === "swatch" ? `<div class="swatches" aria-hidden="true">${p.map((h) => `<i style="background:${h}"></i>`).join("")}</div>` : p ? `<div class="ph">${photo(p, l)}</div>` : "";
       const cls = c.kind !== "swatch" && !p ? "opt noimg" : "opt";
       return `<label class="${cls}">${media}<input type="checkbox" data-v="${c.id}-${i}" ${chk(i)}><span class="cap"><span class="box" aria-hidden="true">✓</span><span>${esc(l)}${d && c.kind !== "swatch" ? `<small>${esc(d)}</small>` : ""}</span></span></label>`;
     }).join("");
-    return `<article class="cat">${head}<div class="opts">${cards}</div></article>`;
+    return `<article class="cat" id="cat-${NUM[c.id]}">${head}<div class="opts">${cards}</div></article>`;
   }
   function updateCounts() {
     const b = me ? mine() : blank("");
@@ -181,10 +183,10 @@
     const cnt = (k) => rows.filter((r) => r.n.length === k).length;
     $("sum").innerHTML = `<span>${cnt(3)} unanimous</span><span>${cnt(2)} two of three</span><span>${cnt(1)} one vote</span><span>${rows.length} options in all</span>`;
     const agreed = CATS.map((c) => ({ c, r: rows.filter((r) => r.c === c && r.n.length >= 2).sort((a, b) => b.n.length - a.n.length) })).filter((x) => x.r.length);
-    $("short").innerHTML = agreed.length ? agreed.map(({ c, r }) => `<div><div class="rch">${esc(c.title)}</div><ul class="short">${r.map((x) => `<li>${esc(x.l)} <span>${x.n.length === 3 ? "All three" : x.n.join(" & ")}</span></li>`).join("")}</ul></div>`).join("")
+    $("short").innerHTML = agreed.length ? agreed.map(({ c, r }) => `<div><div class="rch">#${NUM[c.id]} · ${esc(c.title)}</div><ul class="short">${r.map((x) => `<li>${esc(x.l)} <span>${x.n.length === 3 ? "All three" : x.n.join(" & ")}</span></li>`).join("")}</ul></div>`).join("")
       : `<p class="muted" style="margin:0">Nothing has two votes yet. Choices appear here as soon as two of us pick the same thing.</p>`;
 
-    $("allres").innerHTML = CH.map((ch) => `<div class="rch">${esc(ch.title)}</div><div class="rgrid">${CATS.filter((c) => c.ch === ch.id).map((c) => `<div class="rcat"><h4>${esc(c.title)}</h4>${rows.filter((r) => r.c === c).sort((a, b) => b.n.length - a.n.length).map((r) => `<div class="rrow ${r.n.length === 3 ? "all" : ""}"><span>${esc(r.l)}</span><b>${r.n.length} of 3</b><span class="meter"><i style="width:${(r.n.length / 3) * 100}%"></i></span>${r.n.length ? `<span class="names">${r.n.join(", ")}</span>` : ""}</div>`).join("")}</div>`).join("")}</div>`).join("");
+    $("allres").innerHTML = CH.map((ch) => `<div class="rch">${esc(ch.title)}</div><div class="rgrid">${CATS.filter((c) => c.ch === ch.id).map((c) => `<div class="rcat"><h4>${numTag(c)}${esc(c.title)}</h4>${rows.filter((r) => r.c === c).sort((a, b) => b.n.length - a.n.length).map((r) => `<div class="rrow ${r.n.length === 3 ? "all" : ""}"><span>${esc(r.l)}</span><b>${r.n.length} of 3</b><span class="meter"><i style="width:${(r.n.length / 3) * 100}%"></i></span>${r.n.length ? `<span class="names">${r.n.join(", ")}</span>` : ""}</div>`).join("")}</div>`).join("")}</div>`).join("");
 
     const status = (x) => {
       const leads = V.filter((n) => all[n]?.roles?.[x.key] === "Lead").length;
@@ -214,13 +216,13 @@
   /* ---------- CSV ---------- */
   $("csv").addEventListener("click", () => {
     const q = (x) => '"' + String(x ?? "").replace(/^[=+\-@]/, "'$&").replace(/"/g, '""') + '"';
-    const out = [["Section", "Category", "Option", ...V, "Votes"]];
+    const out = [["#", "Section", "Category", "Option", ...V, "Votes"]];
     CATS.forEach((c) => c.opts.forEach(([l], i) => {
       const n = votersOf(c.id + "-" + i);
-      out.push([CH.find((h) => h.id === c.ch).title, c.title, l, ...V.map((v) => n.includes(v) ? "Yes" : ""), n.length]);
+      out.push(["#" + NUM[c.id], CH.find((h) => h.id === c.ch).title, c.title, l, ...V.map((v) => n.includes(v) ? "Yes" : ""), n.length]);
     }));
-    out.push([], ["Group", "Segment or task", "Details", ...V]);
-    ITEMS.forEach((x) => out.push([x.group, x.label, x.meta || "", ...V.map((n) => all[n]?.roles?.[x.key] || "")]));
+    out.push([], ["", "Group", "Segment or task", "Details", ...V]);
+    ITEMS.forEach((x) => out.push(["", x.group, x.label, x.meta || "", ...V.map((n) => all[n]?.roles?.[x.key] || "")]));
     out.push([], ["Comments"], ...V.map((n) => [n, all[n]?.note || ""]));
     const blob = new Blob(["﻿" + out.map((r) => r.map(q).join(",")).join("\r\n")], { type: "text/csv" });
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "queen-bee-survey-results.csv";
