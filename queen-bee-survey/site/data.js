@@ -190,15 +190,30 @@ window.CATEGORIES = [
   ]}
 ];
 
-// Part 2: creative segments to volunteer for (the open checklist tasks are added after these).
+// Part 2: creative segments to volunteer for, as [label, detail?] (the open checklist tasks are added after these).
 window.SEGMENTS = [
-  "Theme & creative direction", "Attire & accessories", "Floral centerpieces", "Table settings & linens",
-  "Entrance & welcome display", "Photo booth & props", "Golf cart decorations", "Course decorations & tee signs",
-  "Breakfast & refreshments", "Luncheon menu", "Desserts & signature drinks", "Attendee gifts", "Awards & prizes",
-  "Games & entertainment", "Golf competitions", "Internal flyer", "External flyer", "Invitations & communications",
-  "Program booklet", "Registration & name badges", "Budget & purchasing", "Event-day setup",
-  "Photography & follow-up", "Music & playlist"
+  ["Gift sourcing"],
+  ["Floral centerpieces", "Planning with Michelle"],
+  ["Table settings & linens", "Planning with Michelle"],
+  ["Entrance table", "Planning and organization"],
+  ["Welcome display", "Planning with Michelle"],
+  ["Course decorations & tee signs"],
+  ["Breakfast & refreshments", "Suggestions to F&B"],
+  ["Luncheon menu", "Suggestions to F&B"],
+  ["Desserts & signature drinks", "Suggestions to F&B"],
+  ["Awards & prizes", "Planning and sourcing"],
+  ["Games & entertainment", "To be decided"],
+  ["Golf competitions", "To be decided"],
+  ["Internal flyer", "Plan and design"],
+  ["External flyer", "Plan and design"],
+  ["Program booklet", "Plan and design"],
+  ["Registration & name badges", "Plan and design"],
+  ["Event-day setup"]
 ];
+
+// Checklist tasks left out of Part 2, and suggested leads not shown.
+window.HIDE_TASKS = ["Choose the event schedule and decide on a theme, if desired"];
+window.HIDE_LEADS = ["Registration lead", "Food & décor lead", "Prizes lead", "Committee chair"];
 
 window.ROLES = ["Lead", "Help", "Pass"];
 

@@ -11,10 +11,10 @@
 
   // Part 2 items: creative segments, then every open checklist task.
   const ITEMS = [
-    ...window.SEGMENTS.map((s, i) => ({ key: "s-" + i, label: s, group: "Creative segments" })),
-    ...window.CHECKLIST.map((t, i) => ({ t, i })).filter(({ t }) => t.status !== "Done").map(({ t, i }) => ({
+    ...window.SEGMENTS.map(([s, d], i) => ({ key: "s-" + i, label: s, meta: d, group: "Creative segments" })),
+    ...window.CHECKLIST.map((t, i) => ({ t, i })).filter(({ t }) => t.status !== "Done" && !window.HIDE_TASKS.includes(t.task)).map(({ t, i }) => ({
       key: "t-" + i, label: t.task, group: "Checklist · " + t.area,
-      meta: ["Due " + t.due, t.timing, t.lead && "Suggested lead: " + t.lead].filter(Boolean).join(" · "), note: t.note
+      meta: ["Due " + t.due, t.timing, t.lead && !window.HIDE_LEADS.includes(t.lead) && "Suggested lead: " + t.lead].filter(Boolean).join(" · "), note: t.note
     }))
   ];
 
