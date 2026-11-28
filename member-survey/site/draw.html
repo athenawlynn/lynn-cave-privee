@@ -28,6 +28,7 @@ h1,h2,h3{font-family:var(--f-disp);font-weight:400;text-wrap:balance;margin:0}
 a{color:var(--sage)}
 
 .demo{background:var(--red-soft);border-bottom:1.5px solid var(--red);color:var(--red);font-size:15px;padding-block:calc(env(safe-area-inset-top,0px) + 10px) 10px;text-align:center}
+.demo:has(.real){background:var(--honey-soft);border-color:var(--honey);color:var(--ink)}
 .hero{background:var(--sage-soft);text-align:center;padding-block:34px 30px}
 .hero h1{font-size:clamp(32px,5.5vw,52px);line-height:1.05;margin:6px 0 8px}
 .hero h1 em{color:var(--sage)}
@@ -98,7 +99,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
 </style>
 </head>
 <body>
-<div class="demo"><div class="in"><b>Demo only.</b> These members are made up, and club spot counts are sample numbers except where noted.</div></div>
+<div class="demo"><div class="in" id="banner"><b>Demo only.</b> These members are made up, and club spot counts are sample numbers except where noted.</div></div>
 <header class="hero">
   <div class="in">
     <div class="eyebrow">Eastpointe 9-Hole Ladies · 2027 invitationals</div>
@@ -197,7 +198,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
   // Made-up sample members (fixed, independent of the draw code).
   const FIRST = ["Ann","Barb","Carol","Diane","Ellen","Fran","Gail","Helen","Iris","Joan","Kay","Linda","Marge","Nancy","Olivia","Pat","Rita","Sue","Terri","Val","Wendy","Alice","Bonnie","Connie","Debbie","Eve","Gwen","Holly","Janet","Kathy","Lois","Mary","Nora","Peggy","Ruth","Sally"];
   const LAST = "ABCDEFGHJKLMNPRSTW";
-  const MEMBERS = (() => {
+  const SAMPLE = (() => {
     const r = rng(20270204), out = [];
     FIRST.forEach((f, i) => {
       const area = pickW(r, [0, 1, 2], (a) => [30, 45, 25][a]);
@@ -214,6 +215,14 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
     });
     return out;
   })();
+  // Real responses handed over from the results page (same tab), if any.
+  let REAL = null;
+  if (location.hash === "#real") { try { REAL = JSON.parse(sessionStorage.getItem("qb-real-members") || "null"); } catch {} }
+  const MEMBERS = REAL && REAL.length ? REAL : SAMPLE;
+  if (MEMBERS === REAL) {
+    document.getElementById("banner").innerHTML = `<b>Real responses: ${REAL.length} ${REAL.length === 1 ? "member" : "members"}.</b> Club spot counts are sample numbers except where noted. <a href="admin.html">Back to responses</a>`;
+    document.getElementById("banner").classList.add("real");
+  }
 
   /* ---------- the draw ---------- */
   function runDraw(code, opts) {

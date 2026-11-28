@@ -87,6 +87,12 @@ textarea{resize:vertical}
 .cal .ti{font-size:17px;margin-right:6px;vertical-align:-2px}
 .cal td.c{white-space:nowrap}
 .cal a.map{display:block;font-size:13.5px;color:var(--sage);font-weight:700;margin-top:2px;white-space:nowrap}
+.who{display:grid;grid-template-columns:minmax(0,220px) auto;gap:10px;align-items:end;justify-content:start}
+.names{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.names{grid-template-columns:1fr}}
+.numstate{margin:0;font-weight:700;font-size:15px}
+.numstate.ok{color:var(--sage)}.numstate.bad{color:var(--red)}
+.btn:disabled{opacity:.6;cursor:wait}
 .clubnote{font-size:14px;color:var(--muted);margin:0}
 .err{color:var(--red);font-weight:700;font-size:15px;margin:0}
 .btn{border:0;border-radius:999px;padding:14px 26px;background:var(--sage);color:#fff;font:700 17px var(--f-body);cursor:pointer;justify-self:start}
@@ -127,10 +133,19 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
   <form id="form" novalidate>
     <div style="display:grid;gap:22px">
       <article class="cat">
-        <h2><span class="qnum">1</span>Your name<span class="req">Required</span></h2>
-        <label class="fld" for="name">First and last name
-          <input type="text" id="name" autocomplete="name" required>
-        </label>
+        <h2><span class="qnum">1</span>About you<span class="req">Required</span></h2>
+        <p class="hint">Your member number is on your club card and statements. If you've answered before, enter it to see and change your answers.</p>
+        <div class="who">
+          <label class="fld" for="num">Member number
+            <input type="text" id="num" inputmode="numeric" autocomplete="off" maxlength="8" required>
+          </label>
+          <button class="btn ghost" type="button" id="find">Find me</button>
+        </div>
+        <p class="numstate" id="numState" role="status" hidden></p>
+        <div class="names">
+          <label class="fld" for="first">First name<input type="text" id="first" autocomplete="given-name" required></label>
+          <label class="fld" for="last">Last name<input type="text" id="last" autocomplete="family-name" required></label>
+        </div>
       </article>
 
       <article class="cat">
@@ -166,25 +181,25 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
           <label class="choice"><input type="radio" name="count" value="1"><span class="dot"></span><span>1</span></label>
           <label class="choice"><input type="radio" name="count" value="2"><span class="dot"></span><span>2</span></label>
           <label class="choice"><input type="radio" name="count" value="3"><span class="dot"></span><span>3</span></label>
-          <label class="choice"><input type="radio" name="count" value="4 or more"><span class="dot"></span><span>4 or more</span></label>
+          <label class="choice"><input type="radio" name="count" value="4"><span class="dot"></span><span>4 or more</span></label>
         </div>
       </article>
 
       <article class="cat">
         <h2><span class="qnum">5</span>How far are you willing to drive?</h2>
         <div class="choices" role="radiogroup" aria-label="Drive time">
-          <label class="choice"><input type="radio" name="drive" value="Palm Beach Gardens only"><span class="dot"></span><span>Palm Beach Gardens only <small>About 15 minutes · Frenchman's Reserve, PGA National, Ballen Isles</small></span></label>
-          <label class="choice"><input type="radio" name="drive" value="Up to Jupiter"><span class="dot"></span><span>Up to Jupiter <small>About 25 minutes · adds Jonathan's Landing, Admirals Cove, Jupiter Country Club</small></span></label>
-          <label class="choice"><input type="radio" name="drive" value="Up to Stuart and Palm City"><span class="dot"></span><span>Up to Stuart and Palm City <small>About 45 minutes · adds Willoughby, Mariner Sands, Monarch</small></span></label>
+          <label class="choice"><input type="radio" name="drive" value="0"><span class="dot"></span><span>Palm Beach Gardens only <small>About 15 minutes · Frenchman's Reserve, PGA National, Ballen Isles</small></span></label>
+          <label class="choice"><input type="radio" name="drive" value="1"><span class="dot"></span><span>Up to Jupiter <small>About 25 minutes · adds Jonathan's Landing, Admirals Cove, Jupiter Country Club</small></span></label>
+          <label class="choice"><input type="radio" name="drive" value="2"><span class="dot"></span><span>Up to Stuart and Palm City <small>About 45 minutes · adds Willoughby, Mariner Sands, Monarch</small></span></label>
         </div>
       </article>
 
       <article class="cat">
         <h2><span class="qnum">6</span>If your top three are full, would you play somewhere else?</h2>
         <div class="choices" role="radiogroup" aria-label="Alternate club">
-          <label class="choice"><input type="radio" name="alt" value="Yes, any club within my drive time"><span class="dot"></span><span>Yes, any club within my drive time</span></label>
-          <label class="choice"><input type="radio" name="alt" value="Maybe, please check with me first"><span class="dot"></span><span>Maybe, please check with me first</span></label>
-          <label class="choice"><input type="radio" name="alt" value="No, only my top three"><span class="dot"></span><span>No, only my top three</span></label>
+          <label class="choice"><input type="radio" name="alt" value="Yes"><span class="dot"></span><span>Yes, any club within my drive time</span></label>
+          <label class="choice"><input type="radio" name="alt" value="Maybe"><span class="dot"></span><span>Maybe, please check with me first</span></label>
+          <label class="choice"><input type="radio" name="alt" value="No"><span class="dot"></span><span>No, only my top three</span></label>
         </div>
       </article>
 
@@ -196,15 +211,15 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       </article>
 
       <p class="err" id="err" role="alert" hidden></p>
-      <button class="btn" type="submit">Submit my preferences</button>
+      <button class="btn" type="submit" id="submit">Submit my preferences</button>
     </div>
   </form>
 
   <section class="thanks" id="thanks" hidden aria-live="polite">
-    <div class="eyebrow">Preview</div>
-    <h2>Thank you! Here's what the committee would receive.</h2>
+    <div class="eyebrow">Saved ✓</div>
+    <h2>Thank you! Your preferences are in.</h2>
     <dl id="summary"></dl>
-    <p class="muted" style="margin:0">This is a draft, so nothing was saved. In the live version, this goes straight into the committee's spreadsheet.</p>
+    <p class="muted" style="margin:0">You can change your answers any time before the survey closes. Just come back and enter your member number again.</p>
     <button class="btn ghost" type="button" id="again">Edit my answers</button>
   </section>
 
@@ -228,15 +243,15 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
 (() => {
   // Clubs hosting a 2027 invitational with a firm date, from Lynnie's 2027 club spreadsheet (Nov 22 draft).
   const CLUBS = [
-    { club: "Jonathan's Landing", town: "Jupiter", q: "Jonathan's Landing Golf Club, Jupiter, FL", date: "Wed, Jan 20", theme: "", time: "9:30 start · Old Trail Medal Course", cost: "" },
-    { club: "Frenchman's Reserve", town: "Palm Beach Gardens", q: "Frenchman's Reserve Country Club, Palm Beach Gardens, FL", date: "Thu, Jan 21", theme: "Peace, Love and Golf", icon: "☮️", time: "", cost: "" },
-    { club: "Admirals Cove", town: "Jupiter", q: "Admirals Cove, Jupiter, FL", date: "Wed, Feb 10", theme: "Galentine's", icon: "💕", time: "8:00 breakfast · 9:30 start", cost: "$125" },
-    { club: "Willoughby", town: "Stuart", q: "Willoughby Golf Club, Stuart, FL", date: "Thu, Feb 11", theme: "Paris, The City of Love", icon: "🗼", time: "9:00 breakfast · 10:00 start", cost: "" },
-    { club: "Jupiter Country Club", town: "Jupiter", q: "Jupiter Country Club, Jupiter, FL", date: "Thu, Feb 18", theme: "Cowgirl Classic", icon: "🤠", time: "9:00 breakfast · 9:30 shotgun", cost: "" },
-    { club: "Monarch", town: "Palm City", q: "Monarch Country Club, Palm City, FL", date: "Tue, Feb 23", theme: "", time: "", cost: "" },
-    { club: "Mariner Sands", town: "Stuart", q: "Mariner Sands Country Club, Stuart, FL", date: "Tue, Mar 2", theme: "Mama Tee-a", icon: "🪩", time: "11:30 lunch · 1:00 shotgun", cost: "" },
-    { club: "PGA National", town: "Palm Beach Gardens", q: "PGA National Resort, Palm Beach Gardens, FL", date: "Thu, Mar 18", theme: "Let's Get Physical", icon: "🤸‍♀️", time: "12:30 registration · 1:30 start", cost: "$140" },
-    { club: "Ballen Isles", town: "Palm Beach Gardens", q: "BallenIsles Country Club, Palm Beach Gardens, FL", date: "Thu, Apr 8", theme: "", time: "Breakfast 8:00 · 9:00 start", cost: "" }
+    { id: "JL", club: "Jonathan's Landing", town: "Jupiter", q: "Jonathan's Landing Golf Club, Jupiter, FL", date: "Wed, Jan 20", theme: "", time: "9:30 start · Old Trail Medal Course", cost: "" },
+    { id: "FR", club: "Frenchman's Reserve", town: "Palm Beach Gardens", q: "Frenchman's Reserve Country Club, Palm Beach Gardens, FL", date: "Thu, Jan 21", theme: "Peace, Love and Golf", icon: "☮️", time: "", cost: "" },
+    { id: "AC", club: "Admirals Cove", town: "Jupiter", q: "Admirals Cove, Jupiter, FL", date: "Wed, Feb 10", theme: "Galentine's", icon: "💕", time: "8:00 breakfast · 9:30 start", cost: "$125" },
+    { id: "WB", club: "Willoughby", town: "Stuart", q: "Willoughby Golf Club, Stuart, FL", date: "Thu, Feb 11", theme: "Paris, The City of Love", icon: "🗼", time: "9:00 breakfast · 10:00 start", cost: "" },
+    { id: "JC", club: "Jupiter Country Club", town: "Jupiter", q: "Jupiter Country Club, Jupiter, FL", date: "Thu, Feb 18", theme: "Cowgirl Classic", icon: "🤠", time: "9:00 breakfast · 9:30 shotgun", cost: "" },
+    { id: "MO", club: "Monarch", town: "Palm City", q: "Monarch Country Club, Palm City, FL", date: "Tue, Feb 23", theme: "", time: "", cost: "" },
+    { id: "MS", club: "Mariner Sands", town: "Stuart", q: "Mariner Sands Country Club, Stuart, FL", date: "Tue, Mar 2", theme: "Mama Tee-a", icon: "🪩", time: "11:30 lunch · 1:00 shotgun", cost: "" },
+    { id: "PG", club: "PGA National", town: "Palm Beach Gardens", q: "PGA National Resort, Palm Beach Gardens, FL", date: "Thu, Mar 18", theme: "Let's Get Physical", icon: "🤸‍♀️", time: "12:30 registration · 1:30 start", cost: "$140" },
+    { id: "BI", club: "Ballen Isles", town: "Palm Beach Gardens", q: "BallenIsles Country Club, Palm Beach Gardens, FL", date: "Thu, Apr 8", theme: "", time: "Breakfast 8:00 · 9:00 start", cost: "" }
   ];
   const ORIGIN = "Eastpointe Country Club, Palm Beach Gardens, FL";
   const mapUrl = (c) => "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(ORIGIN) + "&destination=" + encodeURIComponent(c.q) + "&travelmode=driving";
@@ -244,7 +259,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
   document.getElementById("cal").innerHTML = CLUBS.map((c) => `<tr><td class="d">${c.date}</td><td><b>${c.club}</b>${c.theme ? `<small class="theme"><span class="ti" aria-hidden="true">${c.icon}</span>${c.theme}</small>` : `<small>Theme to come</small>`}</td><td>${c.town}<a class="map" href="${mapUrl(c)}" target="_blank" rel="noopener">Drive time from Eastpointe ↗</a></td><td>${c.time || '<span class="muted">To come</span>'}</td><td class="c">${c.cost || '<span class="muted">To come</span>'}</td></tr>`).join("");
   const $ = (id) => document.getElementById(id);
   const sels = [$("r1"), $("r2"), $("r3")];
-  sels.forEach((s) => { s.innerHTML = `<option value="">Choose a club</option>` + CLUBS.map((c) => `<option>${label(c)}</option>`).join(""); });
+  sels.forEach((s) => { s.innerHTML = `<option value="">Choose a club</option>` + CLUBS.map((c) => `<option value="${c.id}">${label(c)}</option>`).join(""); });
   // Hide a club in the other two lists once it's picked.
   function syncRanks() {
     const picked = sels.map((s) => s.value);
@@ -253,21 +268,70 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
   sels.forEach((s) => s.addEventListener("change", syncRanks));
 
   const val = (n) => document.querySelector(`input[name="${n}"]:checked`)?.value || "";
+  const setVal = (n, v) => { const el = document.querySelector(`input[name="${n}"][value="${v}"]`); if (el) el.checked = true; };
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  $("form").addEventListener("submit", (e) => {
+  const num = () => { const d = $("num").value.replace(/\D/g, ""); return d && d.length < 5 ? d.padStart(5, "0") : d; };
+  let verified = "";
+
+  function numState(msg, ok) { const el = $("numState"); el.textContent = msg; el.className = "numstate " + (ok ? "ok" : "bad"); el.hidden = !msg; }
+  async function api(body) {
+    const r = await fetch("/api/member", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    const data = await r.json().catch(() => ({}));
+    return { status: r.status, data };
+  }
+  async function findMe() {
+    if (!num()) { numState("Please enter your member number.", false); return false; }
+    $("find").disabled = true;
+    try {
+      const { status, data } = await api({ action: "check", num: num() });
+      if (status === 404) { verified = ""; numState("We can't find that number among golf memberships. Please check it, or call the golf shop.", false); return false; }
+      if (!data.ok) throw new Error();
+      verified = num();
+      const a = data.existing;
+      if (a) {
+        $("first").value = a.first || ""; $("last").value = a.last || "";
+        setVal("home", a.home); setVal("count", a.count); setVal("drive", a.drive); setVal("alt", a.alt);
+        (a.ranks || []).forEach((id, i) => (sels[i].value = id)); syncRanks();
+        $("notes").value = a.notes || "";
+        numState("✓ Member number found. We've filled in your earlier answers, so change anything and submit again.", true);
+      } else numState("✓ Member number found. Please continue below.", true);
+      return true;
+    } catch { numState("We couldn't check your number just now. Please try again in a minute.", false); return false; }
+    finally { $("find").disabled = false; }
+  }
+  $("find").addEventListener("click", findMe);
+  $("num").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); findMe(); } });
+  $("num").addEventListener("input", () => { if (num() !== verified) { verified = ""; $("numState").hidden = true; } });
+
+  const CLUB = Object.fromEntries(CLUBS.map((c) => [c.id, c]));
+  const DRIVE = ["Palm Beach Gardens only", "Up to Jupiter", "Up to Stuart and Palm City"];
+  const ALT = { Yes: "Yes, any club within my drive time", Maybe: "Maybe, please check with me first", No: "No, only my top three" };
+  const HOME = { Yes: "Yes", Probably: "Probably", No: "Not this year" };
+
+  $("form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const missing = [];
-    if (!$("name").value.trim()) missing.push("your name (question 1)");
+    if (!num()) missing.push("your member number");
+    if (!$("first").value.trim() || !$("last").value.trim()) missing.push("your first and last name");
     if (!val("home")) missing.push("the home invitational (question 2)");
-    if (sels.some((s) => !s.value)) missing.push("all three club choices (question 3)");
+    if (sels.some((s) => !s.value)) missing.push("three different clubs (question 3)");
     if (missing.length) { $("err").textContent = "Please add " + missing.join(", ") + "."; $("err").hidden = false; return; }
+    if (verified !== num() && !(await findMe())) { $("err").textContent = "Please check your member number in question 1."; $("err").hidden = false; $("num").focus(); return; }
     $("err").hidden = true;
+    const answers = { first: $("first").value.trim(), last: $("last").value.trim(), home: val("home"), ranks: sels.map((s) => s.value), count: val("count"), drive: val("drive"), alt: val("alt"), notes: $("notes").value.trim() };
+    $("submit").disabled = true; $("submit").textContent = "Saving…";
+    try {
+      const { status, data } = await api({ action: "save", num: num(), answers });
+      if (!data.ok) throw new Error(status);
+    } catch {
+      $("err").textContent = "Your answers didn't save. Please check your connection and press Submit again."; $("err").hidden = false; return;
+    } finally { $("submit").disabled = false; $("submit").textContent = "Submit my preferences"; }
     const rows = [
-      ["Name", $("name").value.trim()], ["Home invitational", val("home")],
-      ["1st choice", sels[0].value], ["2nd choice", sels[1].value], ["3rd choice", sels[2].value],
-      ["Invitationals this season", val("count") || "No answer"], ["Willing to drive", val("drive") || "No answer"],
-      ["If top three are full", val("alt") || "No answer"],
-      ["Comments", $("notes").value.trim() || "None"]
+      ["Name", `${answers.first} ${answers.last}`], ["Member number", num()], ["Home invitational", HOME[answers.home]],
+      ...answers.ranks.map((id, i) => [["1st", "2nd", "3rd"][i] + " choice", label(CLUB[id])]),
+      ["Invitationals this season", answers.count ? (answers.count === "4" ? "4 or more" : answers.count) : "No answer"],
+      ["Willing to drive", answers.drive ? DRIVE[+answers.drive] : "No answer"],
+      ["If top three are full", ALT[answers.alt] || "No answer"], ["Comments", answers.notes || "None"]
     ];
     $("summary").innerHTML = rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
     $("form").hidden = true; $("thanks").hidden = false; $("thanks").scrollIntoView({ block: "start" });

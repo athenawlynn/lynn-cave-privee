@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Invitational Responses</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4l40 23v46L50 96 10 73V27z' fill='%235f7458'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23e5a823'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Garden Party, matching the member survey. Passcode gate, then summary, responses, and who hasn't answered. */
+:root{
+  --ivory:#fbfaf4; --paper:#ffffff; --sage:#5f7458; --sage-soft:#dfe6d6; --sage-faint:#eef1e7;
+  --honey:#e5a823; --honey-soft:#f6e7bf; --ink:#2b3027; --muted:#66705f; --line:#e3e6d8; --red:#b3261e; --red-soft:#fdf1ef;
+  --f-disp:"Fraunces",Georgia,"Times New Roman",serif; --f-body:"Karla",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--ink);font:16px/1.5 var(--f-body);position:relative}
+[hidden]{display:none!important}
+.in{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2{font-family:var(--f-disp);font-weight:400;text-wrap:balance;margin:0}
+.eyebrow{font:700 12px/1.3 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+:focus-visible{outline:3px solid var(--honey);outline-offset:2px}
+a{color:var(--sage)}
+.hero{background:var(--sage-soft);text-align:center;padding-block:calc(env(safe-area-inset-top,0px) + 32px) 28px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:6px 0 6px}
+.hero h1 em{color:var(--sage)}
+main{display:grid;gap:22px;padding-block:26px 60px;position:relative;z-index:2}
+.bee-layer{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bee{position:absolute;display:block;opacity:.92;transform:rotate(var(--tilt)) scaleX(var(--flip));animation:bob 5s ease-in-out infinite}
+.bee svg{display:block;width:100%;height:auto}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--tilt)) scaleX(var(--flip))}50%{transform:translateY(-9px) rotate(calc(var(--tilt) + 6deg)) scaleX(var(--flip))}}
+article.cat{position:relative}
+.bee.perch{width:34px;top:-20px;right:22px;left:auto;z-index:3}
+@media (prefers-reduced-motion:reduce){.bee{animation:none}}
+.cat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-width:0}
+@media (max-width:640px){.cat{padding:18px 16px}}
+.cat h2{font-size:26px}
+.sub{margin:-6px 0 0;color:var(--muted);font-size:15px}
+.gate{max-width:440px;justify-self:center;width:100%}
+input[type=password]{font:inherit;padding:11px 12px;border:1px solid #d3dac8;border-radius:12px;background:var(--ivory);width:100%}
+.btn{border:0;border-radius:999px;padding:12px 22px;background:var(--sage);color:#fff;font:700 16px var(--f-body);cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{background:#4e6148}
+.btn.ghost{background:var(--paper);color:var(--sage);border:1.5px solid var(--sage);padding:9px 16px;font-size:15px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.err{color:var(--red);font-weight:700;margin:0}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.tile b{display:block;font:400 34px/1.1 var(--f-disp);font-variant-numeric:tabular-nums}
+.tile span{font-size:14px;color:var(--muted)}
+.tile.hl{background:var(--honey-soft);border-color:transparent}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:900px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--sage-faint);font-weight:700;font-size:13.5px;position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td small{display:block;color:var(--muted);font-size:12.5px}
+.narrow table{min-width:420px}
+.note{background:var(--honey-soft);border-radius:12px;padding:10px 14px;font-size:14.5px;margin:0}
+footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bottom,0px));background:var(--sage-soft);font:italic 400 18px var(--f-disp);color:var(--sage);position:relative;z-index:2}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="in">
+    <div class="eyebrow">Eastpointe 9-Hole Ladies · committee only</div>
+    <h1>Invitational <em>Responses</em></h1>
+    <p class="muted" style="margin:0">Live answers from the member survey, for Lynnie and Derek.</p>
+  </div>
+</header>
+
+<main class="in">
+  <article class="cat gate" id="gate">
+    <h2>Enter the passcode</h2>
+    <form id="gateForm" style="display:grid;gap:10px">
+      <label for="pass" class="muted" style="font-size:15px">This page shows members' answers, so it's passcode protected.</label>
+      <input type="password" id="pass" autocomplete="current-password" required>
+      <p class="err" id="gateErr" role="alert" hidden></p>
+      <div class="row"><button class="btn" type="submit" id="go">Show responses</button></div>
+    </form>
+  </article>
+
+  <div id="data" hidden style="display:grid;gap:22px">
+    <section class="tiles" id="tiles"></section>
+    <div class="row">
+      <button class="btn" type="button" id="toDraw">Run the draw on these responses</button>
+      <button class="btn ghost" type="button" id="csv">Download responses (CSV)</button>
+      <button class="btn ghost" type="button" id="refresh">Refresh</button>
+      <span class="muted" id="when" style="font-size:14px"></span>
+    </div>
+
+    <article class="cat">
+      <h2>Responses</h2>
+      <p class="sub">Newest first. A member who submits again replaces her earlier answers.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Member</th><th>Home event</th><th>1st choice</th><th>2nd choice</th><th>3rd choice</th><th>Wants</th><th>Will drive to</th><th>Alternate club?</th><th>Comments</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table></div>
+    </article>
+
+    <article class="cat">
+      <h2>Hasn't responded yet</h2>
+      <p class="note">This list only has the women named on the member list, which is mostly single memberships. Wives on couple memberships aren't listed by name, so check against the 9-hole ladies roster too.</p>
+      <div class="tablewrap narrow"><table>
+        <thead><tr><th>Member #</th><th>Name on member list</th></tr></thead>
+        <tbody id="missing"></tbody>
+      </table></div>
+    </article>
+  </div>
+</main>
+<footer>Good friends · Great golf · Sweet memories</footer>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const CLUB = { JL: "Jonathan's Landing", FR: "Frenchman's Reserve", AC: "Admirals Cove", WB: "Willoughby", JC: "Jupiter Country Club", MO: "Monarch", MS: "Mariner Sands", PG: "PGA National", BI: "Ballen Isles" };
+  const DRIVE = ["Palm Beach Gardens", "Jupiter", "Stuart & Palm City"];
+  const HOME = { Yes: "Yes", Probably: "Probably", No: "Not this year" };
+  const ALT = { Yes: "Yes", Maybe: "Check first", No: "No" };
+  let pass = "", data = null;
+  try { pass = sessionStorage.getItem("qb-admin") || ""; } catch {}
+
+  async function load() {
+    $("go").disabled = true;
+    try {
+      const r = await fetch("/api/member-admin", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ passcode: pass }) });
+      const d = await r.json().catch(() => ({}));
+      if (r.status === 401) { $("gateErr").textContent = "That passcode isn't right. Please try again."; $("gateErr").hidden = false; $("gate").hidden = false; $("data").hidden = true; return; }
+      if (!d.ok) throw new Error();
+      try { sessionStorage.setItem("qb-admin", pass); } catch {}
+      data = d; render();
+      $("gate").hidden = true; $("data").hidden = false;
+    } catch { $("gateErr").textContent = "Couldn't load responses. Please check your connection and try again."; $("gateErr").hidden = false; }
+    finally { $("go").disabled = false; }
+  }
+  $("gateForm").addEventListener("submit", (e) => { e.preventDefault(); pass = $("pass").value; load(); });
+  $("refresh").addEventListener("click", load);
+
+  function render() {
+    const rs = [...data.responses].sort((a, b) => b.updated.localeCompare(a.updated));
+    const nums = new Set(rs.map((r) => r.num));
+    const yes = rs.filter((r) => r.answers.home === "Yes").length;
+    const listed = data.women.filter((w) => nums.has(w.num)).length;
+    $("tiles").innerHTML = `
+      <div class="tile hl"><b>${rs.length}</b><span>members have responded</span></div>
+      <div class="tile"><b>${yes}</b><span>playing in the Queen Bee Invitational</span></div>
+      <div class="tile"><b>${rs.reduce((a, r) => a + (+r.answers.count || 1), 0)}</b><span>invitational spots wanted in all</span></div>
+      <div class="tile"><b>${listed} of ${data.women.length}</b><span>listed women have responded</span></div>`;
+    $("rows").innerHTML = rs.map((r) => { const a = r.answers; return `<tr>
+      <td><b>${esc(a.first)} ${esc(a.last)}</b><small>#${esc(r.num)} · ${new Date(r.updated).toLocaleDateString([], { month: "short", day: "numeric" })}</small></td>
+      <td>${HOME[a.home] || ""}</td>${(a.ranks || []).map((id) => `<td>${esc(CLUB[id] || id)}</td>`).join("")}
+      <td>${a.count ? (a.count === "4" ? "4+" : a.count) : "—"}</td><td>${a.drive !== "" ? DRIVE[+a.drive] : "—"}</td><td>${ALT[a.alt] || "—"}</td>
+      <td>${esc(a.notes)}</td></tr>`; }).join("") || '<tr><td colspan="9" class="muted">No responses yet.</td></tr>';
+    const miss = data.women.filter((w) => !nums.has(w.num)).sort((a, b) => a.name.split(" ").pop().localeCompare(b.name.split(" ").pop()));
+    $("missing").innerHTML = miss.map((w) => `<tr><td>${esc(w.num)}</td><td>${esc(w.name)}</td></tr>`).join("") || '<tr><td colspan="2" class="muted">Everyone on this list has responded.</td></tr>';
+    $("when").textContent = "Updated " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  }
+
+  $("csv").addEventListener("click", () => {
+    const q = (x) => '"' + String(x ?? "").replace(/^[=+\-@]/, "'$&").replace(/"/g, '""') + '"';
+    const out = [["Member #", "First", "Last", "Home event", "1st", "2nd", "3rd", "Wants", "Will drive to", "Alternate club", "Comments", "Updated"]];
+    data.responses.forEach((r) => { const a = r.answers; out.push([r.num, a.first, a.last, HOME[a.home], ...(a.ranks || []).map((id) => CLUB[id]), a.count, a.drive !== "" ? DRIVE[+a.drive] : "", ALT[a.alt] || "", a.notes, r.updated]); });
+    const blob = new Blob(["﻿" + out.map((r) => r.map(q).join(",")).join("\r\n")], { type: "text/csv" });
+    const el = document.createElement("a"); el.href = URL.createObjectURL(blob); el.download = "invitational-responses.csv";
+    document.body.appendChild(el); el.click(); el.remove(); setTimeout(() => URL.revokeObjectURL(el.href), 1500);
+  });
+
+  // Hand the responses to the draw page (same browser tab only).
+  $("toDraw").addEventListener("click", () => {
+    const members = data.responses.filter((r) => r.answers.ranks).map((r) => ({
+      name: `${r.answers.first} ${r.answers.last}`, num: r.num, home: r.answers.home, ranks: r.answers.ranks,
+      area: r.answers.drive === "" ? 2 : +r.answers.drive, want: +r.answers.count || 1, alt: r.answers.alt || "No"
+    }));
+    try { sessionStorage.setItem("qb-real-members", JSON.stringify(members)); } catch {}
+    location.href = "draw.html#real";
+  });
+
+  if (pass) load();
+})();
+</script>
+<script src="bees.js"></script>
+</body>
+</html>
