@@ -179,22 +179,6 @@ window.CATEGORIES = [
   ]},
 
   // ---------- Planning decisions (spreadsheet) ----------
-  { id: "theme", ch: "plan", kind: "text", title: "Theme", blurb: "Theme ideas listed in the committee checklist.", opts: [
-    ["Queen Bee"], ["Nautical"], ["Luck of the Irish"], ["Camp Eastpointe"]
-  ]},
-  { id: "budget", ch: "plan", kind: "text", title: "Budget, entry fee & capacity", blurb: "Price to be set with Derek; Derek and Joe give the player target.", opts: [
-    ["Prioritize an affordable entry fee"], ["Include guest gifts and prizes in the entry fee"],
-    ["Include breakfast and luncheon in the entry fee"], ["Equal places per visiting club"],
-    ["Allocate places based on interest and available capacity"]
-  ]},
-  { id: "format", ch: "plan", kind: "text", title: "Schedule & golf format", blurb: "Confirmed with the golf shop before it's final.", opts: [
-    ["Morning shotgun followed by luncheon and awards"], ["Breakfast before golf"], ["Awards during luncheon"],
-    ["Scramble"], ["Two best balls"], ["Flights by handicap, if appropriate"]
-  ]},
-  { id: "invites", ch: "plan", kind: "text", title: "Invitations & registration", blurb: "", opts: [
-    ["Internal flyer and external flyer"], ["ForeTees / club app listing"], ["Invitations with RSVP deadline"],
-    ["Waitlist and cancellation process"], ["Collect handicap and dietary information"], ["Send arrival and dress-code instructions"]
-  ]},
   { id: "welcomeops", ch: "plan", kind: "text", title: "Guest welcome & event operations", blurb: "", opts: [
     ["Parking and bag-drop directions"], ["Welcome table and name tags"], ["Greeters and contest helpers"],
     ["Welcome bags at check-in"], ["Weather delay and cancellation plan"]
