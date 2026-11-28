@@ -122,6 +122,14 @@ label.lbl{font-weight:700;display:block;margin-bottom:6px}
 
 /* volunteer */
 .confirm{background:var(--honey-soft);border-radius:14px;padding:14px 18px;font-size:15.5px}
+.rolekey{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-top:18px}
+.rolekey h3{font-size:24px;margin-bottom:10px}
+.rolekey dl{margin:0;display:grid;gap:10px}
+.rolekey dl>div{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;align-items:baseline}
+.rolekey dd{margin:0;font-size:15.5px}
+.kp{display:inline-block;font-size:14px;padding:4px 12px;border-radius:999px;background:var(--honey-soft);font-weight:700}
+.kp.lead{background:var(--honey);color:#2b2005}.kp.pass{background:#e4e2da;color:var(--muted)}
+@media (max-width:640px){.rolekey dl>div{grid-template-columns:1fr;gap:4px}}
 .vgroup{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:8px 22px 14px}
 .vgroup h4{font-size:22px;padding:14px 0 4px}
 .vrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 18px;align-items:center;padding:13px 0;border-top:1px dashed #d3dac8}
@@ -229,6 +237,15 @@ footer{text-align:center;padding-block:28px calc(28px + env(safe-area-inset-bott
       <p>Choose Lead, Co-plan or Assist for anything you'd enjoy, or Pass. These are preferences, not final assignments. You'll see who else has offered under each item.</p>
     </div>
     <div class="confirm" style="margin-top:18px"><b>Already done:</b> date, clubhouse and course booked for Feb 4, 2027 by Mo, Sharon and Derek, and listed in ForeTees.</div>
+    <div class="rolekey" aria-labelledby="rkTitle">
+      <h3 id="rkTitle">What each role means</h3>
+      <dl>
+        <div><dt><span class="kp lead">Lead</span></dt><dd>Owns it from start to finish: makes the final calls, keeps the timeline, coordinates helpers and reports back to the committee. One lead per item.</dd></div>
+        <div><dt><span class="kp">Co-plan</span></dt><dd>Plans it with the lead: shares the ideas and decisions, and takes on part of the work, such as sourcing vendors or comparing options.</dd></div>
+        <div><dt><span class="kp">Assist</span></dt><dd>Helps carry it out when asked, such as shopping, assembling or setting up on the day. No planning or decisions.</dd></div>
+        <div><dt><span class="kp pass">Pass</span></dt><dd>Not for you this time.</dd></div>
+      </dl>
+    </div>
     <fieldset id="roleFs"><div id="segments" style="display:grid;gap:18px;margin-top:18px"></div>
       <div class="done-row" style="margin-top:18px"><button class="btn" type="button" id="doneRole">I'm done with Part 2</button><span class="muted" id="doneRoleMsg"></span></div>
     </fieldset>

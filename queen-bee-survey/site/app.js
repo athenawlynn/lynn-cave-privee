@@ -6,6 +6,7 @@
     window.CATEGORIES.forEach((c) => { if (c.sub) { sub++; m[c.id] = n + String.fromCharCode(97 + sub); } else { n++; sub = 0; m[c.id] = n; } });
     return m; })();
   const numTag = (c) => `<span class="num">#${NUM[c.id]}</span>`;
+  const ROLE_TIPS = { Lead: "Owns it and makes the final calls", "Co-plan": "Plans it with the lead and shares the work", Assist: "Helps carry it out when asked", Pass: "Not for you this time" };
   const blank = (name) => ({ name, votes: {}, roles: {}, note: "", voteDone: false, roleDone: false });
 
   // Part 2 items: creative segments, then every open checklist task.
@@ -71,7 +72,7 @@
     const groups = [...new Set(ITEMS.map((x) => x.group))];
     $("segments").innerHTML = groups.map((g) => `<div class="vgroup"><h4>${esc(g)}</h4>${ITEMS.filter((x) => x.group === g).map((x) => `
       <div class="vrow"><div><div class="task">${esc(x.label)}</div>${x.meta ? `<div class="meta">${esc(x.meta)}${x.note ? "<br>" + esc(x.note) : ""}</div>` : ""}</div>
-      <div class="roles" role="radiogroup" aria-label="Your role for ${esc(x.label)}">${ROLES.map((r) => `<label class="role"><input type="radio" name="r-${x.key}" value="${r}" data-r="${x.key}" ${b.roles[x.key] === r ? "checked" : ""}><span>${r}</span></label>`).join("")}</div>
+      <div class="roles" role="radiogroup" aria-label="Your role for ${esc(x.label)}">${ROLES.map((r) => `<label class="role" title="${ROLE_TIPS[r]}"><input type="radio" name="r-${x.key}" value="${r}" data-r="${x.key}" ${b.roles[x.key] === r ? "checked" : ""}><span>${r}</span></label>`).join("")}</div>
       <div class="others" data-others="${x.key}"></div></div>`).join("")}</div>`).join("");
     updateOthers();
   }
