@@ -48,7 +48,8 @@ window.CATEGORIES = [
     ["Miniature crowns", "N06"], ["Yellow visors", "N07"], ["Yellow silk scarves and black-and-yellow ribbons", "N08"]
   ]},
   { id: "regaccessory", ch: "look", kind: "photo", title: "Bee accessory at registration", blurb: "A small accessory for every lady at check-in, so everyone can join in.", opts: [
-    ["Clip-on bee", "N09"], ["Gold bee pin", "39"], ["Antenna headband", "05"]
+    ["Clip-on bee", "N09"], ["Gold bee pin", "39"], ["Antenna headband", "05"],
+    ["Bee golf ball marker with hat clip", "N55", "Magnetic marker, about 1 inch, clips onto a visor or cap"]
   ]},
 
   // ---------- Welcome & décor ----------
