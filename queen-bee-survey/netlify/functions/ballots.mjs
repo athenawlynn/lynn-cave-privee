@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
 
 const VOTERS = ["Athena", "Lynnie", "Beth"];
-const ROLES = ["Lead", "Co-plan", "Assist", "Pass"];
+const ROLES = ["Lead", "Help", "Pass"];
 const KEY = /^[a-z0-9-]{1,60}$/;
 
 function clean(b) {

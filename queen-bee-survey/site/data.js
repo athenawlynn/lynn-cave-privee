@@ -200,7 +200,7 @@ window.SEGMENTS = [
   "Photography & follow-up", "Music & playlist"
 ];
 
-window.ROLES = ["Lead", "Co-plan", "Assist", "Pass"];
+window.ROLES = ["Lead", "Help", "Pass"];
 
 // All original photos are now in place (15, 21, 35 and 40 replaced in round 3).
 window.PENDING_ORIGINALS = [];

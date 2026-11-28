@@ -6,7 +6,7 @@
     window.CATEGORIES.forEach((c) => { if (c.sub) { sub++; m[c.id] = n + String.fromCharCode(97 + sub); } else { n++; sub = 0; m[c.id] = n; } });
     return m; })();
   const numTag = (c) => `<span class="num">#${NUM[c.id]}</span>`;
-  const ROLE_TIPS = { Lead: "Owns it and makes the final calls", "Co-plan": "Plans it with the lead and shares the work", Assist: "Helps carry it out when asked", Pass: "Not for you this time" };
+  const ROLE_TIPS = { Lead: "It's yours: you decide and get it done", Help: "Happy to pitch in when the lead asks", Pass: "Not for you this time" };
   const blank = (name) => ({ name, votes: {}, roles: {}, note: "", voteDone: false, roleDone: false });
 
   // Part 2 items: creative segments, then every open checklist task.
@@ -173,7 +173,7 @@
   /* ---------- results ---------- */
   let vfilter = "all";
   const votersOf = (key) => V.filter((n) => all[n]?.votes?.[key]);
-  const active = (n, k) => ["Lead", "Co-plan", "Assist"].includes(all[n]?.roles?.[k]);
+  const active = (n, k) => ["Lead", "Help"].includes(all[n]?.roles?.[k]);
   function renderResults() {
     $("status").innerHTML = V.map((n) => {
       const b = started(all[n]) ? all[n] : null;
@@ -199,10 +199,10 @@
       return ["gap", "No volunteers yet"];
     };
     const covered = ITEMS.filter((x) => V.some((n) => all[n]?.roles?.[x.key] === "Lead")).length;
-    $("vsum").innerHTML = `<span>${covered} of ${ITEMS.length} have a lead</span>` + V.map((n) => `<span>${n}: ${ITEMS.filter((x) => all[n]?.roles?.[x.key] === "Lead").length} lead · ${ITEMS.filter((x) => ["Co-plan", "Assist"].includes(all[n]?.roles?.[x.key])).length} helping</span>`).join("");
+    $("vsum").innerHTML = `<span>${covered} of ${ITEMS.length} have a lead</span>` + V.map((n) => `<span>${n}: ${ITEMS.filter((x) => all[n]?.roles?.[x.key] === "Lead").length} lead · ${ITEMS.filter((x) => all[n]?.roles?.[x.key] === "Help").length} helping</span>`).join("");
     const filters = [["all", "Everything"], ["gap", "Needs a lead"], ["multi", "Two or more leads"], ["ok", "Has a lead"]];
     $("vfilter").innerHTML = filters.map(([k, l]) => `<button type="button" data-f="${k}" aria-pressed="${vfilter === k}">${l}</button>`).join("");
-    const tag = (r) => r === "Lead" ? `<span class="tag-lead">Lead</span>` : r === "Co-plan" ? `<span class="tag-co">Co-plan</span>` : r === "Assist" ? `<span class="tag-as">Assist</span>` : r === "Pass" ? `<span class="muted">Pass</span>` : `<span class="muted">—</span>`;
+    const tag = (r) => r === "Lead" ? `<span class="tag-lead">Lead</span>` : r === "Help" ? `<span class="tag-co">Help</span>` : r === "Pass" ? `<span class="muted">Pass</span>` : `<span class="muted">—</span>`;
     let lastGroup = "";
     $("vtable").innerHTML = ITEMS.map((x) => {
       const [k, s] = status(x);
