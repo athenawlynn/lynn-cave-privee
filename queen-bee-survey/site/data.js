@@ -110,9 +110,7 @@ window.CATEGORIES = [
     ["Closest to the fairway center (Sweet Spot)", "N26"]
   ]},
   { id: "activities", ch: "course", kind: "photo", title: "Games & entertainment", blurb: "Fun extras around the day.", opts: [
-    ["Best dressed Queen Bee", "38"], ["Best decorated cart", "16"], ["Golden Bee Hunt", "39"],
-    ["Guess the Honey Pot", "40"], ["Royal Coronation", "41"], ["Honeybee trivia (What's the Buzz?)", "42"],
-    ["The Royal Bee: golden bee under one place card", "N28"], ["Best Dressed Hive (team)", "N29"]
+    ["Guess the Honey Pot", "40"]
   ]},
 
   // ---------- Food & drink ----------
@@ -120,11 +118,6 @@ window.CATEGORIES = [
     ["The Morning Buzz coffee station", "N12"], ["The Queen's Tea with honey sticks", "N30"],
     ["Honey Buns (mini croissants)", "N31"], ["Honeycomb Parfaits (yogurt, granola, honey)", "N32"],
     ["The Flower Patch (fresh fruit cups)", "N33"], ["Buzz Bites (mini blueberry muffins)", "N34"]
-  ]},
-  { id: "honeyhole", ch: "food", kind: "photo", title: "On-course refreshments: The Honey Hole", blurb: "Snacks and drinks at the refreshment hole.", opts: [
-    ["Honey-lavender lemonade", "28"], ["Chilled lemon and mint water", "N35"],
-    ["Honey-roasted snack mix (plus a nut-free option)", "N36"], ["Honey sticks and wrapped snacks", "N37"],
-    ["Mini lemon cookies", "N38"], ["Fresh fruit cups", "N33"]
   ]},
   { id: "luncheon", ch: "food", kind: "photo", title: "Luncheon: A Feast Fit for a Queen", blurb: "Pick the dishes you'd like on the menu.", opts: [
     ["Honey-glazed chicken skewers", "18"], ["Honey-Dijon salmon", "19"], ["Queen's Garden Salad (goat cheese, pears, honey vinaigrette)", "20"],
