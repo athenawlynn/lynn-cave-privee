@@ -173,10 +173,9 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       <article class="cat">
         <h2><span class="qnum">5</span>How far are you willing to drive?</h2>
         <div class="choices" role="radiogroup" aria-label="Drive time">
-          <label class="choice"><input type="radio" name="drive" value="Up to 20 minutes"><span class="dot"></span><span>Up to 20 minutes</span></label>
-          <label class="choice"><input type="radio" name="drive" value="Up to 40 minutes"><span class="dot"></span><span>Up to 40 minutes</span></label>
-          <label class="choice"><input type="radio" name="drive" value="Up to 1 hour"><span class="dot"></span><span>Up to 1 hour</span></label>
-          <label class="choice"><input type="radio" name="drive" value="Over 1 hour is fine"><span class="dot"></span><span>Over 1 hour is fine</span></label>
+          <label class="choice"><input type="radio" name="drive" value="Palm Beach Gardens only"><span class="dot"></span><span>Palm Beach Gardens only <small>About 15 minutes · Frenchman's Reserve, PGA National, Ballen Isles</small></span></label>
+          <label class="choice"><input type="radio" name="drive" value="Up to Jupiter"><span class="dot"></span><span>Up to Jupiter <small>About 25 minutes · adds Jonathan's Landing, Admirals Cove, Jupiter Country Club</small></span></label>
+          <label class="choice"><input type="radio" name="drive" value="Up to Stuart and Palm City"><span class="dot"></span><span>Up to Stuart and Palm City <small>About 45 minutes · adds Willoughby, Mariner Sands, Monarch</small></span></label>
         </div>
       </article>
 
@@ -265,7 +264,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
     const rows = [
       ["Name", $("name").value.trim()], ["Home invitational", val("home")],
       ["1st choice", sels[0].value], ["2nd choice", sels[1].value], ["3rd choice", sels[2].value],
-      ["Invitationals this season", val("count") || "No answer"], ["Drive time", val("drive") || "No answer"],
+      ["Invitationals this season", val("count") || "No answer"], ["Willing to drive", val("drive") || "No answer"],
       ["If top three are full", val("alt") || "No answer"],
       ["Comments", $("notes").value.trim() || "None"]
     ];
