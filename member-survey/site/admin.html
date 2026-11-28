@@ -60,8 +60,6 @@ th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);verti
 th{background:var(--sage-faint);font-weight:700;font-size:13.5px;position:sticky;top:0}
 tr:last-child td{border-bottom:0}
 td small{display:block;color:var(--muted);font-size:12.5px}
-.narrow table{min-width:420px}
-.note{background:var(--honey-soft);border-radius:12px;padding:10px 14px;font-size:14.5px;margin:0}
 footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bottom,0px));background:var(--sage-soft);font:italic 400 18px var(--f-disp);color:var(--sage);position:relative;z-index:2}
 </style>
 </head>
@@ -103,14 +101,6 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       </table></div>
     </article>
 
-    <article class="cat">
-      <h2>Hasn't responded yet</h2>
-      <p class="note">This list only has the women named on the member list, which is mostly single memberships. Wives on couple memberships aren't listed by name, so check against the 9-hole ladies roster too.</p>
-      <div class="tablewrap narrow"><table>
-        <thead><tr><th>Name on member list</th></tr></thead>
-        <tbody id="missing"></tbody>
-      </table></div>
-    </article>
   </div>
 </main>
 <footer>Good friends · Great golf · Sweet memories</footer>
@@ -149,14 +139,12 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       <div class="tile hl"><b>${rs.length}</b><span>members have responded</span></div>
       <div class="tile"><b>${yes}</b><span>playing in the Queen Bee Invitational</span></div>
       <div class="tile"><b>${rs.reduce((a, r) => a + (+r.answers.count || 1), 0)}</b><span>invitational spots wanted in all</span></div>
-      <div class="tile"><b>${data.listedAnswered} of ${data.listed}</b><span>listed women have responded</span></div>`;
+      <div class="tile"><b>${rs.filter((r) => r.answers.alt === "Yes").length}</b><span>would take an alternate club</span></div>`;
     $("rows").innerHTML = rs.map((r) => { const a = r.answers; return `<tr>
       <td><b>${esc(a.first)} ${esc(a.last)}</b><small>${new Date(r.updated).toLocaleDateString([], { month: "short", day: "numeric" })}</small></td>
       <td>${HOME[a.home] || ""}</td>${(a.ranks || []).map((id) => `<td>${esc(CLUB[id] || id)}</td>`).join("")}
       <td>${a.count ? (a.count === "4" ? "4+" : a.count) : "—"}</td><td>${a.drive !== "" ? DRIVE[+a.drive] : "—"}</td><td>${ALT[a.alt] || "—"}</td>
       <td>${esc(a.notes)}</td></tr>`; }).join("") || '<tr><td colspan="9" class="muted">No responses yet.</td></tr>';
-    const miss = [...data.missing].sort((a, b) => a.split(" ").pop().localeCompare(b.split(" ").pop()));
-    $("missing").innerHTML = miss.map((n) => `<tr><td>${esc(n)}</td></tr>`).join("") || '<tr><td class="muted">Everyone on this list has responded.</td></tr>';
     $("when").textContent = "Updated " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
   }
 
