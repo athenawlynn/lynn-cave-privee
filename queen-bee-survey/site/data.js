@@ -83,11 +83,10 @@ window.CATEGORIES = [
   ]},
   // ---------- On the course ----------
   { id: "carts", ch: "course", kind: "photo", title: "Golf carts: Buzz Buggies", blurb: "All decorations removable and clear of the driver's view.", opts: [
-    ["Yellow tulle bows", "15"], ["Bumblebee carts", "16"], ["Royal team signs", "17"],
-    ["Royalty on the Move sign", "N22"], ["Bag of honey treats for each cart", "N23"]
+    ["Yellow tulle bows", "15"], ["Royal team signs", "17"], ["Bag of honey treats for each cart", "N23"]
   ]},
   { id: "coursedecor", ch: "course", kind: "photo", title: "Course decorations", blurb: "Décor on the tees and around the course.", opts: [
-    ["Honeycomb tee signs", "48"], ["Bumblebee cart", "16"], ["Queen Bee hanging sign", "17"]
+    ["Honeycomb tee signs", "48"], ["Queen Bee hanging sign", "17"]
   ]},
   { id: "holes", ch: "course", kind: "text", hero: "N24", title: "Hole themes", blurb: "Hexagonal tee sign on each hole. Hole numbers will be matched to the real course layout.", opts: [
     ["Hole 1 · Welcome to the Hive", null, "Let the royal round begin!"],
