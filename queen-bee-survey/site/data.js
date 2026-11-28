@@ -74,28 +74,13 @@ window.CATEGORIES = [
     ["Sunflowers and honey jars", "08"], ["Roses and hydrangeas", "09"], ["Honeycomb vessels", "10"],
     ["Honey jar favors as the centerpiece", "29", "Doubles as a take-home gift"]
   ]},
-  { id: "takehome", ch: "decor", kind: "photo", title: "Centerpieces the ladies take home", blurb: "Like Denim & Diamonds: centerpieces that double as gifts.", opts: [
-    ["The Honey Pot", "N16", "Flowering plants in honeycomb-pattern pots"],
-    ["Sweet as Honey", "29", "Artisan honey jars with gold bee charms and dippers"],
-    ["Let It Bee", "33", "Packaged beeswax candles"],
-    ["The Royal Garden", "N17", "Petite floral arrangements clustered as one centerpiece"],
-    ["Centerpieces stay with the club", null]
-  ]},
   { id: "tables", ch: "decor", kind: "photo", title: "Table settings", blurb: "Linens, runners and napkins.", opts: [
     ["Black-and-white stripes", "01"], ["Ivory and gold", "03"], ["Honey yellow", "11"]
   ]},
-  { id: "roomdecor", ch: "decor", kind: "photo", title: "Room décor details", blurb: "Concentrate décor where it shows most, to keep costs down.", opts: [
+  { id: "roomdecor", ch: "decor", kind: "photo", title: "Room décor details", blurb: "Pick a few. We'll concentrate décor where it shows most, to keep costs down.", opts: [
     ["Hanging honeycomb paper balls", "N18"], ["Gold hexagon table numbers", "49"], ["Gold bee napkin rings", "N19"],
     ["Awards table: black linen, gold crowns, prizes on display", "N20"], ["Yellow or black ribbons on chairs", "N21"]
   ]},
-  { id: "teamnames", ch: "decor", kind: "text", hero: "48", title: "Table & team names", blurb: "Pick the names we'd use for tables and foursomes.", opts: [
-    ["The Queen Bees"], ["The Honey Bunnies"], ["The Birdie Bees"], ["The Bumble Babes"], ["The Golden Girls"],
-    ["The Royal Stingers"], ["The Fairway Honeys"], ["The Putt-Putt Pollinators"], ["The Bee-utiful Birdies"],
-    ["The Honeycombs"], ["The Sweet Swingers"], ["The Buzzing Birdies"], ["The Par-Tee Bees"], ["The Hive Society"],
-    ["The Honey Potters"], ["The Bee Knees"], ["The Royal Hive"], ["The Killer Bees"], ["The Honey Honeys"],
-    ["Let each foursome choose its own name"]
-  ]},
-
   // ---------- On the course ----------
   { id: "carts", ch: "course", kind: "photo", title: "Golf carts: Buzz Buggies", blurb: "All decorations removable and clear of the driver's view.", opts: [
     ["Yellow tulle bows", "15"], ["Bumblebee carts", "16"], ["Royal team signs", "17"],
