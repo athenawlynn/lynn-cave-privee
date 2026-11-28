@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Invitational Draw Demo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4l40 23v46L50 96 10 73V27z' fill='%235f7458'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23e5a823'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Garden Party, matching the member survey. Settings first, then results: summary, clubs, members. */
+:root{
+  --ivory:#fbfaf4; --paper:#ffffff; --sage:#5f7458; --sage-soft:#dfe6d6; --sage-faint:#eef1e7;
+  --honey:#e5a823; --honey-soft:#f6e7bf; --ink:#2b3027; --muted:#66705f; --line:#e3e6d8; --red:#b3261e; --red-soft:#fdf1ef;
+  --f-disp:"Fraunces",Georgia,"Times New Roman",serif; --f-body:"Karla",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--ink);font:16px/1.5 var(--f-body);position:relative}
+[hidden]{display:none!important}
+.in{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-disp);font-weight:400;text-wrap:balance;margin:0}
+.eyebrow{font:700 12px/1.3 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+:focus-visible{outline:3px solid var(--honey);outline-offset:2px}
+a{color:var(--sage)}
+
+.demo{background:var(--red-soft);border-bottom:1.5px solid var(--red);color:var(--red);font-size:15px;padding-block:calc(env(safe-area-inset-top,0px) + 10px) 10px;text-align:center}
+.hero{background:var(--sage-soft);text-align:center;padding-block:34px 30px}
+.hero h1{font-size:clamp(32px,5.5vw,52px);line-height:1.05;margin:6px 0 8px}
+.hero h1 em{color:var(--sage)}
+.hero p{margin:0 auto;max-width:62ch;color:var(--muted)}
+
+main{display:grid;gap:24px;padding-block:28px 60px;position:relative;z-index:2}
+.bee-layer{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bee{position:absolute;display:block;opacity:.92;transform:rotate(var(--tilt)) scaleX(var(--flip));animation:bob 5s ease-in-out infinite}
+.bee svg{display:block;width:100%;height:auto}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--tilt)) scaleX(var(--flip))}50%{transform:translateY(-9px) rotate(calc(var(--tilt) + 6deg)) scaleX(var(--flip))}}
+article.cat{position:relative}
+.bee.perch{width:34px;top:-20px;right:22px;left:auto;z-index:3}
+@media (prefers-reduced-motion:reduce){.bee{animation:none}}
+
+.cat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;min-width:0}
+@media (max-width:640px){.cat{padding:18px 16px}}
+.cat h2{font-size:26px}
+.cat .sub{margin:-8px 0 0;color:var(--muted);font-size:15px}
+
+.steps{margin:0;padding-left:22px;display:grid;gap:6px}
+
+.settings{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:22px}
+@media (max-width:820px){.settings{grid-template-columns:1fr}}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{background:var(--sage-faint);font-weight:700;font-size:14px}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:center;font-variant-numeric:tabular-nums}
+input[type=number]{width:64px;font:inherit;padding:6px 8px;border:1px solid #d3dac8;border-radius:8px;background:var(--ivory);text-align:center}
+input[type=text]{font:inherit;padding:8px 10px;border:1px solid #d3dac8;border-radius:10px;background:var(--ivory);width:130px;text-transform:uppercase;letter-spacing:.06em}
+.opt{display:flex;gap:10px;align-items:flex-start;font-size:15px;cursor:pointer}
+.opt input{width:18px;height:18px;margin-top:2px;accent-color:var(--sage)}
+.codebox{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{border:0;border-radius:999px;padding:12px 22px;background:var(--sage);color:#fff;font:700 16px var(--f-body);cursor:pointer}
+.btn:hover{background:#4e6148}
+.btn.ghost{background:var(--paper);color:var(--sage);border:1.5px solid var(--sage);padding:9px 16px;font-size:15px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.tile b{display:block;font:400 34px/1.1 var(--f-disp);font-variant-numeric:tabular-nums}
+.tile span{font-size:14px;color:var(--muted)}
+.tile.hl{background:var(--honey-soft);border-color:transparent}
+
+.clubs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.club{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--ivory);display:grid;gap:8px;align-content:start}
+.club h3{font-size:19px;line-height:1.2}
+.club .meta{font-size:13.5px;color:var(--muted)}
+.club ol{margin:0;padding-left:20px;display:grid;gap:3px;font-size:14.5px}
+.club .lbl{font:700 11.5px var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-top:4px}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1px}
+.p1{background:var(--honey);color:#2b2005}.p2{background:var(--honey-soft)}.p3{background:var(--sage-faint)}.pa{background:#e4e2da;color:var(--muted)}
+.pm{background:var(--red-soft);color:var(--red)}
+.full{color:var(--sage);font-weight:700}.open{color:var(--red);font-weight:700}
+
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font:inherit;font-size:14px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--sage);color:#fff;border-color:var(--sage)}
+.mt{min-width:760px}
+.mt td small{display:block;color:var(--muted);font-size:12.5px}
+.status-ok{color:var(--sage);font-weight:700}.status-part{color:#7a5a12;font-weight:700}.status-none{color:var(--red);font-weight:700}
+
+footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bottom,0px));background:var(--sage-soft);font:italic 400 18px var(--f-disp);color:var(--sage);position:relative;z-index:2}
+</style>
+</head>
+<body>
+<div class="demo"><div class="in"><b>Demo only.</b> These members are made up, and club spot counts are sample numbers except where noted.</div></div>
+<header class="hero">
+  <div class="in">
+    <div class="eyebrow">Eastpointe 9-Hole Ladies · 2027 invitationals</div>
+    <h1>Invitational <em>Draw</em></h1>
+    <p>Set each club's spots, press Run draw, and see who goes where. The same draw code always gives the same result, so anyone can check it.</p>
+  </div>
+</header>
+
+<main class="in">
+  <article class="cat">
+    <h2>How the draw works</h2>
+    <ol class="steps">
+      <li><b>Home-event players first.</b> Members playing in the Queen Bee Invitational are placed before everyone else.</li>
+      <li><b>Random order within each group,</b> set by the draw code.</li>
+      <li><b>Everyone gets one before anyone gets two.</b> Each member gets her highest-ranked club with a spot open.</li>
+      <li><b>Later rounds run in reverse order,</b> so nobody is always last.</li>
+      <li><b>Open spots go to members who'll take an alternate club</b> within their drive area.</li>
+      <li><b>Everyone else who ranked a club becomes its alternates,</b> in draw order.</li>
+    </ol>
+  </article>
+
+  <article class="cat">
+    <h2>Settings</h2>
+    <div class="settings">
+      <div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Club</th><th>Date</th><th class="num">Spots</th><th class="num">Alternates</th></tr></thead>
+          <tbody id="spotRows"></tbody>
+        </table></div>
+        <p class="muted" style="font-size:13.5px;margin:8px 0 0">Admirals Cove and Jupiter use the numbers in Lynnie's club sheet. The rest are sample numbers until Derek confirms.</p>
+      </div>
+      <div style="display:grid;gap:14px;align-content:start">
+        <label class="opt" for="probPri"><input type="checkbox" id="probPri"><span><b>Count "Probably" as home-event priority</b><br><span class="muted">Off: only "Yes" goes first.</span></span></label>
+        <label class="opt" for="noLeft"><input type="checkbox" id="noLeft"><span><b>Members skipping the home event get leftover spots only</b><br><span class="muted">Off: they're placed last in each round.</span></span></label>
+        <div>
+          <label for="code"><b>Draw code</b></label>
+          <div class="codebox"><input type="text" id="code" maxlength="12"><button class="btn ghost" type="button" id="newCode">New code</button></div>
+        </div>
+        <div class="row"><button class="btn" type="button" id="run">Run draw</button><button class="btn ghost" type="button" id="csv">Download results (CSV)</button></div>
+      </div>
+    </div>
+  </article>
+
+  <section class="tiles" id="tiles" aria-live="polite"></section>
+
+  <article class="cat">
+    <h2>By club</h2>
+    <p class="sub">Who's in, in the order placed, and the alternates waiting.</p>
+    <div class="clubs" id="clubs"></div>
+  </article>
+
+  <article class="cat">
+    <h2>By member</h2>
+    <p class="sub">What each member asked for and what she got. 1st, 2nd and 3rd show where the club was on her list.</p>
+    <div class="filters" id="filters" role="group" aria-label="Filter members"></div>
+    <div class="tablewrap"><table class="mt">
+      <thead><tr><th class="num">Draw #</th><th>Member</th><th>Home event</th><th>Her choices</th><th class="num">Wants</th><th>Placed</th><th>Status</th></tr></thead>
+      <tbody id="members"></tbody>
+    </table></div>
+  </article>
+
+  <p class="muted" style="text-align:center;margin:0"><a href="./">← Back to the member survey</a></p>
+</main>
+<footer>Good friends · Great golf · Sweet memories</footer>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  // Clubs with a firm 2027 date. Area: 0 = Palm Beach Gardens, 1 = Jupiter, 2 = Stuart / Palm City.
+  const CLUBS = [
+    { id: "JL", name: "Jonathan's Landing", date: "Jan 20", area: 1, spots: 4, alts: 2, pop: 5 },
+    { id: "FR", name: "Frenchman's Reserve", date: "Jan 21", area: 0, spots: 4, alts: 2, pop: 9 },
+    { id: "AC", name: "Admirals Cove", date: "Feb 10", area: 1, spots: 6, alts: 6, pop: 10, real: true },
+    { id: "WB", name: "Willoughby", date: "Feb 11", area: 2, spots: 4, alts: 2, pop: 3 },
+    { id: "JC", name: "Jupiter Country Club", date: "Feb 18", area: 1, spots: 5, alts: 3, pop: 6, real: true },
+    { id: "MO", name: "Monarch", date: "Feb 23", area: 2, spots: 4, alts: 2, pop: 2 },
+    { id: "MS", name: "Mariner Sands", date: "Mar 2", area: 2, spots: 4, alts: 2, pop: 2 },
+    { id: "PG", name: "PGA National", date: "Mar 18", area: 0, spots: 4, alts: 2, pop: 5 },
+    { id: "BI", name: "Ballen Isles", date: "Apr 8", area: 0, spots: 4, alts: 2, pop: 4 }
+  ];
+  const AREAS = ["Palm Beach Gardens only", "Up to Jupiter", "Up to Stuart and Palm City"];
+  const byId = Object.fromEntries(CLUBS.map((c) => [c.id, c]));
+
+  // Seeded random numbers, so a draw code always gives the same order.
+  const hash = (s) => { let h = 1779033703 ^ s.length; for (let i = 0; i < s.length; i++) { h = Math.imul(h ^ s.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); } return h >>> 0; };
+  const rng = (seed) => () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  const pickW = (r, items, w) => { let t = items.reduce((a, x) => a + w(x), 0) * r(); for (const x of items) { t -= w(x); if (t <= 0) return x; } return items[items.length - 1]; };
+
+  // Made-up sample members (fixed, independent of the draw code).
+  const FIRST = ["Ann","Barb","Carol","Diane","Ellen","Fran","Gail","Helen","Iris","Joan","Kay","Linda","Marge","Nancy","Olivia","Pat","Rita","Sue","Terri","Val","Wendy","Alice","Bonnie","Connie","Debbie","Eve","Gwen","Holly","Janet","Kathy","Lois","Mary","Nora","Peggy","Ruth","Sally"];
+  const LAST = "ABCDEFGHJKLMNPRSTW";
+  const MEMBERS = (() => {
+    const r = rng(20270204), out = [];
+    FIRST.forEach((f, i) => {
+      const area = pickW(r, [0, 1, 2], (a) => [30, 45, 25][a]);
+      const pool = CLUBS.filter((c) => c.area <= area);
+      const ranks = [];
+      while (ranks.length < 3) { const c = pickW(r, pool.filter((p) => !ranks.includes(p.id)), (p) => p.pop); ranks.push(c.id); }
+      out.push({
+        name: `${f} ${LAST[(i * 7) % LAST.length]}.`,
+        home: pickW(r, ["Yes", "Probably", "No"], (h) => ({ Yes: 65, Probably: 20, No: 15 })[h]),
+        ranks, area,
+        want: pickW(r, [1, 2, 3, 4], (n) => [30, 40, 20, 10][n - 1]),
+        alt: pickW(r, ["Yes", "Maybe", "No"], (a) => ({ Yes: 50, Maybe: 25, No: 25 })[a])
+      });
+    });
+    return out;
+  })();
+
+  /* ---------- the draw ---------- */
+  function runDraw(code, opts) {
+    const r = rng(hash(code));
+    const group = (m) => m.home === "Yes" || (m.home === "Probably" && opts.probPri) ? 0 : m.home === "Probably" ? 1 : 2;
+    // Random order within each priority group.
+    const shuffled = MEMBERS.map((m) => ({ m, k: r() })).sort((a, b) => a.k - b.k).map((x) => x.m);
+    const order = [0, 1, 2].map((g) => shuffled.filter((m) => group(m) === g));
+    const drawNo = new Map(); order.flat().forEach((m, i) => drawNo.set(m, i + 1));
+    const left = Object.fromEntries(CLUBS.map((c) => [c.id, c.spots]));
+    const got = new Map(MEMBERS.map((m) => [m, []])); // [{club, how}]
+    const roster = Object.fromEntries(CLUBS.map((c) => [c.id, []]));
+    const place = (m, id, how) => { got.get(m).push({ club: id, how }); roster[id].push({ m, how }); left[id]--; };
+    const maxWant = Math.max(...MEMBERS.map((m) => m.want));
+    for (let round = 1; round <= maxWant; round++) {
+      // Snake order: reverse within each group on even rounds; groups keep their priority.
+      const rounds = order.map((g, gi) => (opts.noLeft && gi === 2 ? [] : round % 2 ? g : [...g].reverse()));
+      for (const m of rounds.flat()) {
+        if (got.get(m).length >= m.want || got.get(m).length >= round) continue;
+        const mine = got.get(m).map((x) => x.club);
+        const i = m.ranks.findIndex((id) => left[id] > 0 && !mine.includes(id));
+        if (i >= 0) place(m, m.ranks[i], i + 1);
+      }
+    }
+    // Leftover spots: members who'll take an alternate club in their drive area.
+    let moved = true;
+    while (moved) {
+      moved = false;
+      for (const m of order.flat()) {
+        if (m.alt === "No" || got.get(m).length >= m.want) continue;
+        const mine = got.get(m).map((x) => x.club);
+        const c = CLUBS.find((c) => left[c.id] > 0 && c.area <= m.area && !mine.includes(c.id));
+        if (c) { place(m, c.id, m.alt === "Maybe" ? "check" : "alt"); moved = true; }
+      }
+    }
+    // Alternates: everyone who ranked the club but isn't in, in draw order.
+    const alternates = Object.fromEntries(CLUBS.map((c) => [c.id, order.flat().filter((m) => m.ranks.includes(c.id) && !got.get(m).some((x) => x.club === c.id))]));
+    return { order: order.flat(), drawNo, got, roster, left, alternates, group };
+  }
+
+  /* ---------- page ---------- */
+  $("spotRows").innerHTML = CLUBS.map((c) => `<tr><td><b>${esc(c.name)}</b>${c.real ? ' <span class="pill p3">from club sheet</span>' : ""}</td><td>${c.date}</td>
+    <td class="num"><input type="number" min="0" max="40" value="${c.spots}" data-spots="${c.id}" aria-label="${esc(c.name)} spots"></td>
+    <td class="num"><input type="number" min="0" max="40" value="${c.alts}" data-alts="${c.id}" aria-label="${esc(c.name)} alternates"></td></tr>`).join("");
+  const newCode = () => "QB-" + String(Math.floor(1000 + Math.random() * 9000));
+  $("code").value = "QB-2027";
+  $("newCode").addEventListener("click", () => { $("code").value = newCode(); draw(); });
+
+  const tag = (how) => how === 1 ? '<span class="pill p1">1st</span>' : how === 2 ? '<span class="pill p2">2nd</span>' : how === 3 ? '<span class="pill p3">3rd</span>' : how === "check" ? '<span class="pill pm">alternate · check first</span>' : '<span class="pill pa">alternate club</span>';
+  const homeTxt = (h) => h === "Yes" ? "Yes" : h === "Probably" ? "Probably" : "Not this year";
+  let last = null, filter = "all";
+
+  function draw() {
+    document.querySelectorAll("[data-spots]").forEach((i) => (byId[i.dataset.spots].spots = Math.max(0, +i.value || 0)));
+    document.querySelectorAll("[data-alts]").forEach((i) => (byId[i.dataset.alts].alts = Math.max(0, +i.value || 0)));
+    const code = ($("code").value.trim() || "QB-2027").toUpperCase();
+    $("code").value = code;
+    const res = runDraw(code, { probPri: $("probPri").checked, noLeft: $("noLeft").checked });
+    last = { res, code };
+
+    const want = MEMBERS.reduce((a, m) => a + m.want, 0);
+    const spots = CLUBS.reduce((a, c) => a + c.spots, 0);
+    const placed = MEMBERS.filter((m) => res.got.get(m).length > 0).length;
+    const first = MEMBERS.filter((m) => res.got.get(m).some((x) => x.how === 1)).length;
+    const full = MEMBERS.filter((m) => res.got.get(m).length >= m.want).length;
+    $("tiles").innerHTML = `
+      <div class="tile"><b>${MEMBERS.length}</b><span>members · want ${want} spots in all</span></div>
+      <div class="tile"><b>${spots}</b><span>spots across ${CLUBS.length} clubs</span></div>
+      <div class="tile hl"><b>${placed} of ${MEMBERS.length}</b><span>got at least one event</span></div>
+      <div class="tile"><b>${Math.round((first / MEMBERS.length) * 100)}%</b><span>got their 1st choice · ${full} got every event they wanted</span></div>`;
+
+    $("clubs").innerHTML = CLUBS.map((c) => {
+      const ros = res.roster[c.id], alts = res.alternates[c.id];
+      const st = res.left[c.id] > 0 ? `<span class="open">${res.left[c.id]} open</span>` : `<span class="full">Full</span>`;
+      return `<div class="club"><h3>${esc(c.name)}</h3><div class="meta">${c.date} · ${c.spots} spots · ${st}</div>
+        <div class="lbl">Playing</div>${ros.length ? `<ol>${ros.map((x) => `<li>${esc(x.m.name)}${tag(x.how)}</li>`).join("")}</ol>` : '<p class="muted" style="margin:0">No one yet</p>'}
+        <div class="lbl">Alternates</div>${alts.length ? `<ol>${alts.slice(0, Math.max(c.alts, 0)).map((m) => `<li>${esc(m.name)}</li>`).join("")}</ol>${alts.length > c.alts ? `<div class="meta">+${alts.length - c.alts} more interested</div>` : ""}` : '<p class="muted" style="margin:0">None</p>'}
+      </div>`;
+    }).join("");
+    renderMembers();
+  }
+
+  function status(m) {
+    const n = last.res.got.get(m).length;
+    if (n >= m.want) return ["ok", "All she wanted"];
+    if (n > 0) return ["part", `${n} of ${m.want}`];
+    return ["none", "Not placed"];
+  }
+  function renderMembers() {
+    const fs = [["all", "Everyone"], ["none", "Not placed"], ["part", "Got some"], ["ok", "Got all"]];
+    $("filters").innerHTML = fs.map(([k, l]) => `<button type="button" data-f="${k}" aria-pressed="${filter === k}">${l}</button>`).join("");
+    const { res } = last;
+    $("members").innerHTML = res.order.map((m) => {
+      const [k, s] = status(m);
+      if (filter !== "all" && filter !== k) return "";
+      const g = res.got.get(m);
+      return `<tr><td class="num">${res.drawNo.get(m)}</td><td><b>${esc(m.name)}</b><small>${AREAS[m.area]} · alternate club: ${m.alt}</small></td><td>${homeTxt(m.home)}</td>
+        <td>${m.ranks.map((id, i) => `${i + 1}. ${esc(byId[id].name)}`).join("<br>")}</td><td class="num">${m.want}</td>
+        <td>${g.length ? g.map((x) => `${esc(byId[x.club].name)}${tag(x.how)}`).join("<br>") : '<span class="muted">—</span>'}</td>
+        <td><span class="status-${k}">${s}</span></td></tr>`;
+    }).join("") || '<tr><td colspan="7" class="muted">No members match this filter.</td></tr>';
+  }
+  $("filters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (b) { filter = b.dataset.f; renderMembers(); } });
+  $("run").addEventListener("click", draw);
+  ["probPri", "noLeft"].forEach((id) => $(id).addEventListener("change", draw));
+
+  $("csv").addEventListener("click", () => {
+    const { res, code } = last;
+    const q = (x) => '"' + String(x ?? "").replace(/"/g, '""') + '"';
+    const how = (h) => h === 1 ? "1st choice" : h === 2 ? "2nd choice" : h === 3 ? "3rd choice" : h === "check" ? "Alternate club (check first)" : "Alternate club";
+    const rows = [["Draw code", code], [], ["Club", "Date", "Spots", "Playing", "How placed", "Alternates (in order)"]];
+    CLUBS.forEach((c) => {
+      const ros = res.roster[c.id], alts = res.alternates[c.id].slice(0, c.alts).map((m) => m.name);
+      const n = Math.max(ros.length, 1);
+      for (let i = 0; i < n; i++) rows.push([i ? "" : c.name, i ? "" : c.date, i ? "" : c.spots, ros[i]?.m.name || "", ros[i] ? how(ros[i].how) : "", alts[i] || ""]);
+      alts.slice(n).forEach((a) => rows.push(["", "", "", "", "", a]));
+    });
+    rows.push([], ["Draw #", "Member", "Home event", "1st", "2nd", "3rd", "Wants", "Placed"]);
+    res.order.forEach((m) => rows.push([res.drawNo.get(m), m.name, homeTxt(m.home), ...m.ranks.map((id) => byId[id].name), m.want, res.got.get(m).map((x) => `${byId[x.club].name} (${how(x.how)})`).join("; ")]));
+    const blob = new Blob(["﻿" + rows.map((r) => r.map(q).join(",")).join("\r\n")], { type: "text/csv" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `invitational-draw-${code}.csv`;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  });
+
+  draw();
+})();
+</script>
+<script src="bees.js"></script>
+</body>
+</html>
