@@ -27,9 +27,7 @@ h1,h2,h3{font-family:var(--f-disp);font-weight:400;text-wrap:balance;margin:0}
 .muted{color:var(--muted)}
 :focus-visible{outline:3px solid var(--honey);outline-offset:2px}
 
-.draft{background:var(--red-soft);border-bottom:1.5px solid var(--red);color:var(--red);font-size:15px;padding-block:calc(env(safe-area-inset-top,0px) + 10px) 10px;text-align:center}
-.draft b{font-weight:700}
-.hero{background:var(--sage-soft);text-align:center;padding-block:40px 34px}
+.hero{background:var(--sage-soft);text-align:center;padding-block:calc(env(safe-area-inset-top,0px) + 40px) 34px}
 .hero h1{font-size:clamp(34px,6vw,56px);line-height:1.04;margin:6px 0 8px}
 .hero h1 em{color:var(--sage)}
 .hero p{margin:0 auto;max-width:56ch;color:var(--muted)}
@@ -85,6 +83,8 @@ textarea{resize:vertical}
 .cal tr:last-child td{border-bottom:0}
 .cal td.d{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--sage);font-weight:700}
 .cal td small{display:block;color:var(--muted);font-size:13.5px}
+.cal td small.theme{color:var(--ink);margin-top:2px}
+.cal .ti{font-size:17px;margin-right:6px;vertical-align:-2px}
 .cal td.c{white-space:nowrap}
 .cal a.map{display:block;font-size:13.5px;color:var(--sage);font-weight:700;margin-top:2px;white-space:nowrap}
 .clubnote{font-size:14px;color:var(--muted);margin:0}
@@ -108,7 +108,6 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
 </style>
 </head>
 <body>
-<div class="draft"><div class="in"><b>Draft for review</b> by Lynnie and Derek. Answers on this page are not saved.</div></div>
 <header class="hero">
   <div class="in">
     <svg class="vine" width="140" height="24" viewBox="0 0 140 24" aria-hidden="true"><path d="M2 12h136" stroke="currentColor" stroke-width="1.2" fill="none"/><g fill="currentColor"><ellipse cx="36" cy="6" rx="7" ry="3.2" transform="rotate(-25 36 6)"/><ellipse cx="52" cy="18" rx="7" ry="3.2" transform="rotate(25 52 18)"/><ellipse cx="88" cy="6" rx="7" ry="3.2" transform="rotate(25 88 6)"/><ellipse cx="104" cy="18" rx="7" ry="3.2" transform="rotate(-25 104 18)"/></g><circle cx="70" cy="12" r="6" fill="#e5a823"/></svg>
@@ -230,19 +229,19 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
   // Clubs hosting a 2027 invitational with a firm date, from Lynnie's 2027 club spreadsheet (Nov 22 draft).
   const CLUBS = [
     { club: "Jonathan's Landing", town: "Jupiter", q: "Jonathan's Landing Golf Club, Jupiter, FL", date: "Wed, Jan 20", theme: "", time: "9:30 start · Old Trail Medal Course", cost: "" },
-    { club: "Frenchman's Reserve", town: "Palm Beach Gardens", q: "Frenchman's Reserve Country Club, Palm Beach Gardens, FL", date: "Thu, Jan 21", theme: "Peace, Love and Golf", time: "", cost: "" },
-    { club: "Admirals Cove", town: "Jupiter", q: "Admirals Cove, Jupiter, FL", date: "Wed, Feb 10", theme: "Galentine's", time: "8:00 breakfast · 9:30 start", cost: "$125" },
-    { club: "Willoughby", town: "Stuart", q: "Willoughby Golf Club, Stuart, FL", date: "Thu, Feb 11", theme: "Paris, The City of Love", time: "9:00 breakfast · 10:00 start", cost: "" },
-    { club: "Jupiter Country Club", town: "Jupiter", q: "Jupiter Country Club, Jupiter, FL", date: "Thu, Feb 18", theme: "Cowgirl Classic", time: "9:00 breakfast · 9:30 shotgun", cost: "" },
+    { club: "Frenchman's Reserve", town: "Palm Beach Gardens", q: "Frenchman's Reserve Country Club, Palm Beach Gardens, FL", date: "Thu, Jan 21", theme: "Peace, Love and Golf", icon: "☮️", time: "", cost: "" },
+    { club: "Admirals Cove", town: "Jupiter", q: "Admirals Cove, Jupiter, FL", date: "Wed, Feb 10", theme: "Galentine's", icon: "💕", time: "8:00 breakfast · 9:30 start", cost: "$125" },
+    { club: "Willoughby", town: "Stuart", q: "Willoughby Golf Club, Stuart, FL", date: "Thu, Feb 11", theme: "Paris, The City of Love", icon: "🗼", time: "9:00 breakfast · 10:00 start", cost: "" },
+    { club: "Jupiter Country Club", town: "Jupiter", q: "Jupiter Country Club, Jupiter, FL", date: "Thu, Feb 18", theme: "Cowgirl Classic", icon: "🤠", time: "9:00 breakfast · 9:30 shotgun", cost: "" },
     { club: "Monarch", town: "Palm City", q: "Monarch Country Club, Palm City, FL", date: "Tue, Feb 23", theme: "", time: "", cost: "" },
-    { club: "Mariner Sands", town: "Stuart", q: "Mariner Sands Country Club, Stuart, FL", date: "Tue, Mar 2", theme: "Mama Tee-a", time: "11:30 lunch · 1:00 shotgun", cost: "" },
-    { club: "PGA National", town: "Palm Beach Gardens", q: "PGA National Resort, Palm Beach Gardens, FL", date: "Thu, Mar 18", theme: "Let's Get Physical", time: "12:30 registration · 1:30 start", cost: "$140" },
+    { club: "Mariner Sands", town: "Stuart", q: "Mariner Sands Country Club, Stuart, FL", date: "Tue, Mar 2", theme: "Mama Tee-a", icon: "🪩", time: "11:30 lunch · 1:00 shotgun", cost: "" },
+    { club: "PGA National", town: "Palm Beach Gardens", q: "PGA National Resort, Palm Beach Gardens, FL", date: "Thu, Mar 18", theme: "Let's Get Physical", icon: "🤸‍♀️", time: "12:30 registration · 1:30 start", cost: "$140" },
     { club: "Ballen Isles", town: "Palm Beach Gardens", q: "BallenIsles Country Club, Palm Beach Gardens, FL", date: "Thu, Apr 8", theme: "", time: "Breakfast 8:00 · 9:00 start", cost: "" }
   ];
   const ORIGIN = "Eastpointe Country Club, Palm Beach Gardens, FL";
   const mapUrl = (c) => "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(ORIGIN) + "&destination=" + encodeURIComponent(c.q) + "&travelmode=driving";
   const label = (c) => `${c.club} · ${c.date}`;
-  document.getElementById("cal").innerHTML = CLUBS.map((c) => `<tr><td class="d">${c.date}</td><td><b>${c.club}</b>${c.theme ? `<small>${c.theme}</small>` : ""}</td><td>${c.town}<a class="map" href="${mapUrl(c)}" target="_blank" rel="noopener">Drive time from Eastpointe ↗</a></td><td>${c.time || '<span class="muted">To come</span>'}</td><td class="c">${c.cost || '<span class="muted">To come</span>'}</td></tr>`).join("");
+  document.getElementById("cal").innerHTML = CLUBS.map((c) => `<tr><td class="d">${c.date}</td><td><b>${c.club}</b>${c.theme ? `<small class="theme"><span class="ti" aria-hidden="true">${c.icon}</span>${c.theme}</small>` : `<small>Theme to come</small>`}</td><td>${c.town}<a class="map" href="${mapUrl(c)}" target="_blank" rel="noopener">Drive time from Eastpointe ↗</a></td><td>${c.time || '<span class="muted">To come</span>'}</td><td class="c">${c.cost || '<span class="muted">To come</span>'}</td></tr>`).join("");
   const $ = (id) => document.getElementById(id);
   const sels = [$("r1"), $("r2"), $("r3")];
   sels.forEach((s) => { s.innerHTML = `<option value="">Choose a club</option>` + CLUBS.map((c) => `<option>${label(c)}</option>`).join(""); });
