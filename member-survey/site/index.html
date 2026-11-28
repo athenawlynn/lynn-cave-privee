@@ -79,13 +79,14 @@ textarea{resize:vertical}
 @media (max-width:640px){.row2{grid-template-columns:1fr}}
 
 .calwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
-.cal{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
+.cal{border-collapse:collapse;width:100%;min-width:680px;font-size:15px}
 .cal th,.cal td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 .cal th{background:var(--sage-faint);font-weight:700}
 .cal tr:last-child td{border-bottom:0}
 .cal td.d{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--sage);font-weight:700}
 .cal td small{display:block;color:var(--muted);font-size:13.5px}
 .cal td.c{white-space:nowrap}
+.cal a.map{display:block;font-size:13.5px;color:var(--sage);font-weight:700;margin-top:2px;white-space:nowrap}
 .clubnote{font-size:14px;color:var(--muted);margin:0}
 .err{color:var(--red);font-weight:700;font-size:15px;margin:0}
 .btn{border:0;border-radius:999px;padding:14px 26px;background:var(--sage);color:#fff;font:700 17px var(--f-body);cursor:pointer;justify-self:start}
@@ -145,8 +146,8 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
 
       <article class="cat">
         <h2>2027 invitational calendar</h2>
-        <p class="hint">Clubs hosting this season, by date. Costs and times are listed where the club has shared them.</p>
-        <div class="calwrap"><table class="cal"><thead><tr><th>Date</th><th>Club &amp; theme</th><th>Schedule</th><th>Cost</th></tr></thead><tbody id="cal"></tbody></table></div>
+        <p class="hint">Clubs hosting this season, by date. Tap "Drive time from Eastpointe" to see the distance on Google Maps. Costs and times are listed where the club has shared them.</p>
+        <div class="calwrap"><table class="cal"><thead><tr><th>Date</th><th>Club &amp; theme</th><th>Where</th><th>Schedule</th><th>Cost</th></tr></thead><tbody id="cal"></tbody></table></div>
       </article>
 
       <article class="cat">
@@ -190,15 +191,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       </article>
 
       <article class="cat">
-        <h2><span class="qnum">7</span>Anyone you'd like to play with?</h2>
-        <p class="hint">Optional. We'll try to keep friends together, and swaps can be arranged after spots are assigned.</p>
-        <label class="fld" for="friends">Names
-          <input type="text" id="friends" placeholder="Names of friends you'd like to play with">
-        </label>
-      </article>
-
-      <article class="cat">
-        <h2><span class="qnum">8</span>Anything else we should know?</h2>
+        <h2><span class="qnum">7</span>Anything else we should know?</h2>
         <label class="fld" for="notes">Comments
           <textarea id="notes" rows="3" placeholder="Optional"></textarea>
         </label>
@@ -236,18 +229,20 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
 (() => {
   // Clubs hosting a 2027 invitational with a firm date, from Lynnie's 2027 club spreadsheet (Nov 22 draft).
   const CLUBS = [
-    { club: "Jonathan's Landing", date: "Wed, Jan 20", theme: "", time: "9:30 start · Old Trail Medal Course", cost: "" },
-    { club: "Frenchman's Reserve", date: "Thu, Jan 21", theme: "Peace, Love and Golf", time: "", cost: "" },
-    { club: "Admirals Cove", date: "Wed, Feb 10", theme: "Galentine's", time: "8:00 breakfast · 9:30 start", cost: "$125" },
-    { club: "Willoughby", date: "Thu, Feb 11", theme: "Paris, The City of Love", time: "9:00 breakfast · 10:00 start", cost: "" },
-    { club: "Jupiter Country Club", date: "Thu, Feb 18", theme: "Cowgirl Classic", time: "9:00 breakfast · 9:30 shotgun", cost: "" },
-    { club: "Monarch", date: "Tue, Feb 23", theme: "", time: "", cost: "" },
-    { club: "Mariner Sands", date: "Tue, Mar 2", theme: "Mama Tee-a", time: "11:30 lunch · 1:00 shotgun", cost: "" },
-    { club: "PGA National", date: "Thu, Mar 18", theme: "Let's Get Physical", time: "12:30 registration · 1:30 start", cost: "$140" },
-    { club: "Ballen Isles", date: "Thu, Apr 8", theme: "", time: "Breakfast 8:00 · 9:00 start", cost: "" }
+    { club: "Jonathan's Landing", town: "Jupiter", q: "Jonathan's Landing Golf Club, Jupiter, FL", date: "Wed, Jan 20", theme: "", time: "9:30 start · Old Trail Medal Course", cost: "" },
+    { club: "Frenchman's Reserve", town: "Palm Beach Gardens", q: "Frenchman's Reserve Country Club, Palm Beach Gardens, FL", date: "Thu, Jan 21", theme: "Peace, Love and Golf", time: "", cost: "" },
+    { club: "Admirals Cove", town: "Jupiter", q: "Admirals Cove, Jupiter, FL", date: "Wed, Feb 10", theme: "Galentine's", time: "8:00 breakfast · 9:30 start", cost: "$125" },
+    { club: "Willoughby", town: "Stuart", q: "Willoughby Golf Club, Stuart, FL", date: "Thu, Feb 11", theme: "Paris, The City of Love", time: "9:00 breakfast · 10:00 start", cost: "" },
+    { club: "Jupiter Country Club", town: "Jupiter", q: "Jupiter Country Club, Jupiter, FL", date: "Thu, Feb 18", theme: "Cowgirl Classic", time: "9:00 breakfast · 9:30 shotgun", cost: "" },
+    { club: "Monarch", town: "Palm City", q: "Monarch Country Club, Palm City, FL", date: "Tue, Feb 23", theme: "", time: "", cost: "" },
+    { club: "Mariner Sands", town: "Stuart", q: "Mariner Sands Country Club, Stuart, FL", date: "Tue, Mar 2", theme: "Mama Tee-a", time: "11:30 lunch · 1:00 shotgun", cost: "" },
+    { club: "PGA National", town: "Palm Beach Gardens", q: "PGA National Resort, Palm Beach Gardens, FL", date: "Thu, Mar 18", theme: "Let's Get Physical", time: "12:30 registration · 1:30 start", cost: "$140" },
+    { club: "Ballen Isles", town: "Palm Beach Gardens", q: "BallenIsles Country Club, Palm Beach Gardens, FL", date: "Thu, Apr 8", theme: "", time: "Breakfast 8:00 · 9:00 start", cost: "" }
   ];
+  const ORIGIN = "Eastpointe Country Club, Palm Beach Gardens, FL";
+  const mapUrl = (c) => "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(ORIGIN) + "&destination=" + encodeURIComponent(c.q) + "&travelmode=driving";
   const label = (c) => `${c.club} · ${c.date}`;
-  document.getElementById("cal").innerHTML = CLUBS.map((c) => `<tr><td class="d">${c.date}</td><td><b>${c.club}</b>${c.theme ? `<small>${c.theme}</small>` : ""}</td><td>${c.time || '<span class="muted">To come</span>'}</td><td class="c">${c.cost || '<span class="muted">To come</span>'}</td></tr>`).join("");
+  document.getElementById("cal").innerHTML = CLUBS.map((c) => `<tr><td class="d">${c.date}</td><td><b>${c.club}</b>${c.theme ? `<small>${c.theme}</small>` : ""}</td><td>${c.town}<a class="map" href="${mapUrl(c)}" target="_blank" rel="noopener">Drive time from Eastpointe ↗</a></td><td>${c.time || '<span class="muted">To come</span>'}</td><td class="c">${c.cost || '<span class="muted">To come</span>'}</td></tr>`).join("");
   const $ = (id) => document.getElementById(id);
   const sels = [$("r1"), $("r2"), $("r3")];
   sels.forEach((s) => { s.innerHTML = `<option value="">Choose a club</option>` + CLUBS.map((c) => `<option>${label(c)}</option>`).join(""); });
@@ -272,7 +267,7 @@ footer{text-align:center;padding-block:26px calc(26px + env(safe-area-inset-bott
       ["Name", $("name").value.trim()], ["Home invitational", val("home")],
       ["1st choice", sels[0].value], ["2nd choice", sels[1].value], ["3rd choice", sels[2].value],
       ["Invitationals this season", val("count") || "No answer"], ["Drive time", val("drive") || "No answer"],
-      ["If top three are full", val("alt") || "No answer"], ["Play with", $("friends").value.trim() || "No one listed"],
+      ["If top three are full", val("alt") || "No answer"],
       ["Comments", $("notes").value.trim() || "None"]
     ];
     $("summary").innerHTML = rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
